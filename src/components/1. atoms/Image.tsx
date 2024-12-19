@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface ImageProps {
-  src: string;
-  alt: string;
-  width?: string;
-  height?: string;
-  className?: string;
+  src: string | undefined;
+  alt: string | undefined;
+  width?: string | undefined;
+  height?: string | undefined;
+  className?: string | undefined;
 }
 
 const Image: React.FC<ImageProps> = ({ src, alt, width, height, className }) => {

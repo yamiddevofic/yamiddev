@@ -1,26 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
-// Configuración de Vite para React + TailwindCSS
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  css: {
-    postcss: {
-      plugins: [], // Vite usa automáticamente el postcss.config.js
-    },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'), // Alias para rutas más cortas
-    },
-  },
   server: {
-    port: 3000,       // Puerto personalizado para el servidor
-    open: true,       // Abre automáticamente el navegador
+    port: 3000, // Definir el puerto como 3000
   },
-  build: {
-    outDir: 'dist',   // Carpeta de salida de la build
-    sourcemap: true,  // Habilita sourcemaps para debuggear
-  },
+  css: {
+    postcss: './postcss.config.cjs', 
+  }
 });

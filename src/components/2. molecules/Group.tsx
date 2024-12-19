@@ -1,18 +1,30 @@
 import React from 'react';
 import Image from '../1. atoms/Image';
 import Paragraph from '../1. atoms/Paragraph';
-import logo from '../../assets/yamid-tech.png'
 
-const Group: React.FC = () => {
+
+interface GroupProps {
+    image ?: string;
+    text ?: string;
+    alt ?: string;
+    width ?: string;
+    height ?: string;
+    classNameImg ?: string;
+    classNameParagraph ?: string;
+    className ?: string;
+}
+
+const Group: React.FC<GroupProps> = ({image, text, alt, width, height, classNameImg, classNameParagraph, className}) => {
   return (
-    <div className="group">
-      <Image src={logo}
-        alt="logo yamid tech"
-        width="100"
-        height="100"
-        className="logo" />
+    <div className={className}>
+      <Image src={image}
+        alt={alt}
+        width={width}
+        height={height}
+        className={classNameImg} />
       <Paragraph
-        text="Yamid Dev"
+        text={text}
+        className={classNameParagraph}
       />
     </div>
   );

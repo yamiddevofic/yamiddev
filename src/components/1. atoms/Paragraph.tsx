@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface ParagraphProps {
-    text: string;
-    className?: string;
+    text: string | undefined;
+    className?: string | undefined;
 }
 
 const Paragraph: React.FC<ParagraphProps> = ({ text, className}) => {

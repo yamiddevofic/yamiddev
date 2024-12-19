@@ -1,17 +1,25 @@
-import { ReactNode } from 'react';
-import { Header } from '../organisms/Navigator';
-import { Footer } from '../organisms/Footer';
+import React from "react";
+import Header from "../3. organisms/Header";
+import Footer from "../3. organisms/Footer";
 
-const LayoutProps = {
-  children: ReactNode
+interface SectionProps {
+    children ?: React.ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => (
-  return (
-  <div className='container'>
-    {children}
-  </div>
-)
-);
+const Layout: React.FC<SectionProps> = ({ children }) => {
+    return (
+        <div className="h-screen">
+            <div className="p-4">
+                <Header />
+            </div>
+            <div className="pt-2 pb-6 pr-6 pl-6 h-full">
+                {children}
+            </div>
+            <div>
+                <Footer />
+            </div>
+        </div>
+    );
+};
 
 export default Layout;

@@ -8,3 +8,4 @@ npm run build
 
 # Mueve el contenido de dist a la rama deploy
 git subtree push --prefix dist origin deploy
+

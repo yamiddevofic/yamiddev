@@ -1,0 +1,22 @@
+{
+  "name": "hilarious-houston",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^4.1.2",
+    "@react-spring/web": "^9.7.5",
+    "aos": "^2.3.4",
+    "astro": "^5.1.1",
+    "framer-motion": "^11.15.0",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.2"
+  }
+}

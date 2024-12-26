@@ -14,3 +14,15 @@ git push origin --delete deploy || true
 
 # Crear una nueva rama deploy con el contenido de dist
 git subtree push --prefix dist origin deploy
+
+# Crear un commit en la rama main que actualice la referencia a la rama deploy
+git checkout main
+git add .
+git commit -m "Deploy to Hostinger 🚀"
+git push origin main
+
+# Volver a la rama deploy
+git checkout deploy
+
+# Imprimir mensaje de éxito
+echo "Deploy exitoso 🎉"

@@ -1,34 +1,26 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
-
 name: Deploy to Hostinger
 
 on:
   push:
     branches:
-      - main  # Ejecuta el flujo cada vez que se haga un push en la rama main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout el repositorio
+      # 1. Checkout el código
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Instalar dependencias y construir el proyecto
-      - name: Install dependencies and build
-        run: |
-          npm install
-          npm run build
-
-      # 3. Subir solo la carpeta dist a la rama deploy
-      - name: Deploy dist folder to deploy branch
+      # 2. Configuración del token y despliegue
+      - name: Deploy dist folder
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add dist
-          git commit -m "Deploy to deploy branch"
+          git commit -m "Deploy from GitHub Actions"
           git push origin `git subtree split --prefix dist main`:deploy --force
-

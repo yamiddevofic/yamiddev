@@ -10,28 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout el código
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # 2. Configurar la versión de Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20  # Ajusta a la versión compatible
 
+      # 3. Instalar dependencias y construir el proyecto
       - name: Install dependencies and build
         run: |
           npm install
           npm run build
 
-      - name: Force change in dist
-        run: echo "force update" > dist/.force-update
-
+      # 4. Subir solo la carpeta dist a la rama deploy
       - name: Deploy dist folder to deploy branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add dist
-          git commit -m "Deploy from GitHub Actions"
           git push origin `git subtree split --prefix dist main`:deploy --force

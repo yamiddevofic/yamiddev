@@ -1,16 +1,14 @@
 #!/bin/bash
+set -e  # Detener la ejecución si ocurre algún error
 
-# Asegúrate de estar en la rama principal
-git checkout main
+# Configurar usuario de Git
+git config user.name "GitHub Actions"
+git config user.email "actions@github.com"
 
-# Guardar cambios de rama main
-git add .
-git commit -m "Deploy update: $(date '+%Y-%m-%d %H:%M:%S')"
-git push origin main
+# Asegurar sincronización con la rama remota (evitar conflictos)
+git fetch origin deploy || true
+git pull origin deploy || true
 
-# Construir el proyecto (genera la carpeta dist)
-npm run build
-
-# Mueve el contenido de dist a la rama deploy
-git subtree push --prefix dist origin deploy
+# Subir la carpeta dist a la rama deploy
+git subtree push --prefix dist origin deploy --force
 

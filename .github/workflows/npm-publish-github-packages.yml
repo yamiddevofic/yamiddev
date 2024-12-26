@@ -10,12 +10,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout el código
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # 2. Configuración del token y despliegue
-      - name: Deploy dist folder
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Force change in dist
+        run: echo "force update" > dist/.force-update
+
+      - name: Deploy dist folder to deploy branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |

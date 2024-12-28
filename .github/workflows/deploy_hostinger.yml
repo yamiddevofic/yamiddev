@@ -17,6 +17,7 @@ jobs:
       # 2. Instalar dependencias y construir el proyecto
       - name: Install dependencies and build
         run: |
+          rm -rf dist
           npm install
           npm run build # Cambia este comando si tu script es diferente
 

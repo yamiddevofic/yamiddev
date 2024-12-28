@@ -1,35 +1,34 @@
-name: Deploy to Hostinger
+name: Deploy a Hostinger
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ] 
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout el código
-      - name: Checkout code
+      # 1. Checkout del código
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Configurar la versión de Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20  # Ajusta a la versión compatible
-
-      # 3. Instalar dependencias y construir el proyecto
-      - name: Install dependencies and build
+      # 2. Instalar dependencias (según tu tecnología)
+      - name: Install dependencies
         run: |
           npm install
+
+      # 3. Ejecutar build (ejemplo en Node.js)
+      - name: Build
+        run: |
           npm run build
 
-      # 4. Dar permisos de ejecución al script deploy.sh
-      - name: Make deploy script executable
-        run: chmod +x deploy.sh
-
-      # 5. Ejecutar el script deploy.sh
-      - name: Execute deploy script
-        run: ./deploy.sh
+      # 4. Desplegar al servidor de Hostinger (mediante FTP o SFTP/SSH)
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_HOST }}
+          username: ${{ secrets.HOSTINGER_FTP_USER }}
+          password: ${{ secrets.HOSTINGER_FTP_PASS }}
+          local-dir: ./build
+          server-dir: /public_html  # Ajustar a tu carpeta de destino

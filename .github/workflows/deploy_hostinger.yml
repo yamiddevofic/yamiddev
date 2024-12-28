@@ -1,4 +1,4 @@
-name: Deploy Dist to Deploy Branch
+name: Deploy to Deploy Branch
 
 on:
   push:
@@ -10,36 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout del repositorio
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # 1. Checkout el código fuente
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # Elimina la carpeta dist si existe
-    - name: Remove dist folder
-      run: rm -rf dist
-
-    # Construye el proyecto para generar la carpeta dist
-    - name: Build project
-      run: npm install && npm run build
-
-    # Verifica si la carpeta dist fue creada
-    - name: Debug build folder
-      run: ls -la dist
-
-    # Configura Git
-    - name: Configure Git
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-
-    # Inicializa la carpeta deploy (siempre sobreescribe)
-    - name: Deploy to deploy branch
-      run: |
-        git fetch origin deploy || echo "Deploy branch doesn't exist"
-        git checkout -B deploy
-        rm -rf ./*
-        cp -r dist/* ./
-        git add .
-        git commit -m "Deploy from GitHub Actions" || echo "No changes to commit"
-        git push origin deploy --force
-
+      # 2. Instalar dependencias y construir el proyecto
+      - name: Install dependencies and build
+        run: |
+          rm -rf dist
+          npm install
+          npm run build # Cambia este comando si tu script es diferente
+      # ejecutar deploy.sh
+      - name: Execute deploy.sh
+        run: |
+            chmod +x deploy.sh
+            ./deploy.sh
+      # 3. Desplegar la carpeta dist a la rama `deploy`
+      - name: Deploy to deploy branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: deploy

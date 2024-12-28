@@ -17,14 +17,9 @@ jobs:
       # 2. Instalar dependencias y construir el proyecto
       - name: Install dependencies and build
         run: |
-          rm -rf dist
           npm install
-          npm run build # Cambia este comando si tu script es diferente
-      # ejecutar deploy.sh
-      - name: Execute deploy.sh
-        run: |
-            chmod +x deploy.sh
-            ./deploy.sh
+          npm run build
+
       # 3. Desplegar la carpeta dist a la rama `deploy`
       - name: Deploy to deploy branch
         uses: peaceiris/actions-gh-pages@v3

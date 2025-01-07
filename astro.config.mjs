@@ -7,4 +7,17 @@ export default defineConfig({
     react(),
     tailwind(),
   ],
+  vite: {
+    plugins: [
+      {
+        name: 'vite-plugin-svgr',
+        enforce: 'pre',
+        transform(src, id) {
+          if (id.endsWith('.svg')) {
+            return `export default ${JSON.stringify(src)}`;
+          }
+        },
+      },
+    ],
+  },
 });

@@ -1,9 +1,8 @@
 ---
-import DevSvg from '../assets/dev.svg'
 ---
-<div id="container" class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div id="container" class="container mx-auto px-4 sm:px-6 lg:px-8 ">
 	<main>
-		<section id="maintenance">
+		<section id="maintenance" class="h-auto w-auto m-[5%] p-[7%] bg-[#171a29] border border-[#39FF14] rounded-[16px] shadow-[0_4px_10px_rgba(0,0,0,0.3)] dark:border-black border-1px dark:bg-gray-100">
 			<!-- icon666.com - MILLIONS vector ICONS FREE -->
 			<div class="w-full flex justify-center items-center">
 				<svg
@@ -414,8 +413,8 @@ import DevSvg from '../assets/dev.svg'
 					<path d="M85 43h5v2h-5z" fill="#9e8582" />
 				</svg>
 			</div>
-			<h1 class="mt-5">Sitio en Mantenimiento</h1>
-			<p class="text-10">Estamos trabajando arduamente para ofrecerte una mejor experiencia. 🚀</p>
+			<h1 class="mt-5 dark:text-black">Sitio en Mantenimiento</h1>
+			<p class="text-10 dark:text-black">Estamos trabajando arduamente para ofrecerte una mejor experiencia. 🚀</p>
 		</section>
 	</main>
 </div>
@@ -432,18 +431,6 @@ import DevSvg from '../assets/dev.svg'
 		justify-content: center;
 		text-align: center;
 		color: #fff;
-	}
-
-	#maintenance {
-		height: auto;
-		width: auto;
-		margin: 5%;
-		padding: 7%;
-		background: #171a29;
-		border: 1px solid #39FF14; 
-
-		border-radius: 16px;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 	}
 
 	h1 {

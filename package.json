@@ -15,7 +15,8 @@
     "aos": "^2.3.4",
     "astro": "^5.1.1",
     "framer-motion": "^11.15.0",
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "react-icons": "^5.4.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

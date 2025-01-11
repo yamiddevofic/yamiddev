@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css'; 
+import ThemeSwitcher from '../components/ThemwSwitcher';
+
 ---
 <!doctype html>
 <html lang="en">
@@ -12,8 +14,17 @@ import '../styles/global.css';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 		<title>Astro Basics</title>
+		<script>
+			(function () {
+			  const theme = localStorage.getItem('theme') || 'light';
+			  if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			  }
+			})();
+		</script>  
 	</head>
-	<body class="font-sans bg-gray-900 text-white">
+	<body class="font-sans bg-gray-900 text-white dark:bg-gray-200">
+		<ThemeSwitcher client:visible />
 		<slot />
 	</body>
 </html>

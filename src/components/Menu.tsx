@@ -3,19 +3,19 @@ import MenuButton from './MenuButton';
 
 interface MenuProps {
     toggleMenu: () => void;
+    setIsVisible: Function;
+    isVisible: boolean;
 }
 
-const Menu: React.FC<MenuProps> = ({ toggleMenu }) => {
-    const [isOpen, setIsOpen] = useState(false);
+const Menu: React.FC<MenuProps> = ({ toggleMenu, setIsVisible, isVisible }) => {
 
     const handleToggle = () => {
-        setIsOpen(prevState => !prevState);
         toggleMenu();  // Llamamos a toggleMenu cuando se hace clic en el botón.
     };
 
     return (
         <div>
-            <MenuButton isOpen={isOpen} onToggle={handleToggle} />
+            <MenuButton  onToggle={handleToggle} isVisible={isVisible} setIsVisible={setIsVisible} />
         </div>
     );
 };

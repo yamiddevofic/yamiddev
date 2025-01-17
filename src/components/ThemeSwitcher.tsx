@@ -39,7 +39,7 @@ const ThemeSwitcher = () => {
             absolute right-0 bottom-0 
             /* Clases de animación en Tailwind */
             transition-transform duration-300 
-            hover:scale-110
+            hover:scale-110 z-[1]
         "
         >
         {theme === 'dark' ? <Moon /> : <Sun/>}

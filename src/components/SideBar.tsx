@@ -19,8 +19,8 @@ const SideBar = ({ isOpen, setIsVisible, isVisible, setIsOpen }: { isOpen: boole
                 isOpen ? 'block' : 'hidden'
             } bg-[#1a1f35] w-auto dark:bg-gray-50 p-4 box-border rounded-lg md:rounded-lg shadow-lg`}
         >
-            <h2 className="text-[#00ff66] dark:text-gray-800 text-center text-2xl mt-4 font-bold tracking-wide" style={{ fontFamily: 'Fira Code' }}>Menú</h2>
-            <ul className="grid w-full text-gray-300 dark:text-black h-full space-y-3" style={{ fontFamily: 'Fira Code' }}>
+            <h2 className="text-[#00ff66] dark:text-gray-800 text-center text-2xl mt-4 font-bold tracking-wide" style={{ fontFamily: 'Cascadia Code' }}>Menú</h2>
+            <ul className="grid w-full text-gray-300 dark:text-black h-full space-y-3" style={{ fontFamily: 'Open Sans' }}>
                 <style>
                     {`
                         li {

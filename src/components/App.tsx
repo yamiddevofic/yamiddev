@@ -27,56 +27,17 @@ const App = () => {
                 {/* Contenido Principal */}
                 <div className="overflow-y-auto bg-[#1a1f35] dark:bg-white rounded-lg shadow-none dark:shadow-sm border border-[#2a2f45] dark:border-gray-200 p-4 col-span-3 md:mt-0 md:col-span-2 h-full transition-all duration-300 ease-in-out custom-scroll">
                     <div id="title" className="grid grid-rows-[5%_auto_20%] p-4">
-                        <h2 className="text-lg font-semibold text-[#00ff66] dark:text-gray-800">
+                        <h2 className="text-xl font-semibold text-[#00ff66] dark:text-gray-800" style={{ fontFamily: 'Fira Code' }}>
                             Hola
                         </h2>
                         <div className="flex flex-col space-y-2">
                             {[...Array(20)].map((_, i) => (
-                                <p className="text-gray-300 dark:text-black" key={i}>Hola mundo</p>
+                                <p className="text-gray-300 dark:text-black" style={{ fontFamily: 'Open Sans' }} key={i}>Hola mundo</p>
                             ))}
                         </div>
                     </div>
                 </div>
             </main>
-
-            {/* Estilos personalizados para el scroll */}
-            <style>{`
-                .custom-scroll::-webkit-scrollbar {
-                    width: 10px;
-                }
-
-                .custom-scroll::-webkit-scrollbar-track {
-                    background: #1a1f35;
-                    border-radius: 10px;
-                }
-
-                .dark .custom-scroll::-webkit-scrollbar-track {
-                    background: #e5e7eb;
-                }
-
-                .custom-scroll::-webkit-scrollbar-thumb {
-                    background: linear-gradient(180deg, #00ff66, #007733);
-                    border-radius: 10px;
-                    border: 2px solid #1a1f35;
-                }
-
-                .dark .custom-scroll::-webkit-scrollbar-thumb {
-                    border: 2px solid #e5e7eb;
-                }
-
-                .custom-scroll::-webkit-scrollbar-thumb:hover {
-                    background: linear-gradient(180deg, #00ff88, #009944);
-                }
-
-                .custom-scroll {
-                    scrollbar-width: thin;
-                    scrollbar-color: #00ff66 #1a1f35;
-                }
-
-                .dark .custom-scroll {
-                    scrollbar-color: #0f1411 #e5e7eb;
-                }
-            `}</style>
         </div>
     );
 };

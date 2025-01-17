@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css'; 
-import ThemeSwitcher from '../components/ThemwSwitcher';
-
+import "../styles/global.css";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 ---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -10,18 +10,21 @@ import ThemeSwitcher from '../components/ThemwSwitcher';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap"
+			rel="stylesheet"
+		/>
 		<title>Astro Basics</title>
 		<script>
 			(function () {
-			  const theme = localStorage.getItem('theme') || 'light';
-			  if (theme === 'dark') {
-				document.documentElement.classList.add('dark');
-			  }
+				const theme = localStorage.getItem("theme") || "light";
+				if (theme === "dark") {
+					document.documentElement.classList.add("dark");
+				}
 			})();
-		</script>  
+		</script>
 	</head>
 	<body class="font-sans bg-gray-900 text-white dark:bg-gray-200">
 		<ThemeSwitcher client:visible />

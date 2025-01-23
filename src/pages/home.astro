@@ -1,0 +1,143 @@
+---
+import ThemeSwitcher from "../components/ThemeSwitcher"
+
+// src/layouts/MainLayout.astro
+// Configura primero estos colores en tailwind.config.js
+---
+
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desarrollador Full Stack especializado en aplicaciones modernas y experiencias digitales impactantes">
+    <title>Yamid Dev - Desarrollador Full Stack</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body class="bg-gray-800 dark:bg-white min-h-screen transition-colors duration-300">
+    <ThemeSwitcher client:visible />
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Hero Section -->
+        <section class="mb-16">
+            <div class="animate-fade-in-up">
+                <h1 class="text-[#39FF14] dark:text-gray-800 text-4xl md:text-5xl font-bold mb-4">
+                    Transformando ideas en 
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#39FF14] to-emerald-400">
+                        experiencias digitales
+                    </span>
+                </h1>
+                <p class="text-gray-400 dark:text-gray-600 text-lg mb-8">
+                    Desarrollador Full Stack | TypeScript | React | Astro | Node.js | SQL
+                </p>
+                <div class="flex gap-4">
+                    <a href="#contacto" class="bg-[#39FF14] dark:bg-gray-800 text-gray-900 dark:text-[#39FF14] px-6 py-3 rounded-lg font-medium hover:scale-[1.02] transition-transform">
+                        Contacto
+                    </a>
+                    <a href="/proyectos" class="border-2 border-[#39FF14] dark:border-gray-800 text-[#39FF14] dark:text-gray-800 px-6 py-3 rounded-lg hover:bg-[#39FF14]/10 transition-colors">
+                        Ver proyectos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="mb-16">
+            <h2 class="text-[#39FF14] dark:text-gray-800 text-3xl font-semibold mb-8">Proyectos Destacados</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <!-- Project Card -->
+                <article class="bg-gray-900/50 dark:bg-gray-100 p-6 rounded-xl hover:transform hover:-translate-y-1 transition">
+                    <div class="text-2xl mb-4 text-[#39FF14] dark:text-gray-800">🚀</div>
+                    <h3 class="text-xl font-semibold text-white dark:text-gray-900 mb-2">Plataforma E-learning</h3>
+                    <p class="text-gray-400 dark:text-gray-600">Sistema educativo con React, Node.js y AWS Lambda</p>
+                </article>
+                
+                <!-- Project Card -->
+                <article class="bg-gray-900/50 dark:bg-gray-100 p-6 rounded-xl hover:transform hover:-translate-y-1 transition">
+                    <div class="mb-4 text-2xl text-[#39FF14] dark:text-gray-800">📱</div>
+                    <h3 class="text-xl font-semibold text-white dark:text-gray-900 mb-2">App de Gestión Financiera</h3>
+                    <p class="text-gray-400 dark:text-gray-600">Solución móvil con React Native y GraphQL</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Skills Grid -->
+        <section class="mb-16">
+            <h2 class="text-[#39FF14] dark:text-gray-800 text-3xl font-semibold mb-8">Tecnologías</h2>
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
+                <div class="skill-item text-center p-4 bg-gray-900/50 dark:bg-gray-100 rounded-lg hover:text-[#39FF14] dark:hover:text-gray-800 transition">
+                    <span class="text-2xl">⚛️</span>
+                    <p class="mt-2 text-sm text-gray-300 dark:text-gray-600">React</p>
+                </div>
+                <!-- Repetir para otras tecnologías -->
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <div class="border-t border-[#39FF14]/30 dark:border-gray-800/30 pt-8 flex flex-col md:flex-row justify-between">
+            <div class="mb-8 md:mb-0">
+                <h2 class="text-[#39FF14] dark:text-gray-800 text-xl font-semibold mb-4">Conectemos</h2>
+                <ul class="space-y-2">
+                    <li><a href="https://github.com/yamid" target="_blank" class="flex items-center gap-2 text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">
+                        <span class="text-lg">👨💻</span> GitHub
+                    </a></li>
+                    <li><a href="https://linkedin.com/in/yamid" target="_blank" class="flex items-center gap-2 text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">
+                        <span class="text-lg">💼</span> LinkedIn
+                    </a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="text-[#39FF14] dark:text-gray-800 text-xl font-semibold mb-4">Recursos</h2>
+                <ul class="space-y-2">
+                    <li><a href="/blog" class="text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">Blog Técnico</a></li>
+                    <li><a href="/cv" class="text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">Curriculum PDF</a></li>
+                    <li><a href="/stack" class="text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">Mi Stack</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <!-- Estilos personalizados para el scroll -->
+    <style is:global>
+        /* Scroll general */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(31, 41, 55, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #39FF14;
+            border-radius: 4px;
+        }
+
+        /* Scroll en modo oscuro */
+        .dark ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1F2937;
+        }
+
+        /* Firefox */
+        html {
+            scrollbar-color: #39FF14 rgba(31, 41, 55, 0.1);
+            scrollbar-width: thin;
+        }
+
+        .dark {
+            scrollbar-color: #1F2937 rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ajuste para mobile viewport */
+        @supports (-webkit-touch-callout: none) {
+            .min-h-screen {
+                min-height: -webkit-fill-available;
+            }
+        }
+    </style>
+</body>
+</html>

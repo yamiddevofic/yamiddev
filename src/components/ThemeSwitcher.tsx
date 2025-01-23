@@ -29,11 +29,11 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={toggleTheme}
-      className={`p-3 m-5 rounded-full 
+      className={`p-3 m-4 rounded-full 
         bg-white dark:bg-gray-800 
         fixed right-5 bottom-5
         transition-transform duration-300 
-        hover:scale-110 z-10
+        hover:scale-110 z-10 border border-gray-200 dark:border-gray-700
       `}
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
     >

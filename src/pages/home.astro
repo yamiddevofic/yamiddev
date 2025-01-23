@@ -1,143 +1,111 @@
 ---
-import ThemeSwitcher from "../components/ThemeSwitcher"
-
-// src/layouts/MainLayout.astro
-// Configura primero estos colores en tailwind.config.js
+// src/pages/index.astro
+import MainLayout from '../layouts/MainLayout.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 ---
 
-<!DOCTYPE html>
-<html lang="es" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Desarrollador Full Stack especializado en aplicaciones modernas y experiencias digitales impactantes">
-    <title>Yamid Dev - Desarrollador Full Stack</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-</head>
-<body class="bg-gray-800 dark:bg-white min-h-screen transition-colors duration-300">
+<MainLayout title="Yamid Dev | Desarrollador Full Stack">
     <ThemeSwitcher client:visible />
-    <main class="container mx-auto px-4 py-8 max-w-4xl">
-        <!-- Hero Section -->
-        <section class="mb-16">
-            <div class="animate-fade-in-up">
-                <h1 class="text-[#39FF14] dark:text-gray-800 text-4xl md:text-5xl font-bold mb-4">
-                    Transformando ideas en 
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#39FF14] to-emerald-400">
-                        experiencias digitales
-                    </span>
-                </h1>
-                <p class="text-gray-400 dark:text-gray-600 text-lg mb-8">
-                    Desarrollador Full Stack | TypeScript | React | Astro | Node.js | SQL
-                </p>
-                <div class="flex gap-4">
-                    <a href="#contacto" class="bg-[#39FF14] dark:bg-gray-800 text-gray-900 dark:text-[#39FF14] px-6 py-3 rounded-lg font-medium hover:scale-[1.02] transition-transform">
-                        Contacto
-                    </a>
-                    <a href="/proyectos" class="border-2 border-[#39FF14] dark:border-gray-800 text-[#39FF14] dark:text-gray-800 px-6 py-3 rounded-lg hover:bg-[#39FF14]/10 transition-colors">
-                        Ver proyectos
-                    </a>
-                </div>
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="relative w-64 h-64 rounded-full border-4 border-[#39FF14]">
+                <!-- Imagen para modo claro -->
+                <img
+                    src="dev_v2.jpeg"
+                    alt="Descripción de la imagen"
+                    class="block dark:hidden w-full h-full rounded-full"
+                />
+            
+                <!-- Imagen para modo oscuro -->
+                <img
+                    src="dev.jpg"
+                    alt="Descripción de la imagen"
+                    class="hidden dark:block w-full h-full rounded-full"
+                />
             </div>
-        </section>
-
-        <!-- Featured Projects -->
-        <section class="mb-16">
-            <h2 class="text-[#39FF14] dark:text-gray-800 text-3xl font-semibold mb-8">Proyectos Destacados</h2>
-            <div class="grid gap-6 md:grid-cols-2">
-                <!-- Project Card -->
-                <article class="bg-gray-900/50 dark:bg-gray-100 p-6 rounded-xl hover:transform hover:-translate-y-1 transition">
-                    <div class="text-2xl mb-4 text-[#39FF14] dark:text-gray-800">🚀</div>
-                    <h3 class="text-xl font-semibold text-white dark:text-gray-900 mb-2">Plataforma E-learning</h3>
-                    <p class="text-gray-400 dark:text-gray-600">Sistema educativo con React, Node.js y AWS Lambda</p>
-                </article>
-                
-                <!-- Project Card -->
-                <article class="bg-gray-900/50 dark:bg-gray-100 p-6 rounded-xl hover:transform hover:-translate-y-1 transition">
-                    <div class="mb-4 text-2xl text-[#39FF14] dark:text-gray-800">📱</div>
-                    <h3 class="text-xl font-semibold text-white dark:text-gray-900 mb-2">App de Gestión Financiera</h3>
-                    <p class="text-gray-400 dark:text-gray-600">Solución móvil con React Native y GraphQL</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- Skills Grid -->
-        <section class="mb-16">
-            <h2 class="text-[#39FF14] dark:text-gray-800 text-3xl font-semibold mb-8">Tecnologías</h2>
-            <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
-                <div class="skill-item text-center p-4 bg-gray-900/50 dark:bg-gray-100 rounded-lg hover:text-[#39FF14] dark:hover:text-gray-800 transition">
-                    <span class="text-2xl">⚛️</span>
-                    <p class="mt-2 text-sm text-gray-300 dark:text-gray-600">React</p>
-                </div>
-                <!-- Repetir para otras tecnologías -->
-            </div>
-        </section>
-
-        <!-- Footer Section -->
-        <div class="border-t border-[#39FF14]/30 dark:border-gray-800/30 pt-8 flex flex-col md:flex-row justify-between">
-            <div class="mb-8 md:mb-0">
-                <h2 class="text-[#39FF14] dark:text-gray-800 text-xl font-semibold mb-4">Conectemos</h2>
-                <ul class="space-y-2">
-                    <li><a href="https://github.com/yamid" target="_blank" class="flex items-center gap-2 text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">
-                        <span class="text-lg">👨💻</span> GitHub
-                    </a></li>
-                    <li><a href="https://linkedin.com/in/yamid" target="_blank" class="flex items-center gap-2 text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">
-                        <span class="text-lg">💼</span> LinkedIn
-                    </a></li>
-                </ul>
-            </div>
-
             <div>
-                <h2 class="text-[#39FF14] dark:text-gray-800 text-xl font-semibold mb-4">Recursos</h2>
-                <ul class="space-y-2">
-                    <li><a href="/blog" class="text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">Blog Técnico</a></li>
-                    <li><a href="/cv" class="text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">Curriculum PDF</a></li>
-                    <li><a href="/stack" class="text-gray-300 dark:text-gray-600 hover:text-[#39FF14] dark:hover:text-gray-800 transition">Mi Stack</a></li>
-                </ul>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Yamid</h1>
+                <h2 class="text-2xl md:text-4xl text-[#39FF14] mb-4">Desarrollador de Software</h2>
+                <p class="text-lg md:text-xl max-w-2xl">Tecnólogo en Análisis y Desarrollo de Software con experiencia en desarrollo web y apasionado por el aprendizaje continuo.</p>
             </div>
         </div>
-    </main>
-    <!-- Estilos personalizados para el scroll -->
-    <style is:global>
-        /* Scroll general */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
+    </section>
 
-        ::-webkit-scrollbar-track {
-            background: rgba(31, 41, 55, 0.1);
-        }
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Sobre mí</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <p class="mb-4">Estudié Tecnología en Análisis y Desarrollo de Software en el SENA (2022-2024) y actualmente continúo mi formación en Platzi.</p>
+                <p>Como aprendiz en Ega-Kat Logística, adquirí experiencia práctica en desarrollo de software y soluciones tecnológicas para optimizar procesos logísticos.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                    <h3 class="text-[#39FF14] font-bold">Educación</h3>
+                    <p>SENA - Tecnólogo ADSO</p>
+                    <p>2022-2024</p>
+                </div>
+                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                    <h3 class="text-[#39FF14] font-bold">Platzi</h3>
+                    <p>Cursos especializados en desarrollo web</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        ::-webkit-scrollbar-thumb {
-            background: #39FF14;
-            border-radius: 4px;
-        }
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Habilidades</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Tecnologías</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">JavaScript</span>
+                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">React</span>
+                    <!-- Añade más tecnologías -->
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold mb-4">Soft Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">Trabajo en equipo</span>
+                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">Resolución de problemas</span>
+                    <!-- Añade más skills -->
+                </div>
+            </div>
+        </div>
+    </section>
 
-        /* Scroll en modo oscuro */
-        .dark ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Proyectos</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Proyecto ejemplo -->
+            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+                <img src="/proyecto1.jpg" alt="Proyecto" class="mb-4 rounded-lg">
+                <h3 class="text-xl font-bold mb-2">Nombre Proyecto</h3>
+                <p>Descripción breve del proyecto y tecnologías utilizadas.</p>
+                <div class="mt-4 flex gap-2">
+                    <a href="#" class="text-[#39FF14]">Demo</a>
+                    <a href="#" class="text-[#39FF14]">Código</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        .dark ::-webkit-scrollbar-thumb {
-            background: #1F2937;
-        }
-
-        /* Firefox */
-        html {
-            scrollbar-color: #39FF14 rgba(31, 41, 55, 0.1);
-            scrollbar-width: thin;
-        }
-
-        .dark {
-            scrollbar-color: #1F2937 rgba(255, 255, 255, 0.1);
-        }
-
-        /* Ajuste para mobile viewport */
-        @supports (-webkit-touch-callout: none) {
-            .min-h-screen {
-                min-height: -webkit-fill-available;
-            }
-        }
-    </style>
-</body>
-</html>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Contacto</h2>
+        <form class="max-w-2xl mx-auto">
+            <div class="grid gap-6 mb-6">
+                <input type="text" placeholder="Nombre" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <input type="email" placeholder="Email" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <textarea rows="5" placeholder="Mensaje" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg"></textarea>
+            </div>
+            <button class="px-6 py-3 bg-[#39FF14] text-gray-800 font-bold rounded-lg hover:bg-opacity-90 transition">
+                Enviar Mensaje
+            </button>
+        </form>
+    </section>
+</MainLayout>

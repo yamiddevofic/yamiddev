@@ -6,106 +6,199 @@ import ThemeSwitcher from '../components/ThemeSwitcher';
 
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
     <ThemeSwitcher client:visible />
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-            <div class="relative w-64 h-64 rounded-full border-4 border-[#39FF14]">
-                <!-- Imagen para modo claro -->
-                <img
-                    src="https://yamid.dev/dev_v2.jpeg"
-                    alt="Descripción de la imagen"
-                    class="block dark:hidden w-full h-full rounded-full"
-                />
-            
-                <!-- Imagen para modo oscuro -->
-                <img
-                    src="https://yamid.dev/dev.jpg"
-                    alt="Descripción de la imagen"
-                    class="hidden dark:block w-full h-full rounded-full"
-                />
-            </div>
-            <div>
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Yamid</h1>
-                <h2 class="text-2xl md:text-4xl text-[#39FF14] mb-4">Desarrollador de Software</h2>
-                <p class="text-lg md:text-xl max-w-2xl">Tecnólogo en Análisis y Desarrollo de Software con experiencia en desarrollo web y apasionado por el aprendizaje continuo.</p>
-            </div>
+    <div class="min-h-screen bg-white dark:bg-gray-800 transition-colors duration-300 p-8 overflow-x-hidden">
+        <!-- Botón de cambio de tema -->
+        <div class="absolute top-4 right-4">
+            <ThemeSwitcher client:visible />
         </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20">
-        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Sobre mí</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <p class="mb-4">Estudié Tecnología en Análisis y Desarrollo de Software en el SENA (2022-2024) y actualmente continúo mi formación en Platzi.</p>
-                <p>Como aprendiz en Ega-Kat Logística, adquirí experiencia práctica en desarrollo de software y soluciones tecnológicas para optimizar procesos logísticos.</p>
+        <!-- Contenedor principal en grid -->
+        <div class="min-h-[90vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-content-center">
+            <!-- Sección 1: Nombre y título -->
+            <div class="flex flex-col justify-center space-y-4 md:col-span-2 lg:col-span-1">
+                <h1 class="text-5xl md:text-4xl font-bold text-gray-900 dark:text-[#39FF14] text-center md:text-left">
+                    Yamid Rodriguez
+                </h1>
+                <p class="text-2xl text-gray-700 dark:text-gray-300">
+                    Desarrollador Full Stack & Creador de Contenido
+                </p>
             </div>
-            <div class="space-y-4">
-                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                    <h3 class="text-[#39FF14] font-bold">Educación</h3>
-                    <p>SENA - Tecnólogo ADSO</p>
-                    <p>2022-2024</p>
-                </div>
-                <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                    <h3 class="text-[#39FF14] font-bold">Platzi</h3>
-                    <p>Cursos especializados en desarrollo web</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20">
-        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Habilidades</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <h3 class="text-xl font-bold mb-4">Tecnologías</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">JavaScript</span>
-                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">React</span>
-                    <!-- Añade más tecnologías -->
-                </div>
+            <!-- Sección 2: Botones de acción -->
+            <div class="flex flex-col justify-center space-y-4">
+                <button id="btn-proyectos" class="px-8 py-3 bg-[#39FF14] text-gray-900 font-semibold rounded-lg text-center hover:bg-opacity-80 transition-all">
+                    Proyectos
+                </button>
             </div>
-            <div>
-                <h3 class="text-xl font-bold mb-4">Soft Skills</h3>
-                <div class="flex flex-wrap gap-2">
-                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">Trabajo en equipo</span>
-                    <span class="px-4 py-2 bg-[#39FF14] text-gray-800 rounded-full">Resolución de problemas</span>
-                    <!-- Añade más skills -->
+            <div class="flex flex-col justify-center space-y-4">
+                <button id="btn-contacto" class="px-8 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg text-center hover:bg-[#39FF14] hover:text-gray-900 transition-all">
+                    Contacto
+                </button>
+            </div>
+
+            <!-- Sección 3: Tarjetas informativas -->
+            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Experiencia</h2>
+                    <p class="text-gray-700 dark:text-gray-300">Más de 2 años desarrollando aplicaciones web y móviles.</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Tecnologías</h2>
+                    <p class="text-gray-700 dark:text-gray-300">JavaScript, React, Node.js, Astro, Tailwind CSS, y más.</p>
+                </div>
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Contenido</h2>
+                    <p class="text-gray-700 dark:text-gray-300">Tutoriales, reviews, y consejos sobre desarrollo web.</p>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Proyectos</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Proyecto ejemplo -->
-            <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
-                <img src="/proyecto1.jpg" alt="Proyecto" class="mb-4 rounded-lg">
-                <h3 class="text-xl font-bold mb-2">Nombre Proyecto</h3>
-                <p>Descripción breve del proyecto y tecnologías utilizadas.</p>
-                <div class="mt-4 flex gap-2">
-                    <a href="#" class="text-[#39FF14]">Demo</a>
-                    <a href="#" class="text-[#39FF14]">Código</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <h2 class="text-3xl font-bold mb-8 text-[#39FF14]">Contacto</h2>
-        <form class="max-w-2xl mx-auto">
-            <div class="grid gap-6 mb-6">
-                <input type="text" placeholder="Nombre" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <input type="email" placeholder="Email" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg">
-                <textarea rows="5" placeholder="Mensaje" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-lg"></textarea>
-            </div>
-            <button class="px-6 py-3 bg-[#39FF14] text-gray-800 font-bold rounded-lg hover:bg-opacity-90 transition">
-                Enviar Mensaje
+        <!-- Sección de Proyectos (oculta inicialmente) -->
+        <div id="seccion-proyectos" class="fixed top-0 left-0 bottom-0 right-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 overflow-y-auto">
+            <!-- Botón para cerrar la sección -->
+            <button id="cerrar-proyectos" class="absolute top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                &times;
             </button>
-        </form>
-    </section>
+
+            <!-- Título de la sección -->
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Proyectos</h2>
+
+            <!-- Grid de proyectos (3x3) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tarjeta de proyecto 1 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="httos://yamid.dev/dev.jpeg" alt="Proyecto 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 1</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 1. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 2 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen2.jpg" alt="Proyecto 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 2</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 2. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 3 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen3.jpg" alt="Proyecto 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 3</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 3. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Repite las tarjetas para completar el grid 3x3 -->
+                <!-- Tarjeta de proyecto 4 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen4.jpg" alt="Proyecto 4" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 4</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 4. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 5 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen5.jpg" alt="Proyecto 5" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 5</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 5. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 6 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen6.jpg" alt="Proyecto 6" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 6</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 6. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 7 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen7.jpg" alt="Proyecto 7" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 7</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 7. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 8 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen8.jpg" alt="Proyecto 8" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 8</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 8. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de proyecto 9 -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="/ruta/a/imagen9.jpg" alt="Proyecto 9" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Proyecto 9</h3>
+                        <p class="text-gray-700 dark:text-gray-300 mt-2">Descripción breve del proyecto 9. Incluye tecnologías usadas y el propósito del proyecto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Contacto (oculta inicialmente) -->
+        <div id="seccion-contacto" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 overflow-y-auto">
+            <button id="cerrar-contacto" class="absolute top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full">
+                &times;
+            </button>
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8">Contacto</h2>
+            <form class="space-y-4">
+                <input type="text" placeholder="Nombre" class="w-full p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <input type="email" placeholder="Correo electrónico" class="w-full p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                <textarea placeholder="Mensaje" class="w-full p-2 bg-gray-100 dark:bg-gray-700 rounded-lg"></textarea>
+                <button type="submit" class="px-8 py-3 bg-[#39FF14] text-gray-900 font-semibold rounded-lg hover:bg-opacity-80 transition-all">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script para manejar la interactividad -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnProyectos = document.getElementById('btn-proyectos');
+            const btnContacto = document.getElementById('btn-contacto');
+            const seccionProyectos = document.getElementById('seccion-proyectos');
+            const seccionContacto = document.getElementById('seccion-contacto');
+            const cerrarProyectos = document.getElementById('cerrar-proyectos');
+            const cerrarContacto = document.getElementById('cerrar-contacto');
+
+            if (btnProyectos && seccionProyectos) {
+                btnProyectos.addEventListener('click', () => {
+                    seccionProyectos.style.transform = 'translateX(-100%)';
+                });
+            }
+
+            if (btnContacto && seccionContacto) {
+                btnContacto.addEventListener('click', () => {
+                    seccionContacto.style.transform = 'translateX(-100%)';
+                });
+            }
+
+            if (cerrarProyectos && seccionProyectos) {
+                cerrarProyectos.addEventListener('click', () => {
+                    seccionProyectos.style.transform = 'translateX(0)';
+                });
+            }
+
+            if (cerrarContacto && seccionContacto) {
+                cerrarContacto.addEventListener('click', () => {
+                    seccionContacto.style.transform = 'translateX(0)';
+                });
+            }
+        });
+    </script>
 </MainLayout>

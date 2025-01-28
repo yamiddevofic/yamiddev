@@ -55,7 +55,7 @@ import Maintenance from './maintenance.astro';
         </div>
 
         <!-- Sección de Proyectos (oculta inicialmente) -->
-        <div id="projects" class="fixed top-0 left-0 bottom-0 right-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 overflow-y-auto">
+        <div id="projects" class="fixed top-0 left-0 bottom-0 right-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-24 overflow-y-auto">
             <!-- Botón para cerrar la sección -->
             <button id="cerrar-proyectos" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
                 &times;
@@ -81,8 +81,8 @@ import Maintenance from './maintenance.astro';
         document.addEventListener('DOMContentLoaded', () => {
             const btnProyectos = document.getElementById('btn-proyectos');
             const btnContacto = document.getElementById('btn-contacto');
-            const seccionProyectos = document.getElementById('seccion-proyectos');
-            const seccionContacto = document.getElementById('seccion-contacto');
+            const seccionProyectos = document.getElementById('projects');
+            const seccionContacto = document.getElementById('contact');
             const cerrarProyectos = document.getElementById('cerrar-proyectos');
             const cerrarContacto = document.getElementById('cerrar-contacto');
 

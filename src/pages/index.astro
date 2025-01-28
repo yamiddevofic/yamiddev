@@ -3,42 +3,50 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import Maintenance from './maintenance.astro';
+import { Portfolio } from '../components/Portfolio';
+import { Contact } from '../components/Contact';
+import { People } from '../components/People';
 ---
 
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
-    <ThemeSwitcher client:visible />
-    <div class="min-h-screen bg-white dark:bg-gray-800 transition-colors duration-300 p-8 overflow-x-hidden">
-        <!-- Botón de cambio de tema -->
-        <div class="absolute top-4 right-4">
-            <ThemeSwitcher client:visible />
-        </div>
+    <div class="fixed top-4 right-4 z-50">
+        <ThemeSwitcher client:visible />
+    </div>
 
-        <!-- Contenedor principal en grid -->
-        <div id="hero" class="min-h-[90vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-content-center">
-            <!-- Sección 1: Nombre y título -->
-            <div class="flex flex-col justify-center space-y-4 md:col-span-2 lg:col-span-1">
-                <h1 class="text-5xl md:text-4xl font-bold text-gray-900 dark:text-[#39FF14] text-center md:text-left">
+    <div class="min-h-screen bg-white dark:bg-gray-800 transition-colors duration-300 px-4 md:px-8 overflow-x-hidden">
+        <!-- Contenedor principal -->
+        <div id="hero" class="min-h-[80vh] grid grid-rows-[auto_auto_1fr] md:grid-cols-2 lg:grid-cols-3 gap-8 py-12 container mx-auto">
+            
+            <!-- Sección 1: Título -->
+            <div class="md:col-span-2 lg:col-span-3 text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-[#39FF14] mb-4">
                     Yamid Rodriguez
                 </h1>
-                <p class="text-2xl text-gray-700 dark:text-gray-300">
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-300">
                     Desarrollador Full Stack & Creador de Contenido
                 </p>
             </div>
 
-            <!-- Sección 2: Botones de acción -->
-            <div class="flex flex-col justify-center space-y-4">
-                <button id="btn-proyectos" class="px-8 py-3 bg-[#39FF14] text-gray-900 font-semibold rounded-lg text-center hover:bg-opacity-80 transition-all">
+            <!-- Sección 2: Botones -->
+            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
+                <button id="btn-proyectos" class="w-full px-6 py-3 bg-[#39FF14] text-gray-900 font-semibold rounded-lg hover:bg-opacity-80 transition-all flex items-center justify-center gap-2">
+                    <Portfolio/>
                     Proyectos
                 </button>
-            </div>
-            <div class="flex flex-col justify-center space-y-4">
-                <button id="btn-contacto" class="px-8 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg text-center hover:bg-[#39FF14] hover:text-gray-900 transition-all">
+                
+                <button id="btn-about" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
+                    <People/>
+                    Acerca de mí
+                </button>
+                
+                <button id="btn-contacto" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
+                    <Contact/>
                     Contacto
                 </button>
             </div>
 
-            <!-- Sección 3: Tarjetas informativas -->
-            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Sección 3: Tarjetas -->
+            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
                 <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Experiencia</h2>
                     <p class="text-gray-700 dark:text-gray-300">Más de 2 años desarrollando aplicaciones web y móviles.</p>
@@ -54,21 +62,28 @@ import Maintenance from './maintenance.astro';
             </div>
         </div>
 
-        <!-- Sección de Proyectos (oculta inicialmente) -->
-        <div id="projects" class="fixed top-0 left-0 bottom-0 right-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-24 overflow-y-auto">
-            <!-- Botón para cerrar la sección -->
-            <button id="cerrar-proyectos" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+        <!-- Secciones deslizantes -->
+        <!-- Proyectos -->
+        <div id="projects" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
+            <button id="cerrar-proyectos" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
                 &times;
             </button>
-
-            <!-- Título de la sección -->
             <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Proyectos</h2>
             <Maintenance />
         </div>
 
-        <!-- Sección de Contacto (oculta inicialmente) -->
-        <div id="contact" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-24 overflow-y-auto">
-            <button id="cerrar-contacto" class="absolute top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-[50%] h-[40px] w-[40px]">
+        <!-- Acerca de mí -->
+        <div id="about" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
+            <button id="cerrar-about" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
+                &times;
+            </button>
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Acerca de mí</h2>
+            <Maintenance />
+        </div>
+
+        <!-- Contacto -->
+        <div id="contact" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
+            <button id="cerrar-contacto" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
                 &times;
             </button>
             <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Contacto</h2>
@@ -76,16 +91,20 @@ import Maintenance from './maintenance.astro';
         </div>
     </div>
 
-    <!-- Script para manejar la interactividad -->
+    <!-- Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const btnProyectos = document.getElementById('btn-proyectos');
             const btnContacto = document.getElementById('btn-contacto');
+            const btnAbout = document.getElementById('btn-about');
+            const seccionAbout = document.getElementById('about');
             const seccionProyectos = document.getElementById('projects');
             const seccionContacto = document.getElementById('contact');
+            const cerrarAbout = document.getElementById('cerrar-about');
             const cerrarProyectos = document.getElementById('cerrar-proyectos');
             const cerrarContacto = document.getElementById('cerrar-contacto');
 
+            // Event listeners para abrir secciones
             if (btnProyectos && seccionProyectos) {
                 btnProyectos.addEventListener('click', () => {
                     seccionProyectos.style.transform = 'translateX(-100%)';
@@ -95,6 +114,19 @@ import Maintenance from './maintenance.astro';
             if (btnContacto && seccionContacto) {
                 btnContacto.addEventListener('click', () => {
                     seccionContacto.style.transform = 'translateX(-100%)';
+                });
+            }
+
+            if (btnAbout && seccionAbout) {
+                btnAbout.addEventListener('click', () => {
+                    seccionAbout.style.transform = 'translateX(-100%)';
+                });
+            }
+
+            // Event listeners para cerrar secciones
+            if (cerrarAbout && seccionAbout) {
+                cerrarAbout.addEventListener('click', () => {
+                    seccionAbout.style.transform = 'translateX(0)';
                 });
             }
 

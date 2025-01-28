@@ -1,29 +1,11 @@
 ---
-// src/components/Header.astro
+import Programmer from "./Programmer"
 ---
 
-<header class="py-6">
-    <nav class="container mx-auto px-4 flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold text-[#39FF14]">yamid.dev</a>
-        
-        <div class="hidden md:flex space-x-8">
-            <a href="#about" class="hover:text-[#39FF14]">Sobre mí</a>
-            <a href="#experience" class="hover:text-[#39FF14]">Experiencia</a>
-            <a href="#skills" class="hover:text-[#39FF14]">Habilidades</a>
-            <a href="#projects" class="hover:text-[#39FF14]">Proyectos</a>
-            <a href="#contact" class="hover:text-[#39FF14]">Contacto</a>
-        </div>
-        
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-        </button>
-    </nav>
+<header class="bg-white dark:bg-gray-800 d">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="text-2xl font-bold text-[#39FF14]">
+      yamid.dev
+    </div>
+  </div>
 </header>
-
-<!-- Mobile Menu -->
-<div class="md:hidden hidden absolute w-full bg-white dark:bg-gray-800 py-4">
-    <!-- Mobile menu items -->
-</div>

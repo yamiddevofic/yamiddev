@@ -1,5 +1,6 @@
 ---
 // src/pages/index.astro
+import { SiJavascript, SiReact, SiNodedotjs, SiAstro, SiTailwindcss, SiPython, SiSqlite, SiMysql } from "react-icons/si";
 import MainLayout from '../layouts/MainLayout.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import Maintenance from './maintenance.astro';
@@ -33,12 +34,10 @@ import { People } from '../components/People';
                     <Portfolio/>
                     Proyectos
                 </button>
-                
                 <button id="btn-about" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
                     <People/>
                     Acerca de mí
                 </button>
-                
                 <button id="btn-contacto" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
                     <Contact/>
                     Contacto
@@ -47,15 +46,48 @@ import { People } from '../components/People';
 
             <!-- Sección 3: Tarjetas -->
             <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Experiencia</h2>
                     <p class="text-gray-700 dark:text-gray-300">Más de 2 años desarrollando aplicaciones web y móviles.</p>
                 </div>
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Tecnologías</h2>
-                    <p class="text-gray-700 dark:text-gray-300">JavaScript, React, Node.js, Astro, Tailwind CSS, y más.</p>
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14] mb-4">Tecnologías</h2>
+                    <div class="flex flex-wrap justify-center gap-4 items-center my-4">
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiJavascript className="text-yellow-400 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">JavaScript</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiReact className="text-blue-500 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">ReactJS</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiNodedotjs className="text-green-600 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">NodeJS</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiAstro className="text-purple-500 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">AstroJS</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiTailwindcss className="text-teal-400 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">TailwindCSS</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiPython className="text-blue-500 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">Python</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiSqlite  className="text-blue-300 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">SQLite</p>
+                        </div>
+                        <div class="flex flex-col items-center mx-[2%]">
+                            <SiMysql  className="text-orange-500 w-12 h-12" />
+                            <p class="mt-2 text-gray-700 dark:text-gray-300">MySQL</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg">
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Contenido</h2>
                     <p class="text-gray-700 dark:text-gray-300">Tutoriales, reviews, y consejos sobre desarrollo web.</p>
                 </div>

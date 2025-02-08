@@ -6,7 +6,8 @@ import ThemeSwitcher from '../components/ThemeSwitcher';
 import Maintenance from './maintenance.astro';
 import { Portfolio } from '../components/Portfolio';
 import { Contact } from '../components/Contact';
-import { People } from '../components/People';
+import { Fire } from '../components/Fire';
+import Icon from "../components/Icon";
 ---
 
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
@@ -34,62 +35,33 @@ import { People } from '../components/People';
                     <Portfolio/>
                     Proyectos
                 </button>
-                <button id="btn-about" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
-                    <People/>
-                    Acerca de mí
-                </button>
-                <button id="btn-contacto" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
+                <button id="btn-contact" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
                     <Contact/>
                     Contacto
+                </button>
+                <button id="btn-content" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
+                    <Fire/>
+                    Contenido
                 </button>
             </div>
 
             <!-- Sección 3: Tarjetas -->
-            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Experiencia</h2>
+            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 grid-rows-2 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col col-start-1 col-end-4 md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3 row-start-1 row-end-2">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Sobre mí</h2>
                     <p class="text-gray-700 dark:text-gray-300">Más de 2 años desarrollando aplicaciones web y móviles.</p>
                 </div>
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col">
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col col-start-1 col-end-4 md:col-start-2 md:col-end-4 row-start-2 row-end-3 md:row-start-1">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14] mb-4">Tecnologías</h2>
                     <div class="flex flex-wrap justify-center gap-4 items-center my-4">
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiJavascript className="text-yellow-400 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">JavaScript</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiReact className="text-blue-500 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">ReactJS</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiNodedotjs className="text-green-600 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">NodeJS</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiAstro className="text-purple-500 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">AstroJS</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiTailwindcss className="text-teal-400 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">TailwindCSS</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiPython className="text-blue-500 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">Python</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiSqlite  className="text-blue-300 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">SQLite</p>
-                        </div>
-                        <div class="flex flex-col items-center mx-[2%]">
-                            <SiMysql  className="text-orange-500 w-12 h-12" />
-                            <p class="mt-2 text-gray-700 dark:text-gray-300">MySQL</p>
-                        </div>
+                        <Icon IconComponent={SiJavascript} text="JavaScript"+ color='yellow' grade='400' customColor={null}/>
+                        <Icon IconComponent={SiReact} text="ReactJS" color='blue' grade='500' customColor={null}/>
+                        <Icon IconComponent={SiAstro} text="AstroJS" color='purple' grade={null} customColor='#9C2DFA'/>
+                        <Icon IconComponent={SiTailwindcss} text="TailwindCSS" color='blue' color={null} grade={null} customColor='#1DCBF2'/>
+                        <Icon IconComponent={SiPython} text="Python" color='blue' grade='500' customColor={null}/>
+                        <Icon IconComponent={SiSqlite} text="SQLite" color={null} grade={null} customColor='#148DD9'/>
+                        <Icon IconComponent={SiMysql} text="MySQL" color={null} grade={null} customColor='#D97904'/>
                     </div>
-                </div>
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Contenido</h2>
-                    <p class="text-gray-700 dark:text-gray-300">Tutoriales, reviews, y consejos sobre desarrollo web.</p>
                 </div>
             </div>
         </div>
@@ -105,11 +77,11 @@ import { People } from '../components/People';
         </div>
 
         <!-- Acerca de mí -->
-        <div id="about" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
+        <div id="content" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
             <button id="cerrar-about" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
                 &times;
             </button>
-            <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Acerca de mí</h2>
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Contenido</h2>
             <Maintenance />
         </div>
 
@@ -127,9 +99,9 @@ import { People } from '../components/People';
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const btnProyectos = document.getElementById('btn-proyectos');
-            const btnContacto = document.getElementById('btn-contacto');
-            const btnAbout = document.getElementById('btn-about');
-            const seccionAbout = document.getElementById('about');
+            const btnContacto = document.getElementById('btn-contact');
+            const btnAbout = document.getElementById('btn-content');
+            const seccionContent = document.getElementById('content');
             const seccionProyectos = document.getElementById('projects');
             const seccionContacto = document.getElementById('contact');
             const cerrarAbout = document.getElementById('cerrar-about');
@@ -149,16 +121,16 @@ import { People } from '../components/People';
                 });
             }
 
-            if (btnAbout && seccionAbout) {
+            if (btnAbout && seccionContent) {
                 btnAbout.addEventListener('click', () => {
-                    seccionAbout.style.transform = 'translateX(-100%)';
+                    seccionContent.style.transform = 'translateX(-100%)';
                 });
             }
 
             // Event listeners para cerrar secciones
-            if (cerrarAbout && seccionAbout) {
+            if (cerrarAbout && seccionContent) {
                 cerrarAbout.addEventListener('click', () => {
-                    seccionAbout.style.transform = 'translateX(0)';
+                    seccionContent.style.transform = 'translateX(0)';
                 });
             }
 

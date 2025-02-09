@@ -40,7 +40,7 @@ const Icon = ({ IconComponent, text, customColor }) => {
 
 const Tecnologias = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col col-start-1 col-end-4 md:col-start-2 md:col-end-4 row-start-2 row-end-3 md:row-start-1">
+    <div className="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col col-start-1 col-end-4 md:col-start-2 md:col-end-4 row-start-2 row-end-3 md:row-start-1 md:row-end-2 max-w-md mx-auto md:max-w-none md:mx-0">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-[#39FF14] mb-4">Tecnologías</h2>
       <div className="flex flex-wrap justify-center gap-4 items-center my-4">
         <Icon 

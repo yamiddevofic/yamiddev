@@ -30,34 +30,45 @@ import Tecnologias from "../components/Tecnologias";
             </div>
 
             <!-- Sección 2: Botones -->
-            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
-                <button id="btn-proyectos" class="w-full px-6 py-3 bg-[#39FF14] text-gray-900 font-semibold rounded-lg hover:bg-opacity-80 transition-all flex items-center justify-center gap-2">
+            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mt-[2%] max-w-none mx-0 px-7 md:px-0">
+                <button id="btn-proyectos" class="w-full px-6 py-3 bg-[#39FF14] text-gray-900 font-semibold rounded-lg hover:bg-opacity-80 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl hover:bg-opacity-80 transform hover:-translate-y-1 transition-all duration-300">
                     <Portfolio/>
                     Proyectos
                 </button>
-                <button id="btn-contact" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
+                <button id="btn-contact" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl hover:bg-opacity-80 transform hover:-translate-y-1 transition-all duration-300">
                     <Contact/>
                     Contacto
                 </button>
-                <button id="btn-content" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2">
+                <button id="btn-content" class="w-full px-6 py-3 border-2 border-[#39FF14] text-[#39FF14] font-semibold rounded-lg hover:bg-[#39FF14] hover:text-gray-900 transition-all flex items-center justify-center gap-2 shadow-xl hover:shadow-2xl hover:bg-opacity-80 transform hover:-translate-y-1 transition-all duration-300">
                     <Fire/>
                     Contenido
                 </button>
             </div>
 
-            <!-- Sección 3: Tarjetas -->
-            <div class="md:col-span-2 lg:col-span-3 grid grid-cols-1 grid-rows-2 md:grid-cols-3 gap-4 md:gap-8 mt-[2%]">
-                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col col-start-1 col-end-4 md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-3 row-start-1 row-end-2">
-                    <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14]">Sobre mí</h2>
-                    <p class="text-gray-700 dark:text-gray-300">Más de 2 años desarrollando aplicaciones web y móviles.</p>
+           <!-- Sección 3: Tarjetas -->
+            <div class="md:col-span-1 lg:col-span-3 grid grid-cols-1 gap-5 md:gap-7">
+                <!-- Tarjeta "Sobre mí" -->
+                <div class="w-full max-w-md mx-auto md:mx-0 md:mt-0 relative bg-gray-100 dark:bg-gray-700 p-6 rounded-lg  flex flex-col md:flex-row items-center md:items-left col-span-3 md:col-span-1 lg:col-span-1">
+                    <img src="./dev.jpg" alt="Imagen de desarrollador" class="w-full md:w-1/2 rounded-lg mb-4 md:mb-0 md:mr-6 object-cover" />
+                    <div class="flex-1 text-center md:text-left">
+                        <h2 class="text-2xl font-bold text-gray-900 dark:text-[#39FF14] mb-2">Sobre mí</h2>
+                        <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Más de 2 años desarrollando aplicaciones web y móviles.
+                        </p>
+                        <button id="btn-aboutMe" class="px-6 py-3 bg-[#39FF14] text-gray-900 font-bold rounded-full shadow-xl hover:shadow-2xl hover:bg-opacity-80 transform hover:-translate-y-1 transition-all duration-300">
+                        Saber más
+                        </button>
+                    </div>
                 </div>
+                <!-- Componente Tecnologias -->
                 <Tecnologias client:visible/> 
             </div>
-        </div>
+  
+  
 
         <!-- Secciones deslizantes -->
         <!-- Proyectos -->
-        <div id="projects" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
+        <div id="projects" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8  overflow-y-auto">
             <button id="cerrar-proyectos" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
                 &times;
             </button>
@@ -65,9 +76,9 @@ import Tecnologias from "../components/Tecnologias";
             <Maintenance />
         </div>
 
-        <!-- Acerca de mí -->
-        <div id="content" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
-            <button id="cerrar-about" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
+        <!-- Contenido -->
+        <div id="content" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 overflow-y-auto">
+            <button id="cerrar-content" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
                 &times;
             </button>
             <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Contenido</h2>
@@ -75,11 +86,19 @@ import Tecnologias from "../components/Tecnologias";
         </div>
 
         <!-- Contacto -->
-        <div id="contact" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 md:p-16 lg:p-24 overflow-y-auto">
+        <div id="contact" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8 overflow-y-auto">
             <button id="cerrar-contacto" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
                 &times;
             </button>
             <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Contacto</h2>
+            <Maintenance />
+        </div>
+        <!-- Sobre mí -->
+        <div id="about-me" class="fixed top-0 left-full w-full h-full bg-white dark:bg-gray-800 transition-transform duration-500 p-8  overflow-y-auto">
+            <button id="cerrar-aboutMe" class="absolute w-[40px] h-[40px] top-4 right-4 p-2 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors flex justify-center items-center text-3xl">
+                &times;
+            </button>
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-[#39FF14] mb-8 text-center">Sobre mí</h2>
             <Maintenance />
         </div>
     </div>
@@ -89,11 +108,14 @@ import Tecnologias from "../components/Tecnologias";
         document.addEventListener('DOMContentLoaded', () => {
             const btnProyectos = document.getElementById('btn-proyectos');
             const btnContacto = document.getElementById('btn-contact');
-            const btnAbout = document.getElementById('btn-content');
+            const btnContent = document.getElementById('btn-content');
             const seccionContent = document.getElementById('content');
+            const seccionAboutMe = document.getElementById('about-me');
+            const btnAboutMe = document.getElementById('btn-aboutMe');
             const seccionProyectos = document.getElementById('projects');
             const seccionContacto = document.getElementById('contact');
-            const cerrarAbout = document.getElementById('cerrar-about');
+            const cerrarContent = document.getElementById('cerrar-content');
+            const cerrarAboutMe = document.getElementById('cerrar-aboutMe');
             const cerrarProyectos = document.getElementById('cerrar-proyectos');
             const cerrarContacto = document.getElementById('cerrar-contacto');
 
@@ -110,16 +132,15 @@ import Tecnologias from "../components/Tecnologias";
                 });
             }
 
-            if (btnAbout && seccionContent) {
-                btnAbout.addEventListener('click', () => {
+            if (btnContent && seccionContent) {
+                btnContent.addEventListener('click', () => {
                     seccionContent.style.transform = 'translateX(-100%)';
                 });
             }
 
-            // Event listeners para cerrar secciones
-            if (cerrarAbout && seccionContent) {
-                cerrarAbout.addEventListener('click', () => {
-                    seccionContent.style.transform = 'translateX(0)';
+            if (btnAboutMe && seccionAboutMe) {
+                btnAboutMe.addEventListener('click', () => {
+                    seccionAboutMe.style.transform = 'translateX(-100%)';
                 });
             }
 
@@ -132,6 +153,16 @@ import Tecnologias from "../components/Tecnologias";
             if (cerrarContacto && seccionContacto) {
                 cerrarContacto.addEventListener('click', () => {
                     seccionContacto.style.transform = 'translateX(0)';
+                });
+            }
+            if (cerrarContent && seccionContent) {
+                cerrarContent.addEventListener('click', () => {
+                    seccionContent.style.transform = 'translateX(0)';
+                });
+            }
+            if (cerrarAboutMe && seccionAboutMe) {
+                cerrarAboutMe.addEventListener('click', () => {
+                    seccionAboutMe.style.transform = 'translateX(0)';
                 });
             }
         });

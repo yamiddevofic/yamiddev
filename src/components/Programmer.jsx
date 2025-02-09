@@ -1,12 +1,12 @@
 import * as React from "react";
-const Programmer = (props) => (
+const Programmer = () => (
   <svg
+    className='text-blue-500 dark:text-[#39FF14]'
     id="Layer_3"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 128 128"
     enableBackground="new 0 0 128 128"
-    {...props}
   >
     <linearGradient id="lg1">
       <stop offset={0} stopColor="#f9ddd1" />
@@ -45,7 +45,7 @@ const Programmer = (props) => (
       gradientUnits="userSpaceOnUse"
     >
       <stop offset={0} stopColor="#001E4B" />
-      <stop offset={1} stopColor="##001E4B" />
+      <stop offset={1} stopColor="#001E4B" />
     </linearGradient>
     <linearGradient id="lg2">
       <stop offset={0} stopColor="#f1f2f2" />
@@ -219,7 +219,7 @@ const Programmer = (props) => (
       />
     </defs>
     <g filter="url(#glow)">
-      <g fill="#39FF14">
+      <g fill="currentColor">
         <path d="M17 32H7V20h10Zm-8-2h6v-8h-6Z">
           <animate
             attributeName="opacity"

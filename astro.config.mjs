@@ -3,6 +3,9 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import icon from "astro-icon";
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   integrations: [
@@ -23,9 +26,9 @@ export default defineConfig({
       },
     ],
     resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
+      alias: {
+        '@': path.resolve(__dirname, 'src')
+      }
     }
-  }
   },
 });

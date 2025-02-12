@@ -1,18 +1,23 @@
 ---
-// src/pages/index.astro
 import MainLayout from '../layouts/MainLayout.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 import { SiJavascript, SiReact, SiNodedotjs, SiAstro, SiTailwindcss, SiPython } from "react-icons/si";
 import { Portfolio } from '../components/Portfolio';
 import { Contact } from '../components/Contact';
 import { Fire } from '../components/Fire';
+import ProjectsAreas from '../components/ProjectsAreas'
+import '../styles/global.css'
 
 // Forzar modo oscuro por defecto
-// (Puedes ajustar la lógica en tu ThemeSwitcher para alternar entre remover/añadir la clase "dark" al <html>)
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
----
 
+// -----------------------
+// Componente React: ProjectsAreas
+// -----------------------
+
+
+---
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
   <div class="min-h-screen 
               bg-white text-gray-800
@@ -20,11 +25,6 @@ document?.documentElement?.classList.add('dark');
               dark:text-white 
               overflow-x-hidden 
               transition-colors duration-300">
-
-    <!-- Tema -->
-    <div class="fixed top-4 right-4 z-50">
-      <ThemeSwitcher client:visible />
-    </div>
 
     <!-- Hero Section -->
     <main class="container mx-auto px-4 py-16">
@@ -78,11 +78,10 @@ document?.documentElement?.classList.add('dark');
               Sobre mí
             </h2>
             <p class="text-gray-600 dark:text-gray-300 mb-6 text-2sm md:text-xl">
-              Mi nombre es Yamid Horacio Rodríguez, soy de Colombian, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles. 
+              Mi nombre es Yamid Horacio Rodríguez, soy de Colombia, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles. 
             </p>
             <p class="mb-6 font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 text-2sm md:text-xl">
               Me especializo en crear experiencias digitales modernas y responsivas.
-
             </p>
             <button
               id="btn-aboutMe"
@@ -128,7 +127,7 @@ document?.documentElement?.classList.add('dark');
                bg-white dark:bg-gray-900/90 
                backdrop-blur-md 
                transition-transform duration-500 
-               p-8 overflow-y-auto z-50"
+               p-5 overflow-y-auto z-50 custom-scrollbar"
       >
         <button
           id={`cerrar-${section}`}
@@ -144,10 +143,16 @@ document?.documentElement?.classList.add('dark');
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <h2 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 mb-8 text-center" style={{ marginTop: 'calc(50vh - 2rem)' }}>
-          {section.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-        </h2>
-        <!-- Contenido de la sección -->
+        {section === 'projects' ? (
+          // Sección "Proyectos" con Areas integradas
+          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Projects</h1>
+          <ProjectsAreas client:load />
+        ) : (
+          // Contenido de la sección para las demás secciones
+          <>
+            <h1 class="text-[2rem] font-bold text-cyan-400 text-center">{section}</h1>
+          </>
+        )}
       </div>
     ))}
   </div>

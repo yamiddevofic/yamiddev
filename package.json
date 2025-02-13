@@ -25,7 +25,8 @@
     "lucide-react": "^0.475.0",
     "motion": "^12.4.2",
     "react-icons": "^5.4.0",
-    "shiki": "^1.27.2"
+    "shiki": "^1.27.2",
+    "tailwind-scrollbar-hide": "^2.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

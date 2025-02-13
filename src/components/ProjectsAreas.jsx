@@ -54,7 +54,7 @@ function ProjectsAreas() {
   return (
     <AppContainer>
       {selectedIndex === null ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[600px] mt-5 p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[600px]  p-0 md:p-4">
           <AnimatePresence>
             {Projects.map((project, index) => (
               <motion.div
@@ -80,7 +80,7 @@ function ProjectsAreas() {
       ) : (
         <div className="flex flex-col lg:flex-row gap-6 items-start min-h-[600px] mt-5 p-4" style={{borderRadius: '10px'}}>
           {/* Tarjetas del lado izquierdo */}
-          <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[100vh] overflow-y-auto overflow-x-hidden custom-scrollbar">
+          <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[100vh] overflow-y-auto overflow-x-hidden custom-scrollbar scrollbar-left">
             <AnimatePresence>
               {Projects.map((project, index) =>
                 index !== selectedIndex && (

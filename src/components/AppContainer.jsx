@@ -3,8 +3,7 @@ import React from 'react';
 const AppContainer = ({ children, style = {} }) => {
   const containerStyle = {
     width: '100%',
-    height: '100vh',
-    maxHeight: '100vh',
+    height: 'auto',
     margin: '0 auto',
     padding: '20px',
     display: 'grid',
@@ -25,7 +24,7 @@ const AppContainer = ({ children, style = {} }) => {
 
   return (
     <div className="bg-none text-white p-2 h-screen">
-      <div className="custom-scrollbart" style={containerStyle}>
+      <div className="custom-scrollbar" style={containerStyle}>
         <div style={contentStyle} className="hide-scrollbar ">
           {children}
         </div>

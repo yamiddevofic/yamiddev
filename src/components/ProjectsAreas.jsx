@@ -5,6 +5,12 @@ import AreaButton from './AreaButton';
 
 function ProjectsAreas() {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [inMainSelected, setInMainSelected] = useState(false);
+
+  const handleMainSelectedChange = (value) => {
+    console.log(inMainSelected)
+    setInMainSelected(value);
+  };
 
   const Projects = [
     {
@@ -71,16 +77,20 @@ function ProjectsAreas() {
                 <AreaButton
                   project={project}
                   index={index}
-                  onClick={() => setSelectedIndex(index)}
+                  onClick={() => {
+                    setSelectedIndex(index);
+                    setInMainSelected(true);
+                  }}
+                  onMainSelectedChange={handleMainSelectedChange} 
                 />
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
       ) : (
-        <div className="flex flex-col lg:flex-row gap-6 items-start min-h-[600px] mt-5 p-4" style={{borderRadius: '10px'}}>
+        <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-1 lg:flex-row gap-6 items-start min-h-[600px] mt-5 p-4" style={{borderRadius: '10px'}}>
           {/* Tarjetas del lado izquierdo */}
-          <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[100vh] overflow-y-auto overflow-x-hidden custom-scrollbar scrollbar-left">
+          <div className="bg-blue-800 p-2 w-full lg:w-[100%] grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[100vh] overflow-y-auto overflow-x-hidden custom-scrollbar scrollbar-left row-start-1 row-end-2">
             <AnimatePresence>
               {Projects.map((project, index) =>
                 index !== selectedIndex && (
@@ -98,16 +108,21 @@ function ProjectsAreas() {
                     <AreaButton
                       project={project}
                       index={index}
-                      onClick={() => setSelectedIndex(index)}
+                      onClick={() => {
+                        setSelectedIndex(index);
+                        setInMainSelected(true);
+                      }}
                       isSideItem
+                      onMainSelectedChange={handleMainSelectedChange} 
                     />
                   </motion.div>
                 )
               )}
             </AnimatePresence>
           </div>
+          
           {/* Tarjeta seleccionada del lado derecho */}
-          <div className="w-full lg:w-1/2">
+          <div className={`w-full lg:w-[100%] bg-red-800 p-2 row-start-3 row-end-4 md:row-start-1 md:row-end-2`}>
             <AnimatePresence>
               <motion.div
                 key={selectedIndex}
@@ -115,14 +130,18 @@ function ProjectsAreas() {
                 initial={{ x: 100, borderRadius: 12 }}
                 animate={{ x: 0 }}
                 exit={{ x: 100, opacity: 0 }}
-                transition={{ layout: { duration: 0.5 }, x: { duration: 0.2 } }}
+                transition={{ layout: { duration: 0.5 }, x: { duration: 0.2 }}}
                 className="h-full"
               >
                 <AreaButton
                   project={Projects[selectedIndex]}
                   index={selectedIndex}
-                  isMainSelected
-                  onClose={() => setSelectedIndex(null)}
+                  isMainSelected={inMainSelected}
+                  onMainSelectedChange={handleMainSelectedChange} // Pasamos la función
+                  onClose={() => {
+                    setSelectedIndex(null);
+                    setInMainSelected(true); // Se desactiva al cerrar
+                  }}
                 />
               </motion.div>
             </AnimatePresence>

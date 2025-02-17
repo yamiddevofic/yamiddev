@@ -4,7 +4,9 @@ import ThemeSwitcher from '../components/ThemeSwitcher';
 import { SiJavascript, SiReact, SiNodedotjs, SiAstro, SiTailwindcss, SiPython } from "react-icons/si";
 import { Portfolio } from '../components/Portfolio';
 import { Contact } from '../components/Contact';
-import { Fire } from '../components/Fire';
+import { Fire } from '../components/icons/Fire';
+import { AboutMe } from '../components/icons/AboutMe';
+import SectionAboutMe from '../components/AboutMe';
 import ProjectsAreas from '../components/ProjectsAreas'
 import '../styles/global.css'
 
@@ -29,8 +31,8 @@ document?.documentElement?.classList.add('dark');
     <!-- Hero Section -->
     <main class="container mx-auto px-4 py-16">
       <!-- Encabezado -->
-      <div class="text-center mb-16 translate-y-4 animate-[fadeIn_1s_ease-out_forwards]">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
+      <div class="text-center mb-16 translate-y-4 animate-[fadeIn_1s_ease-out_forwards] rounded-lg p-8">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 p-4">
           Yamid Rodriguez
         </h1>
         <p class="text-[1.2rem] md:text-xl text-gray-600 dark:text-gray-300">
@@ -39,11 +41,12 @@ document?.documentElement?.classList.add('dark');
       </div>
 
       <!-- Botones de acción -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
         {[
-          { id: 'projects', icon: Portfolio, text: 'Proyectos', primary: true },
+          { id: 'about-me', icon: AboutMe, text: 'Sobre mí' },
           { id: 'contact', icon: Contact, text: 'Contacto' },
-          { id: 'content', icon: Fire, text: 'Contenido' }
+          { id: 'content', icon: Fire, text: 'Contenido' },
+          { id: 'projects', icon: Portfolio, text: 'Proyectos', primary: true },
         ].map((button) => (
           <button
             id={`btn-${button.id}`}
@@ -60,37 +63,6 @@ document?.documentElement?.classList.add('dark');
             </div>
           </button>
         ))}
-      </div>
-
-      <!-- Sección "Sobre mí" -->
-      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 mb-16 shadow-sm transition-colors">
-        <div class="flex flex-col md:flex-row gap-8 items-center">
-          <div class="relative w-48 h-48">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 animate-[spin_8s_linear_infinite]"></div>
-            <img
-              src="./dev.jpg"
-              alt="Profile"
-              class="absolute inset-[3px] rounded-full object-cover bg-gray-100 dark:bg-gray-900"
-            />
-          </div>
-          <div class="flex-1 text-center md:text-left">
-            <h2 class="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
-              Sobre mí
-            </h2>
-            <p class="text-gray-600 dark:text-gray-300 mb-6 text-2sm md:text-xl">
-              Mi nombre es Yamid Horacio Rodríguez, soy de Colombia, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles. 
-            </p>
-            <p class="mb-6 font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 text-2sm md:text-xl">
-              Me especializo en crear experiencias digitales modernas y responsivas.
-            </p>
-            <button
-              id="btn-aboutMe"
-              class="px-6 py-2 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-semibold transition-transform hover:scale-105 active:scale-95"
-            >
-              Saber más
-            </button>
-          </div>
-        </div>
       </div>
 
       <!-- Tecnologías -->
@@ -147,12 +119,16 @@ document?.documentElement?.classList.add('dark');
           // Sección "Proyectos" con Areas integradas
           <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Projects</h1>
           <ProjectsAreas client:load />
-        ) : (
-          // Contenido de la sección para las demás secciones
+        ) : section === 'contact' ? (
           <>
-            <h1 class="text-[2rem] font-bold text-cyan-400 text-center">{section}</h1>
+            <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Contacto</h1>
           </>
-        )}
+        ) : section === 'content' ? (
+          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Contenido</h1>
+        ) : section === 'about-me' ?(
+          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Acerca de mí</h1>
+          <SectionAboutMe/>
+        ) : null}
       </div>
     ))}
   </div>

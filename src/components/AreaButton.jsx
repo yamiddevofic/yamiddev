@@ -1,9 +1,14 @@
 import React from 'react';
 
-const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose }) => {
+const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onMainSelectedChange }) => {
   return (
     <div
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        if (onMainSelectedChange) {
+          onMainSelectedChange(true); // Avisamos al padre que está seleccionado
+        }
+      }}
       className={`
         group relative w-auto transform transition-all duration-300 rounded-xl shadow-md overflow-hidden
         ${isSideItem ? 'opacity-80 hover:opacity-100' : ''}
@@ -34,8 +39,7 @@ const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose }) =
         <div className="flex items-start justify-between p-4">
           <div>
             <h2 className="font-semibold text-[1.5rem] text-gray-800 dark:text-gray-200">{project.title}</h2>
-            <span className="inline-block px-2 py-1 mt-1 text-xs font-medium text-gray-600 dark:text-gray-300 
-                           bg-gray-100 dark:bg-gray-700 rounded-full">
+            <span className="inline-block px-2 py-1 mt-1 text-xs font-medium text-gray-600 dark:text-gray-300  bg-gray-100 dark:bg-gray-700 rounded-full">
               {project.time}
             </span>
           </div>

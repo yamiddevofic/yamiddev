@@ -8,8 +8,9 @@ import {
 
 const AboutMe = () => {
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center p-4">
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-8 shadow-sm transition-colors max-w-4xl w-full">
+    <div id="about-me" className="w-full h-full flex flex-col items-center justify-center p-4">
+      <h1 class="text-[1.6rem] md:text-[2rem] font-bold text-cyan-400 text-center py-12">Sobre mí </h1>
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm transition-colors max-w-4xl w-full">
         {/* Sección: Presentación */}
         <div className="flex flex-col md:flex-row gap-8 items-center">
           {/* Imagen de Perfil con Borde Gradiente */}

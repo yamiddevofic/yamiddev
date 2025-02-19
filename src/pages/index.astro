@@ -1,13 +1,14 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import ThemeSwitcher from '../components/ThemeSwitcher';
-import { SiJavascript, SiReact, SiNodedotjs, SiAstro, SiTailwindcss, SiPython } from "react-icons/si";
-import { Portfolio } from '../components/Portfolio';
-import { Contact } from '../components/Contact';
+import { Portfolio } from '../components/icons/Portfolio';
+import { Contact } from '../components/icons/Contact';
 import { Fire } from '../components/icons/Fire';
 import { AboutMe } from '../components/icons/AboutMe';
+import { Computer } from '../components/icons/Computer'
 import SectionAboutMe from '../components/AboutMe';
 import ProjectsAreas from '../components/ProjectsAreas'
+import Technology from '../components/Technology'
 import '../styles/global.css'
 
 // Forzar modo oscuro por defecto
@@ -21,37 +22,42 @@ document?.documentElement?.classList.add('dark');
 
 ---
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
-  <div class="min-h-screen 
-              bg-white text-gray-800
-              dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
-              dark:text-white 
-              overflow-x-hidden 
-              transition-colors duration-300">
+  <div class="w-full flex flex-col items-center justify-center 
+  bg-white text-gray-800
+  dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
+  dark:text-white 
+  overflow-x-hidden overflow-y-hidden 
+  transition-colors duration-300">
 
     <!-- Hero Section -->
-    <main class="container mx-auto px-4 py-16">
+    <main id="home" class="container h-[100vh] w-full flex justify-center items-center flex-col">
+      <!-- Video de fondo -->
+      <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+        <source src="media/code-2.mp4" type="video/mp4" />
+        Tu navegador no soporta videos.
+      </video>
+      <!-- Overlay negro semitransparente -->
+      <div class="absolute inset-0 bg-black bg-opacity-85"></div>
       <!-- Encabezado -->
-      <div class="text-center mb-16 translate-y-4 animate-[fadeIn_1s_ease-out_forwards] rounded-lg p-8">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 p-4">
-          Yamid Rodriguez
+      <div class="text-center my-16 translate-y-4 animate-[fadeIn_1s_ease-out_forwards] max-w-[65ch] rounded-lg">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 p-4">
+        Yamid Rodriguez
         </h1>
-        <p class="text-[1.2rem] md:text-xl text-gray-600 dark:text-gray-300">
-          Desarrollador Full Stack &amp; Creador de Contenido
+        <p class="text-[1.2rem] md:text-xl text-gray-300">
+          Desarrollador JavaScript &amp; Creador de Contenido
         </p>
       </div>
 
       <!-- Botones de acción -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-1 gap-2 w-auto px-4 place-items-center mb-16">
         {[
-          { id: 'about-me', icon: AboutMe, text: 'Sobre mí' },
-          { id: 'contact', icon: Contact, text: 'Contacto' },
-          { id: 'content', icon: Fire, text: 'Contenido' },
-          { id: 'projects', icon: Portfolio, text: 'Proyectos', primary: true },
+          { id: 'projects', icon: Portfolio, text: 'Proyectos', primary: true},
+
         ].map((button) => (
           <button
             id={`btn-${button.id}`}
             class:list={[
-              'group relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]',
+              'group relative woverflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]',
               button.primary
                 ? 'bg-gradient-to-r from-blue-500 to-emerald-500 text-white'
                 : 'border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 text-gray-800 dark:text-gray-200'
@@ -64,35 +70,14 @@ document?.documentElement?.classList.add('dark');
           </button>
         ))}
       </div>
-
-      <!-- Tecnologías -->
-      <div class="flex flex-wrap gap-4 justify-center">
-        {[
-          { Icon: SiJavascript, name: "JavaScript", color: "text-yellow-500" },
-          { Icon: SiReact, name: "React", color: "text-blue-500" },
-          { Icon: SiNodedotjs, name: "Node.js", color: "text-green-600" },
-          { Icon: SiPython, name: "Python", color: "text-blue-600" },
-          { Icon: SiAstro, name: "Astro", color: "text-purple-500" },
-          { Icon: SiTailwindcss, name: "Tailwind", color: "text-cyan-500" }
-        ].map((tech) => (
-          <div class="group relative">
-            <div class="flex items-center gap-2 px-4 py-2 rounded-full 
-                        bg-white dark:bg-gray-800 
-                        border border-gray-200 dark:border-gray-700 
-                        hover:border-gray-300 dark:hover:border-gray-600 
-                        transition-all duration-300">
-              <tech.Icon className={`w-5 h-5 ${tech.color}`} />
-              <span class="text-sm text-gray-600 dark:text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {tech.name}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
     </main>
+    <SectionAboutMe/>
+    <div id="technology" class="w-full h-[100vh] flex items-center justify-center md:m-0">
+      <Technology />
+    </div>
 
     <!-- Secciones deslizantes -->
-    {['projects', 'content', 'contact', 'about-me'].map((section) => (
+    {['projects'].map((section) => (
       <div
         id={section}
         class="fixed top-0 left-full w-full h-full 
@@ -119,16 +104,7 @@ document?.documentElement?.classList.add('dark');
           // Sección "Proyectos" con Areas integradas
           <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Projects</h1>
           <ProjectsAreas client:load />
-        ) : section === 'contact' ? (
-          <>
-            <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Contacto</h1>
-          </>
-        ) : section === 'content' ? (
-          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Contenido</h1>
-        ) : section === 'about-me' ?(
-          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Acerca de mí</h1>
-          <SectionAboutMe/>
-        ) : null}
+        ) :  null}
       </div>
     ))}
   </div>
@@ -136,7 +112,7 @@ document?.documentElement?.classList.add('dark');
   <!-- Script para abrir/cerrar secciones deslizantes -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const sections = ['projects', 'content', 'contact', 'about-me'];
+      const sections = ['projects'];
       
       sections.forEach(section => {
         const button = document.getElementById(`btn-${section}`);

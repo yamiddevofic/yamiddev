@@ -55,10 +55,15 @@ const Navbar = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   }, []);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e, id) => {
+    e.preventDefault();
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
     setIsOpen(false);
   };
-
+  
   return (
     <>
       <motion.header
@@ -122,22 +127,19 @@ const Navbar = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (
-                <motion.button key={items.id} className="w-full h-full flex items-center justify-start max-h-[5rem] bg-white dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg  transition-all duration-300 cursor-pointer"
-                variants={itemsVariants} whileHover="hover">
-                    <motion.a
-                        href={`#${items.id}`}
-                        className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100%] w-full"
-                        onClick={handleLinkClick}
-                      >
-                      <motion.li key={items.id} className="w-full h-full flex items-center justify-start p-5">
-                        
-                          <motion.div className="flex items-center justify-start gap-4">
-                            {items.icon({ size: 24 })}
-                            {items.title}
-                          </motion.div>
-                    </motion.li>
-                    </motion.a>
-                </motion.button>
+                  <motion.a
+                      href={`#${items.id}`}
+                      className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100%] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      onClick={(e) => handleLinkClick(e, items.id)}
+                    >
+                    <motion.li key={items.id} className="w-full h-full flex items-center justify-start p-5">
+                      
+                        <motion.div className="flex items-center justify-start gap-4">
+                          {items.icon({ size: 24 })}
+                          {items.title}
+                        </motion.div>
+                  </motion.li>
+                  </motion.a>
               ))}
             </motion.ul>
           </motion.div>

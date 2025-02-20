@@ -90,15 +90,17 @@ const Navbar = () => {
 
           <nav className="hidden md:flex gap-6">
             {sectionIds.map((item) => (
+              <motion.button key={item.id} id={item.id}>
                 <motion.a
                   href={`#${item.id}`}
                   variants={linkVariants}
                   whileHover="hover"
-                  className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:[#F2CF66]"
+                  className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
                   onClick={handleLinkClick}
                 >
                   {item.title}
                 </motion.a>
+              </motion.button>
             ))}
           </nav>
         </div>
@@ -121,7 +123,7 @@ const Navbar = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (
-                <motion.div key={items.id} className="w-full h-full flex items-center justify-start max-h-[5rem] bg-white dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg  transition-all duration-300 cursor-pointer"
+                <motion.button key={items.id} className="w-full h-full flex items-center justify-start max-h-[5rem] bg-white dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg  transition-all duration-300 cursor-pointer"
                 variants={itemsVariants} whileHover="hover">
                     <motion.a
                         href={`#${items.id}`}
@@ -136,7 +138,7 @@ const Navbar = () => {
                           </motion.div>
                     </motion.li>
                     </motion.a>
-                </motion.div>
+                </motion.button>
               ))}
             </motion.ul>
           </motion.div>

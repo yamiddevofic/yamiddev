@@ -79,7 +79,7 @@ document?.documentElement?.classList.add('dark');
     <!-- Secciones deslizantes -->
     {['projects'].map((section) => (
       <div
-        id={section}
+        id="slide-projects"
         class="fixed top-0 left-full w-full h-full 
                bg-white dark:bg-gray-900/90 
                backdrop-blur-md 
@@ -108,27 +108,4 @@ document?.documentElement?.classList.add('dark');
       </div>
     ))}
   </div>
-
-  <!-- Script para abrir/cerrar secciones deslizantes -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const sections = ['projects'];
-      
-      sections.forEach(section => {
-        const button = document.getElementById(`btn-${section}`);
-        const sectionEl = document.getElementById(section);
-        const closeButton = document.getElementById(`cerrar-${section}`);
-        
-        if (button && sectionEl && closeButton) {
-          button.addEventListener('click', () => {
-            sectionEl.style.transform = 'translateX(-100%)';
-          });
-          
-          closeButton.addEventListener('click', () => {
-            sectionEl.style.transform = 'translateX(0)';
-          });
-        }
-      });
-    });
-  </script>
 </MainLayout>

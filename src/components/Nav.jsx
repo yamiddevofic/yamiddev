@@ -90,8 +90,8 @@ const Navbar = () => {
 
           <nav className="hidden md:flex gap-6">
             {sectionIds.map((item) => (
-              <motion.button key={item.id} id={item.id}>
                 <motion.a
+                  key={item.id}
                   href={`#${item.id}`}
                   variants={linkVariants}
                   whileHover="hover"
@@ -100,7 +100,6 @@ const Navbar = () => {
                 >
                   {item.title}
                 </motion.a>
-              </motion.button>
             ))}
           </nav>
         </div>
@@ -119,7 +118,7 @@ const Navbar = () => {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              className="fixed right-0 top-0 pt-3.5 w-3/4 h-full bg-white dark:bg-gray-900 shadow-lg flex flex-col flex items-center justify-start overflow-auto"
+              className="fixed right-0 top-0 pt-3.5 w-3/4 h-full bg-white dark:bg-gray-900 shadow-lg flex flex-col items-center justify-start overflow-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (

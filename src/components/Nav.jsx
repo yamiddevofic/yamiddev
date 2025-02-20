@@ -133,7 +133,6 @@ const Navbar = () => {
                       onClick={(e) => handleLinkClick(e, items.id)}
                     >
                     <motion.li key={items.id} className="w-full h-full flex items-center justify-start p-5">
-                      
                         <motion.div className="flex items-center justify-start gap-4">
                           {items.icon({ size: 24 })}
                           {items.title}

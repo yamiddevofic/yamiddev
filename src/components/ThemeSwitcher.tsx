@@ -4,10 +4,10 @@ import Sun from './Sun';
 
 const ThemeSwitcher = () => {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [isClient, setIsClient] = useState(false); // Para asegurarnos de que estamos en el cliente
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Marcamos que ya estamos en el cliente
+    setIsClient(true);
     const storedTheme = localStorage.getItem('theme') as 'light' | 'dark';
     if (storedTheme) {
       setTheme(storedTheme);

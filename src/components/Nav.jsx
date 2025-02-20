@@ -95,15 +95,16 @@ const Navbar = () => {
 
           <nav className="hidden md:flex gap-6">
             {sectionIds.map((item) => (
-              <motion.a
-                href={`#${item.id}`}
-                variants={linkVariants}
-                whileHover="hover"
-                className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
-                onClick={(e) => handleLinkClick(e, item.id)}
-              >
-                {item.title}
-              </motion.a>
+                <motion.a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  variants={linkVariants}
+                  whileHover="hover"
+                  className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
+                  onClick={handleLinkClick}
+                >
+                  {item.title}
+                </motion.a>
             ))}
           </nav>
         </div>
@@ -122,7 +123,7 @@ const Navbar = () => {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              className="fixed right-0 top-0 pt-3.5 w-3/4 h-full bg-white dark:bg-gray-900 shadow-lg flex flex-col flex items-center justify-start overflow-auto"
+              className="fixed right-0 top-0 pt-3.5 w-3/4 h-full bg-white dark:bg-gray-900 shadow-lg flex flex-col items-center justify-start overflow-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (

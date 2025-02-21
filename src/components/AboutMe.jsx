@@ -9,8 +9,8 @@ import {
 const AboutMe = () => {
   return (
     <div id="about-me" className="w-full h-full flex flex-col items-center justify-center p-4">
-      <h1 class="text-[1.6rem] md:text-[2rem] font-bold text-cyan-400 text-center py-12">Sobre mí </h1>
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm transition-colors max-w-4xl w-full">
+      <h1 class="text-[1.6rem] md:text-[2rem] font-bold text-cyan-400 text-center py-12 hidden md:block">Sobre mí </h1>
+      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm transition-colors max-w-4xl w-full mt-[15%] md:mt-0">
         {/* Sección: Presentación */}
         <div className="flex flex-col md:flex-row gap-8 items-center">
           {/* Imagen de Perfil con Borde Gradiente */}
@@ -30,9 +30,6 @@ const AboutMe = () => {
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-6 text-base md:text-lg">
               Mi nombre es Yamid Horacio Rodríguez, soy de Colombia, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 font-bold text-base md:text-lg">
-              Me especializo en crear experiencias digitales modernas y responsivas.
             </p>
           </div>
         </div>

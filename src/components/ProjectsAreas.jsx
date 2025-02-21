@@ -6,9 +6,9 @@ import { Projects } from '../lib/projectData';
 function ProjectsAreas() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [inMainSelected, setInMainSelected] = useState(false);
-
+  const [stateChild, setStateChild] = useState(false);
+  
   const handleMainSelectedChange = (value) => {
-    console.log(inMainSelected)
     setInMainSelected(value);
   };
 
@@ -99,10 +99,10 @@ function ProjectsAreas() {
                   project={Projects[selectedIndex]}
                   index={selectedIndex}
                   isMainSelected={inMainSelected}
-                  onMainSelectedChange={handleMainSelectedChange} // Pasamos la función
+                  onMainSelectedChange={handleMainSelectedChange}
                   onClose={() => {
                     setSelectedIndex(null);
-                    setInMainSelected(true); // Se desactiva al cerrar
+                    setInMainSelected(true);
                   }}
                 />
               </motion.div>

@@ -1,6 +1,5 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import ThemeSwitcher from '../components/ThemeSwitcher';
 import { Portfolio } from '../components/icons/Portfolio';
 import { Contact } from '../components/icons/Contact';
 import { Fire } from '../components/icons/Fire';
@@ -30,7 +29,7 @@ document?.documentElement?.classList.add('dark');
   transition-colors duration-300">
 
     <!-- Hero Section -->
-    <main id="home" class="container h-[100vh] w-full flex justify-center items-center flex-col">
+    <main id="home" class="container h-[100vh] w-full hidden md:flex justify-center items-center flex-col">
       <!-- Video de fondo -->
       <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
         <source src="media/code-2.mp4" type="video/mp4" />
@@ -47,15 +46,15 @@ document?.documentElement?.classList.add('dark');
           Desarrollador JavaScript &amp; Creador de Contenido
         </p>
       </div>
-
          <ButtonProjects  />
-      
     </main>
     <SectionAboutMe/>
+    <div id="project" class="w-full h-[50vh] flex items-center justify-center block md:hidden pt-[15%]">
+      <ButtonProjects/>
+    </div>
     <div id="technology" class="w-full h-[100vh] flex items-center justify-center md:m-0">
       <Technology />
     </div>
-
     <!-- Secciones deslizantes -->
     {['projects'].map((section) => (
       <div
@@ -81,8 +80,7 @@ document?.documentElement?.classList.add('dark');
           </svg>
         </button>
         {section === 'projects' ? (
-          // Sección "Proyectos" con Areas integradas
-          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Projects</h1>
+          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Proyectos</h1>
           <ProjectsAreas client:load />
         ) :  null}
       </div>

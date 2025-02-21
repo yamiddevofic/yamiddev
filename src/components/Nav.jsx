@@ -12,8 +12,8 @@ import { Button } from "@/components/ui/button"; // Shadcn UI
 const sectionIds = [
   { title: "Inicio", id: "home", icon: HomeFilled },
   { title: "Sobre mí", id: "about-me", icon: AboutMe },
-  { title: "Tecnología", id: "technology", icon: Computer },
-  { title: "Proyectos", id: "projects", icon: Portfolio },
+  { title: "Proyectos", id: "project", icon: Portfolio },
+  { title: "Tecnologías", id: "technology", icon: Computer },
   { title: "Contacto", id: "contact", icon: Contact },
 ];
 
@@ -95,16 +95,18 @@ const Navbar = () => {
 
           <nav className="hidden md:flex gap-6">
             {sectionIds.map((item) => (
+                item.id === "project" ? null : (
                 <motion.a
                   key={item.id}
                   href={`#${item.id}`}
                   variants={linkVariants}
                   whileHover="hover"
                   className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
-                  onClick={handleLinkClick}
+                  onClick={(e) => handleLinkClick(e, item.id)}
                 >
                   {item.title}
-                </motion.a>
+                </motion.a> 
+              )
             ))}
           </nav>
         </div>
@@ -127,18 +129,28 @@ const Navbar = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (
+                  items.id === "home" ? null : (
                   <motion.a
                       href={`#${items.id}`}
-                      className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100%] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100px] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
                       onClick={(e) => handleLinkClick(e, items.id)}
                     >
                     <motion.li key={items.id} className="w-full h-full flex items-center justify-start p-5">
-                        <motion.div className="flex items-center justify-start gap-4">
-                          {items.icon({ size: 24 })}
-                          {items.title}
-                        </motion.div>
+                        {items.id === 'about-me' ? 
+                        (
+                          <motion.div className="flex items-center justify-start gap-4">
+                            <HomeFilled />
+                            Home
+                           </motion.div>
+                        ) : (
+                          <motion.div className="flex items-center justify-start gap-4">
+                            {items.icon({ size: 24 })}
+                            {items.title}
+                          </motion.div>
+                        )}
                   </motion.li>
                   </motion.a>
+                )
               ))}
             </motion.ul>
           </motion.div>

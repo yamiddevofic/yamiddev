@@ -1,12 +1,13 @@
 import React from 'react';
 
-const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onMainSelectedChange }) => {
+const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onMainSelectedChange, changeState }) => {
   return (
     <div
       onClick={() => {
         onClick();
         if (onMainSelectedChange) {
           onMainSelectedChange(true); // Avisamos al padre que está seleccionado
+          changeState(prev => !prev)
         }
       }}
       className={`

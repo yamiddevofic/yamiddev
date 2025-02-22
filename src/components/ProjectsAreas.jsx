@@ -8,10 +8,10 @@ function ProjectsAreas() {
   const [inMainSelected, setInMainSelected] = useState(false);
   const [stateChild, setStateChild] = useState(false);
   
+
   const handleMainSelectedChange = (value) => {
     setInMainSelected(value);
   };
-
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20, transition: { duration: 0.2 } },
@@ -76,6 +76,7 @@ function ProjectsAreas() {
                       }}
                       isSideItem
                       onMainSelectedChange={handleMainSelectedChange} 
+                      changeState = {setStateChild}
                     />
                   </motion.div>
                 )
@@ -84,7 +85,7 @@ function ProjectsAreas() {
           </div>
           
           {/* Tarjeta seleccionada del lado derecho */}
-          <div className={`w-full lg:w-[100%] bg-red-800 p-2 row-start-3 row-end-4 md:row-start-1 md:row-end-2`}>
+          <div className={`w-full lg:w-[100%] ${stateChild ? 'bg-red-800' : 'row-start-1 row-end-2 bg-black md:row-start-1 md:row-end-4 md:bg-red-800'} p-2`}>
             <AnimatePresence>
               <motion.div
                 key={selectedIndex}
@@ -104,6 +105,7 @@ function ProjectsAreas() {
                     setSelectedIndex(null);
                     setInMainSelected(true);
                   }}
+                  changeState = {setStateChild}
                 />
               </motion.div>
             </AnimatePresence>

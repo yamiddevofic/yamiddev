@@ -6,14 +6,14 @@ const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onM
       onClick={() => {
         onClick();
         if (onMainSelectedChange) {
-          onMainSelectedChange(true); // Avisamos al padre que está seleccionado
+          onMainSelectedChange(true); 
           changeState(prev => !prev)
         }
       }}
       className={`
-        group relative w-auto transform transition-all duration-300 rounded-xl shadow-md overflow-hidden
+        group relative w-full transform transition-all duration-300 rounded-xl shadow-md overflow-hidden
         ${isSideItem ? 'opacity-80 hover:opacity-100' : ''}
-        ${isMainSelected ? 'h-[100vh] w-[100%]' : 'h-80 hover:h-96 cursor-pointer'}
+        ${isMainSelected ? 'h-[100vh] w-[100%]' : 'h-100 hover:h-96 cursor-pointer'}
         bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700
       `}
     >
@@ -24,6 +24,7 @@ const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onM
           className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
         />
         {isMainSelected && (
+          // Close button
           <button
             onClick={(e) => {
               e.stopPropagation();

@@ -5,7 +5,7 @@ const AppContainer = ({ children, style = {} }) => {
     width: '100%',
     height: 'auto',
     margin: '0 auto',
-    padding: '20px',
+    padding: '10px',
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
     gridTemplateRows: 'auto 1fr',
@@ -23,7 +23,7 @@ const AppContainer = ({ children, style = {} }) => {
   };
 
   return (
-    <div className="bg-none text-white p-2 h-screen">
+    <div className="bg-none text-white  h-screen">
       <div className="custom-scrollbar" style={containerStyle}>
         <div style={contentStyle} className="hide-scrollbar ">
           {children}

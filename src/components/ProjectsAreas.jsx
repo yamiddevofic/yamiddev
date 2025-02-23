@@ -22,7 +22,7 @@ function ProjectsAreas() {
   return (
     <AppContainer>
       {selectedIndex === null ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[600px]  p-0 md:p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[600px] p-0 md:p-4">
           <AnimatePresence>
             {Projects.map((project, index) => (
               <motion.div
@@ -50,9 +50,9 @@ function ProjectsAreas() {
           </AnimatePresence>
         </div>
       ) : (
-        <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-1 lg:flex-row gap-6 items-start min-h-[600px] mt-5 p-4" style={{borderRadius: '10px'}}>
+        <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-1 lg:flex-row gap-6 items-start min-h-[600px]" style={{borderRadius: '10px'}}>
           {/* Tarjetas del lado izquierdo */}
-          <div className="bg-blue-800 p-2 w-full lg:w-[100%] grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[100vh] overflow-y-auto overflow-x-hidden custom-scrollbar scrollbar-left row-start-1 row-end-2">
+          <div className={`${stateChild ? 'grid' : 'hidden md:grid '} p-2 w-full lg:w-[100%] grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[100vh] overflow-y-auto overflow-x-hidden custom-scrollbar scrollbar-left row-start-1 row-end-2`}>
             <AnimatePresence>
               {Projects.map((project, index) =>
                 index !== selectedIndex && (
@@ -85,7 +85,7 @@ function ProjectsAreas() {
           </div>
           
           {/* Tarjeta seleccionada del lado derecho */}
-          <div className={`w-full lg:w-[100%] ${stateChild ? 'bg-red-800' : 'row-start-1 row-end-2 bg-black md:row-start-1 md:row-end-4 md:bg-red-800'} p-2`}>
+          <div className={`w-full lg:w-[100%] ${stateChild ? 'bg-none' : 'row-start-1 row-end-2 md:row-start-1 md:row-end-4'} p-2`}>
             <AnimatePresence>
               <motion.div
                 key={selectedIndex}

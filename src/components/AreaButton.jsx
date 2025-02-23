@@ -14,7 +14,7 @@ const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onM
         group relative w-full transform transition-all duration-300 rounded-xl shadow-md overflow-hidden
         ${isSideItem ? 'opacity-80 hover:opacity-100' : ''}
         ${isMainSelected ? 'h-[100vh] w-[100%]' : 'h-100 hover:h-96 cursor-pointer'}
-        bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700
+        bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 max-h-[600px]
       `}
     >
       <div className="relative h-40 overflow-hidden">
@@ -41,7 +41,7 @@ const AreaButton = ({ project, isMainSelected, isSideItem, onClick, onClose, onM
         <div className="flex items-start justify-between p-4">
           <div>
             <h2 className="font-semibold text-[1.5rem] text-gray-800 dark:text-gray-200">{project.title}</h2>
-            <span className="inline-block px-2 py-1 mt-1 text-xs font-medium text-gray-600 dark:text-gray-300  bg-gray-100 dark:bg-gray-700 rounded-full">
+            <span className="inline-block px-2 py-1 mt-1 text-xs font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-full">
               {project.time}
             </span>
           </div>

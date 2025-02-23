@@ -49,8 +49,11 @@ document?.documentElement?.classList.add('dark');
          <ButtonProjects  />
     </main>
     <SectionAboutMe/>
-    <div id="project" class="w-full h-[50vh] flex items-center justify-center block md:hidden pt-[15%]">
-      <ButtonProjects/>
+    <div id="project" class="w-[90%] h-[80vh] rounded-[10px] flex flex-col items-center block md:hidden bg-gray-100 dark:bg-gray-800 mt-[15%]">
+      <div class=" h-[60%] w-full mb-4 rounded-[10px]" style={{background: 'url(https://cdn.pixabay.com/photo/2022/07/08/05/38/freelance-work-7308505_960_720.png)', backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
+      <div class="w-full h-[30%] flex items-center justify-center">
+        <ButtonProjects/>
+      </div>
     </div>
     <div id="technology" class="w-full h-[100vh] flex items-center justify-center md:m-0">
       <Technology />
@@ -80,7 +83,7 @@ document?.documentElement?.classList.add('dark');
           </svg>
         </button>
         {section === 'projects' ? (
-          <h1 class="text-[2rem] font-bold text-cyan-400 text-center">Proyectos</h1>
+          <h1 class="text-[2rem] font-bold text-cyan-400 text-center md:text-left ml-6 mb-4 md:mb-0">Proyectos</h1>
           <ProjectsAreas client:load />
         ) :  null}
       </div>

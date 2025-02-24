@@ -29,7 +29,7 @@ const AboutMe = () => {
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Presentación</h2>
             </div>
             <p className="text-gray-600 dark:text-gray-300 mb-6 text-base md:text-lg">
-              Mi nombre es Yamid Horacio Rodríguez, soy de Colombia, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles.
+              Mi nombre es <span class="font-bold">Yamid Horacio Rodríguez</span>, soy de Colombia, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles.
             </p>
           </div>
         </div>

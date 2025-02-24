@@ -19,7 +19,7 @@ const Icon = ({ IconComponent, text, customColor }) => {
     <div 
       className="flex flex-col items-center justify-center p-3 rounded-lg hover:bg-gray-200/50 dark:hover:bg-gray-600/30 transition-all duration-200 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => { setIsHovered(false); setIsActive(false); }}
+      onMouseLeave={() => { setIsHovered(false); setIsActive(false);}}
       onMouseDown={() => setIsActive(true)}
       onMouseUp={() => setIsActive(false)}
       onTouchStart={() => setIsActive(true)}

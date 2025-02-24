@@ -35,6 +35,14 @@
     direction: ltr;
   }
   
+  .computer-text {
+    font-size: 24px;
+    border-right: 3px solid #00ff00; /* Cursor */
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+  }
+
   @layer base {
   :root {
         --background: 0 0% 100%;

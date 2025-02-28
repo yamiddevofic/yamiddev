@@ -11,8 +11,8 @@ const Technology = () => {
   ];
 
   return (
-    <div className="w-full 2xl:w-4/5 h-auto mb-5 flex flex-col pt-16">
-      <h1 className="text-xl md:text-2xl font-bold text-cyan-400 text-center py-4">
+    <div className="w-full 2xl:w-4/5 h-auto flex flex-col">
+      <h1 className="text-4xl md:text-5xl mb-8 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 py-4">
         Tecnologías que manejo
       </h1>
       <div className="max-w-6xl mx-auto w-11/12 md:w-2/3">

@@ -1,4 +1,3 @@
-import React from 'react';
 import { 
   User2, 
   History, 
@@ -9,7 +8,7 @@ import {
 const AboutMe = () => {
   return (
     <div id="about-me" className="w-full h-full flex flex-col items-center justify-center p-4">
-      <h1 class="text-[1.6rem] md:text-[2rem] font-bold text-cyan-400 text-center py-12 hidden md:block">Sobre mí </h1>
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400 text-center py-12 hidden md:block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">Sobre mí </h1>
       <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm transition-colors max-w-4xl w-full mt-[15%] md:mt-0">
         {/* Sección: Presentación */}
         <div className="flex flex-col md:flex-row gap-8 items-center">
@@ -87,3 +86,5 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
+
+

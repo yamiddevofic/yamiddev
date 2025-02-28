@@ -3,7 +3,7 @@ import React from 'react';
 const AppContainer = ({ children, style = {} }) => {
   const containerStyle = {
     width: '100%',
-    height: 'auto',
+    height: '100vh',
     margin: '0 auto',
     padding: '10px',
     display: 'grid',

@@ -10,6 +10,7 @@ import ProjectsAreas from '../components/ProjectsAreas'
 import Technology from '../components/Technology'
 import '../styles/global.css'
 import ButtonProjects from '../components/buttonProjects.astro'
+import ContactForm from '@/components/ContactForm';
 // Forzar modo oscuro por defecto
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
@@ -54,9 +55,10 @@ document?.documentElement?.classList.add('dark');
         <ButtonProjects/>
       </div>
     </div>
-    <div id="technology" class="w-full h-[100vh] flex items-center justify-center md:m-0">
+    <div id="technology" class="w-full h-[100vh] flex items-center justify-center">
       <Technology />
-    </div>
+  </div>
+  <ContactForm client:load />
     <!-- Secciones deslizantes -->
     {['projects'].map((section) => (
       <div
@@ -82,7 +84,7 @@ document?.documentElement?.classList.add('dark');
           </svg>
         </button>
         {section === 'projects' ? (
-          <h1 class="text-[2rem] font-bold text-cyan-400 text-center md:text-left ml-6 mb-4 md:mb-0">Proyectos</h1>
+          <h1 class="text-4xl md:text-5xl p-4 font-bold text-cyan-400 text-center md:text-left ml-6 mb-4 md:mb-0">Proyectos</h1>
           <ProjectsAreas client:load />
         ) :  null}
       </div>

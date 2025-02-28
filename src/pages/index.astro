@@ -23,8 +23,9 @@ document?.documentElement?.classList.add('dark');
 ---
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
   <div class="w-full flex flex-col items-center justify-center 
-  bg-white text-gray-800
-  dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
+  bg-gradient-to-b from-gray-100 to-gray-200 
+  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-900
+  transition-colors duration-300
   dark:text-white 
   overflow-x-hidden overflow-y-hidden 
   transition-colors duration-300">
@@ -84,7 +85,7 @@ document?.documentElement?.classList.add('dark');
           </svg>
         </button>
         {section === 'projects' ? (
-          <h1 class="text-4xl md:text-5xl p-4 font-bold text-cyan-400 text-center md:text-left ml-6 mb-4 md:mb-0">Proyectos</h1>
+          <h1 class="text-4xl md:text-5xl py-4 font-bold text-cyan-400 text-center md:text-left ml-6 mb-4 md:mb-0">Proyectos</h1>
           <ProjectsAreas client:load />
         ) :  null}
       </div>

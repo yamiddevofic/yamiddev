@@ -43,10 +43,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="w-full min-h-screen py-16 px-4 md:px-8 flex items-center justify-center 
-      bg-gradient-to-b from-gray-100 to-gray-200 
-      dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-950
-      transition-colors duration-300">
+    <section id="contact" className="w-full min-h-screen py-16 px-4 md:px-8 flex items-center justify-center bg-none"> 
       <div className="container max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 
           text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600

@@ -65,21 +65,7 @@ const AboutMe = () => {
           </p>
         </div>
 
-        {/* Divider */}
-        <div className="my-8 h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent" />
 
-        {/* Sección: Filosofía y Valores */}
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <Heart className="w-6 h-6 text-red-500" />
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-              Filosofía y Valores
-            </h2>
-          </div>
-          <p className="text-gray-600 dark:text-gray-300">
-            Creo firmemente en la importancia de la honestidad, la perseverancia y el respeto. Valoro el esfuerzo constante y la empatía, principios que me guían tanto en mi vida personal como profesional, y que me motivan a contribuir de manera positiva en cada entorno en el que me desenvuelvo.
-          </p>
-        </div>
       </div>
     </div>
   );

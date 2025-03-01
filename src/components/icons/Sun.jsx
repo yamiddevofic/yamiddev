@@ -1,4 +1,3 @@
-import * as React from "react";
 const Sun = (props) => (
   <svg
     className="w-6 h-6 fill-current"

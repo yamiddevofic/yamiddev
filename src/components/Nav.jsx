@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence, color } from "framer-motion";
-import { Menu, X} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { HomeFilled } from "./icons/HomeFilled";
 import { AboutMe } from "./icons/AboutMe";
 import { Contact } from "./icons/Contact";
@@ -25,10 +25,6 @@ const navVariants = {
 const linkVariants = {
   hover: { scale: 1.1, transition: { duration: 0.2 } },
 };
-
-const itemsVariants = {
-  hover: {color: "red"}
-}
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,7 +59,7 @@ const Navbar = () => {
     }
     setIsOpen(false);
   };
-  
+
   return (
     <>
       <motion.header
@@ -83,11 +79,20 @@ const Navbar = () => {
 
           <div className="flex items-center gap-4">
             <Button
+              variant="ghost"
+              onClick={toggleTheme}
+              className='fixed right-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] hidden md:flex'
+              title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
+            >
+              {theme === "light" ? "🌙" : "☀️"}
+            </Button>
+            <Button
               variant="outline"
               size="icon"
               onClick={() => setIsOpen((prev) => !prev)}
               className="md:hidden"
               aria-label="Toggle menu"
+              title={`${isOpen ? "Cerrar" : "Abrir"} menú`}
             >
               {isOpen ? <X /> : <Menu />}
             </Button>
@@ -95,7 +100,7 @@ const Navbar = () => {
 
           <nav className="hidden md:flex gap-6">
             {sectionIds.map((item) => (
-                item.id === "project" ? null : (
+              item.id === "project" ? null : (
                 <motion.a
                   key={item.id}
                   href={`#${item.id}`}
@@ -105,7 +110,7 @@ const Navbar = () => {
                   onClick={(e) => handleLinkClick(e, item.id)}
                 >
                   {item.title}
-                </motion.a> 
+                </motion.a>
               )
             ))}
           </nav>
@@ -129,41 +134,34 @@ const Navbar = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (
-                  items.id === "home" ? null : (
+                items.id === "home" ? null : (
                   <motion.a
-                      href={`#${items.id}`}
-                      className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100px] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
-                      onClick={(e) => handleLinkClick(e, items.id)}
-                    >
-                    <motion.li key={items.id} className="w-full h-full flex items-center justify-start p-5">
-                        {items.id === 'about-me' ? 
-                        (
-                          <motion.div className="flex items-center justify-start gap-4">
-                            <HomeFilled />
-                            Home
-                           </motion.div>
-                        ) : (
-                          <motion.div className="flex items-center justify-start gap-4">
-                            {items.icon({ size: 24 })}
-                            {items.title}
-                          </motion.div>
-                        )}
-                  </motion.li>
+                    key={items.id}
+                    href={`#${items.id}`}
+                    className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100px] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    onClick={(e) => handleLinkClick(e, items.id)}
+                  >
+                    <motion.li className="w-full h-full flex items-center justify-start p-5">
+                      <motion.div className="flex items-center justify-start gap-4">
+                        {items.icon({ size: 24 })}
+                        {items.title}
+                      </motion.div>
+                    </motion.li>
                   </motion.a>
                 )
               ))}
+              <Button
+                variant="ghost"
+                onClick={toggleTheme}
+                className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-5 transition-all hover:scale-110 text-2xl w-[50px] h-[50px] mt-4"
+                title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
+              >
+                {theme === "light" ? "🌙" : "☀️"}
+              </Button>
             </motion.ul>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Button
-        variant="ghost"
-        onClick={toggleTheme}
-        className="fixed bottom-4 right-4 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-4 transition-all hover:scale-110 z-50"
-      >
-        {theme === "light" ? "🌙" : "☀️"}
-      </Button>
     </>
   );
 };

@@ -26,8 +26,8 @@ const AboutMe = () => {
               <User2 className="w-5 h-5 text-blue-500" />
               <h2 className="text-xl font-bold text-gray-800 dark:text-white">Presentación</h2>
             </div>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
-              Mi nombre es <span className="font-semibold">Yamid Horacio Rodríguez</span>, soy de Colombia, y cuento con más de 2 años de experiencia desarrollando aplicaciones web y móviles.
+            <p className="text-md md:text-lg text-gray-600 dark:text-gray-300 mb-4">
+              Mi nombre es <span className="font-semibold">Yamid Horacio Rodríguez</span>, <span className="font-semibold">tecnólogo en análisis y desarrollo de software</span> en el <span className="font-semibold"> SENA</span>, y cuento con más de 2 años de experiencia programando aplicaciones web.
             </p>
           </div>
         </div>

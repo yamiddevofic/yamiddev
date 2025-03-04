@@ -7,7 +7,7 @@ import { AboutMe } from '../components/icons/AboutMe';
 import { Computer } from '../components/icons/Computer'
 import SectionAboutMe from '../components/AboutMe';
 import ProjectsAreas from '../components/ProjectsAreas'
-import Technology from '../components/Technology'
+import Technology from '../components/Technology';
 import '../styles/global.css'
 import ButtonProjects from '../components/buttonProjects.astro'
 import ContactForm from '@/components/ContactForm';
@@ -57,7 +57,7 @@ document?.documentElement?.classList.add('dark');
         <ButtonProjects/>
       </div>
     </div>
-    <div id="technology" class="w-full h-[100vh] flex items-center justify-center">
+    <div id="technology" class="w-full max-h-auto flex items-center justify-center">
       <Technology />
     </div>
     <ContactForm client:load />

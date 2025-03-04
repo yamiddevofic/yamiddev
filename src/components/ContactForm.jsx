@@ -38,7 +38,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-16 px-4">
+    <section id="contact" className="w-full py-16 px-4 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">
           Contacto

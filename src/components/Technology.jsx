@@ -48,9 +48,9 @@ const Technology = () => {
   );
 
   return (
-    <section className="w-full py-12 md:py-20 min-h-0" id="technology">
+    <section className="w-full py-12 md:py-20 min-h-0 bg-gradient-to-t from-gray-50 to-from-gray-100 dark:from-gray-900 dark:to-gray-800" id="technology">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text 
+        <h2 className="text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text py-5
                       bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 
                       mb-10 md:mb-16">
           Tecnologías

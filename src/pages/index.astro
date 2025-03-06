@@ -9,9 +9,9 @@ import SectionAboutMe from '../components/AboutMe';
 import ProjectsAreas from '../components/ProjectsAreas'
 import Technology from '../components/Technology';
 import '../styles/global.css'
-import ButtonProjects from '../components/buttonProjects.astro'
 import ContactForm from '@/components/ContactForm';
 import WhatsApp from '@/components/WhatsApp';
+import ButtonProjects from '@/components/buttonProjects';
 // Forzar modo oscuro por defecto
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
@@ -30,31 +30,12 @@ document?.documentElement?.classList.add('dark');
   dark:text-white 
   overflow-x-hidden overflow-y-hidden 
   transition-colors duration-300">
-
-    <!-- Hero Section -->
-    <main id="home" class="container h-[100vh] w-full hidden md:flex justify-center items-center flex-col">
-      <!-- Video de fondo -->
-      <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-        <source src="media/code-2.mp4" type="video/mp4" />
-        Tu navegador no soporta videos.
-      </video>
-      <!-- Overlay negro semitransparente -->
-      <div class="absolute inset-0 bg-black bg-opacity-85"></div>
-      <!-- Encabezado -->
-      <div class="text-center my-16 translate-y-4 animate-[fadeIn_1s_ease-out_forwards] max-w-[75ch] rounded-lg">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 p-4">
-        Yamid Rodriguez
-        </h1>
-        <p class="text-[1.4rem] md:text-xl text-gray-300" id="text">
-        </p>
-      </div>
-         <ButtonProjects  />
-    </main>
+  
     <SectionAboutMe/>
-    <div id="project" class="w-[90%] h-[100vh] rounded-[10px] flex flex-col items-center block md:hidden bg-none pt-[15%]">
-      <div class=" h-[70vh] w-full mb-0 rounded-[10px]" style={{background: 'url(https://cdn.pixabay.com/photo/2022/07/08/05/38/freelance-work-7308505_960_720.png)', backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
+    <div id="project" class="w-[90%] h-[100vh] rounded-[10px] flex flex-col items-center justify-center md:hidden bg-none py-[15%]">
+      <div class=" h-[70vh] w-[90%] mb-0 rounded-[10px]" style={{background: 'url(https://cdn.pixabay.com/photo/2022/07/08/05/38/freelance-work-7308505_960_720.png)', backgroundPosition: 'center', backgroundSize: 'cover'}}></div>
       <div class="w-full h-[30vh] flex items-center justify-center">
-        <ButtonProjects/>
+        <ButtonProjects client:load/>
       </div>
     </div>
     <div id="technology" class="w-full max-h- flex items-center justify-center">
@@ -73,12 +54,7 @@ document?.documentElement?.classList.add('dark');
       >
         <button
           id={`cerrar-${section}`}
-          class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full 
-                 bg-gray-200 dark:bg-gray-800 
-                 hover:bg-gray-300 dark:hover:bg-gray-700 
-                 text-gray-600 dark:text-gray-300 
-                 hover:text-gray-900 dark:hover:text-white 
-                 transition-colors"
+          class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
           <span class="sr-only">Cerrar</span>
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

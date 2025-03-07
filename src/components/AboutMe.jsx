@@ -3,7 +3,7 @@ import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'luci
 import ButtonProjects from './buttonProjects'
 // Componente para renderizar una experiencia individual
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
-  <div className="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
+  <div className="bg-gray-50 dark:bg-gray-800 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
     <div className="flex justify-between items-start mb-3">
       <div className="flex items-center gap-3">
         {logo && (
@@ -19,8 +19,8 @@ const ExperienceCard = ({ company, title, period, location, highlights, logo }) 
         </div>
       </div>
       <div className="text-right">
-        <p className="text-xs text-gray-500 dark:text-gray-500">{period}</p>
-        <p className="text-xs text-gray-500 dark:text-gray-500">{location}</p>
+        <p className="text-xs text-gray-500 dark:text-gray-300">{period}</p>
+        <p className="text-xs text-gray-500 dark:text-gray-300">{location}</p>
       </div>
     </div>
     <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
@@ -95,7 +95,7 @@ const ModernAboutMe = () => {
             Yamid Horacio Rodríguez
           </h1>
           <p className="text-gray-600 dark:text-gray-300 mb-4 text-center">
-            Tecnólogo en Desarrollo de Software
+            Tecnólogo en Análisis y Desarrollo de Software
           </p>
           
           <div className="flex space-x-4 mb-4 md:mb-6">
@@ -132,7 +132,7 @@ const ModernAboutMe = () => {
               Apasionado por el aprendizaje continuo y la resolución creativa de problemas.
             </p>
           </div>
-          <div className="max-h-auto py-6">
+          <div className="max-h-auto py-6 block md:hidden">
             <ButtonProjects client:load/>
           </div>
         </div>
@@ -140,11 +140,16 @@ const ModernAboutMe = () => {
         {/* Experiencias */}
         <div>
           <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
-            <div className="flex items-center">
-              <Briefcase className="w-6 h-6 mr-3 text-blue-500" />
-              <h2 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white">
-                Experiencia Profesional
-              </h2>
+            <div className="grid grid-cols-2 w-full items-center gap-6">
+              <div className='flex items-center justify-start'>
+                <Briefcase className='mr-[3%]'/>
+                <h2 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white">
+                  Experiencia Profesional
+                </h2>
+              </div>
+              <div className="w-full py-6 hidden md:block flex items-center justify-center">
+               <ButtonProjects client:load/>
+              </div>
             </div>
           </div>
           

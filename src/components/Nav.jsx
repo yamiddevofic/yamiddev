@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon} from "lucide-react";
 import { HomeFilled } from "./icons/HomeFilled";
 import { AboutMe } from "./icons/AboutMe";
 import { Contact } from "./icons/Contact";
@@ -10,9 +10,7 @@ import { Computer } from "./icons/Computer";
 import { Button } from "@/components/ui/button"; // Shadcn UI
 
 const sectionIds = [
-  { title: "Inicio", id: "home", icon: HomeFilled },
   { title: "Sobre mí", id: "about-me", icon: AboutMe },
-  { title: "Proyectos", id: "project", icon: Portfolio },
   { title: "Tecnologías", id: "technology", icon: Computer },
   { title: "Contacto", id: "contact", icon: Contact },
 ];

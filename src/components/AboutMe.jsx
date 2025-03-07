@@ -140,14 +140,14 @@ const ModernAboutMe = () => {
         {/* Experiencias */}
         <div>
           <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
-            <div className="grid grid-cols-2 w-full items-center gap-6">
-              <div className='flex items-center justify-start'>
+            <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
+              <div className='flex items-center justify-start w-[100%]'>
                 <Briefcase className='mr-[3%]'/>
-                <h2 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white">
+                <h2 className="text-xl md:text-2xl font-semibold text-gray-800 dark:text-white w-full">
                   Experiencia Profesional
                 </h2>
               </div>
-              <div className="w-full py-6 hidden md:block flex items-center justify-center">
+              <div className="w-full py-6 hidden md:block flex items-center justify-center w-full">
                <ButtonProjects client:load/>
               </div>
             </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'lucide-react';
 import ButtonProjects from './buttonProjects'
-// Componente para renderizar una experiencia individual
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
   <div className="bg-gray-50 dark:bg-gray-800 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
     <div className="flex justify-between items-start mb-3">
@@ -35,7 +34,6 @@ const ExperienceCard = ({ company, title, period, location, highlights, logo }) 
 );
 
 const ModernAboutMe = () => {
-  // Datos de experiencias con logos añadidos
   const experiences = [
     {
       company: "Platzi",
@@ -75,7 +73,6 @@ const ModernAboutMe = () => {
         { icon: Users, text: "Desarrollo de habilidades interpersonales y trabajo en equipo" }
       ]
     }
-    // Puedes agregar más experiencias aquí fácilmente
   ];
 
   return (
@@ -137,7 +134,6 @@ const ModernAboutMe = () => {
           </div>
         </div>
 
-        {/* Experiencias */}
         <div>
           <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">

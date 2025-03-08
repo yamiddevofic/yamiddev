@@ -6,7 +6,7 @@ import { Fire } from '../components/icons/Fire';
 import { AboutMe } from '../components/icons/AboutMe';
 import { Computer } from '../components/icons/Computer'
 import SectionAboutMe from '../components/AboutMe';
-import ProjectsAreas from '../components/ProjectsAreas'
+import Carousel from '@/components/Carousel';
 import Technology from '../components/Technology';
 import '../styles/global.css'
 import ContactForm from '@/components/ContactForm';
@@ -30,36 +30,13 @@ document?.documentElement?.classList.add('dark');
   dark:text-white 
   overflow-x-hidden overflow-y-hidden 
   transition-colors duration-300">
-  
     <SectionAboutMe/>
+    <div id="projects" class="w-full">
+      <Carousel client:load/>
+    </div>
     <div id="technology" class="w-full max-h- flex items-center justify-center">
       <Technology />
     </div>
     <ContactForm client:load />
-    <!-- Secciones deslizantes -->
-    {['projects'].map((section) => (
-      <div
-        id="slide-projects"
-        class="fixed top-0 left-full w-full h-full 
-               bg-white dark:bg-gray-900/90 
-               backdrop-blur-md 
-               transition-transform duration-500 
-               p-2 overflow-y-auto z-50 custom-scrollbar"
-      >
-        <button
-          id={`cerrar-${section}`}
-          class="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
-        >
-          <span class="sr-only">Cerrar</span>
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-        {section === 'projects' ? (
-          <h1 class="text-4xl md:text-5xl py-4 font-bold text-cyan-400 text-center md:text-left ml-6 mb-4 md:mb-0">Proyectos</h1>
-          <ProjectsAreas client:load />
-        ) :  null}
-      </div>
-    ))}
   </div>
 </MainLayout>

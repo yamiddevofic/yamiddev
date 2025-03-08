@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button"; // Shadcn UI
 
 const sectionIds = [
   { title: "Sobre mí", id: "about-me", icon: AboutMe },
+  { title: "Proyectos", id: "projects", icon: Portfolio},
   { title: "Tecnologías", id: "technology", icon: Computer },
   { title: "Contacto", id: "contact", icon: Contact },
 ];

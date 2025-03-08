@@ -2,7 +2,7 @@ import { time } from "framer-motion";
 
 export   const Projects = [
   {
-    title: 'Gestor de Tareas',
+    title: 'Marvyshopmarket',
     description: 'Aplicación web para gestionar tareas con funcionalidades colaborativas y notificaciones en tiempo real.',
     techStack: ['React', 'Node.js', 'MongoDB'],
     image: '/images/gestor-tareas.webp',

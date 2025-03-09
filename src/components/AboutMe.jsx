@@ -1,9 +1,10 @@
 import React from 'react';
 import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'lucide-react';
 import ButtonProjects from './buttonProjects'
+
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
   <div className="bg-gray-50 dark:bg-gray-800 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
-    <div className="flex justify-between items-start mb-3">
+    <div className="flex justify-between items-start mb-3 ">
       <div className="flex items-center gap-3">
         {logo && (
           <img 
@@ -76,7 +77,7 @@ const ModernAboutMe = () => {
   ];
 
   return (
-    <section className="bg-none py-8 md:py-16 px-4 w-[90%]" id='about-me'>
+    <section className="bg-none py-8 md:py-16 px-4 w-[100%] md:w-[90%]" id='about-me'>
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
         {/* Perfil */}
         <div className="flex flex-col items-center">

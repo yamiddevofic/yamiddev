@@ -146,9 +146,8 @@ const ContactForm = () => {
             </form>
           </div>
           
-          {/* Información de contacto y redes sociales */}
-          <div className="flex flex-col space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 border border-gray-200 dark:border-gray-700">
+          <div className="flex flex-col space-y-6 row-span-3">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 border border-gray-200 dark:border-gray-700 h-full md:h-[50%]">
               <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
                 Información de contacto
               </h3>
@@ -186,70 +185,6 @@ const ContactForm = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-5 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
-                Sígueme en redes
-              </h3>
-              
-              <div className="grid grid-cols-4 gap-3">
-                <a 
-                  href="https://github.com/yamiddevofic" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-                >
-                  <div className="text-2xl mb-1 text-gray-700 dark:text-gray-200">
-                    <Github />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 text-xs">
-                    GitHub
-                  </span>
-                </a>
-                
-                <a 
-                  href="https://linkedin.com/in/yamiddev" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-                >
-                  <div className="text-2xl mb-1 text-gray-700 dark:text-gray-200">
-                    <Linkedin />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 text-xs">
-                    LinkedIn
-                  </span>
-                </a>
-                
-                <a 
-                  href="https://x.com/yamiddev" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-                >
-                  <div className="text-2xl mb-1 text-gray-700 dark:text-gray-200">
-                    <X />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 text-xs">
-                    X/Twitter
-                  </span>
-                </a>
-                
-                <a 
-                  href="https://instagram.com/yamiddevofic" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
-                >
-                  <div className="text-2xl mb-1 text-gray-700 dark:text-gray-200">
-                    <Instagram />
-                  </div>
-                  <span className="text-gray-700 dark:text-gray-300 text-xs">
-                    Instagram
-                  </span>
-                </a>
               </div>
             </div>
           </div>

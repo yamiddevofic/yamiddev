@@ -12,6 +12,8 @@ import '../styles/global.css'
 import ContactForm from '@/components/ContactForm';
 import WhatsApp from '@/components/WhatsApp';
 import ButtonProjects from '@/components/buttonProjects';
+import Hero from '@/components/Hero'
+
 // Forzar modo oscuro por defecto
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
@@ -24,12 +26,13 @@ document?.documentElement?.classList.add('dark');
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
   <WhatsApp client:load/>
   <div class="w-full flex flex-col items-center justify-center 
-  bg-gradient-to-b from-gray-100 to-gray-200 
-  dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-900
+  bg-gradient-to-b from-gray-100 to-white 
+  dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-900
   transition-colors duration-300
   dark:text-white 
   overflow-x-hidden overflow-y-hidden 
   transition-colors duration-300">
+    <!-- <Hero client:load/> -->
     <SectionAboutMe/>
     <div id="projects" class="w-full">
       <Carousel client:load/>

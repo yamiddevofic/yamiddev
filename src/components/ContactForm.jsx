@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Github } from './icons/Github';
 import { Linkedin } from './icons/Linkedin';
-import { Twitter } from './icons/Twitter';
+import X from './icons/X';
 import { Instagram } from './icons/Instagram';
 
 const ContactForm = () => {
@@ -224,16 +224,16 @@ const ContactForm = () => {
                 </a>
                 
                 <a 
-                  href="https://twitter.com/yamiddev" 
+                  href="https://x.com/yamiddev" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex flex-col items-center p-2 bg-gray-50 dark:bg-gray-700 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
                 >
                   <div className="text-2xl mb-1 text-gray-700 dark:text-gray-200">
-                    <Twitter />
+                    <X />
                   </div>
                   <span className="text-gray-700 dark:text-gray-300 text-xs">
-                    Twitter
+                    X/Twitter
                   </span>
                 </a>
                 

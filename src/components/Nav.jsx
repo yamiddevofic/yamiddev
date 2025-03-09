@@ -77,10 +77,26 @@ const Navbar = () => {
           </motion.a>
 
           <div className="flex items-center gap-4">
+            <nav className="hidden md:flex gap-6">
+              {sectionIds.map((item) => (
+                item.id === "project" ? null : (
+                  <motion.a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    variants={linkVariants}
+                    whileHover="hover"
+                    className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
+                    onClick={(e) => handleLinkClick(e, item.id)}
+                  >
+                    {item.title}
+                  </motion.a>
+                )
+              ))}
+            </nav>
             <Button
               variant="ghost"
               onClick={toggleTheme}
-              className='fixed right-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] hidden md:flex'
+              className=' bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] hidden md:flex'
               title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
             >
               {theme === "light" ? <Moon className="text-xl"/> : <Sun className="text-xl"/>}
@@ -96,23 +112,6 @@ const Navbar = () => {
               {isOpen ? <X /> : <Menu />}
             </Button>
           </div>
-
-          <nav className="hidden md:flex gap-6">
-            {sectionIds.map((item) => (
-              item.id === "project" ? null : (
-                <motion.a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  variants={linkVariants}
-                  whileHover="hover"
-                  className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
-                  onClick={(e) => handleLinkClick(e, item.id)}
-                >
-                  {item.title}
-                </motion.a>
-              )
-            ))}
-          </nav>
         </div>
       </motion.header>
 

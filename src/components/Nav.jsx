@@ -149,8 +149,8 @@ const Navbar = () => {
                   </motion.a>
                 )
               ))}
-              <div className="w-full h-full rounded-lg flex flex-col items-center p-4 bg-gray-200 dark:bg-gray-800">
-                <h2 className="mt-5">{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}</h2>
+              <div className="w-full h-full rounded-lg flex flex-col items-center p-4 bg-gray-200 dark:bg-gray-800 justify-center">
+                <h2 className="mt-5 text-xl">{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}</h2>
                 <Button
                   variant="ghost"
                   onClick={toggleTheme}

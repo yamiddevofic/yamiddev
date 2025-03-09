@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon} from "lucide-react";
+import { Menu, X, Moon, Sun} from "lucide-react";
 import { HomeFilled } from "./icons/HomeFilled";
 import { AboutMe } from "./icons/AboutMe";
 import { Contact } from "./icons/Contact";
@@ -83,7 +83,7 @@ const Navbar = () => {
               className='fixed right-2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] hidden md:flex'
               title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
             >
-              {theme === "light" ? "🌙" : "☀️"}
+              {theme === "light" ? <Moon className="text-xl"/> : <Sun className="text-xl"/>}
             </Button>
             <Button
               variant="outline"
@@ -149,14 +149,17 @@ const Navbar = () => {
                   </motion.a>
                 )
               ))}
-              <Button
-                variant="ghost"
-                onClick={toggleTheme}
-                className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-5 transition-all hover:scale-110 text-2xl w-[50px] h-[50px] mt-4"
-                title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
-              >
-                {theme === "light" ? "🌙" : "☀️"}
-              </Button>
+              <div className="w-full h-full rounded-lg flex flex-col items-center p-4 bg-gray-200 dark:bg-gray-800">
+                <h2 className="mt-5">{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}</h2>
+                <Button
+                  variant="ghost"
+                  onClick={toggleTheme}
+                  className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-5 transition-all hover:scale-110 text-2xl w-[50px] h-[50px] mt-4"
+                  title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
+                >
+                  {theme === "light" ? <Moon className="text-xl"/> : <Sun className="text-xl"/>}
+                </Button>
+              </div>
             </motion.ul>
           </motion.div>
         )}

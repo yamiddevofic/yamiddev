@@ -5,23 +5,26 @@ import ButtonProjects from './buttonProjects'
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
   <div className="bg-gray-50 dark:bg-gray-800 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
     <div className="flex flex-col md-flex-row justify-between items-start mb-3 ">
-      <div className="flex items-center gap-3">
-        {logo && (
-          <img 
-            src={logo} 
-            alt={`${company} logo`} 
-            className="w-10 h-10 rounded-full object-cover"
-          />
-        )}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{title}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">{company}</p>
+      <div className="flex flex-col md:flex-row items-left md:items-center gap-3 w-full justify-between">
+        <div className='flex items-center justify-cente'>
+          {logo && (
+            <img 
+              src={logo} 
+              alt={`${company} logo`} 
+              className="w-10 h-10 rounded-full object-cover"
+            />
+          )}
+          <div className={`${logo ? 'ml-4' : ''}`}>
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{title}</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{company}</p>
+          </div>
+        </div>
+        <div className="text-left md:text-right w-auto">
+          <p className="text-xs text-gray-500 dark:text-gray-300">{period}</p>
+          <p className="text-xs text-gray-500 dark:text-gray-300">{location}</p>
         </div>
       </div>
-      <div className="text-left md:text-right w-full">
-        <p className="text-xs text-gray-500 dark:text-gray-300">{period}</p>
-        <p className="text-xs text-gray-500 dark:text-gray-300">{location}</p>
-      </div>
+      
     </div>
     <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
       {highlights.map((highlight, index) => (

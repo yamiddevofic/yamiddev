@@ -98,9 +98,15 @@ const Carousel = () => {
             {/* Imagen con altura fija para mantener el mismo tamaño */}
             <div className="relative w-full h-64 overflow-hidden">
               <img
-                src={Projects[currentIndex].image}
+                src={Projects[currentIndex].image[0]}
                 alt={Projects[currentIndex].title}
-                className="w-full h-full object-cover"
+                className='w-full h-full object-cover dark:hidden'
+                style={{ backgroundPosition: 'center' }}
+              />
+              <img
+                src={Projects[currentIndex].image[1]}
+                alt={Projects[currentIndex].title}
+                className='w-full h-full object-cover dark:block'
                 style={{ backgroundPosition: 'center' }}
               />
             </div>

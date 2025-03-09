@@ -42,7 +42,7 @@ const ModernAboutMe = () => {
     {
       company: "Platzi",
       title: "Estudiante",
-      period: "Agos 2024 - Actualmente",
+      period: "Ago 2024 - Actualmente",
       location: "Remoto",
       logo: "https://static.platzi.com/media/uploads/icon_77b5127626.png",
       highlights: [
@@ -60,7 +60,7 @@ const ModernAboutMe = () => {
       location: "Remoto",
       logo: "",
       highlights: [
-        { icon: Code, text: "Estudio y análisis de servidores y CMS WordPress" },
+        { icon: Code, text: "Estudio y análisis de servidores, CMS WordPress" },
         { icon: Server, text: "Soporte técnico de primer nivel" },
         { icon: MessageCircle, text: "Capacitación y atención a clientes" }
       ]
@@ -81,6 +81,9 @@ const ModernAboutMe = () => {
 
   return (
     <section className="bg-none py-8 md:py-16 px-4 w-[100%] md:w-[90%]" id='about-me'>
+      <h2 className="text-4xl md:text-5xl font-bold text-center my-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">
+        Sobre mí
+      </h2>
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
         {/* Perfil */}
         <div className="flex flex-col items-center">
@@ -138,8 +141,8 @@ const ModernAboutMe = () => {
         <div>
           <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
-              <div className='flex items-center justify-start w-[100%]'>
-                <Briefcase className='mr-[3%] text-blue-500'/>
+              <div className='flex items-center justify-start w-screen'>
+                <Briefcase className='mr-[2rem] text-blue-500'/>
                 <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
                   Experiencia Profesional
                 </h2>

@@ -34,7 +34,7 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full max-w-8xl mx-auto py-12 px-4 overflow-hidden flex flex-col items-center justify-center">
-      <h2 className="text-4xl md:text-5xl font-bold text-center pb-4 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-5 pb-5">
+      <h2 className="text-4xl md:text-5xl font-bold text-center pb-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-5 pb-5">
         Proyectos
       </h2>
       

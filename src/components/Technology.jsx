@@ -41,7 +41,7 @@ const Technology = () => {
           <div
             key={index}
             className="flex flex-col items-center justify-center p-4 md:p-6 min-h-[120px] rounded-lg 
-                       bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 
+                       bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 
                        shadow-sm hover:shadow-md transition-all duration-300 transform hover:scale-105"
           >
             <tech.Icon className={`w-8 h-8 md:w-10 md:h-10 ${tech.color} mb-3`} />

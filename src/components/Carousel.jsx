@@ -39,7 +39,7 @@ const Carousel = () => {
       </h2>
       
       <div 
-        className="relative w-full max-w-4xl mx-auto rounded-xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-gray-100 dark:bg-gray-900"
+        className="relative w-full max-w-4xl mx-auto rounded-xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
@@ -93,7 +93,7 @@ const Carousel = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="w-full h-auto flex flex-col rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-gray-100 dark:bg-gray-900"
+            className="w-full h-auto flex flex-col rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900"
           >
             {/* Imagen con altura fija para mantener el mismo tamaño */}
             <div className="relative w-full h-64 overflow-hidden">

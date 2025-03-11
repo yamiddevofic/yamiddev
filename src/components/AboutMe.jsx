@@ -3,7 +3,7 @@ import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'luci
 import ButtonProjects from './buttonProjects'
 
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
-  <div className="bg-gray-50 dark:bg-gray-800 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
+  <div className="bg-gray-100 dark:bg-gray-900 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-lg transition-all">
     <div className="flex flex-col md-flex-row justify-between items-start mb-3 ">
       <div className="flex flex-col md:flex-row items-left md:items-center gap-3 w-full justify-between">
         <div className='flex items-center justify-cente'>
@@ -80,8 +80,8 @@ const ModernAboutMe = () => {
   ];
 
   return (
-    <section className="bg-none py-8 md:py-16 px-4 w-[100%] md:w-[90%]" id='about-me'>
-      <h2 className="text-4xl md:text-5xl font-bold text-center my-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">
+    <section className="pt-[10%] md:pt-[5%] pb-[5%] w-[100%] px-[5%]" id='about-me'>
+      <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">
         Sobre mí
       </h2>
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
@@ -126,13 +126,13 @@ const ModernAboutMe = () => {
           </div>
 
           {/* Información Personal */}
-          <div className="w-full bg-gray-50 dark:bg-gray-800 p-4 md:p-5 rounded-lg mb-4 md:mb-6">
+          <div className="w-full bg-gray-100 dark:bg-gray-900 p-4 md:p-5 rounded-lg mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700">
             <div className="flex items-center mb-3">
               <User2 className="w-5 h-5 mr-2 text-blue-500" />
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Sobre Mí</h2>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-300">
-              Tecnólogo en análisis y desarrollo de software con más de 2 años de experiencia en programación web. 
+              Cuento con más de 2 años de experiencia en programación web. 
               Apasionado por el aprendizaje continuo y la resolución creativa de problemas.
             </p>
           </div>
@@ -145,8 +145,8 @@ const ModernAboutMe = () => {
                 <Briefcase className='mr-[2rem] text-blue-500'/>
                 <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
                   Experiencia Profesional
-                </h2>
-              </div>
+                </h2> 
+              </div>                                  
             </div>
           </div>
           

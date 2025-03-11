@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun} from "lucide-react";
+import { Menu, X, Moon, Sun, Home} from "lucide-react";
 import { HomeFilled } from "./icons/HomeFilled";
 import { AboutMe } from "./icons/AboutMe";
 import { Contact } from "./icons/Contact";
@@ -10,6 +10,7 @@ import { Computer } from "./icons/Computer";
 import { Button } from "@/components/ui/button"; // Shadcn UI
 
 const sectionIds = [
+  {title: "Inicio", id: "home", icon: HomeFilled},
   { title: "Sobre mí", id: "about-me", icon: AboutMe },
   { title: "Proyectos", id: "projects", icon: Portfolio},
   { title: "Tecnologías", id: "technology", icon: Computer },
@@ -65,7 +66,7 @@ const Navbar = () => {
         variants={navVariants}
         initial="hidden"
         animate="visible"
-        className="bg-white dark:bg-slate-900 shadow-md fixed w-full top-0 z-50 transition-colors duration-300"
+        className="bg-white dark:bg-slate-950 shadow-md fixed w-full top-0 z-50 transition-colors duration-300"
       >
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <motion.a
@@ -132,7 +133,7 @@ const Navbar = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {sectionIds.map((items) => (
-                items.id === "home" ? null : (
+                (
                   <motion.a
                     key={items.id}
                     href={`#${items.id}`}

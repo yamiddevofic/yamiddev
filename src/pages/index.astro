@@ -18,20 +18,14 @@ import Hero from '@/components/Hero'
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
 
-// -----------------------
-// Componente React: ProjectsAreas
-// -----------------------
-
 ---
 <MainLayout title="Yamid Dev | Desarrollador Full Stack">
   <WhatsApp client:load/>
   <div class="w-full flex flex-col items-center justify-center 
-  bg-gradient-to-b from-gray-100 to-white 
-  dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-900
-  transition-colors duration-300
+  bg-[#fff]
+  dark:bg-[#020617] transition-colors duration-300
   dark:text-white 
-  overflow-x-hidden overflow-y-hidden 
-  transition-colors duration-300">
+  overflow-x-hidden overflow-y-hidden">
     <Hero client:load/>
     <SectionAboutMe/>
     <div id="projects" class="w-full">

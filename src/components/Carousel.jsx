@@ -44,47 +44,51 @@ const Carousel = () => {
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Botones de navegación */}
-        <button 
-          onClick={goToPrevious}
-          className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
-          aria-label="Proyecto anterior"
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
+        {Projects.length > 1 && (
+          <>
+            <button 
+            onClick={goToPrevious}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
+            aria-label="Proyecto anterior"
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M15 19l-7-7 7-7" 
-            />
-          </svg>
-        </button>
-        
-        <button 
-          onClick={goToNext}
-          className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
-          aria-label="Proyecto siguiente"
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M15 19l-7-7 7-7" 
+              />
+            </svg>
+          </button>
+          
+          <button 
+            onClick={goToNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
+            aria-label="Proyecto siguiente"
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M9 5l7 7-7 7" 
-            />
-          </svg>
-        </button>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M9 5l7 7-7 7" 
+              />
+            </svg>
+          </button>
+        </>
+        )}
         
         <AnimatePresence mode="wait">
           <motion.div
@@ -94,6 +98,7 @@ const Carousel = () => {
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
             className="w-full h-auto flex flex-col rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900"
+            onClick={() => window.open(Projects[currentIndex].url, '_blank')}
           >
             {/* Imagen con altura fija para mantener el mismo tamaño */}
             <div className="relative w-full h-64 overflow-hidden">
@@ -123,7 +128,7 @@ const Carousel = () => {
               </div>
               <div>
                 <p className="mt-2 text-gray-500 text-xs md:text-sm">
-                  Duración: {Projects[currentIndex].time}
+                  {Projects[currentIndex].time === "En desarrollo" ? "En desarrollo" : "Duración: " + Projects[currentIndex].time}
                 </p>
                 <div className="mt-2 flex flex-wrap gap-1">
                   {Projects[currentIndex].techStack.map((tech, index) => (
@@ -142,11 +147,13 @@ const Carousel = () => {
       </div>
       
       {/* Indicadores circulares */}
-      <div className="flex mt-4 space-x-3 justify-center">
-        {Projects.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
+      {
+      Projects.length > 1 && (
+        <div className="flex mt-4 space-x-3 justify-center">
+          {Projects.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
             className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
               currentIndex === index 
                 ? 'bg-blue-600 scale-125' 
@@ -156,6 +163,7 @@ const Carousel = () => {
           ></button>
         ))}
       </div>
+      )}
     </div>
   );
 };

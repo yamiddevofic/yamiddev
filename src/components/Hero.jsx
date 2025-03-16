@@ -28,9 +28,7 @@ const Hero = () => {
       className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#0e1335] dark:to-[#030617] p-8 sm:p-12 lg:p-16 relative overflow-hidden"
     >
       {/* Fondo decorativo animado */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-10 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:32px_32px] animate-gradient-pan"></div>++++++++++++++++++-
-      +
-      
+      <div className="absolute inset-0 opacity-20 dark:opacity-10 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:32px_32px] animate-gradient-pan"></div>
       <motion.div
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}

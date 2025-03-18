@@ -15,6 +15,6 @@ export   const Projects = [
     techStack: ['Flutter', 'Dart', 'Hive'],
     image: ['/images/finoapp.jpg', '/images/finoapp-2.jpg'],
     time: 'En desarrollo',
-    url: 'https://github.com/yamiddevofic/finoapp'
+    url: 'https://github.com/yamiddevofic/fino_app'
   }
 ];

@@ -24,18 +24,28 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulación
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setSubmitStatus(null), 3000);
+      const response = await fetch('https://yamid.dev/send_email.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+  
+      const result = await response.json();
+      
+      if (result.status === 'success') {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch (error) {
       setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus(null), 3000);
     } finally {
       setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 3000);
     }
   };
+  
 
   return (
     <section id="contact" className="w-full pt-[10%] md:pt-[3%] pb-[7%] px-4 bg-none">

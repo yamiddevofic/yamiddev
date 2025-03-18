@@ -97,7 +97,7 @@ const Carousel = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="w-full h-auto flex flex-col rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900"
+            className="w-full h-auto flex flex-col rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900 cursor-pointer"
             onClick={() => window.open(Projects[currentIndex].url, '_blank')}
           >
             {/* Imagen con altura fija para mantener el mismo tamaño */}

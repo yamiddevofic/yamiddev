@@ -16,5 +16,13 @@ export   const Projects = [
     image: ['/images/finoapp.jpg', '/images/finoapp-2.jpg'],
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/fino_app'
+  },
+  {
+    title: 'Portafolio web profesional',
+    description: 'Portafolio es una aplicación web que permite a los usuarios gestionar sus finanzas personales de manera sencilla y eficiente.',
+    techStack: ['Astro', 'React', 'Tailwind'],
+    image: ['/images/portfolio.jpg', '/images/portfolio-2.jpg'],
+    time: 'En desarrollo',
+    url: 'https://github.com/yamiddevofic/yamiddev'
   }
 ];

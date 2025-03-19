@@ -2,12 +2,12 @@ import { time } from "framer-motion";
 
 export   const Projects = [
   {
-    title: 'Marvyshopmarket',
-    description: 'Marvy Shopmarket es una aplicación web diseñada para ayudar a las tiendas de barrio a gestionar eficientemente la información de sus ventas, productos, suministros y proveedores.',
-    techStack: ['React', 'Tailwind', 'Python', 'Flask'],
-    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
+    title: 'Portafolio web profesional',
+    description: 'Portafolio es una aplicación web que permite a los usuarios gestionar sus finanzas personales de manera sencilla y eficiente.',
+    techStack: ['Astro', 'React', 'Tailwind'],
+    image: ['/images/portfolio.jpg', '/images/portfolio-2.jpg'],
     time: 'En desarrollo',
-    url: 'https://github.com/yamiddevofic/marvyshopmarket'
+    url: 'https://github.com/yamiddevofic/yamiddev'
   },
   {
     title: 'Fino App',
@@ -18,11 +18,11 @@ export   const Projects = [
     url: 'https://github.com/yamiddevofic/fino_app'
   },
   {
-    title: 'Portafolio web profesional',
-    description: 'Portafolio es una aplicación web que permite a los usuarios gestionar sus finanzas personales de manera sencilla y eficiente.',
-    techStack: ['Astro', 'React', 'Tailwind'],
-    image: ['/images/portfolio.jpg', '/images/portfolio-2.jpg'],
+    title: 'Marvyshopmarket',
+    description: 'Marvy Shopmarket es una aplicación web diseñada para ayudar a las tiendas de barrio a gestionar eficientemente la información de sus ventas, productos, suministros y proveedores.',
+    techStack: ['React', 'Tailwind', 'Python', 'Flask'],
+    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
     time: 'En desarrollo',
-    url: 'https://github.com/yamiddevofic/yamiddev'
-  }
+    url: 'https://github.com/yamiddevofic/marvyshopmarket'
+  },
 ];

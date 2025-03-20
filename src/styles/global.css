@@ -40,7 +40,6 @@
     transition: width 0.4s ease;
   }
     
-  
   @layer base {
   :root {
         --background: 0 0% 100%;
@@ -105,4 +104,4 @@
     @apply bg-background text-foreground;
     }
 }
-  
+

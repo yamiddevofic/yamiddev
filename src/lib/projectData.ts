@@ -23,6 +23,6 @@ export   const Projects = [
     techStack: ['React', 'Tailwind', 'Python', 'Flask'],
     image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
     time: 'En desarrollo',
-    url: 'https://github.com/yamiddevofic/marvyshopmarket'
+    url: 'https://github.com/yamiddevofic/Marvy_Shopmarket'
   },
 ];

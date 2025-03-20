@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const textElement = document.getElementById("text");
+    if (textElement) {
         const text = 'Desarrollador JavaScript & Creador de Contenido';
         let index = 0;
 
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(() => {
             typeEffect();
         }, 450);
+    }
 
     const sections = ['projects'];
 
@@ -35,5 +37,30 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionEl.style.transform = 'translateX(0)';
         });
     }
+    });
+
+    const elements = document.querySelectorAll('.js-show-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // El elemento es visible → animo para "aparecer"
+            entry.target.classList.remove('opacity-0', 'animate-fadeOutDown');
+            entry.target.classList.add('animate-fadeInUp');
+        } else {
+            // El elemento salió de la vista → animo para "desaparecer"
+            entry.target.classList.remove('animate-fadeInUp');
+            entry.target.classList.add('animate-fadeOutDown');
+        }
+        });
+    }, {
+        threshold: 0.1 // Ajusta según necesites (0.1 = 10% visible)
+    });
+
+    // Observamos cada elemento que tenga la clase .js-show-on-scroll
+    elements.forEach(el => {
+        // opcional: asegurarnos de que arranquen ocultos
+        el.classList.add('opacity-0');
+        observer.observe(el);
     });
 });

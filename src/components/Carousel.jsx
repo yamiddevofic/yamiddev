@@ -1,169 +1,193 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Projects } from '../lib/projectData'; // Ajusta la ruta según tu estructura
+import React, { useState, useEffect, useRef } from 'react';
+import { Projects } from '../lib/projectData';
+import { motion } from 'framer-motion';
 
 const Carousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const goToSlide = useCallback((index) => {
-    setCurrentIndex(index);
-  }, []);
-
-  const goToPrevious = useCallback(() => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? Projects.length - 1 : prevIndex - 1
-    );
-  }, []);
-
-  const goToNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex + 1) % Projects.length
-    );
-  }, []);
+  const [itemWidth, setItemWidth] = useState(0);
+  const carouselRef = useRef(null);
+  const [visibleItems, setVisibleItems] = useState(1);
+  const [gap, setGap] = useState(32); // Estado para manejar el gap dinámicamente
 
   useEffect(() => {
-    if (isPaused) return;
-    
-    const interval = setInterval(() => {
-      goToNext();
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, [isPaused, goToNext]);
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        let items = 3; // Por defecto en desktop
+        const newGap = window.innerWidth < 640 ? 16 : 32; // Gap de 16px en móvil, 32px en desktop
+        setGap(newGap);
+
+        if (window.innerWidth < 640) {
+          items = 1; // En móvil
+        } else if (window.innerWidth < 1024) {
+          items = 2; // En tablet
+        }
+
+        setVisibleItems(items);
+
+        if (carouselRef.current) {
+          const containerWidth = carouselRef.current.clientWidth;
+          const paddingX = window.innerWidth < 640 ? 8 : 24; // p-2 (8px) en móvil, sm:p-6 (24px) en desktop
+          const availableWidth = containerWidth - paddingX * 2;
+
+          const calculatedWidth =
+            items === 1
+              ? availableWidth - 32 // Margen total de 32px (16px a cada lado)
+              : (availableWidth - newGap * (items - 1)) / items;
+
+          setItemWidth(calculatedWidth);
+        }
+
+        // Ajustar el índice actual si es necesario
+        const maxIndex = Math.max(Projects.length - items, 0);
+        setCurrentIndex((prev) => Math.min(prev, maxIndex));
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      handleResize(); // Ejecutar al montar el componente
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => {
+      const maxIndex = Math.max(Projects.length - visibleItems, 0);
+      return Math.min(prev + 1, maxIndex);
+    });
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
+  };
 
   return (
-    <div className="relative w-full max-w-8xl mx-auto py-12 px-4 overflow-hidden flex flex-col items-center justify-center">
-      <h2 className="text-4xl md:text-5xl font-bold text-center pb-8 mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-5 pb-5">
+    <div className="relative w-full max-w-8xl mx-auto py-6 sm:py-12 px-2 sm:px-4 overflow-hidden flex flex-col items-center justify-center js-show-on-scroll">
+      <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold text-center pb-4 sm:pb-8 mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-3 sm:pt-5">
         Proyectos
       </h2>
-      
-      <div 
-        className="relative w-full max-w-4xl mx-auto rounded-xl  overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* Botones de navegación */}
-        {Projects.length > 1 && (
-          <>
-            <button 
-            onClick={goToPrevious}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
-            aria-label="Proyecto anterior"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M15 19l-7-7 7-7" 
-              />
-            </svg>
-          </button>
-          
-          <button 
-            onClick={goToNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-gray-800/80 p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
-            aria-label="Proyecto siguiente"
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-6 w-6" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M9 5l7 7-7 7" 
-              />
-            </svg>
-          </button>
-        </>
-        )}
-        
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={Projects[currentIndex].title}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-            className="w-full h-auto flex flex-col rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 cursor-pointer"
-            onClick={() => window.open(Projects[currentIndex].url, '_blank')}
-          >
-            {/* Imagen con altura fija para mantener el mismo tamaño */}
-            <div className="relative w-full h-64 overflow-hidden">
-              <img
-                src={Projects[currentIndex].image[0]}
-                alt={Projects[currentIndex].title}
-                className='w-full h-full object-cover dark:hidden'
-                style={{ backgroundPosition: 'center' }}
-              />
-              <img
-                src={Projects[currentIndex].image[1]}
-                alt={Projects[currentIndex].title}
-                className='w-full h-full object-cover dark:block'
-                style={{ backgroundPosition: 'center' }}
-              />
-            </div>
 
-            {/* Contenido */}
-            <div className="flex flex-col justify-between p-6">
-              <div>
-                <h2 className="text-xl md:text-2xl font-bold line-clamp-1">
-                  {Projects[currentIndex].title}
-                </h2>
-                <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm md:text-base line-clamp-2 md:line-clamp-3">
-                  {Projects[currentIndex].description}
-                </p>
-              </div>
-              <div>
-                <p className="mt-2 text-gray-500 text-xs md:text-sm">
-                  {Projects[currentIndex].time === "En desarrollo" ? "En desarrollo" : "Duración: " + Projects[currentIndex].time}
-                </p>
-                <div className="mt-2 flex flex-wrap gap-1">
-                  {Projects[currentIndex].techStack.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-2 py-1 text-xs rounded-full whitespace-nowrap"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+      <div
+        className="relative w-full max-w-10xl mx-auto rounded-xl overflow-hidden"
+        ref={carouselRef}
+      >
+        <div className="overflow-hidden">
+          <motion.div
+            animate={{ x: -currentIndex * (itemWidth + gap) }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="flex gap-4 sm:gap-8 p-2 sm:p-6"
+            style={{ width: 'fit-content' }}
+          >
+            {Projects.map((project) => (
+              <motion.div
+                key={project.id}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 js-show-on-scroll flex-shrink-0"
+                style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
+              >
+                {/* Imagen con altura adaptativa para móviles */}
+                <div className="relative w-full h-40 sm:h-48 overflow-hidden rounded-md">
+                  <img
+                    src={project.image[0]}
+                    alt={project.title}
+                    className="w-full h-full object-cover dark:hidden"
+                  />
+                  <img
+                    src={project.image[1]}
+                    alt={project.title}
+                    className="w-full h-full object-cover hidden dark:block"
+                  />
                 </div>
-              </div>
-            </div>
+
+                {/* Contenido optimizado para móviles */}
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-gray-800 dark:text-gray-100 pt-3 sm:pt-4 line-clamp-1">
+                      {project.title}
+                    </h3>
+                    <p className="mt-1 sm:mt-2 text-gray-600 dark:text-gray-300 mb-2 sm:mb-4 text-sm sm:text-base line-clamp-2 sm:line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
+                  <div className="mt-auto">
+                    <p className="mt-1 sm:mt-2 text-gray-500 text-xs">
+                      {project.time === 'En desarrollo'
+                        ? 'En desarrollo'
+                        : 'Duración: ' + project.time}
+                    </p>
+                    <div className="mt-1 sm:mt-2 flex flex-wrap gap-1">
+                      {/* Limitar el número de tecnologías mostradas en móvil */}
+                      {project.techStack
+                        .slice(0, typeof window !== 'undefined' ? (window.innerWidth < 768 ? 3 : project.techStack.length) : project.techStack.length)
+                        .map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 px-2 py-0.5 text-xs rounded-full whitespace-nowrap"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      {project.techStack.length > 3 && typeof window !== 'undefined' && window.innerWidth < 768 && (
+                        <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 px-2 py-0.5 text-xs rounded-full">
+                          +{project.techStack.length - 3}
+                        </span>
+                      )}
+                    </div>
+                    <a
+                      href={project.url}
+                      className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold mt-2 sm:mt-4 inline-block text-sm sm:text-base"
+                    >
+                      Ver más
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
-        </AnimatePresence>
+        </div>
+
+        {/* Botones de navegación ajustados para móvil */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
+          aria-label="Proyecto anterior"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 sm:h-6 sm:w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
+          aria-label="Proyecto siguiente"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 sm:h-6 sm:w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
       </div>
-      
-      {/* Indicadores circulares */}
-      {
-      Projects.length > 1 && (
-        <div className="flex mt-4 space-x-3 justify-center">
-          {Projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
-              currentIndex === index 
-                ? 'bg-blue-600 scale-125' 
-                : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500'
-            }`}
-            aria-label={`Ir al proyecto ${index + 1}`}
-          ></button>
-        ))}
-      </div>
-      )}
     </div>
   );
 };

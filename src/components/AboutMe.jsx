@@ -3,7 +3,7 @@ import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'luci
 import ButtonProjects from './buttonProjects'
 
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
-  <div className="bg-white dark:bg-gray-900 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-lg transition-all">
+  <div className="bg-white dark:bg-gray-900 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-lg transition-all js-show-on-scroll">
     <div className="flex flex-col md-flex-row justify-between items-start mb-3 ">
       <div className="flex flex-col md:flex-row items-left md:items-center gap-3 w-full justify-between">
         <div className='flex items-center justify-cente'>
@@ -34,6 +34,15 @@ const ExperienceCard = ({ company, title, period, location, highlights, logo }) 
         </li>
       ))}
     </ul>
+  </div>
+);
+
+const EducationCard = ({ title, institution, year, description }) => (
+  <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+    <h3 className="text-xl font-semibold mb-2">{title}</h3>
+    <p className="text-gray-600 dark:text-gray-300 mb-1">{institution}</p>
+    <p className="text-sm text-gray-500 dark:text-gray-400">{year}</p>
+    <p className="mt-3 text-gray-700 dark:text-gray-200">{description}</p>
   </div>
 );
 
@@ -81,13 +90,13 @@ const ModernAboutMe = () => {
 
   return (
     <section className="pt-[10%] md:pt-[5%] pb-[5%] w-[100%] px-[5%]" id='about-me'>
-      <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">
+      <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
         Sobre mí
       </h2>
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
         {/* Perfil */}
         <div className="flex flex-col items-center">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500/30 dark:ring-blue-400/30 mb-4 md:mb-6">
+          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500/30 dark:ring-blue-400/30 mb-4 md:mb-6 js-show-on-scroll">
             <img 
               src="./dev.jpg" 
               alt="Yamid Horacio Rodríguez"
@@ -95,14 +104,14 @@ const ModernAboutMe = () => {
             />
           </div>
           
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-2">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-2 js-show-on-scroll">
             Yamid Horacio Rodríguez
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 mb-4 text-center">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 text-center js-show-on-scroll">
             Tecnólogo en Análisis y Desarrollo de Software
           </p>
           
-          <div className="flex space-x-4 mb-4 md:mb-6">
+          <div className="flex space-x-4 mb-4 md:mb-6 js-show-on-scroll">
             <a 
               href="https://github.com/yamiddevofic" 
               target="_blank" 
@@ -126,7 +135,7 @@ const ModernAboutMe = () => {
           </div>
 
           {/* Información Personal */}
-          <div className="w-full bg-white dark:bg-gray-900 p-4 md:p-5 rounded-lg mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700">
+          <div className="w-full bg-white dark:bg-gray-900 p-4 md:p-5 rounded-lg mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 js-show-on-scroll">
             <div className="flex items-center mb-3">
               <User2 className="w-5 h-5 mr-2 text-blue-500" />
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Sobre Mí</h2>

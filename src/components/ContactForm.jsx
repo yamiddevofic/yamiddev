@@ -50,13 +50,13 @@ const ContactForm = () => {
   return (
     <section id="contact" className="w-full pt-[10%] md:pt-[3%] pb-[7%] px-4 bg-none">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center pb-8 pt-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500">
+        <h2 className="text-4xl md:text-5xl font-bold text-center pb-8 pt-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
           Contacto
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Formulario de contacto */}
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-5 border border-gray-200 dark:border-gray-700">
+          <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-5 border border-gray-200 dark:border-gray-700 js-show-on-scroll">
             <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
               Envíame un mensaje
             </h3>
@@ -156,7 +156,7 @@ const ContactForm = () => {
             </form>
           </div>
           
-          <div className="flex flex-col space-y-6 row-span-3">
+          <div className="flex flex-col space-y-6 row-span-3 js-show-on-scroll">
             <div className="bg-white dark:bg-gray-900 rounded-lg shadow p-5 border border-gray-200 dark:border-gray-700 h-auto">
               <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
                 Información de contacto

@@ -61,7 +61,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="#projects"
-            className="group relative px-6 py-3 text-lg rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium transition-all duration-300 overflow-hidden w-full sm:w-auto text-center"
+            className="group relative px-6 py-3 text-lg rounded-full bg-transparent border-2 border-blue-600 text-blue-600 font-medium transition-all duration-300 overflow-hidden w-full sm:w-auto text-center js-show-on-scroll"
             onClick={(e) => handleLinkClick(e, "projects")}
           >
             <span className="absolute inset-0 w-0 bg-blue-600 transition-all duration-300 ease-out group-hover:w-full"></span>
@@ -75,11 +75,11 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             href="#contact"
-            className="px-6 py-3 text-lg rounded-full bg-blue-600 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-blue-500/30 w-full sm:w-auto text-center hover:bg-blue-700"
+            className="px-6 py-3 text-lg rounded-full bg-blue-600 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-blue-500/30 w-full sm:w-auto text-center hover:bg-blue-700 js-show-on-scroll"
             onClick={(e) => handleLinkClick(e, "contact")}
           >
             <span className="flex items-center justify-center gap-2">
-              Hablemos de tu proyecto
+              Contáctame
               <span className="text-xl animate-pulse">✨</span>
             </span>
           </motion.a>

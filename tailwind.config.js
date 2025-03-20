@@ -77,6 +77,32 @@ module.exports = {
             grow: 'grow 0.3s ease-in-out forwards',
             shrink: 'shrink 0.3s ease-in-out forwards',
         },
+        keyframes: {
+          fadeInUp: {
+            '0%': {
+              opacity: '0',
+              transform: 'translateY(30px)',
+            },
+            '100%': {
+              opacity: '1',
+              transform: 'translateY(0)',
+            },
+          },
+          fadeOutDown: {
+            '0%': {
+              opacity: '1',
+              transform: 'translateY(0)',
+            },
+            '100%': {
+              opacity: '0',
+              transform: 'translateY(30px)',
+            },
+          },
+        },
+        animation: {
+          fadeInUp: 'fadeInUp 0.5s ease forwards',
+          fadeOutDown: 'fadeOutDown 0.5s ease forwards',
+        },
       },
   },
   variants: {

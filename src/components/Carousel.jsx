@@ -63,7 +63,7 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full max-w-8xl mx-auto py-6 sm:py-12 px-2 sm:px-4 overflow-hidden flex flex-col items-center justify-center js-show-on-scroll">
-      <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold text-center pb-4 sm:pb-8 mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-3 sm:pt-5">
+      <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold text-center pb-4 sm:pb-8 mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-3 sm:pt-5 js-show-on-scroll">
         Proyectos
       </h2>
 
@@ -81,7 +81,7 @@ const Carousel = () => {
             {Projects.map((project) => (
               <motion.div
                 key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 js-show-on-scroll flex-shrink-0"
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 js-show-on-scroll flex-shrink-0 js-show-on-scroll"
                 style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
               >
                 {/* Imagen con altura adaptativa para móviles */}

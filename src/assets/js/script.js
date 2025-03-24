@@ -54,7 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         });
     }, {
-        threshold: 0.1 // Ajusta según necesites (0.1 = 10% visible)
+        threshold: [0.05, 0.1], // Más sensible en móvil
+        rootMargin: '-15% 0px', // Activar la animación antes de que el elemento esté completamente visible
+        trackVisibility: true,
+        delay: 100 // Mejor rendimiento en móvil
     });
 
     // Observamos cada elemento que tenga la clase .js-show-on-scroll

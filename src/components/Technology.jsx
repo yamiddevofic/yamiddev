@@ -33,17 +33,17 @@ const Technology = () => {
   return (
     <section className="container mx-auto px-4 py-8">
       <h2 className="text-4xl md:text-5xl font-bold text-center pb-8 pt-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
-        Tecnologías Principales
+        Tecnologías
       </h2>
       
       <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {coreTechnologies.map(({ Icon, name, color, bgColor }, index) => (
           <div
             key={index}
-            className={`p-5 rounded-xl ${bgColor} dark:bg-gray-800 flex flex-col items-center 
+            className={`p-5 rounded-xl ${bgColor} bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll flex flex-col items-center 
                        space-y-3 transition-transform duration-300 hover:scale-105 js-show-on-scroll`}
           >
-            <div className={`p-3 rounded-full ${bgColor} dark:bg-gray-700`}>
+            <div className={`p-3 rounded-full ${bgColor} bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll`}>
               <Icon className={`w-8 h-8 ${color}`} />
             </div>
             <span className="text-lg font-medium text-gray-800 dark:text-gray-200">

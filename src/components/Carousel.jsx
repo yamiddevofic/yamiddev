@@ -62,13 +62,13 @@ const Carousel = () => {
   };
 
   return (
-    <div className="relative w-full max-w-8xl mx-auto py-6 sm:py-12 px-2 sm:px-4 overflow-hidden flex flex-col items-center justify-center js-show-on-scroll">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#0e1335] dark:to-[#030617] p-8 sm:p-12 lg:p-16 relative overflow-hidden">
       <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold text-center pb-4 sm:pb-8 mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-3 sm:pt-5 js-show-on-scroll">
         Proyectos
       </h2>
 
       <div
-        className="relative w-full max-w-10xl mx-auto rounded-xl overflow-hidden"
+        className="relative w-full max-w-10xl mx-auto rounded-xl overflow-hidden js-show-on-scroll"
         ref={carouselRef}
       >
         <div className="overflow-hidden">
@@ -81,7 +81,7 @@ const Carousel = () => {
             {Projects.map((project) => (
               <motion.div
                 key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 js-show-on-scroll flex-shrink-0 js-show-on-scroll"
+                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll flex-shrink-0"
                 style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
               >
                 {/* Imagen con altura adaptativa para móviles */}
@@ -146,47 +146,57 @@ const Carousel = () => {
         </div>
 
         {/* Botones de navegación ajustados para móvil */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
-          aria-label="Proyecto anterior"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 sm:h-6 sm:w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
+        {Projects.length > 1 && (Projects.length > 3 || (typeof window !== 'undefined' && window.innerWidth < 640)) && (
+          <>
+            <button
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className={`absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-1.5 sm:p-2 rounded-full shadow-md transition-colors ${
+                currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white dark:hover:bg-gray-700'
+              }`}
+              aria-label="Proyecto anterior"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
 
-        <button
-          onClick={nextSlide}
-          className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white dark:hover:bg-gray-700 transition-colors"
-          aria-label="Proyecto siguiente"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5 sm:h-6 sm:w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+            <button
+              onClick={nextSlide}
+              disabled={currentIndex >= Projects.length - visibleItems}
+              className={`absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-gray-800/90 p-1.5 sm:p-2 rounded-full shadow-md transition-colors ${
+                currentIndex >= Projects.length - visibleItems ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white dark:hover:bg-gray-700'
+              }`}
+              aria-label="Proyecto siguiente"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

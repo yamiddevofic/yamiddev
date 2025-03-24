@@ -3,10 +3,10 @@ import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'luci
 import ButtonProjects from './buttonProjects'
 
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
-  <div className="bg-white dark:bg-gray-900 p-5 pt-15 rounded-lg border border-gray-100 dark:border-gray-700 shadow-md hover:shadow-lg transition-all js-show-on-scroll">
+  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll">
     <div className="flex flex-col md-flex-row justify-between items-start mb-3 ">
       <div className="flex flex-col md:flex-row items-left md:items-center gap-3 w-full justify-between">
-        <div className='flex items-center justify-cente'>
+        <div className='flex items-center justify-center'>
           {logo && (
             <img 
               src={logo} 
@@ -135,7 +135,7 @@ const ModernAboutMe = () => {
           </div>
 
           {/* Información Personal */}
-          <div className="w-full bg-white dark:bg-gray-900 p-4 md:p-5 rounded-lg mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 js-show-on-scroll">
+          <div className="w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 js-show-on-scroll">
             <div className="flex items-center mb-3">
               <User2 className="w-5 h-5 mr-2 text-blue-500" />
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Sobre Mí</h2>

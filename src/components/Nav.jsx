@@ -66,7 +66,7 @@ const Navbar = () => {
         variants={navVariants}
         initial="hidden"
         animate="visible"
-        className="bg-white dark:bg-slate-950 shadow-md fixed w-full top-0 z-50 transition-colors duration-300"
+        className="bg-white dark:dark:bg-slate-950 rounded-xl shadow-lgborder border-gray-200/50 dark:border-gray-700/50 fixed w-full top-0 z-50 transition-colors duration-300"
       >
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <motion.a
@@ -84,6 +84,7 @@ const Navbar = () => {
                   <motion.a
                     key={item.id}
                     href={`#${item.id}`}
+                    data-open={item.id === "projects" ? "projects" : undefined}
                     variants={linkVariants}
                     whileHover="hover"
                     className="text-lg font-medium transition-colors text-gray-900 dark:text-gray-300 hover:text-[#F28F16] dark:hover:text-[#F2CF66]"
@@ -137,7 +138,8 @@ const Navbar = () => {
                   <motion.a
                     key={items.id}
                     href={`#${items.id}`}
-                    className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[100px] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    data-open={items.id === "projects" ? "projects" : undefined}
+                    className="text-xl font-medium transition-colors text-gray-900 dark:text-gray-300 h-[70px] w-full flex items-center justify-start p-5 hover:bg-gray-100 dark:hover:bg-gray-800"
                     onClick={(e) => handleLinkClick(e, items.id)}
                   >
                     <motion.li className="w-full h-full flex items-center justify-start p-5">
@@ -149,7 +151,7 @@ const Navbar = () => {
                   </motion.a>
                 )
               ))}
-              <div className="w-full h-full rounded-lg flex flex-col items-center p-4 bg-gray-200 dark:bg-gray-800 justify-center">
+              <div className="w-full h-[150px] rounded-lg flex flex-col items-center p-4 bg-gray-200 dark:bg-gray-800 justify-center">
                 <h2 className="mt-5 text-xl">{theme === 'dark' ? 'Modo claro' : 'Modo oscuro'}</h2>
                 <Button
                   variant="ghost"

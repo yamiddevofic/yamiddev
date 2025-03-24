@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Programador from "./Programmer";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);

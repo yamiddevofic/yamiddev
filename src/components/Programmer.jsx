@@ -1,7 +1,7 @@
 import * as React from "react";
 const Programmer = () => (
   <svg
-    className='text-blue-500 dark:text-[#39FF14]'
+    className='text-blue-500 dark:text-[#39FF14] w-48 h-48'
     id="Layer_3"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"

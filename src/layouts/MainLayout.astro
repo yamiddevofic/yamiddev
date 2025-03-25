@@ -7,6 +7,7 @@ const siteUrl = "https://yamiddev.com"; // Ajusta esto a tu dominio real
 const defaultTitle = "Yamid Dev | Desarrollador Web Full Stack";
 const defaultDescription = "Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes.";
 const pageTitle = title ? `${title} | Yamid Dev` : defaultTitle;
+const imageUrl = `${siteUrl}/dev.jpg`;
 ---
 
 <!doctype html>
@@ -16,9 +17,12 @@ const pageTitle = title ? `${title} | Yamid Dev` : defaultTitle;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{pageTitle}</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="/dev.jpg" />
+    <!-- Favicons -->
+    <link rel="icon" type="image/jpeg" href="/dev.jpg" sizes="any" />
+    <link rel="icon" type="image/jpeg" href="/dev.jpg" sizes="32x32" />
+    <link rel="icon" type="image/jpeg" href="/dev.jpg" sizes="192x192" />
     <link rel="apple-touch-icon" href="/dev.jpg" />
+    <meta name="msapplication-TileImage" content="/dev.jpg" />
     
     <!-- Fuentes -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
@@ -26,22 +30,32 @@ const pageTitle = title ? `${title} | Yamid Dev` : defaultTitle;
     <!-- SEO Meta Tags -->
     <meta name="description" content={defaultDescription} />
     <meta name="author" content="Yamid Horacio Rodríguez" />
-    <meta name="keywords" content="yamiddev, yamiddevofic, desarrollador web, full stack, javascript, react, python, astro, tailwind, desarrollo web, programador" />
+    <meta name="keywords" content="yamiddev, yamiddevofic, desarrollador web, full stack, javascript, react, python, astro, tailwind, desarrollo web, programador, yamid dev, yamid rodriguez" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={defaultDescription} />
-    <meta property="og:image" content={`${siteUrl}/dev.jpg`} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Yamid Dev" />
+    <meta property="og:locale" content="es_ES" />
+    
+    <!-- WhatsApp -->
+    <meta property="og:image:secure_url" content={imageUrl} />
+    <meta property="og:image:alt" content="Yamid Dev - Desarrollador Web Full Stack" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={siteUrl} />
-    <meta property="twitter:title" content={pageTitle} />
-    <meta property="twitter:description" content={defaultDescription} />
-    <meta property="twitter:image" content={`${siteUrl}/dev.jpg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@yamiddevofic" />
     <meta name="twitter:creator" content="@yamiddevofic" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={defaultDescription} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content="Yamid Dev - Desarrollador Web Full Stack" />
     
     <!-- Redes Sociales y Enlaces -->
     <link rel="me" href="https://github.com/yamiddevofic" />
@@ -49,12 +63,13 @@ const pageTitle = title ? `${title} | Yamid Dev` : defaultTitle;
     <link rel="me" href="https://linkedin.com/in/yamiddevofic" />
     
     <!-- SEO Adicional -->
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="googlebot" content="index, follow" />
     <link rel="canonical" href={siteUrl} />
     
     <!-- Color del tema para móviles -->
     <meta name="theme-color" content="#1a202c" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
     <!-- Schema.org para Google -->
@@ -63,16 +78,24 @@ const pageTitle = title ? `${title} | Yamid Dev` : defaultTitle;
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Yamid Horacio Rodríguez",
-        "alternateName": "yamiddev",
+        "alternateName": ["yamiddev", "yamiddevofic"],
         "url": "${siteUrl}",
-        "image": "${siteUrl}/dev.jpg",
+        "image": "${imageUrl}",
         "sameAs": [
           "https://github.com/yamiddevofic",
           "https://twitter.com/yamiddevofic",
           "https://linkedin.com/in/yamiddevofic"
         ],
         "jobTitle": "Desarrollador Web Full Stack",
-        "description": "${defaultDescription}"
+        "description": "${defaultDescription}",
+        "knowsAbout": [
+          "Desarrollo Web",
+          "JavaScript",
+          "React",
+          "Python",
+          "Astro",
+          "Tailwind CSS"
+        ]
       }
     </script>
   </head>

@@ -66,7 +66,7 @@ const Navbar = () => {
         variants={navVariants}
         initial="hidden"
         animate="visible"
-        className="bg-white dark:dark:bg-slate-950 rounded-xl shadow-lgborder border-gray-200/50 dark:border-gray-700/50 fixed w-full top-0 z-50 transition-colors duration-300"
+        className="bg-white dark:dark:bg-slate-950  shadow-lg border border-gray-200/50 dark:border-gray-700/50 fixed w-full top-0 z-50 transition-colors duration-300"
       >
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <motion.a

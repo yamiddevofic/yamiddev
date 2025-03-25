@@ -49,6 +49,21 @@ const EducationCard = ({ title, institution, year, description }) => (
 const ModernAboutMe = () => {
   const experiences = [
     {
+      company: "Ega Kat Logistica",
+      title: "Aprendiz en Prácticas",
+      period: "May 2024 - Nov 2024",
+      location: "Remoto",
+      logo: "",
+      highlights: [
+        { icon: Code, text: "Estudio y análisis de servidores, CMS WordPress" },
+        { icon: Server, text: "Soporte técnico de primer nivel" },
+        { icon: MessageCircle, text: "Capacitación y atención a clientes" }
+      ]
+    }
+  ];
+
+  const education = [
+    {
       company: "Platzi",
       title: "Estudiante",
       period: "Ago 2024 - Actualmente",
@@ -59,19 +74,6 @@ const ModernAboutMe = () => {
         { icon: Users, text: "Participación activa en la comunidad de Platzi" },
         { icon: Book, text: "Reforzando capacidad de autoaprendizaje, y formación continua" },
         { icon: Users, text: "Fortaleciendo habilidades blandas" },
-
-      ]
-    },
-    {
-      company: "Ega Kat Logistica",
-      title: "Aprendiz en Prácticas",
-      period: "May 2024 - Nov 2024",
-      location: "Remoto",
-      logo: "",
-      highlights: [
-        { icon: Code, text: "Estudio y análisis de servidores, CMS WordPress" },
-        { icon: Server, text: "Soporte técnico de primer nivel" },
-        { icon: MessageCircle, text: "Capacitación y atención a clientes" }
       ]
     },
     {
@@ -148,29 +150,60 @@ const ModernAboutMe = () => {
         </div>
 
         <div>
-          <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
-              <div className='flex items-center justify-start w-screen'>
-                <Briefcase className='mr-[2rem] text-blue-500'/>
-                <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
-                  Experiencia Profesional
-                </h2> 
-              </div>                                  
+          {/* Experiencia Profesional */}
+          <div className="mb-8">
+            <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
+                <div className='flex items-center justify-start w-screen'>
+                  <Briefcase className='mr-[2rem] text-blue-500'/>
+                  <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
+                    Experiencia Profesional
+                  </h2> 
+                </div>                                  
+              </div>
+            </div>
+            
+            <div className="space-y-4 md:space-y-6">
+              {experiences.map((exp, index) => (
+                <ExperienceCard 
+                  key={index}
+                  company={exp.company}
+                  title={exp.title}
+                  period={exp.period}
+                  location={exp.location}
+                  highlights={exp.highlights}
+                  logo={exp.logo}
+                />
+              ))}
             </div>
           </div>
-          
-          <div className="space-y-4 md:space-y-6">
-            {experiences.map((exp, index) => (
-              <ExperienceCard 
-                key={index}
-                company={exp.company}
-                title={exp.title}
-                period={exp.period}
-                location={exp.location}
-                highlights={exp.highlights}
-                logo={exp.logo}
-              />
-            ))}
+
+          {/* Educación */}
+          <div>
+            <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
+                <div className='flex items-center justify-start w-screen'>
+                  <Book className='mr-[2rem] text-blue-500'/>
+                  <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
+                    Educación
+                  </h2> 
+                </div>                                  
+              </div>
+            </div>
+            
+            <div className="space-y-4 md:space-y-6">
+              {education.map((edu, index) => (
+                <ExperienceCard 
+                  key={index}
+                  company={edu.company}
+                  title={edu.title}
+                  period={edu.period}
+                  location={edu.location}
+                  highlights={edu.highlights}
+                  logo={edu.logo}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

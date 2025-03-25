@@ -2,6 +2,11 @@
 import Header from "../components/Nav";
 import Footer from "../components/Footer.astro";
 const { title } = Astro.props;
+
+const siteUrl = "https://yamiddev.com"; // Ajusta esto a tu dominio real
+const defaultTitle = "Yamid Dev | Desarrollador Web Full Stack";
+const defaultDescription = "Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes.";
+const pageTitle = title ? `${title} | Yamid Dev` : defaultTitle;
 ---
 
 <!doctype html>
@@ -9,13 +14,71 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{title}</title>
+    <title>{pageTitle}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/dev.jpg" />
+    <link rel="apple-touch-icon" href="/dev.jpg" />
+    
+    <!-- Fuentes -->
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={defaultDescription} />
+    <meta name="author" content="Yamid Horacio Rodríguez" />
+    <meta name="keywords" content="yamiddev, yamiddevofic, desarrollador web, full stack, javascript, react, python, astro, tailwind, desarrollo web, programador" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={defaultDescription} />
+    <meta property="og:image" content={`${siteUrl}/dev.jpg`} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={defaultDescription} />
+    <meta property="twitter:image" content={`${siteUrl}/dev.jpg`} />
+    <meta name="twitter:creator" content="@yamiddevofic" />
+    
+    <!-- Redes Sociales y Enlaces -->
+    <link rel="me" href="https://github.com/yamiddevofic" />
+    <link rel="me" href="https://twitter.com/yamiddevofic" />
+    <link rel="me" href="https://linkedin.com/in/yamiddevofic" />
+    
+    <!-- SEO Adicional -->
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
+    
+    <!-- Color del tema para móviles -->
+    <meta name="theme-color" content="#1a202c" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Schema.org para Google -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Yamid Horacio Rodríguez",
+        "alternateName": "yamiddev",
+        "url": "${siteUrl}",
+        "image": "${siteUrl}/dev.jpg",
+        "sameAs": [
+          "https://github.com/yamiddevofic",
+          "https://twitter.com/yamiddevofic",
+          "https://linkedin.com/in/yamiddevofic"
+        ],
+        "jobTitle": "Desarrollador Web Full Stack",
+        "description": "${defaultDescription}"
+      }
+    </script>
   </head>
   <body
     class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col min-h-screen"
   >
-    
     <Header client:load />
     <main class="w-full flex flex-col items-center justify-center flex-grow">
       <slot />

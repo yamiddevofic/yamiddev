@@ -62,7 +62,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#0e1335] dark:to-[#030617] p-8 sm:p-12 lg:p-16 relative overflow-hidden">
+    <div className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-white-50 to-white-50 dark:from-[#0e1335] dark:to-[#030617] p-8 sm:p-12 lg:p-16 relative overflow-hidden">
       <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold text-center pb-4 sm:pb-8 mb-2 sm:mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 pt-3 sm:pt-5 js-show-on-scroll">
         Proyectos
       </h2>
@@ -81,7 +81,7 @@ const Carousel = () => {
             {Projects.map((project) => (
               <motion.div
                 key={project.id}
-                className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll flex-shrink-0"
+                className="bg-gray.200 dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 js-show-on-scroll flex-shrink-0"
                 style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
               >
                 {/* Imagen con altura adaptativa para móviles */}

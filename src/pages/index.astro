@@ -27,19 +27,6 @@ document?.documentElement?.classList.add('dark');
   dark:bg-[#020617] transition-colors duration-300
   dark:text-white 
   overflow-x-hidden overflow-y-hidden">
-    <div class="grid text-left js-show-on-scroll bg-white/80 dark:bg-[#020617]/80 p-8 sm:p-12 lg:p-16 rounded-xl shadow-lg backdrop-blur-md text-gray-800 dark:text-white w-full fixed z-50 place-items-center top-1/2 -translate-y-1/2 fade-out-7s h-screen overflow-y-auto">
-      <div class="flex flex-col items-center space-y-8 animate-fadeInDown">
-        <div class="md:text-5xl text-3xl font-bold text-gray-800 dark:text-white text-center">
-          ¡Hola, bienvenid@ a <span class="bg-gradient-to-r from-blue-500 to-cyan-500 dark:from-blue-400 dark:to-cyan-400 text-transparent bg-clip-text">yamid.dev</span>!
-        </div>
-        <div class="w-48 h-48 transform hover:scale-110 transition-transform duration-300">
-          <Programador />
-        </div>
-        <p class="mt-4 text-lg md:text-xl text-gray-600 dark:text-gray-300 text-center max-w-2xl leading-relaxed">
-          Mi nombre es <span class="font-semibold text-gray-800 dark:text-white">Yamid Horacio Rodríguez</span>, soy analista y desarrollador de software Colombiano 🇨🇴. En este sitio web podrás encontrar información acerca de mí, mi trayectoria profesional como desarrollador de software, y los proyectos que he realizado, o estoy realizando.
-        </p>
-      </div>
-    </div>
     <Hero client:load/>
     <div id="projects" class="w-full">
       <Carousel client:load/>

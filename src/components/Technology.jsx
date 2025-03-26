@@ -81,13 +81,15 @@ const Technology = () => {
         bgColor: "bg-green-600/10",
         borderColor: "border-green-600/20"
       },
+    ],
+    databases: [
       {
         Icon: SiMysql,
         name: "MySQL",
         color: "text-blue-600",
         bgColor: "bg-blue-600/10",
         borderColor: "border-blue-600/20"
-      }
+      },
     ],
     tools: [
       {
@@ -152,6 +154,7 @@ const Technology = () => {
       <TechSection title="Frontend" items={technologies.frontend} />
       <TechSection title="Backend" items={technologies.backend} />
       <TechSection title="Herramientas" items={technologies.tools} />
+      <TechSection title="Bases de datos" items={technologies.databases} />
     </section>
   );
 };

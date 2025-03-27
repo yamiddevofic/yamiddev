@@ -84,7 +84,6 @@ const Carousel = () => {
                 className="bg-gray.200 dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 js-show-on-scroll flex-shrink-0"
                 style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
               >
-                {/* Imagen con altura adaptativa para móviles */}
                 <div className="relative w-full h-40 sm:h-48 overflow-hidden rounded-md">
                   <img
                     src={project.image[0]}

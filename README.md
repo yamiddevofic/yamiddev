@@ -40,4 +40,4 @@ Si deseas clonar y ejecutar este proyecto localmente, sigue estos pasos:
 1. **Clonar el repositorio**:
 
    ```bash
-   git clone https://github.com/YamidDev/portafolio-web.git
+   git clone https://github.com/yamiddevofic/yamiddev.git/

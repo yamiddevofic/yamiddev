@@ -60,20 +60,31 @@ Esto construirá la imagen y servirá la aplicación en [http://localhost:4321](
 Gracias al volumen montado en Docker, cualquier cambio en tu código fuente se reflejará automáticamente en el navegador si estás en modo desarrollo.
 
 ---
-
 ## 📁 Estructura del Proyecto
 
 ```plaintext
 yamiddev/
-├── src/
-│   └── ...          # Código fuente del sitio web
-├── public/          # Archivos públicos
-├── Dockerfile       # Imagen para producción o desarrollo
-├── docker-compose.yml
-└── README.md
-```
-
----
+├── dist/                 # Archivos generados para producción
+├── public/               # Archivos públicos accesibles desde la raíz
+├── src/                  # Código fuente del sitio web
+│   ├── components/       # Componentes reutilizables (Nav, People, etc.)
+│   ├── layouts/          # Diseños base del sitio
+│   ├── lib/              # Librerías o utilidades
+│   ├── pages/            # Páginas del sitio
+│   └── styles/           # Archivos de estilo
+├── .dockerignore         # Exclusiones para la imagen Docker
+├── .gitignore            # Exclusiones de Git
+├── astro.config.mjs      # Configuración de Astro
+├── CHANELOG.md           # Historial de cambios
+├── components.json       # Configuración de componentes
+├── docker-compose.yml    # Orquestación de contenedores
+├── Dockerfile            # Imagen para producción
+├── Dockerfile.dev        # Imagen para desarrollo
+├── package.json          # Dependencias y scripts de npm
+├── postcss.config.js     # Configuración de PostCSS
+├── tailwind.config.js    # Configuración de Tailwind CSS
+├── tsconfig.json         # Configuración de TypeScript
+└── README.md             # Documentación del proyecto
 
 ## 🌍 Sitio en producción
 
@@ -84,7 +95,7 @@ Puedes visitar el sitio en: **[yamid.dev](https://www.yamid.dev/)**
 ## 📬 Contacto
 
 ¿Quieres hablar de tecnología, colaborar o contratarme?  
-Puedes contactarme directamente desde el sitio o en [LinkedIn](https://www.linkedin.com/in/yamidhoracio/).
+Puedes contactarme directamente desde el sitio o en [LinkedIn](https://www.linkedin.com/in/yamiddevofic/).
 
 ---
 

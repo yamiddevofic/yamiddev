@@ -69,6 +69,8 @@ A continuación, se muestran algunas capturas del sitio en funcionamiento:
 
 ```plaintext
 yamiddev/
+├── .astro/               # Archivos temporales de Astro
+├── .vscode/              # Configuración del entorno en VSCode
 ├── dist/                 # Archivos generados para producción
 ├── public/               # Archivos públicos accesibles desde la raíz
 ├── src/                  # Código fuente del sitio web

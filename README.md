@@ -69,9 +69,6 @@ A continuación, se muestran algunas capturas del sitio en funcionamiento:
 
 ```plaintext
 yamiddev/
-├── _astro/               # Resultado de la compilación del sitio
-├── .vscode/              # Configuración del entorno en VSCode
-├── dist/                 # Archivos generados para producción
 ├── public/               # Archivos públicos accesibles desde la raíz
 ├── src/                  # Código fuente del sitio web
 │   ├── components/       # Componentes reutilizables (Nav, People, etc.)

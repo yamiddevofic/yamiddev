@@ -63,15 +63,14 @@ A continuación, se muestran algunas capturas del sitio en funcionamiento:
 |--------|-----------|----------|
 | ![Inicio](./screenshots/home.jpg) | ![Proyectos](./screenshots/projects.jpg) | ![Contacto](./screenshots/contact.jpg) |
 
-> 💡 Las imágenes deben guardarse en una carpeta `screenshots/` dentro del repositorio. Si usas otro nombre o ruta, ajusta los enlaces en el README.
-
-
 
 ---
 ## 📁 Estructura del Proyecto
 
 ```plaintext
 yamiddev/
+├── _astro/               # Resultado de la compilación del sitio
+├── .vscode/              # Configuración del entorno en VSCode
 ├── dist/                 # Archivos generados para producción
 ├── public/               # Archivos públicos accesibles desde la raíz
 ├── src/                  # Código fuente del sitio web

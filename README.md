@@ -26,10 +26,6 @@ Este proyecto contiene el código fuente de mi sitio personal, accesible en [yam
   - [React](https://reactjs.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
 
-- **Backend**:
-  - [Node.js](https://nodejs.org/)
-  - [Express](https://expressjs.com/)
-
 - **Herramientas y Otros**:
   - [Astro](https://astro.build/) (en aprendizaje)
   - [Docker](https://www.docker.com/) (en aprendizaje)

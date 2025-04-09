@@ -55,6 +55,18 @@ Esto construirá la imagen y servirá la aplicación en [http://localhost:4321](
 
 Gracias al volumen montado en Docker, cualquier cambio en tu código fuente se reflejará automáticamente en el navegador si estás en modo desarrollo.
 
+## 📸 Capturas de Pantalla
+
+A continuación, se muestran algunas capturas del sitio en funcionamiento:
+
+| Inicio | Proyectos | Contacto |
+|--------|-----------|----------|
+| ![Inicio](./screenshots/home.jpg) | ![Proyectos](./screenshots/projects.jpg) | ![Contacto](./screenshots/contact.jpg) |
+
+> 💡 Las imágenes deben guardarse en una carpeta `screenshots/` dentro del repositorio. Si usas otro nombre o ruta, ajusta los enlaces en el README.
+
+
+
 ---
 ## 📁 Estructura del Proyecto
 

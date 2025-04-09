@@ -82,6 +82,7 @@ yamiddev/
 ├── tsconfig.json         # Configuración de TypeScript
 └── README.md             # Documentación del proyecto
 
+```
 ## 🌍 Sitio en producción
 
 Puedes visitar el sitio en: **[yamid.dev](https://www.yamid.dev/)**

@@ -63,9 +63,6 @@ A continuación, se muestran algunas capturas del sitio en funcionamiento:
 |--------|-----------|----------|
 | ![Inicio](./screenshots/home.jpg) | ![Proyectos](./screenshots/projects.jpg) | ![Contacto](./screenshots/contact.jpg) |
 
-> 💡 Las imágenes deben guardarse en una carpeta `screenshots/` dentro del repositorio. Si usas otro nombre o ruta, ajusta los enlaces en el README.
-
-
 
 ---
 ## 📁 Estructura del Proyecto

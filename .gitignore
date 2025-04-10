@@ -1,3 +1,7 @@
+dist/
+_astro/
+.vscode/
+
 # generated types
 .astro/
 

@@ -147,6 +147,11 @@ const ModernAboutMe = () => {
               Apasionado por el aprendizaje continuo y la resolución creativa de problemas.
             </p>
           </div>
+          <div>
+            <a href="/docs/cv.pdf" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition-colors duration-300 w-[100%] js-show-on-scroll">
+              Descargar CV
+            </a>
+          </div>
         </div>
 
         <div>

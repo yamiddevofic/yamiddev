@@ -33,8 +33,7 @@ Este proyecto contiene el código fuente de mi sitio personal, accesible en [yam
 
 - **Entorno y despliegue**:
   - [Docker](https://www.docker.com/)
-  - [Vercel](https://vercel.com/) para frontend
-  - [Hostinger](https://www.hostinger.com/) para WordPress API
+  - [Hostinger](https://www.hostinger.com/)
 
 ## 🚀 Instalación y Uso
 

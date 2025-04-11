@@ -9,8 +9,8 @@ services:
     ports:
       - "4321:4321"
     volumes:
-      - ./frontend:/app             # <-- Esto permite que los cambios se reflejen en tiempo real
-      - /app/node_modules           # <-- Esto evita errores de node_modules del host
+      - ./frontend:/app             
+      - /app/node_modules           
     depends_on:
       - wordpress
     networks:
@@ -19,7 +19,7 @@ services:
 
   wordpress:
     build:
-      context: ./wordpress      # <- Asegúrate de que esto apunte bien
+      context: ./wordpress
       dockerfile: Dockerfile
     container_name: yamid_wordpress
     environment:
@@ -34,7 +34,7 @@ services:
     networks:
       - yamidnet
     volumes:
-      - ./wordpress:/var/www/html  # <- Esto también se mantiene
+      - ./wordpress:/var/www/html
 
 
   phpmyadmin:

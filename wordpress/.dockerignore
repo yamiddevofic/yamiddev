@@ -1,0 +1,8 @@
+db-data
+*.log
+*.sql
+*.zip
+*.tar.gz
+*.tar
+node_modules
+.git

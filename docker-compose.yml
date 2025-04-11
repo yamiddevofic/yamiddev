@@ -3,10 +3,71 @@ version: '3.8'
 services:
   frontend:
     build:
-      context: .
+      context: ./frontend
       dockerfile: Dockerfile.dev
+    container_name: yamid_frontend
     ports:
       - "4321:4321"
     volumes:
-      - .:/app
-    command: npm run dev --host
+      - ./frontend:/app             # <-- Esto permite que los cambios se reflejen en tiempo real
+      - /app/node_modules           # <-- Esto evita errores de node_modules del host
+    depends_on:
+      - wordpress
+    networks:
+      - yamidnet
+
+
+  wordpress:
+    build:
+      context: ./wordpress      # <- Asegúrate de que esto apunte bien
+      dockerfile: Dockerfile
+    container_name: yamid_wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: admin
+      WORDPRESS_DB_PASSWORD: 7028-Y18h06R_2022
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - yamidnet
+    volumes:
+      - ./wordpress:/var/www/html  # <- Esto también se mantiene
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: yamid_phpmyadmin
+    restart: always
+    ports:
+      - "8082:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: 7028-Y18h06R_2022
+    depends_on:
+      - db
+    networks:
+      - yamidnet
+
+  db:
+    image: mysql:8.0
+    container_name: yamid_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 7028-Y18h06R_2022
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 7028-Y18h06R_2022
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - yamidnet
+
+volumes:
+  db_data:
+
+networks:
+  yamidnet:
+    driver: bridge

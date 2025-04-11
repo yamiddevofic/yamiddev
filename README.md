@@ -1,34 +1,40 @@
-
 # 🌐 Portafolio Web de Yamid Horacio Rodríguez
 
 ¡Bienvenido a mi portafolio web! Este sitio presenta mi trayectoria profesional, proyectos destacados y las tecnologías que domino como desarrollador de software.
 
 ## 🧾 Descripción
 
-Este proyecto contiene el código fuente de mi sitio personal, accesible en [yamid.dev](https://www.yamid.dev/). En él comparto información sobre mi formación, experiencia laboral, proyectos realizados y formas de contacto.
+Este proyecto contiene el código fuente de mi sitio personal, accesible en [yamid.dev](https://www.yamid.dev/). En él comparto información sobre mi formación, experiencia laboral, proyectos realizados, artículos técnicos y formas de contacto.
 
 ## ✨ Características
 
 - **Secciones principales**:
   - **Sobre mí**: Presentación personal y trayectoria.
   - **Proyectos**: Galería de trabajos destacados con detalles y capturas.
+  - **Blog**: Publicaciones dinámicas gestionadas desde WordPress como Headless CMS.
+  - **Currículum**: CV descargable en PDF actualizado.
   - **Tecnologías**: Herramientas y lenguajes que utilizo y estoy aprendiendo.
   - **Contacto**: Formulario de contacto directo y enlaces a redes sociales.
 
-- **Diseño responsivo**: Optimizado para dispositivos móviles y de escritorio.
+- **Diseño responsivo**: Adaptado a todo tipo de dispositivos.
+- **Consumo de API**: Integración con la REST API de WordPress para contenido dinámico.
+- **Modo oscuro**: Interfaz amigable con tema claro/oscuro automático.
 
 ## 🛠 Tecnologías Utilizadas
 
 - **Frontend**:
-  - HTML5
-  - CSS3
-  - JavaScript
+  - HTML5, CSS3, JavaScript
   - [React](https://reactjs.org/)
   - [Tailwind CSS](https://tailwindcss.com/)
-
-- **Herramientas y Otros**:
   - [Astro](https://astro.build/)
+
+- **Backend / CMS**:
+  - [WordPress](https://wordpress.org/) (modo Headless)
+
+- **Entorno y despliegue**:
   - [Docker](https://www.docker.com/)
+  - [Vercel](https://vercel.com/) para frontend
+  - [Hostinger](https://www.hostinger.com/) para WordPress API
 
 ## 🚀 Instalación y Uso
 
@@ -53,7 +59,7 @@ Esto construirá la imagen y servirá la aplicación en [http://localhost:4321](
 
 ### 3. Ver los cambios en tiempo real
 
-Gracias al volumen montado en Docker, cualquier cambio en tu código fuente se reflejará automáticamente en el navegador si estás en modo desarrollo.
+Gracias al volumen montado en Docker, cualquier cambio en tu código fuente se reflejará automáticamente en el navegador en modo desarrollo.
 
 ## 📸 Capturas de Pantalla
 
@@ -63,35 +69,36 @@ A continuación, se muestran algunas capturas del sitio en funcionamiento:
 |--------|-----------|----------|
 | ![Inicio](./screenshots/home.jpg) | ![Proyectos](./screenshots/projects.jpg) | ![Contacto](./screenshots/contact.jpg) |
 
-
 ---
+
 ## 📁 Estructura del Proyecto
 
 ```plaintext
 yamiddev/
 ├── public/               # Archivos públicos accesibles desde la raíz
 ├── src/                  # Código fuente del sitio web
-│   ├── components/       # Componentes reutilizables (Nav, People, etc.)
+│   ├── components/       # Componentes reutilizables
 │   ├── layouts/          # Diseños base del sitio
-│   ├── lib/              # Librerías o utilidades
-│   ├── pages/            # Páginas del sitio
-│   └── styles/           # Archivos de estilo
-├── .dockerignore         # Exclusiones para la imagen Docker
-├── .gitignore            # Exclusiones de Git
-├── astro.config.mjs      # Configuración de Astro
-├── CHANELOG.md           # Historial de cambios
-├── components.json       # Configuración de componentes
-├── docker-compose.yml    # Orquestación de contenedores
-├── Dockerfile            # Imagen para producción
-├── Dockerfile.dev        # Imagen para desarrollo
-├── package.json          # Dependencias y scripts de npm
-├── postcss.config.js     # Configuración de PostCSS
-├── tailwind.config.js    # Configuración de Tailwind CSS
-├── tsconfig.json         # Configuración de TypeScript
-└── README.md             # Documentación del proyecto
-
+│   ├── lib/              # Utilidades y lógica
+│   ├── pages/            # Rutas del sitio
+│   └── styles/           # Estilos personalizados
+├── .dockerignore
+├── .gitignore
+├── astro.config.mjs
+├── CHANELOG.md
+├── docker-compose.yml
+├── Dockerfile
+├── Dockerfile.dev
+├── package.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.json
+└── README.md
 ```
-## 🌍 Sitio en producción
+
+---
+
+## 🌍 Sitio en Producción
 
 Puedes visitar el sitio en: **[yamid.dev](https://www.yamid.dev/)**
 
@@ -100,10 +107,10 @@ Puedes visitar el sitio en: **[yamid.dev](https://www.yamid.dev/)**
 ## 📬 Contacto
 
 ¿Quieres hablar de tecnología, colaborar o contratarme?  
-Puedes contactarme directamente desde el sitio o en [LinkedIn](https://www.linkedin.com/in/yamiddevofic/).
+Contáctame directamente desde el sitio o a través de [LinkedIn](https://www.linkedin.com/in/yamiddevofic/).
 
 ---
 
 ## 🧠 Nota
 
-Este proyecto está en constante evolución, así como mis habilidades como desarrollador. ¡Gracias por visitarlo!
+Este proyecto está en constante evolución, al igual que mis habilidades como desarrollador. ¡Gracias por visitarlo y ser parte del camino!

@@ -76,6 +76,17 @@ body {
     transition: width 0.4s ease;
 }
 
+.overlay-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* opacidad ajustable */
+  z-index: 0;
+  border-radius: inherit;
+  height: 70vh;
+}
+
+
 @layer base {
   :root {
         --background: 0 0% 100%;

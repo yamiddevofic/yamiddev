@@ -37,7 +37,7 @@ const Blog = ({ posts }) => {
   const recentPosts = posts.slice(0, 3);
 
   return (
-    <section className="pt-[5%] pb-[5%] w-[100%] px-[5%]" id='blog'>
+    <section className="pt-[15%] md:pt-[6%] pb-[5%] w-[100%] px-[5%]" id='blog'>
       <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
         Últimos Artículos
       </h2>
@@ -59,7 +59,7 @@ const Blog = ({ posts }) => {
           href="/blog" 
           className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-md transition-colors duration-300"
         >
-          Ver todos los artículos
+          Ir a mi blog
           <ArrowRight className="w-5 h-5 ml-2" />
         </a>
       </div>

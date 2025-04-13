@@ -166,7 +166,7 @@ const ContactForm = () => {
               </h3>
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://github.com/yamidevelop"
+                  href="https://github.com/yamidevofic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
@@ -175,7 +175,7 @@ const ContactForm = () => {
                   <Github className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/yamiddev"
+                  href="https://linkedin.com/in/yamiddevofic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
@@ -184,7 +184,7 @@ const ContactForm = () => {
                   <Linkedin className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://twitter.com/yamiddev"
+                  href="https://x.com/yamiddevofic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
@@ -193,7 +193,7 @@ const ContactForm = () => {
                   <X className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://instagram.com/yamiddev"
+                  href="https://instagram.com/yamiddevofic"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"

@@ -3,8 +3,10 @@ import { ArrowRight } from 'lucide-react';
 import format from 'date-fns/format';
 import es from 'date-fns/locale/es';
 
+
+
 const BlogCard = ({ title, excerpt, date, link }) => (
-  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll hover:shadow-lg transition-shadow duration-300">
+  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll hover:shadow-lg transition-shadow duration-300 cursor-pointer" onClick={() => window.open(link, '_blank')}>
     <div className="p-6 flex flex-col flex-grow">
         <h2 
             className="text-xl font-semibold text-gray-800 dark:text-white mb-3 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" 
@@ -49,7 +51,7 @@ const Blog = ({ posts }) => {
             title={post.title.rendered}
             excerpt={post.excerpt.rendered}
             date={post.date}
-            link={post.link}
+            link={`/blog/${post.slug}`}
           />
         ))}
       </div>

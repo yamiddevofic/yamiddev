@@ -82,70 +82,76 @@ const Carousel = () => {
             {Projects.map((project) => (
               <motion.div
                 key={project.id}
-                className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200/50 dark:border-gray-700/50 js-show-on-scroll flex-shrink-0 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200/50 dark:border-gray-700/50 js-show-on-scroll flex-shrink-0 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-[100%]"
                 style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="relative w-full h-44 sm:h-56 overflow-hidden rounded-xl">
-                  <img
-                    src={project.image[0]}
-                    alt={project.title}
-                    className="w-full h-full object-cover dark:hidden hover:scale-105 transition-transform duration-500"
-                  />
-                  <img
-                    src={project.image[1]}
-                    alt={project.title}
-                    className="w-full h-full object-cover hidden dark:block hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                <a key={project.id} href={project.url} target="_blank" rel="noopener noreferrer">
+                  <div className="relative w-full h-44 sm:h-56 overflow-hidden rounded-xl">
+                    <img
+                      src={project.image[0]}
+                      alt={project.title}
+                      className="w-full h-full object-cover dark:hidden hover:scale-105 transition-transform duration-500"
+                    />
+                    <img
+                      src={project.image[1]}
+                      alt={project.title}
+                      className="w-full h-full object-cover hidden dark:block hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
 
-                <div className="flex flex-col justify-between h-full mt-4">
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100 line-clamp-1">
-                      {project.title}
-                    </h3>
-                    <p className="mt-2 text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base line-clamp-3 sm:line-clamp-3">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div className="mt-auto">
-                    <div className="flex items-center text-gray-500 text-xs mb-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      {project.time === 'En desarrollo'
-                        ? 'En desarrollo'
-                        : 'Duración: ' + project.time}
+                  <div className="flex flex-col justify-between items-center md:items-start h-[100%] mt-4">
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100 line-clamp-1">
+                        {project.title}
+                      </h3>
+                      <p className="mt-2 text-gray-600 dark:text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base line-clamp-3">
+                        {project.description}
+                      </p>
                     </div>
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {project.techStack
-                        .slice(0, typeof window !== 'undefined' ? (window.innerWidth < 768 ? 4 : project.techStack.length) : project.techStack.length)
-                        .map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="inline-block bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-100 px-2.5 py-1 text-xs rounded-full whitespace-nowrap"
-                          >
-                            {tech}
+                    <div className="mt-auto hidden md:block">
+                      <div className="flex items-center text-gray-500 text-xs mb-2 text-center">
+                      <p className="inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        {project.time && project.time !== '' ? (
+                          project.time === 'En desarrollo'
+                            ? 'En desarrollo'
+                            : 'Duración: ' + project.time
+                        ) : 'Duración no especificada'}
+                      </p>
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {project.techStack
+                          .slice(0, typeof window !== 'undefined' ? (window.innerWidth < 768 ? 4 : project.techStack.length) : project.techStack.length)
+                          .map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="inline-block bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-100 px-2.5 py-1 text-xs rounded-full whitespace-nowrap"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        {project.techStack.length > 4 && typeof window !== 'undefined' && window.innerWidth < 768 && (
+                          <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 px-2.5 py-1 text-xs rounded-full">
+                            +{project.techStack.length - 4}
                           </span>
-                        ))}
-                      {project.techStack.length > 4 && typeof window !== 'undefined' && window.innerWidth < 768 && (
-                        <span className="inline-block bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 px-2.5 py-1 text-xs rounded-full">
-                          +{project.techStack.length - 4}
-                        </span>
-                      )}
+                        )}
+                      </div>
+                      <a
+                        href={project.url ? project.url : '#'}
+                        className="mt-4 inline-flex items-center gap-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white rounded-lg transition-colors duration-300 block"
+                      >
+                        Ver proyecto
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
                     </div>
-                    <a
-                      href={project.url}
-                      className="mt-4 inline-flex items-center gap-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white rounded-lg transition-colors duration-300 text-sm font-medium"
-                    >
-                      Ver proyecto
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </a>
                   </div>
-                </div>
+                </a>
               </motion.div>
             ))}
           </motion.div>

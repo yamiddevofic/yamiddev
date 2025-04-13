@@ -3,7 +3,7 @@ import { time } from "framer-motion";
 export   const Projects = [
   {
     title: 'Portafolio web profesional',
-    description: 'Portafolio es una aplicación web que permite a los usuarios gestionar sus finanzas personales de manera sencilla y eficiente.',
+    description: 'Portafolio es un sitio web donde puedes conocer sobre mi experiencia, habilidades, proyectos de desarrollo, y contactarme.',
     techStack: ['Astro', 'React', 'Tailwind'],
     image: ['/images/portfolio.jpg', '/images/portfolio-2.jpg'],
     time: 'En desarrollo',

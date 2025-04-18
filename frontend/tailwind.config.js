@@ -110,5 +110,5 @@ module.exports = {
       animation: ['hover'],
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate", "@tailwindcss/typography")],
 };

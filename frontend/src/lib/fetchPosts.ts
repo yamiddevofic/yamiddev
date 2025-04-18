@@ -1,5 +1,5 @@
 export async function getPosts() {
-  const url = 'http://wordpress/wp-json/wp/v2/posts?_embed';
+  const url = 'https://yamid.dev/wordpress/wp-json/wp/v2/posts?_embed';
   const cacheKey = 'wordpress-posts';
   
   try {

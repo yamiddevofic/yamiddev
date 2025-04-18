@@ -1,0 +1,271 @@
+---
+// Importaciones necesarias
+import MainLayout from '../../layouts/MainLayout.astro';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale/es';
+import { getPosts } from '../../lib/fetchPosts';
+
+// Define la función getStaticPaths
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// Obtiene los props desde getStaticPaths
+const { post } = Astro.props;
+const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+const category = post._embedded?.['wp:term']?.[0]?.[0]?.name;
+const postDate = new Date(post.date);
+---
+
+<MainLayout title={post.title.rendered}>
+  <div class="bujo-container">
+    <div class="bujo-page">
+      <!-- Título simple y fecha al estilo BUJO minimalista -->
+      <div class="bujo-header">
+        <div class="date-entry">
+          {format(postDate, 'dd.MM.yyyy')}
+        </div>
+        <h1 class="bujo-title" set:html={post.title.rendered} />
+        
+        {category && (
+          <div class="bujo-category">
+            <span class="bullet">•</span> {category}
+          </div>
+        )}
+      </div>
+      
+      <!-- Línea simple separadora -->
+      <div class="simple-divider"></div>
+      
+      <!-- Imagen con marco simple -->
+      {featuredImage && (
+        <div class="image-container">
+          <img src={featuredImage} alt={post.title.rendered} />
+        </div>
+      )}
+      
+      <!-- Contenido principal -->
+      <div class="bujo-content" set:html={post.content.rendered} />
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  /* Estilos Base - enfocados en el grid de puntos */
+  .bujo-container {
+    width: 100%;
+    height: 100vh;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .bujo-page {
+    background-color: #fbfbf8;
+    padding: 3rem 3rem 5rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: relative;
+    min-height: 95vh;
+    line-height: 1.6;
+    
+    /* Grid de puntos BUJO prominente */
+    background-image: 
+      radial-gradient(circle, #ccc 1px, transparent 1px);
+    background-size: 25px 25px;
+    background-position: 0 0;
+  }
+  
+  /* Borde tipo libro */
+  .bujo-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 10px 0 15px -10px rgba(0,0,0,0.1);
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  /* Header simple BUJO */
+  .bujo-header {
+    margin-bottom: 2rem;
+  }
+  
+  .date-entry {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  
+  .bujo-title {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  
+  .bujo-category {
+    font-family: 'Work Sans', sans-serif;
+    display: inline-block;
+    font-size: 1rem;
+    color: #555;
+    margin-top: 0.5rem;
+  }
+  
+  .bullet {
+    color: #000;
+    font-weight: bold;
+    margin-right: 0.3rem;
+  }
+  
+  /* Línea separadora simple */
+  .simple-divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 1.5rem 0;
+  }
+  
+  /* Estilo de imagen simple */
+  .image-container {
+    margin: 2rem 0;
+    text-align: center;
+  }
+  
+  .image-container img {
+    max-width: 90%;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  /* Contenido principal */
+  .bujo-content {
+    font-family: 'Work Sans', sans-serif;
+    color: #333;
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Estilos para el contenido */
+  .bujo-content :global(h2) {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .bujo-content :global(h3) {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #333;
+  }
+  
+  .bujo-content :global(p) {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+  
+  .bujo-content :global(ul) {
+    list-style-type: none;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .bujo-content :global(ul li) {
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  
+  .bujo-content :global(ul li)::before {
+    content: '•';
+    position: absolute;
+    left: -1.5rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .bujo-content :global(blockquote) {
+    border-left: 3px solid #333;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #555;
+    font-style: italic;
+  }
+  
+  .bujo-content :global(a) {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+    transition: border-color 0.3s;
+  }
+  
+  .bujo-content :global(a:hover) {
+    border-bottom: 1px solid transparent;
+  }
+  
+  /* Media query para dispositivos móviles */
+  @media (max-width: 640px) {
+    .bujo-page {
+      padding: 2rem 1.5rem;
+      background-size: 20px 20px; /* Puntos más pequeños en móvil */
+    }
+    
+    .bujo-title {
+      font-size: 1.8rem;
+    }
+  }
+  
+  /* Modo oscuro */
+  :global(.dark) .bujo-page {
+    background-color: #1e2731;
+    color: #e2e8f0;
+    background-image: 
+      radial-gradient(circle, #393f47 1px, transparent 1px);
+  }
+  
+  :global(.dark) .bujo-title,
+  :global(.dark) .bujo-content :global(h2),
+  :global(.dark) .bujo-content :global(h3),
+  :global(.dark) .bujo-content {
+    color: #e2e8f0;
+  }
+  
+  :global(.dark) .date-entry,
+  :global(.dark) .bujo-category {
+    color: #a0aec0;
+  }
+  
+  :global(.dark) .simple-divider {
+    background-color: #4a5568;
+  }
+  
+  :global(.dark) .image-container img {
+    border-color: #4a5568;
+  }
+  
+  :global(.dark) .bujo-content :global(a) {
+    color: #90cdf4;
+    border-bottom: 1px solid #90cdf4;
+  }
+  
+  :global(.dark) .bujo-content :global(blockquote) {
+    border-color: #718096;
+    color: #a0aec0;
+  }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Roboto+Mono&display=swap">

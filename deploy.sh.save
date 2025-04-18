@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Variables (ajústalas si cambias algo)
+CONTENEDOR="yamid_frontend"
+CARPETA_ORIGEN="./dist"
+CARPETA_DESTINO="dist"
+USUARIO="u746779302"
+SERVIDOR="82.197.80.230"
+PUERTO="65002"
+RUTA_REMOTA="/home/u746779302/domains/yamid.dev/public_html/"
+
+echo "🚀 Ejecutando build en el contenedor..."
+docker exec -it "$CONTENEDOR" bash -c "npm run build"
+
+echo "📦 Copiando carpeta 'dist' del contenedor al host..."
+docker cp "$CONTENEDOR":/app/dist "$CARPETA_ORIGEN"
+
+echo "🧹 Borrando archivos antiguos en el servidor remoto..."
+ssh -p "$PUERTO" "$USUARIO@$SERVIDOR" "rm -rf $RUTA_REMOTA/*"
+
+echo "📤 Subiendo nueva carpeta 'dist' al servidor remoto..."
+scp -r -P "$PUERTO" "$CARPETA_ORIGEN/$CARPETA_DESTINO" "$USUARIO@$SERVIDOR:$RUTA_REMOTA/"
+
+echo "✅ ¡Despliegue completado con éxito!"

@@ -1,0 +1,36 @@
+./.env
+./frontend/.env
+r.zip
+wordpress.zip
+
+**/dist/
+_astro/
+.vscode/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+package-lock.json
+
+bun.lock
+
+# build output
+dist/
+
+# vscode
+.vscode

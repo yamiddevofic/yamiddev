@@ -17,6 +17,9 @@ import Blog from '@/components/Blog'
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { getPosts } from '../lib/fetchPosts';
+import fs from 'fs';
+import path from 'path';
+const files = fs.readdirSync('./content');
 
 // Forzar modo oscuro por defecto
 const document = typeof window !== 'undefined' ? window.document : null;

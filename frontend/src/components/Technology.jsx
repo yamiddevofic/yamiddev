@@ -111,7 +111,7 @@ const Technology = () => {
 
   const TechSection = ({ title, items }) => (
     <div className="mb-12 last:mb-0">
-      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 js-show-on-scroll">
+      <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200 ">
         {title}
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
@@ -121,7 +121,7 @@ const Technology = () => {
             className={`relative group overflow-hidden rounded-2xl border ${borderColor}
                        backdrop-blur-sm bg-white/50 dark:bg-gray-900/50
                        transition-all duration-300 hover:scale-105 hover:shadow-xl
-                       cursor-pointer js-show-on-scroll`}
+                       cursor-pointer `}
           >
             {/* Fondo con efecto de gradiente */}
             <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 
@@ -147,7 +147,7 @@ const Technology = () => {
 
   return (
     <section className="container mx-[50%] px-4 py-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-center pb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
+      <h2 className="text-4xl md:text-5xl font-bold text-center pb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 ">
         Stack Tecnológico
       </h2>
       

@@ -63,13 +63,13 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#0e1335] dark:to-[#030617] p-4 sm:p-8 lg:p-12 relative overflow-hidden">
-      <h2 className="text-4xl sm:text-6xl font-bold text-center mb-6 py-4 sm:mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 pt-3 sm:pt-5 js-show-on-scroll">
+    <div id="projects" className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#0e1335] dark:to-[#030617] p-[0rem_2.2rem_3rem_2.2rem] relative overflow-hidden">
+      <h2 className="text-[2.8rem] md:text-[3.5rem] font-bold text-center mb-4 md:mb-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 mt-11 sm:pt-0 ">
         Proyectos
       </h2>
 
       <div 
-        className="relative w-full max-w-full mx-auto rounded-xl js-show-on-scroll"
+        className="relative w-full max-w-full mx-auto rounded-xl "
         ref={carouselRef}
       >
         <div className="overflow-hidden">
@@ -82,7 +82,7 @@ const Carousel = () => {
             {Projects.map((project) => (
               <motion.div
                 key={project.id}
-                className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200/50 dark:border-gray-700/50 js-show-on-scroll flex-shrink-0 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-[100%]"
+                className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200/50 dark:border-gray-700/50  flex-shrink-0 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-[100%]"
                 style={{ width: itemWidth ? `${itemWidth}px` : '100%' }}
                 whileHover={{ scale: 1.02 }}
               >

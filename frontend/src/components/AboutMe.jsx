@@ -1,9 +1,8 @@
 import React from 'react';
 import { User2, Briefcase, Code, Server, MessageCircle, Book, Users } from 'lucide-react';
-import ButtonProjects from './buttonProjects'
 
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
-  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll">
+  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
     <div className="flex flex-col md-flex-row justify-between items-start mb-3 ">
       <div className="flex flex-col md:flex-row items-left md:items-center gap-3 w-full justify-between">
         <div className='flex items-center justify-start'>
@@ -92,13 +91,13 @@ const ModernAboutMe = () => {
 
   return (
     <section className="pt-[10%] md:pt-[5%] pb-[5%] w-[100%] px-[5%]" id='about-me'>
-      <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
+      <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 ">
         Sobre mí
       </h2>
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
         {/* Perfil */}
         <div className="flex flex-col items-center">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500/30 dark:ring-blue-400/30 mb-4 md:mb-6 js-show-on-scroll">
+          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500/30 dark:ring-blue-400/30 mb-4 md:mb-6 ">
             <img 
               src="./dev.jpg" 
               alt="Yamid Horacio Rodríguez"
@@ -106,14 +105,14 @@ const ModernAboutMe = () => {
             />
           </div>
           
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-2 js-show-on-scroll">
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-2 ">
             Yamid Horacio Rodríguez
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 mb-4 text-center js-show-on-scroll">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 text-center ">
             Tecnólogo en Análisis y Desarrollo de Software
           </p>
           
-          <div className="flex space-x-4 mb-4 md:mb-6 js-show-on-scroll">
+          <div className="flex space-x-4 mb-4 md:mb-6 ">
             <a 
               href="https://github.com/yamiddevofic" 
               target="_blank" 
@@ -137,7 +136,7 @@ const ModernAboutMe = () => {
           </div>
 
           {/* Información Personal */}
-          <div className="w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 js-show-on-scroll">
+          <div className="w-full bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 ">
             <div className="flex items-center mb-3">
               <User2 className="w-5 h-5 mr-2 text-blue-500" />
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Sobre Mí</h2>
@@ -148,7 +147,7 @@ const ModernAboutMe = () => {
             </p>
           </div>
           <div>
-            <a href="/docs/cv.pdf" className="bg-blue-500 hover:bg-blue-600 text-white py-2 mt-4 px-4 rounded-md transition-colors duration-300 w-[100%] js-show-on-scroll">
+            <a href="/docs/cv.pdf" className="bg-blue-500 hover:bg-blue-600 text-white py-2 mt-4 px-4 rounded-md transition-colors duration-300 w-[100%] ">
               Descargar CV
             </a>
           </div>

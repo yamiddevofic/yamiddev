@@ -1,30 +1,17 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import { Portfolio } from '../components/icons/Portfolio';
-import { Contact } from '../components/icons/Contact';
-import { Fire } from '../components/icons/Fire';
-import { AboutMe } from '../components/icons/AboutMe';
-import { Computer } from '../components/icons/Computer'
 import SectionAboutMe from '../components/AboutMe';
-import Carousel from '@/components/Carousel';
+import Carousel from '../components/Carousel';
 import Technology from '../components/Technology';
 import '../styles/global.css'
-import ContactForm from '@/components/ContactForm';
-import WhatsApp from '@/components/WhatsApp';
-import ButtonProjects from '@/components/buttonProjects';
-import Hero from '@/components/Hero'
-import Blog from '@/components/Blog'
-import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
-import { getPosts } from '../lib/fetchPosts';
-import fs from 'fs';
-import path from 'path';
-const files = fs.readdirSync('./content');
+import ContactForm from '../components/ContactForm';
+import WhatsApp from '../components/WhatsApp';
+import Hero from '../components/Hero'
+import Blog from '../components/Blog'
 
 // Forzar modo oscuro por defecto
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
-const posts = await getPosts();
 
 ---
 <MainLayout title="Yamid Dev | Desarrollador Full Stack" isMain={true}>
@@ -35,11 +22,9 @@ const posts = await getPosts();
   dark:text-white 
   overflow-x-hidden overflow-y-hidden">
     <Hero client:load/>
-    <div id="projects" class="w-full">
-      <Carousel client:load/>
-    </div>
+    <Carousel client:load/>
     <SectionAboutMe/>
-    <Blog client:load posts={posts}/>
+    <Blog client:load/>
     <div id="technology" class="w-full max-h- flex items-center justify-center">
       <Technology />
     </div>

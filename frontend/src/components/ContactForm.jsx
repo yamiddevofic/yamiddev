@@ -50,13 +50,13 @@ const ContactForm = () => {
   return (
     <section id="contact" className="w-full py-16 px-4 bg-none">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 ">
           Contacto
         </h2>
         
         <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
           {/* Formulario de contacto */}
-          <div className="w-full md:w-2/3 bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll transform transition duration-300 hover:scale-[1.02]">
+          <div className="w-full md:w-2/3 bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  transform transition duration-300 hover:scale-[1.02]">
             <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
               Envíame un mensaje
             </h3>
@@ -160,7 +160,7 @@ const ContactForm = () => {
 
           {/* Información de contacto y redes sociales */}
           <div className="w-full md:w-1/3 space-y-8">
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll">
+            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
               <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
                 Redes Sociales
               </h3>

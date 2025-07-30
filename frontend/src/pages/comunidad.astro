@@ -1,0 +1,64 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Hero from '../components/organisms/Hero';
+import { motion } from 'framer-motion';
+import { Button } from '../components/molecules/Buttons';
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+---
+
+<MainLayout title="Comunidad Yamid Dev | Desarrollador Full Stack" isMain={false}>
+  {/* Wrapper con underlay detrás del Hero y la siguiente sección */}
+  <section class="relative">
+    {/* DECORACIÓN DE FONDO (gradiente + patrón) EXTENDIDA Y SIN TAPAR EL CONTENIDO */}
+    <div
+      class="absolute inset-x-0 top-0 z-0 h-[140vh] pointer-events-none"
+      aria-hidden="true"
+    >
+      {/* Capa gradiente */}
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#0e1335] dark:to-[#030617]"></div>
+      {/* Capa patrón (ajustada a la misma altura) */}
+      <div class="absolute inset-0 opacity-20 dark:opacity-100 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:32px_32px] animate-gradient-pan"></div>
+    </div>
+
+    {/* Hero (por encima del underlay) */}
+    <div class="relative z-10">
+      <Hero isHome={false} client:load>
+        <motion.h1
+          variants={fadeInUp}
+          transition={{ delay: 0.2 }}
+          className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-20"
+        >
+          <span class="text-black dark:text-white flex items-center justify-center text-[3rem] xs:text-[2.3rem] ls:text-[2.8rem] ms:text-[2.7rem] ss:text-[3rem] s:text-[3rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.8rem] xl:text-[5.4rem] leading-[1] md:leading-[1]">
+            Comunidad
+          </span>
+          <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 xs:text-[3rem] ls:text-[3.4rem] ms:text-[3.8rem] ss:text-[4rem] s:text-[4rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7rem]">
+            Yamid Dev
+          </span>
+        </motion.h1>
+        <div class="flex justify-center items-center mt-3"><Button icon={"🚀"} href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg" isMain={true} isLink={true}>Únete ahora</Button></div>
+      </Hero>
+    </div>
+
+    {/* Siguiente sección (encima del Hero y del underlay) */}
+    <div class="relative z-20">
+      <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 !rounded-tr-md !rounded-tl-md bg-[#fff] dark:bg-[#020617] transition-colors duration-300">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="col-span-1">
+            <div class="w-full  h-full bg-transparent rounded-sm shadow-lg overflow-hidden">
+              <div class="p-6">
+                <h3 class="text-lg font-semibold text-black dark:text-white">Comunidad</h3>
+                <p class="mt-2 text-gray-600 dark:text-gray-300">
+                  Encontrarás a otros desarrolladores y profesionales de la industria que comparten tus intereses y pasiones.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

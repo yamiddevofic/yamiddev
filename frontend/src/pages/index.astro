@@ -6,13 +6,18 @@ import Technology from '../components/Technology';
 import '../styles/global.css'
 import ContactForm from '../components/ContactForm';
 import WhatsApp from '../components/WhatsApp';
-import Hero from '../components/Hero'
+import Hero from '../components/organisms/Hero'
 import Blog from '../components/Blog'
+import { motion } from 'framer-motion';
 
 // Forzar modo oscuro por defecto
 const document = typeof window !== 'undefined' ? window.document : null;
 document?.documentElement?.classList.add('dark');
 
+const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 ---
 <MainLayout title="Yamid Dev | Desarrollador Full Stack" isMain={true}>
   <WhatsApp client:load/>
@@ -21,9 +26,19 @@ document?.documentElement?.classList.add('dark');
   dark:bg-[#020617] transition-colors duration-300
   dark:text-white 
   overflow-x-hidden overflow-y-hidden">
-    <Hero client:load/>
+    <Hero isHome={true} client:load>
+      <motion.h1
+          variants={fadeInUp}
+          transition={{ delay: 0.2 }}
+          className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-12 md:pt-5"
+      >
+      <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[3rem] xs:text-[2rem] ls:text-[3.4rem] ms:text-[3.5rem] ss:txt-[3.6rem] s:text-[3.7rem] sm:text-[3.7rem] md:text-[4.5rem] lg:text-[5.4rem] xl:text-[5.7rem] leading-[1] md:leading-[1] ">
+          Yamid Dev Oficial
+      </span>
+      </motion.h1>
+    </Hero>
     <Carousel client:load/>
-    <SectionAboutMe/>
+    <SectionAboutMe/> 
     <Blog client:load/>
     <div id="technology" class="w-full max-h- flex items-center justify-center">
       <Technology />

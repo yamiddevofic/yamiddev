@@ -63,13 +63,12 @@ const Carousel = () => {
   };
 
   return (
-    <div id="projects" className="w-full min-h-screen flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#0e1335] dark:to-[#030617] p-[0rem_2.2rem_3rem_2.2rem] relative overflow-hidden">
-      <h2 className="text-[2.8rem] md:text-[3.5rem] font-bold text-center mb-4 md:mb-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 mt-11 sm:pt-0 ">
+    <div id="projects" className="w-full h-auto flex flex-col items-center justify-center text-gray-900 dark:text-white bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#0e1335] dark:to-[#030617] p-[1.7rem_2.2rem_5rem_2.2rem] relative overflow-hidden ">
+      <h2 className="text-[2.8rem] md:text-[3rem] lg:text-[3.3rem] font-bold text-center mb-6 md:mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 mt-4">
         Proyectos
       </h2>
-
       <div 
-        className="relative w-full max-w-full mx-auto rounded-xl "
+        className="relative w-full max-w-full mx-auto rounded-xl"
         ref={carouselRef}
       >
         <div className="overflow-hidden">

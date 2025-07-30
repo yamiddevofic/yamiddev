@@ -55,7 +55,9 @@ const Navbar = ({ isMain }) => {
 
   const handleLinkClick = (e, id) => {
     e.preventDefault();
+    console.log(id)
     const section = document.getElementById(id);
+    console.log(section)
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
@@ -68,7 +70,7 @@ const Navbar = ({ isMain }) => {
         variants={navVariants}
         initial="hidden"
         animate="visible"
-        className="bg-white dark:dark:bg-slate-950  shadow-lg border border-gray-200/50 dark:border-gray-700/50 fixed w-full top-0 z-50 transition-colors duration-300"
+        className="bg-white dark:dark:bg-slate-950 shadow-lg border border-gray-200/50 dark:border-gray-700/50 fixed w-full top-0 z-50 transition-colors duration-300"
       >
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <motion.a
@@ -80,7 +82,7 @@ const Navbar = ({ isMain }) => {
           </motion.a>
 
           <div className="flex items-center gap-4">
-            <nav className={`gap-6 ${isMain ? 'hidden md:flex' : 'hidden'}`}>
+            <nav className={`gap-6 ${isMain ? 'hidden md:hidden lg:flex xl:flex' : 'hidden'}`}>
               {sectionIds.map((item) => (
                 item.id === "project" ? null : (
                   <motion.a

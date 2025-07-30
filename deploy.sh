@@ -1,6 +1,12 @@
 #!/bin/bash
 source .env
 
+echo "🚀 Iniciando despliegue del frontend..."
+echo "Entrando a tu contenedor docker..."
+echo "Compilando el frontend..."
+sudo docker exec -it yamid_frontend bash -c "npm run build"
+echo "frontend compilado con exito"
+echo ""
 
 echo "🧹 Borrando archivos antiguos en el servidor remoto (excepto /wordpress)..."
 ssh -p "$PUERTO" "$USUARIO@$SERVIDOR" <<EOF

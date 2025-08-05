@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Github } from './icons/Github';
-import { Linkedin } from './icons/Linkedin';
-import X from './icons/X';
-import { Instagram } from './icons/Instagram';
+import { Github } from '../atoms/icons/Github';
+import { Linkedin } from '../atoms/icons/Linkedin';
+import X from '../atoms/icons/X';
+import { Instagram } from '../atoms/icons/Instagram';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -56,7 +56,7 @@ const ContactForm = () => {
         
         <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
           {/* Formulario de contacto */}
-          <div className="w-full md:w-2/3 bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  transform transition duration-300 hover:scale-[1.02]">
+          <div className="w-full md:w-2/3 bg-white dark:bg-gray-900 rounded-sm shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  transform transition duration-300 hover:scale-[1.02]">
             <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
               Envíame un mensaje
             </h3>
@@ -73,7 +73,7 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                   placeholder="Tu nombre"
                 />
               </div>
@@ -89,7 +89,7 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                   placeholder="tu@email.com"
                 />
               </div>
@@ -105,7 +105,7 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                   placeholder="Asunto del mensaje"
                 />
               </div>
@@ -121,7 +121,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
                   placeholder="Tu mensaje aquí..."
                 />
               </div>
@@ -129,7 +129,7 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 px-6 rounded-lg font-semibold bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white transition-all duration-300 transform hover:scale-[1.02] focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center justify-center disabled:opacity-70"
+                className="w-full py-3 px-6 rounded-sm font-semibold bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white transition-all duration-300 transform hover:scale-[1.02] focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center justify-center disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <span className="flex items-center">
@@ -143,14 +143,14 @@ const ContactForm = () => {
               </button>
               
               {submitStatus === 'success' && (
-                <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-500/50 rounded-lg text-green-600 dark:text-green-400 text-center animate-fadeIn">
+                <div className="mt-4 p-4 bg-green-50 dark:bg-green-900/20 border border-green-500/50 rounded-sm text-green-600 dark:text-green-400 text-center animate-fadeIn">
                   <p className="font-medium">¡Mensaje enviado con éxito!</p>
                   <p className="text-sm mt-1">Me pondré en contacto pronto.</p>
                 </div>
               )}
               
               {submitStatus === 'error' && (
-                <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-500/50 rounded-lg text-red-600 dark:text-red-400 text-center animate-fadeIn">
+                <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-500/50 rounded-sm text-red-600 dark:text-red-400 text-center animate-fadeIn">
                   <p className="font-medium">Hubo un error al enviar el mensaje</p>
                   <p className="text-sm mt-1">Por favor, intenta de nuevo.</p>
                 </div>
@@ -169,7 +169,7 @@ const ContactForm = () => {
                   href="https://github.com/yamidevofic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="GitHub"
                 >
                   <Github className="w-6 h-6" />
@@ -178,7 +178,7 @@ const ContactForm = () => {
                   href="https://linkedin.com/in/yamiddevofic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-6 h-6" />
@@ -187,7 +187,7 @@ const ContactForm = () => {
                   href="https://x.com/yamiddevofic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="Twitter"
                 >
                   <X className="w-6 h-6" />
@@ -196,7 +196,7 @@ const ContactForm = () => {
                   href="https://instagram.com/yamiddevofic"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-6 h-6" />

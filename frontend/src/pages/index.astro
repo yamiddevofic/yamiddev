@@ -1,13 +1,13 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import SectionAboutMe from '../components/AboutMe';
-import Carousel from '../components/Carousel';
-import Technology from '../components/Technology';
+import SectionAboutMe from '../components/organisms/AboutMe';
+import Carousel from '../components/organisms/Carousel';
+import Technology from '../components/organisms/Technology';
 import '../styles/global.css'
-import ContactForm from '../components/ContactForm';
-import WhatsApp from '../components/WhatsApp';
+import ContactForm from '../components/organisms/ContactForm';
+import WhatsApp from '../components/molecules/WhatsApp';
 import Hero from '../components/organisms/Hero'
-import Blog from '../components/Blog'
+import Blog from '../components/organisms/Blog';
 import { motion } from 'framer-motion';
 
 // Forzar modo oscuro por defecto
@@ -32,7 +32,7 @@ const fadeInUp = {
           transition={{ delay: 0.2 }}
           className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-12 md:pt-5"
       >
-      <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[3rem] xs:text-[2rem] ls:text-[3.4rem] ms:text-[3.5rem] ss:txt-[3.6rem] s:text-[3.7rem] sm:text-[3.7rem] md:text-[4.5rem] lg:text-[5.4rem] xl:text-[5.7rem] leading-[1] md:leading-[1] ">
+      <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[2.8rem] xs:text-[2rem] ls:text-[3.8rem] ms:text-[2.4rem] ss:txt-[3rem] s:text-[3.1rem] sm:text-[3.4rem] md:text-[4.5rem] lg:text-[6rem] xl:text-[8rem] leading-[1] md:leading-[1] font-[Inter]">
           Yamid Dev Oficial
       </span>
       </motion.h1>

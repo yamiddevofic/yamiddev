@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile.dev
     container_name: yamid_frontend
     ports:
-      - "4321:4321"
+      - "0.0.0.0:4321:4321" 
     volumes:
       - ./frontend:/app             
       - /app/node_modules           

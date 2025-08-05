@@ -2,12 +2,12 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Moon, Sun, Home} from "lucide-react";
-import { HomeFilled } from "./icons/HomeFilled";
-import { AboutMe } from "./icons/AboutMe";
-import { Contact } from "./icons/Contact";
-import { Portfolio } from "./icons/Portfolio";
-import { Computer } from "./icons/Computer";
-import { Blog } from "./icons/Blog";
+import { HomeFilled } from "../atoms/icons/HomeFilled";
+import { AboutMe } from "../atoms/icons/AboutMe";
+import { Contact } from "../atoms/icons/Contact";
+import { Portfolio } from "../atoms/icons/Portfolio";
+import { Computer } from "../atoms/icons/Computer";
+import { Blog } from "../atoms/icons/Blog";
 import { Button } from "@/components/ui/button"; // Shadcn UI
 
 const sectionIds = [

@@ -1,8 +1,10 @@
 ---
+// imports
 import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/organisms/Hero';
 import { motion } from 'framer-motion';
 import { Button } from '../components/molecules/Buttons';
+import Rocket from '../components/atoms/icons/Rocket';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -11,20 +13,17 @@ const fadeInUp = {
 ---
 
 <MainLayout title="Comunidad Yamid Dev | Desarrollador Full Stack" isMain={false}>
-  {/* Wrapper con underlay detrás del Hero y la siguiente sección */}
   <section class="relative">
-    {/* DECORACIÓN DE FONDO (gradiente + patrón) EXTENDIDA Y SIN TAPAR EL CONTENIDO */}
+    <!-- underlay ------------------------------------------------------------->
     <div
       class="absolute inset-x-0 top-0 z-0 h-[140vh] pointer-events-none"
       aria-hidden="true"
     >
-      {/* Capa gradiente */}
       <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#0e1335] dark:to-[#030617]"></div>
-      {/* Capa patrón (ajustada a la misma altura) */}
       <div class="absolute inset-0 opacity-20 dark:opacity-100 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:32px_32px] animate-gradient-pan"></div>
     </div>
 
-    {/* Hero (por encima del underlay) */}
+    <!-- hero ----------------------------------------------------------------->
     <div class="relative z-10">
       <Hero isHome={false} client:load>
         <motion.h1
@@ -39,16 +38,27 @@ const fadeInUp = {
             Yamid Dev
           </span>
         </motion.h1>
-        <div class="flex justify-center items-center mt-3"><Button icon={"🚀"} href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg" isMain={true} isLink={true}>Únete ahora</Button></div>
+
+        <div class="flex justify-center items-center mt-3 group">
+          <!-- pásalo como elemento JSX normal -->
+          <Button
+            icon={Rocket}
+            href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
+            isMain
+            isLink
+          >
+            Únete ahora
+          </Button>
+        </div>
       </Hero>
     </div>
 
-    {/* Siguiente sección (encima del Hero y del underlay) */}
+    <!-- siguiente sección ---------------------------------------------------->
     <div class="relative z-20">
       <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 !rounded-tr-md !rounded-tl-md bg-[#fff] dark:bg-[#020617] transition-colors duration-300">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="col-span-1">
-            <div class="w-full  h-full bg-transparent rounded-sm shadow-lg overflow-hidden">
+            <div class="w-full h-full bg-transparent rounded-sm shadow-lg overflow-hidden">
               <div class="p-6">
                 <h3 class="text-lg font-semibold text-black dark:text-white">Comunidad</h3>
                 <p class="mt-2 text-gray-600 dark:text-gray-300">

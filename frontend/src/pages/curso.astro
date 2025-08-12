@@ -1,0 +1,37 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Course } from '../components/organisms/Course';
+
+// Define los detalles específicos de esta página y del curso
+const pageDetails = {
+  title: "Curso | Pensar en Código",
+  description: "Aprende a descomponer problemas complejos en pasos lógicos y a estructurar tu pensamiento como un programador profesional. Este curso es la base para dominar cualquier lenguaje.",
+  image: "/curso.png", // Imagen para Open Graph y Twitter Cards
+  canonical: "https://yamid.dev/curso",
+  keywords: ['pensar en código', 'lógica de programación', 'algoritmos', 'curso de programación'],
+};
+
+const courseInfo = {
+  name: "Curso de Pensar en Código",
+  description: "Curso fundamental para aspirantes a desarrolladores que enseña a resolver problemas con una mentalidad de programador.",
+  provider: {
+    name: "Yamid Dev",
+    url: "https://yamid.dev"
+  }
+};
+---
+
+<MainLayout 
+    title={pageDetails.title}
+    description={pageDetails.description}
+    image={pageDetails.image}
+    canonical={pageDetails.canonical}
+    keywords={pageDetails.keywords}
+    pageType="course"
+    courseDetails={courseInfo}
+    isMain={false}
+>
+    <div class="bg-[#fff] dark:bg-[#020617] overflow-hidden w-full flex items-center justify-center">
+        <Course client:only="react"/>
+    </div>
+</MainLayout>

@@ -1,117 +1,201 @@
 ---
-import Header from "../components/organisms/Nav";
+import { Astro } from "astro";
+import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer.astro";
-const { title } = Astro.props;
-const { isMain } = Astro.props;
-3
 
-const siteUrl = "https://yamid.dev"; // Ajusta esto a tu dominio real
-const defaultTitle = "Yamid Dev | Desarrollador Web Full Stack";
-const defaultDescription = "Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes.";
-const pageTitle = title ? `${title}` : defaultTitle;
-const imageUrl = `${siteUrl}/dev.jpg`;
+// Props esperadas para SEO dinámico
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  icon?: string;
+  canonical?: string;
+  noindex?: boolean;
+  lang?: string;
+  isMain?: boolean;
+  pageType?: 'website' | 'article' | 'course' | 'person'; // Define el tipo de contenido principal
+  keywords?: string[];
+  // Props específicas para un curso
+  courseDetails?: {
+    name: string;
+    description: string;
+    provider: {
+      name: string;
+      url: string;
+    };
+  };
+  // Props específicas para un artículo (opcional, para futura expansión)
+  articleDetails?: {
+    author: string;
+    publishDate: string; // Formato ISO: "2025-08-12T19:20:30+01:00"
+  };
+}
+
+const {
+  title,
+  description,
+  image,
+  icon = '/dev.jpg',
+  canonical,
+  noindex = false,
+  lang = 'es',
+  isMain = false,
+  pageType = 'website', // Por defecto, es un sitio web general
+  keywords = [],
+  courseDetails,
+  articleDetails,
+} = Astro.props as Props;
+
+// --- Configuración Base del Sitio ---
+const siteName = 'Yamid Dev';
+const origin = Astro.site ? String(Astro.site) : Astro.url.origin;
+const defaultTitle = 'Yamid Dev | Desarrollador Web Full Stack';
+const defaultDescription = 'Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes.';
+const defaultKeywords = ['yamiddev', 'yamiddevofic', 'desarrollador web', 'full stack', 'javascript', 'react', 'python', 'astro', 'tailwind', 'programador', 'yamid dev', 'yamid rodriguez'];
+
+// --- Lógica de Contenido ---
+const pageTitle = title ? `${title} | ${siteName}` : defaultTitle;
+const pageDescription = description ?? defaultDescription;
+const canonicalUrl = canonical || Astro.url.href;
+
+// Normalización de URLs de imágenes para que sean absolutas
+const fallbackImage = '/dev.jpg';
+const imagePath = image || fallbackImage;
+const imageUrl = new URL(imagePath, origin).toString();
+const iconUrl = new URL(icon, origin).toString();
+
+// Combina keywords personalizadas con las por defecto
+const finalKeywords = [...new Set([...defaultKeywords, ...keywords])].join(', ');
+
+// --- Generación de Schema.org (JSON-LD) Dinámico ---
+let schema: any = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: origin,
+    inLanguage: lang,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${origin}/buscar?q={search_term_string}`,
+      'query-input': 'required name=search_term_string'
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yamid Horacio Rodríguez",
+    "alternateName": ["yamiddev", "yamiddevofic"],
+    "url": origin,
+    "image": imageUrl,
+    "sameAs": [
+      "https://github.com/yamiddevofic",
+      "https://twitter.com/yamiddevofic",
+      "https://linkedin.com/in/yamiddevofic"
+    ],
+    "jobTitle": "Desarrollador Web Full Stack",
+    "description": defaultDescription,
+  }
+];
+
+// Añade schema específico según el tipo de página
+if (pageType === 'course' && courseDetails) {
+  schema.push({
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: courseDetails.name,
+    description: courseDetails.description,
+    provider: {
+      '@type': 'Organization',
+      name: courseDetails.provider.name,
+      sameAs: courseDetails.provider.url
+    }
+  });
+}
+
+if (pageType === 'article' && articleDetails) {
+  schema.push({
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      image: imageUrl,
+      author: {
+        '@type': 'Person',
+        name: articleDetails.author,
+        url: origin,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: siteName,
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL('/dev.jpg', origin).toString(),
+        },
+      },
+      datePublished: articleDetails.publishDate,
+      description: pageDescription,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': canonicalUrl,
+      },
+  });
+}
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
-  <head>
+<html lang={lang} class="dark">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{pageTitle}</title>
-    
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+
     <!-- Favicons -->
-    <link rel="icon" type="image/jpeg" href="/dev.jpg" sizes="any" />
-    <link rel="icon" type="image/jpeg" href="/dev.jpg" sizes="32x32" />
-    <link rel="icon" type="image/jpeg" href="/dev.jpg" sizes="192x192" />
-    <link rel="apple-touch-icon" href="/dev.jpg" />
-    <meta name="msapplication-TileImage" content="/dev.jpg" />
-    
+    <link rel="icon" type="image/jpeg" href={iconUrl} sizes="any" />
+    <link rel="icon" type="image/jpeg" href={iconUrl} sizes="32x32" />
+    <link rel="apple-touch-icon" href={iconUrl} />
+    <meta name="msapplication-TileImage" content={iconUrl} />
+
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content={defaultDescription} />
-    <meta name="author" content="Yamid Horacio Rodríguez" />
-    <meta name="keywords" content="yamiddev, yamiddevofic, desarrollador web, full stack, javascript, react, python, astro, tailwind, desarrollo web, programador, yamid dev, yamid rodriguez" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={pageType === 'article' ? 'article' : 'website'} />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={defaultDescription} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Yamid Dev" />
-    <meta property="og:locale" content="es_ES" />
-    
-    <!-- WhatsApp -->
-    <meta property="og:image:secure_url" content={imageUrl} />
-    <meta property="og:image:alt" content="Yamid Dev - Desarrollador Web Full Stack" />
-    
+    <meta property="og:locale" content={lang === 'es' ? 'es_ES' : lang} />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={imageUrl} />
     <meta name="twitter:site" content="@yamiddevofic" />
     <meta name="twitter:creator" content="@yamiddevofic" />
-    <meta name="twitter:url" content={siteUrl} />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={defaultDescription} />
-    <meta name="twitter:image" content={imageUrl} />
-    <meta name="twitter:image:alt" content="Yamid Dev - Desarrollador Web Full Stack" />
-    
-    <!-- Redes Sociales y Enlaces -->
-    <link rel="me" href="https://github.com/yamiddevofic" />
-    <link rel="me" href="https://twitter.com/yamiddevofic" />
-    <link rel="me" href="https://linkedin.com/in/yamiddevofic" />
-    
+
     <!-- SEO Adicional -->
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="googlebot" content="index, follow" />
-    <link rel="canonical" href={siteUrl} />
-    
-    <!-- Color del tema para móviles -->
+    <meta name="author" content="Yamid Horacio Rodríguez" />
+    <meta name="keywords" content={finalKeywords} />
     <meta name="theme-color" content="#1a202c" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    
-    <!-- Schema.org para Google -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Yamid Horacio Rodríguez",
-        "alternateName": ["yamiddev", "yamiddevofic"],
-        "url": "${siteUrl}",
-        "image": "${imageUrl}",
-        "sameAs": [
-          "https://github.com/yamiddevofic",
-          "https://twitter.com/yamiddevofic",
-          "https://linkedin.com/in/yamiddevofic"
-        ],
-        "jobTitle": "Desarrollador Web Full Stack",
-        "description": "${defaultDescription}",
-        "knowsAbout": [
-          "Desarrollo Web",
-          "JavaScript",
-          "React",
-          "Python",
-          "Astro",
-          "Tailwind CSS"
-        ]
-      }
-    </script>
-  </head>
-  <body
-    class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col min-h-screen"
-  >
-    <Header client:load isMain={isMain}/>
-    <main class={`w-full h-full flex items-center justify-center flex-grow flex-col overflow-x-hidden overflow-y-hidden`}>
-      <slot />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</head>
+<body
+    class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col min-h-[100vh]"
+>
+    <Navbar client:load isMain={isMain}/>
+    <main class="w-full h-full flex items-center justify-center flex-grow flex-col overflow-x-hidden">
+        <slot />
     </main>
     <Footer />
-    <script src="../assets/js/script.js"></script>
-    
-  </body>
+    <!-- Si tienes scripts globales, considera cargarlos aquí -->
+</body>
 </html>

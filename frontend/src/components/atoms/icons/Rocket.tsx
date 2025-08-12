@@ -1,7 +1,7 @@
 // Group.tsx
 import React from "react";
 
-const Group: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
+const Rocket: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
@@ -14,4 +14,4 @@ const Group: React.FC<React.SVGProps<SVGSVGElement>> = ({ className, ...props })
   </svg>
 );
 
-export default Group;
+export default Rocket;

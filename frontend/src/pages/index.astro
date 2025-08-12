@@ -2,47 +2,63 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import SectionAboutMe from '../components/organisms/AboutMe';
 import Carousel from '../components/organisms/Carousel';
+import ThinkInCode from '../components/organisms/ThinkInCode';
 import Technology from '../components/organisms/Technology';
-import '../styles/global.css'
 import ContactForm from '../components/organisms/ContactForm';
 import WhatsApp from '../components/molecules/WhatsApp';
-import Hero from '../components/organisms/Hero'
+import Hero from '../components/organisms/Hero';
 import Blog from '../components/organisms/Blog';
-import { motion } from 'framer-motion';
+import '../styles/global.css';
 
-// Forzar modo oscuro por defecto
-const document = typeof window !== 'undefined' ? window.document : null;
-document?.documentElement?.classList.add('dark');
-
-const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+// --- Detalles de la Página para SEO ---
+// Se define un objeto para mantener el código más limpio y organizado.
+const pageDetails = {
+  title: "Yamid Dev | Desarrollador Full Stack",
+  description: "Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes para proyectos de alto impacto.",
+  image: "/dev.jpg", // Imagen principal para redes sociales (OG & Twitter)
+  canonical: "https://yamid.dev/", // URL canónica de la página principal
+  icon: "/dev.jpg", // Favicon
+  // Keywords específicas para esta página. Se combinarán con las keywords por defecto del layout.
+  keywords: ['portafolio', 'desarrollador full stack', 'contratar programador', 'react developer', 'python developer', 'astro developer'],
+};
 ---
-<MainLayout title="Yamid Dev | Desarrollador Full Stack" isMain={true}>
+
+<MainLayout
+  title={pageDetails.title}
+  description={pageDetails.description}
+  image={pageDetails.image}
+  canonical={pageDetails.canonical}
+  icon={pageDetails.icon}
+  keywords={pageDetails.keywords}
+  isMain={true}
+  pageType="website" 
+>
   <WhatsApp client:load/>
-  <div class="w-full flex flex-col items-center justify-center 
-  bg-[#fff]
-  dark:bg-[#020617] transition-colors duration-300
-  dark:text-white 
-  overflow-x-hidden overflow-y-hidden">
-    <Hero isHome={true} client:load>
-      <motion.h1
-          variants={fadeInUp}
-          transition={{ delay: 0.2 }}
-          className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-12 md:pt-5"
-      >
-      <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[2.8rem] xs:text-[2rem] ls:text-[3.8rem] ms:text-[2.4rem] ss:txt-[3rem] s:text-[3.1rem] sm:text-[3.4rem] md:text-[4.5rem] lg:text-[6rem] xl:text-[8rem] leading-[1] md:leading-[1] font-[Inter]">
+
+  <div class="w-full h-full flex flex-col items-center justify-center 
+    bg-[#fff] dark:bg-[#020617] transition-colors duration-300
+    dark:text-white overflow-x-hidden"
+  >
+    <!-- 
+      El componente Hero ya tiene client:load, por lo que Framer Motion
+      funcionará correctamente dentro de él. El slot (h1) se pasará a ese 
+      entorno de cliente.
+    -->
+    <Hero isHome={true} client:load height="min-h-[100vh] xs:min-h-[95dvh] ls:min-h-[98dvh] ms:min-h-[95dvh]">
+      <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-12 md:pt-5">
+        <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[2.8rem] xs:text-[2rem] ls:text-[3.6rem] ms:text-[2.8rem] ss:text-[3.2rem] s:text-[3.2rem] sm:text-[3.2rem] md:text-[7.5rem] lg:text-[7.5rem] xl:text-[7.5rem] leading-[1] md:leading-[1] font-[Inter]">
           Yamid Dev Oficial
-      </span>
-      </motion.h1>
+        </span>
+      </h1>
     </Hero>
+
+    <div class="w-full flex items-center justify-center"><SectionAboutMe client:load/></div>
     <Carousel client:load/>
-    <SectionAboutMe/> 
-    <Blog client:load/>
-    <div id="technology" class="w-full max-h- flex items-center justify-center">
+    <div id="technology" class="w-full flex items-center justify-center">
       <Technology />
     </div>
+    <ThinkInCode client:load/>
+    <Blog client:load/>
     <ContactForm client:load />
   </div>
 </MainLayout>

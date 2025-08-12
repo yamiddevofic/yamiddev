@@ -86,6 +86,19 @@ body {
   height: 70vh;
 }
 
+/* Hide scrollbars cross-browser */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar { /* Chrome, Safari, Opera */
+  display: none;
+}
+
+/* iOS momentum scrolling for overflow containers */
+.ios-momentum {
+  -webkit-overflow-scrolling: touch;
+}
 
 @layer base {
   :root {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import format from 'date-fns/format';
 import es from 'date-fns/locale/es';
+import { TitleSection } from '../atoms/TitleSection';
 
 const BlogCard = ({ title, excerpt, date, link }) => (
   <div 
@@ -9,7 +10,7 @@ const BlogCard = ({ title, excerpt, date, link }) => (
     tabIndex={0}
     onClick={() => window.open(link, '_blank')}
     onKeyDown={(e) => e.key === 'Enter' && window.open(link, '_blank')}
-    className="bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+    className="bg-white dark:bg-slate-950 rounded-xl shadow-lg p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 js-show-on-scroll hover:shadow-lg transition-shadow duration-300 cursor-pointer"
   >
     <div className="p-6 flex flex-col flex-grow">
       <h2
@@ -60,15 +61,13 @@ const Blog = () => {
   }, []);
 
   return (
-    <section className="pt-[15%] md:pt-[6%] pb-[5%] w-[100%] px-[5%]" id='blog'>
-      <h2 className="text-4xl md:text-5xl font-bold text-center py-5 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 js-show-on-scroll">
-        Últimos Artículos
-      </h2>
+    <section className="xs:py-[15%] ls:py-[15%] ms:py-[15%] ss:py-[15%] s:py-[15%] sm:py-[15%] md:py-[3%] lg:py-[3%] xl:py-[3%] xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[90%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] px-[5%] xs:mb-[15%] ls:mb-[15%] ms:mb-[15%] ss:mb-[15%] s:mb-[15%] sm:mb-[15%] md:mb-[5%] lg:mb-[5%] xl:mb-[5%] bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative" id='blog'>
+      <TitleSection title="Últimos Artículos"/>
 
       {loading ? (
         <p className="text-center text-gray-500 dark:text-gray-400">Cargando artículos...</p>
       ) : (
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           {posts.map((post, index) => (
             <BlogCard
               key={index}

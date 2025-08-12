@@ -3,6 +3,7 @@ import { Github } from '../atoms/icons/Github';
 import { Linkedin } from '../atoms/icons/Linkedin';
 import X from '../atoms/icons/X';
 import { Instagram } from '../atoms/icons/Instagram';
+import { TitleSection } from '../atoms/TitleSection';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -48,11 +49,11 @@ const ContactForm = () => {
   
 
   return (
-    <section id="contact" className="w-full py-16 px-4 bg-none">
+    <section id="contact" className="w-full py-16 px-4 bg-gray-50 dark:bg-slate-950 relative rounded-tl-lg rounded-tr-lg border border-gray-200/50 dark:border-gray-700/50">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 ">
-          Contacto
-        </h2>
+        
+        <TitleSection title="Contacto"/>
+        
         
         <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
           {/* Formulario de contacto */}

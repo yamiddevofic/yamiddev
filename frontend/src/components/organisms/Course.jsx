@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { createContext, useContext, useMemo, useReducer, useState } from "react";
 import { Button } from "../molecules/Buttons"; // Usa tu botón del proyecto
 import Group from "../atoms/icons/Group";
-import { ArrowRight, PlayCircle, Lock, Maximize2, Book, Pause } from 'lucide-react';
+import { ArrowRight, HomeIcon, PlayCircle, Lock, Maximize2, Book, Pause } from 'lucide-react';
 import { ToggleOpen, ToggleClose } from "../atoms/icons/Course";
 import { Courses } from "../../lib/coursesData";
+import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 // Datos de las clases
 const CLASSES = [
@@ -28,6 +29,10 @@ const LockIcon = () => (
 );
 
 export const Course = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
   // Estado para el video activo y el modal de "bloqueado"
   const [activeVideo, setActiveVideo] = useState(CLASSES.find(c => c.available));
   const [showLockedModal, setShowLockedModal] = useState(false);
@@ -121,38 +126,77 @@ export const Course = () => {
       return url;
     }
   };
+
   return (
-    <motion.section
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    className="w-[95%] mx-auto bg-white dark:bg-gray-900 border border-gray-400/50 dark:border-gray-700/50 shadow-lg my-0 sm:my-20 px-3 sm:px-8 md:px-12 xs:pt-24 xs:pb-16 ls:pt-24 ls:pb-16 ms:pt-24 ms:pb-16 ss:pt-26 ss:pb-16 s:pt-26 s:pb-16 sm:pt-26 sm:pb-16 md:pt-10 md:pb-10 lg:pt-10 lg:pb-10 xl:pt-10 xl:pb-10 text-gray-900 dark:text-gray-100 rounded-lg"
+    <motion.section 
+    initial="hidden"
+    whileInView="visible"
+    transition={{ delay: 0.2 }}
+    variants={fadeInUp}
+    className="w-[100%] mx-auto my-0 xs:px-5 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-2 lg:px-2 xl:px-2 xs:pt-5 ls:pt-5 ls:pb-0 ms:pt-5 ms:pb-0 ss:pt-5 ss:pb-0 s:pt-5 s:pb-0 sm:pt-5 sm:pb-0 md:pt-5 md:pb-5 lg:pt-5 lg:pb-5 xl:pt-5 xl:pb-5 text-gray-900 dark:text-gray-100 rounded grid"
     >
-        <div className="flex items-center justify-between gap-2 mb-6 ">
-            <div className="grid grid-cols-[auto_1fr] items-center gap-2 xs:py-2 ls:py-2 ms:py-2 ss:py-2 s:py-2 sm:py-2 md:py-4 lg:py-4 xl:py-4 xs:px-2 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-4 lg:px-4 xl:px-4 bg-gray-100 dark:bg-gray-700 rounded-lg w-[100%]">
-            <Book className="w-6 h-6 mr-2" />
-            <h3 className="xs:text-[.70rem] ls:text-[.72rem] ms:text-[.72rem] ss:text-[.72rem] s:text-[.72rem] sm:text-[.72rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] font-bold text-gray-900 dark:text-white">{activeVideo.title}</h3>
-            </div>
-            <div>   
+      {/* Fondo decorativo (siempre detrás) */}
+      <div aria-hidden className="pointer-events-none w-full  overflow-hidden absolute inset-0 z-0 h-[125%] ">
+        {/* Blob superior-izq */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="absolute -top-32 -left-2 w-[100%] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(56,189,248,0.25), rgba(56,189,248,0.08), transparent)",
+          }}
+        />
+        {/* Blob inferior-der */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+          className="absolute -bottom-24 -right-24 h-[34rem] w-[34rem] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(59,130,246,0.28), rgba(59,130,246,0.10), transparent)",
+          }}
+        />
+        {/* Patrón sutil */}
+        <div className="absolute inset-0 opacity-30 dark:opacity-50 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:28px_28px]" />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent dark:via-white/5" />
+      </div>
+      {/* Encabezado */}
+      <div className="flex items-center justify-between gap-2 mb-6 relative">
+        <div className="grid grid-cols-[auto_1fr_auto]  place-items-center gap-2 xs:py-4 ls:py-4 ms:py-4 ss:py-4 s:py-4 sm:py-4 md:py-4 lg:py-4 xl:py-4 xs:px-2 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-4 lg:px-4 xl:px-4 bg-white dark:bg-slate-900 rounded-lg w-[100%] border border-gray-400/50 dark:border-gray-700/50">
+            <button
+              onClick={() =>  window.location.href = '/'}
+              className="inline-flex items-center justify-center xs:h-8 xs:w-8 ls:h-8 ls:w-8 ms:h-8 ms:w-8 ss:h-8 ss:w-8 s:h-8 s:w-8 sm:h-8 sm:w-8 md:h-12 md:w-12 lg:h-12 lg:w-12 xl:h-12 xl:w-12 rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+              aria-label='Ir al Inicio'
+              title='Ir al Inicio'
+            >
+                <HomeIcon className={`xs:w-4 xs:h-4 ls:w-4 ls:h-4 ms:w-4 ms:h-4 ss:w-4 ss:h-4 s:w-4 s:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transform rotate-0`} />
+            </button>
+            <h3 className="xs:text-[.70rem] ls:text-[.77rem] ms:text-[.77rem] ss:text-[.77rem] s:text-[.77rem] sm:text-[.77rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] font-bold text-gray-900 dark:text-white text-right">{activeVideo.title}</h3>
+            <div className="flex items-center">
             {!isMobile && (
-                    <button
-                        onClick={() => setShowList((v) => !v)}
-                        className="inline-flex items-center justify-center h-11 w-11 rounded-md border border-gray-400 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 "
-                        aria-label={showList ? 'Ocultar lista' : 'Mostrar lista'}
-                        title={showList ? 'Ocultar lista' : 'Mostrar lista'}
-                    >
-                        {showList ? (
-                        <ToggleClose className={`w-5 h-5 transform rotate-90`} />
-                        ) : (
-                        <ToggleOpen className={`w-5 h-5 transform rotate-90`} />
-                        )}
-                    </button>
-                )}
+                <button
+                    onClick={() => setShowList((v) => !v)}
+                    className="inline-flex items-center justify-center h-11 w-11 rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+                    aria-label={showList ? 'Ocultar lista' : 'Mostrar lista'}
+                    title={showList ? 'Ocultar lista' : 'Mostrar lista'}
+                >
+                    {showList ? (
+                    <ToggleClose className={`w-5 h-5 transform rotate-90`} />
+                    ) : (
+                    <ToggleOpen className={`w-5 h-5 transform rotate-90`} />
+                    )}
+                </button>
+            )}
             </div>
-        </div>
+          </div>
+      </div>
 
         {/* Contenedor principal: Grid en desktop, Flex en móvil */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12 mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12 mx-auto max-w-7xl relative">
                 
             {/* Columna del Reproductor de Video */}
             <div className={`mb-2 lg:mb-0 ${showList ? 'lg:col-span-7' : 'lg:col-span-12'}`}>
@@ -206,12 +250,12 @@ export const Course = () => {
                 </div>
                 )}
             </div>
-                {/* Título y descripción del video activo debajo del reproductor */}
-                {activeVideo && (
-                    <div className="mt-10 mb-5 px-2">
-                        <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400">{activeVideo.description}</p>
-                        {activeVideo?.categories?.length > 0 && (
-                          <div className="mt-6">
+            {/* Descripción del video activo debajo del reproductor */}
+            {activeVideo && (
+                <div className="mt-8 mb-5 px-2 py-4 bg-white dark:bg-slate-900 rounded-md border border-gray-400/50 dark:border-gray-700/50">
+                    <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400">{activeVideo.description}</p>
+                    {activeVideo?.categories?.length > 0 && (
+                      <div className="mt-6">
                             <div className="flex flex-wrap gap-2">
                               {activeVideo.categories.map((cat, idx) => (
                                 <span
@@ -231,24 +275,26 @@ export const Course = () => {
             {isMobile && (
             <button
                 onClick={() => setShowList((v) => !v)}
-                className="inline-flex items-center justify-center h-10 w-10 rounded-md border border-gray-400 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800"
+                className="inline-flex items-center justify-center gap-2 h-10 w-auto rounded-md mb-4"
                 aria-label={showList ? 'Ocultar lista' : 'Mostrar lista'}
                 title={showList ? 'Ocultar lista' : 'Mostrar lista'}
             >
-                {showList ? <ToggleClose className="w-5 h-5" /> : <ToggleOpen className="w-5 h-5" />}
+                {showList ? <ToggleClose className="w-5 h-5" />  : <ToggleOpen className="w-5 h-5" /> }
+                {showList ? 'Ocultar' : 'Ver todos los cursos'}
             </button>
             )}
             {/* Columna de la Lista de Clases / Carrusel en móvil */}
             {showList && (
-            <div className="lg:col-span-5 mt-4">
-                <h3 className="text-lg font-semibold mb-4 px-2 lg:px-0">Clases del curso</h3>
+            <div className="lg:col-span-5 border border-gray-400/50 dark:border-gray-700/50 xs:rounded-tl-md xs:rounded-tr-md ls:rounded-tl-md ls:rounded-tr-md ms:rounded-tl-md ms:rounded-tr-md ss:rounded-tl-md ss:rounded-tr-md s:rounded-tl-md s:rounded-tr-md sm:rounded-tl-md sm:rounded-tr-md md:rounded-tl-md md:rounded-tr-md pt-8 lg:rounded-md xl:rounded-md  bg-white dark:bg-slate-900 grid flex flex-col items-start justify-center h-[calc(100vh-10rem)]">
+              
+              <h3 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] font-semibold mb-0 px-2 lg:px-0 text-center pb-2">Clases del curso</h3>
                 {/* Lista vertical en mobile y desktop, con paginación condicional */}
-                <div className="flex flex-col gap-3 sm:gap-4 pb-4 lg:pb-0">
+                <div className="flex flex-col pb-4 lg:pb-0">
                     {(totalPages > 1 ? CLASSES.slice(page * pageSize, page * pageSize + pageSize) : CLASSES).map((video) => (
                         <button
                             key={video.id}
                             onClick={() => handleClassSelection(video)}
-                            className={`group flex-none lg:flex w-full items-center p-4 xs:rounded-md ls:rounded-md ms:rounded-md ss:rounded-md s:rounded-md sm:rounded-md md:rounded-lg lg:rounded-lg xl:rounded-lg transition-all duration-300 border text-left
+                            className={`group flex-none lg:flex w-[100%] h-full items-center px-4 py-2 transition-all duration-300 border text-left
                                 ${activeVideo?.id === video.id 
                                     ? 'bg-blue-50 dark:bg-slate-800/80 border-blue-500/50 ring-2 ring-blue-500/30' 
                                     : 'bg-white/50 dark:bg-slate-900/50 border-gray-400 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800'}
@@ -283,20 +329,19 @@ export const Course = () => {
                                 )}
                             </div>
                             <div className="flex-grow">
-                                <h4 className="font-semibold text-sm md:text-base text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                                <h4 className="font-semibold xs:text-[.77rem] ls:text-[.77rem] ms:text-[.77rem] ss:text-[.77rem] s:text-[.77rem] sm:text-[.77rem] md:text-[.95rem] lg:text-[.95rem] xl:text-[.95rem] text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                                     {video.title}
                                 </h4>
-                                <p className={`text-xs mt-1 ${video.available ? 'text-gray-500 dark:text-gray-400' : 'text-amber-600 dark:text-amber-500'}`}>
+                                <p className={`text-xs mt-1 ${video.available ? 'text-green-500 dark:text-green-400' : 'text-amber-600 dark:text-amber-500'}`}>
                                     {video.available ? 'Disponible' : 'Próximamente'}
                                 </p>
                             </div>
                         </button>
                     ))}
                 </div>
-
                 {/* Controles de paginación (solo si es necesario) */}
                 {totalPages > 1 && (
-                <div className="flex items-center justify-between mt-2 px-2 lg:px-0">
+                <div className="flex items-center justify-center mt-2 px-2 lg:px-0 gap-2">
                     <button
                     onClick={() => setPage((p) => Math.max(0, p - 1))}
                     className="px-3 py-1.5 text-sm rounded-md border border-gray-400 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-40"
@@ -309,7 +354,7 @@ export const Course = () => {
                         <button
                         key={i}
                         onClick={() => setPage(i)}
-                        className={`h-2.5 w-2.5 rounded-full ${i === page ? 'bg-blue-500' : 'bg-gray-300 dark:bg-slate-700'}`}
+                        className={`h-2.5 w-2.5 rounded-full ${i === page ? 'bg-blue-500' : 'bg-gray-300 dark:bg-slate-800'}`}
                         aria-label={`Ir a la página ${i + 1}`}
                         />
                     ))}
@@ -323,6 +368,7 @@ export const Course = () => {
                     </button>
                 </div>
             )}
+            
             {/* Modal: Contenido bloqueado */}
             {showLockedModal && (
                 <motion.div

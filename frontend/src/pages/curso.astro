@@ -30,8 +30,9 @@ const courseInfo = {
     pageType="course"
     courseDetails={courseInfo}
     isMain={false}
+    header={false}
 >
-    <div class="bg-[#fff] dark:bg-[#020617] overflow-hidden w-full flex items-center justify-center">
+    <div class="bg-[#fff] dark:bg-[#020617] overflow-hidden w-full h-auto flex items-center justify-center">
         <Course client:only="react"/>
     </div>
 </MainLayout>

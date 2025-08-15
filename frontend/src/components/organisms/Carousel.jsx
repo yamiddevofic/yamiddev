@@ -73,6 +73,11 @@ const Carousel = () => {
     setCurrentIndex(index);
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <motion.section
       id="projects"
@@ -125,7 +130,11 @@ const Carousel = () => {
           }}
         >
           {Projects.map((project, idx) => (
-            <motion.div
+              <motion.div
+              initial="hidden"
+              whileInView="visible"
+              transition={{ delay: 0.2 }}
+              variants={fadeInUp}
               key={project.id}
               ref={idx === 0 ? firstItemRef : undefined}
               className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 rounded-xl"
@@ -135,7 +144,6 @@ const Carousel = () => {
                   : undefined
               }
               whileHover={{ y: -8 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <article className="relative h-auto rounded-xl border border-white/10 dark:border-white/10 bg-transparent dark:bg-transparent shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
                 <a href={project.url} target="_blank" rel="noopener noreferrer" className="block h-full">

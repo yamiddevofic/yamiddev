@@ -13,6 +13,7 @@ export interface Props {
   noindex?: boolean;
   lang?: string;
   isMain?: boolean;
+  header?: boolean;
   pageType?: 'website' | 'article' | 'course' | 'person'; // Define el tipo de contenido principal
   keywords?: string[];
   // Props específicas para un curso
@@ -40,6 +41,7 @@ const {
   noindex = false,
   lang = 'es',
   isMain = false,
+  header = true,
   pageType = 'website', // Por defecto, es un sitio web general
   keywords = [],
   courseDetails,
@@ -189,10 +191,10 @@ if (pageType === 'article' && articleDetails) {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>
 <body
-    class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col min-h-[100vh]"
+    class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white transition-colors duration-300 flex flex-col  min-h-[100vh]"
 >
-    <Navbar client:load isMain={isMain}/>
-    <main class="w-full h-full flex items-center justify-center flex-grow flex-col overflow-x-hidden">
+    {header && <Navbar client:load isMain={isMain}/>}
+    <main class="w-full h-auto flex items-center justify-center flex-grow flex-col overflow-x-hidden">
         <slot />
     </main>
     <Footer />

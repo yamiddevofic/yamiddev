@@ -130,7 +130,12 @@ export const Course = () => {
   const passNextVideo = () => {
     const currentIndex = CLASSES.findIndex(v => v.id === activeVideo.id);
     if (currentIndex < CLASSES.length - 1) {
-      setActiveVideo(CLASSES[currentIndex + 1]);
+      const nextVideo = CLASSES[currentIndex + 1];
+      if (nextVideo.available) {
+        setActiveVideo(nextVideo);
+      } else {
+        setShowLockedModal(true);
+      }
     }
   };
 

@@ -119,12 +119,18 @@ const ThinkInCode = () => {
     setCurrentIndex(index);
   };
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <motion.section
       id="course"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ delay: 0.2 }}
       className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[90%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] mx-auto overflow-hidden rounded-lg xs:my-[10%] ls:my-[15%] ms:my-[15%] ss:my-[15%] s:my-[15%] sm:my-[15%] md:my-[5%] lg:my-[5%] xl:my-[5%] xs:px-3 ls:px-3 ms:px-3 ss:px-3 s:px-3 sm:px-3 md:px-14 lg:px-14 xl:px-14 xs:py-12 ls:py-12 ms:py-12 ss:py-12 s:py-12 sm:py-12 md:py-12 lg:py-12 xl:py-12 text-gray-900 dark:text-gray-100"
     >
       {/* Encabezado */}

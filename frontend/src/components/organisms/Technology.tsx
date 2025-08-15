@@ -89,17 +89,25 @@ const TechSection: React.FC<{ title: string; items: TechItem[] }> = ({ title, it
 );
 
 const Technology: React.FC = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <main className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white dark:bg-slate-950 rounded-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
-      <header className="pb-5 text-center">
-        <TitleSection title="Stack Tecnológico"/>
-      </header>
+    <motion.section 
+    initial="hidden"
+    whileInView="visible"
+    transition={{ delay: 0.2 }}
+    variants={fadeInUp}
+    className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white dark:bg-slate-950 rounded-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
+      <TitleSection title="Stack Tecnológico"/>
 
       <TechSection title="Frontend" items={technologies.frontend} />
       <TechSection title="Backend" items={technologies.backend} />
       <TechSection title="Herramientas" items={technologies.tools} />
       <TechSection title="Bases de datos" items={technologies.databases} />
-    </main>
+    </motion.section>
   );
 };
 

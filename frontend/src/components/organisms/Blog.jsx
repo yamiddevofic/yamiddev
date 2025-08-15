@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import format from 'date-fns/format';
 import es from 'date-fns/locale/es';
 import { TitleSection } from '../atoms/TitleSection';
+import { motion } from 'framer-motion';
 
 const BlogCard = ({ title, excerpt, date, link }) => (
   <div 
@@ -60,8 +61,18 @@ const Blog = () => {
     fetchPosts();
   }, []);
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <section className="xs:py-[15%] ls:py-[15%] ms:py-[15%] ss:py-[15%] s:py-[15%] sm:py-[15%] md:py-[3%] lg:py-[3%] xl:py-[3%] xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[90%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] px-[5%] xs:mb-[15%] ls:mb-[15%] ms:mb-[15%] ss:mb-[15%] s:mb-[15%] sm:mb-[15%] md:mb-[5%] lg:mb-[5%] xl:mb-[5%] bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative" id='blog'>
+    <motion.section 
+    initial="hidden"
+    whileInView="visible"
+    transition={{ delay: 0.2 }}
+    variants={fadeInUp}
+    className="xs:py-[15%] ls:py-[15%] ms:py-[15%] ss:py-[15%] s:py-[15%] sm:py-[15%] md:py-[3%] lg:py-[3%] xl:py-[3%] xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[90%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] px-[5%] xs:mb-[15%] ls:mb-[15%] ms:mb-[15%] ss:mb-[15%] s:mb-[15%] sm:mb-[15%] md:mb-[5%] lg:mb-[5%] xl:mb-[5%] bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative" id='blog'>
       <TitleSection title="Últimos Artículos"/>
 
       {loading ? (
@@ -89,7 +100,7 @@ const Blog = () => {
           <ArrowRight className="w-5 h-5 ml-2" />
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

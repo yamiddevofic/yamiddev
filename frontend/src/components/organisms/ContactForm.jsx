@@ -4,6 +4,7 @@ import { Linkedin } from '../atoms/icons/Linkedin';
 import X from '../atoms/icons/X';
 import { Instagram } from '../atoms/icons/Instagram';
 import { TitleSection } from '../atoms/TitleSection';
+import { motion } from 'framer-motion';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,11 @@ const ContactForm = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,15 +55,25 @@ const ContactForm = () => {
   
 
   return (
-    <section id="contact" className="w-full py-16 px-4 bg-gray-50 dark:bg-slate-950 relative rounded-tl-lg rounded-tr-lg border border-gray-200/50 dark:border-gray-700/50">
-      <div className="max-w-4xl mx-auto">
+    <motion.section 
+    initial="hidden"
+    whileInView="visible"
+    transition={{ delay: 0.2 }}
+    variants={fadeInUp}
+    id="contact" className="w-full py-8 px-4 bg-gray-50 dark:bg-slate-950 relative rounded-tl-lg rounded-tr-lg border border-gray-200/50 dark:border-gray-700/50 flex items-center justify-center">
+      <div className="w-full">
         
         <TitleSection title="Contacto"/>
         
         
-        <div className="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-12">
+        <div className="grid place-items-center">
           {/* Formulario de contacto */}
-          <div className="w-full md:w-2/3 bg-white dark:bg-gray-900 rounded-sm shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  transform transition duration-300 hover:scale-[1.02]">
+          <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          transition={{ delay: 0.2 }}
+          variants={fadeInUp}
+          className="w-full md:w-[60%] my-4 bg-white dark:bg-gray-900 rounded-sm shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  transform transition duration-300 hover:scale-[1.02]">
             <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
               Envíame un mensaje
             </h3>
@@ -157,57 +173,10 @@ const ContactForm = () => {
                 </div>
               )}
             </form>
-          </div>
-
-          {/* Información de contacto y redes sociales */}
-          <div className="w-full md:w-1/3 space-y-8">
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
-              <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
-                Redes Sociales
-              </h3>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href="https://github.com/yamidevofic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://linkedin.com/in/yamiddevofic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://x.com/yamiddevofic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                  aria-label="Twitter"
-                >
-                  <X className="w-6 h-6" />
-                </a>
-                <a
-                  href="https://instagram.com/yamiddevofic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-6 h-6" />
-                </a>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

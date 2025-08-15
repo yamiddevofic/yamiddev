@@ -37,7 +37,7 @@ const pageDetails = {
 
   <div class="w-full h-full flex flex-col items-center justify-center 
     bg-[#fff] dark:bg-[#020617] transition-colors duration-300
-    dark:text-white overflow-x-hidden"
+    dark:text-white overflow-hidden"
   >
     <!-- 
       El componente Hero ya tiene client:load, por lo que Framer Motion
@@ -55,7 +55,7 @@ const pageDetails = {
     <div class="w-full flex items-center justify-center"><SectionAboutMe client:load/></div>
     <Carousel client:load/>
     <div id="technology" class="w-full flex items-center justify-center">
-      <Technology />
+      <Technology client:load/>
     </div>
     <ThinkInCode client:load/>
     <Blog client:load/>

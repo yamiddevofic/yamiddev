@@ -169,7 +169,7 @@ const ModernAboutMe = () => {
             <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
                 <div className='flex items-center justify-start w-screen'>
-                  <Briefcase className='mr-[2rem] text-blue-500'/>
+                  <Briefcase className='xs:mr-2 ls:mr-2 ms:mr-2 ss:mr-2 s:mr-2 sm:mr-2 md:mr-[1.2%] lg:mr-[1.2%] xl:mr-[1.2%] text-blue-500'/>
                   <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
                     Experiencia Profesional
                   </h2> 
@@ -197,7 +197,7 @@ const ModernAboutMe = () => {
             <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 w-full items-center gap-6">
                 <div className='flex items-center justify-start w-screen'>
-                  <Book className='mr-[2rem] text-blue-500'/>
+                  <Book className='xs:mr-2 ls:mr-2 ms:mr-2 ss:mr-2 s:mr-2 sm:mr-2 md:mr-[1.2%] lg:mr-[1.2%] xl:mr-[1.2%] text-blue-500'/>
                   <h2 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 w-[100%]">
                     Educación
                   </h2> 

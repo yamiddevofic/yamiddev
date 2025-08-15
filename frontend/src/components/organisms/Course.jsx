@@ -127,6 +127,13 @@ export const Course = () => {
     }
   };
 
+  const passNextVideo = () => {
+    const currentIndex = CLASSES.findIndex(v => v.id === activeVideo.id);
+    if (currentIndex < CLASSES.length - 1) {
+      setActiveVideo(CLASSES[currentIndex + 1]);
+    }
+  };
+
   return (
     <motion.section 
     initial="hidden"
@@ -164,22 +171,26 @@ export const Course = () => {
         {/* Vignette */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/30 to-transparent dark:via-white/5" />
       </div>
+
       {/* Encabezado */}
       <div className="flex items-center justify-between gap-2 mb-6 relative">
-        <div className="grid grid-cols-[auto_1fr_auto]  place-items-center gap-2 xs:py-4 ls:py-4 ms:py-4 ss:py-4 s:py-4 sm:py-4 md:py-4 lg:py-4 xl:py-4 xs:px-2 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-4 lg:px-4 xl:px-4 bg-white dark:bg-slate-900 rounded-lg w-[100%] border border-gray-400/50 dark:border-gray-700/50">
+        <div className="flex items-center justify-between xs:py-4 ls:py-4 ms:py-4 ss:py-4 s:py-4 sm:py-4 md:py-4 lg:py-4 xl:py-4 xs:px-[0.5rem] ls:px-[0.5rem] ms:px-[0.5rem] ss:px-[0.5rem] s:px-[0.5rem] sm:px-[0.5rem] md:px-[0.5rem] lg:px-[0.5rem] xl:px-[0.5rem] bg-white dark:bg-slate-900 rounded-lg w-[100%] border border-gray-400/50 dark:border-gray-700/50 max-h-[3.4rem]">
             <button
               onClick={() =>  window.location.href = '/'}
-              className="inline-flex items-center justify-center xs:h-8 xs:w-8 ls:h-8 ls:w-8 ms:h-8 ms:w-8 ss:h-8 ss:w-8 s:h-8 s:w-8 sm:h-8 sm:w-8 md:h-12 md:w-12 lg:h-12 lg:w-12 xl:h-12 xl:w-12 rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+              className="inline-flex items-center justify-center xs:h-[2rem] xs:w-[2rem] ls:h-[2.5rem] ls:w-[2.5rem] ms:h-[2.5rem] ms:w-[2.5rem] ss:h-[2.5rem] ss:w-[2.5rem] s:h-[2.5rem] s:w-[2.5rem] sm:h-[2.5rem] sm:w-[2.5rem] md:h-[2.5rem] md:w-[2.5rem] lg:h-[2.5rem] lg:w-[2.5rem] xl:h-[2.5rem] xl:w-[2.5rem] rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
               aria-label='Ir al Inicio'
               title='Ir al Inicio'
             >
                 <HomeIcon className={`xs:w-4 xs:h-4 ls:w-4 ls:h-4 ms:w-4 ms:h-4 ss:w-4 ss:h-4 s:w-4 s:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transform rotate-0`} />
             </button>
-            <h3 className="xs:text-[.70rem] ls:text-[.77rem] ms:text-[.77rem] ss:text-[.77rem] s:text-[.77rem] sm:text-[.77rem] md:text-[1.2rem] lg:text-[1.2rem] xl:text-[1.2rem] font-bold text-gray-900 dark:text-white text-right">{activeVideo.title}</h3>
-            <div className="flex items-center">
+            <div className="flex w-full md:items-center xs:justify-end ls:justify-end ms:justify-end ss:justify-end s:justify-end sm:justify-end md:justify-center lg:justify-center xl:justify-center">
+              <h1 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-gray-800 dark:text-cyan-400 font-[Inter] xs:mr-2 ls:mr-2 ms:mr-2 ss:mr-2 s:mr-2 sm:mr-2 md:mr-0 lg:mr-0 xl:mr-0">Pensar en código | Clase {activeVideo.id}</h1>
+            </div>
+            {/* Boton de pasar a la siguiente clase */}
+            <div className="flex items-center justify-end">
             {!isMobile && (
                 <button
-                    onClick={() => setShowList((v) => !v)}
+                    onClick={() => passNextVideo()}
                     className="inline-flex items-center justify-center h-11 w-11 rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
                     aria-label={showList ? 'Ocultar lista' : 'Mostrar lista'}
                     title={showList ? 'Ocultar lista' : 'Mostrar lista'}

@@ -116,10 +116,10 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
           >
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 md:gap-5 lg:gap-6">
               <Button icon={Group} href="/comunidad" isMain={false} isLink>
-                Únete a mi comunidad
+                Aprender
               </Button>
               <Button icon={Phone} href="contact" isMain>
-                Contáctate conmigo
+                Contratar
               </Button>
             </div>
           </motion.div>

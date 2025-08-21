@@ -107,7 +107,7 @@ const ModernAboutMe = () => {
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
         {/* Perfil */}
         <div className="flex flex-col items-center">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500/30 dark:ring-blue-400/30 mb-4 md:mb-6 ">
+        <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden ring-4 ring-blue-500/30 dark:ring-blue-400/30 mb-4 md:mb-6 ">
             <img 
               src="./dev.jpg" 
               alt="Yamid Horacio Rodríguez"

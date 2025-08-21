@@ -180,39 +180,35 @@ export const Course = () => {
       {/* Encabezado */}
       <div className="flex items-center justify-between gap-2 mb-6 relative">
         <div className="flex items-center justify-between xs:py-4 ls:py-4 ms:py-4 ss:py-4 s:py-4 sm:py-4 md:py-4 lg:py-4 xl:py-4 xs:px-[0.5rem] ls:px-[0.5rem] ms:px-[0.5rem] ss:px-[0.5rem] s:px-[0.5rem] sm:px-[0.5rem] md:px-[0.5rem] lg:px-[0.5rem] xl:px-[0.5rem] bg-white dark:bg-slate-900 rounded-lg w-[100%] border border-gray-400/50 dark:border-gray-700/50 max-h-[3.4rem]">
-            <button
-              onClick={() =>  window.location.href = '/'}
-              className="inline-flex items-center justify-center xs:h-[2rem] xs:w-[2rem] ls:h-[2.5rem] ls:w-[2.5rem] ms:h-[2.5rem] ms:w-[2.5rem] ss:h-[2.5rem] ss:w-[2.5rem] s:h-[2.5rem] s:w-[2.5rem] sm:h-[2.5rem] sm:w-[2.5rem] md:h-[2.5rem] md:w-[2.5rem] lg:h-[2.5rem] lg:w-[2.5rem] xl:h-[2.5rem] xl:w-[2.5rem] rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
-              aria-label='Ir al Inicio'
-              title='Ir al Inicio'
-            >
-                <HomeIcon className={`xs:w-4 xs:h-4 ls:w-4 ls:h-4 ms:w-4 ms:h-4 ss:w-4 ss:h-4 s:w-4 s:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transform rotate-0`} />
-            </button>
-            <div className="flex w-full md:items-center xs:justify-end ls:justify-end ms:justify-end ss:justify-end s:justify-end sm:justify-end md:justify-center lg:justify-center xl:justify-center">
-              <h1 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-gray-800 dark:text-cyan-400 font-[Inter] xs:mr-2 ls:mr-2 ms:mr-2 ss:mr-2 s:mr-2 sm:mr-2 md:mr-0 lg:mr-0 xl:mr-0">Pensar en código | Clase {activeVideo.id}</h1>
+        <div className="flex items-center justify-end">
+                <button
+                    onClick={() => window.history.back()}
+                    className="inline-flex items-center justify-center xs:h-[1.6rem] xs:w-[1.6rem] ls:h-[2rem] ls:w-[2rem] ms:h-[2rem] ms:w-[2rem] ss:h-[2rem] ss:w-[2rem] s:h-[2rem] s:w-[2rem] sm:h-[2rem] sm:w-[2rem] md:h-[2.4rem] md:w-[2.4rem] lg:h-[2.4rem] lg:w-[2.4rem] xl:h-[2.4rem] xl:w-[2.4rem] rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+                    aria-label='Pasar a la siguiente clase'
+                    title='Pasar a la siguiente clase'
+                >
+                    <HomeIcon className={`xs:w-4 xs:h-4 ls:w-4 ls:h-4 ms:w-4 ms:h-4 ss:w-4 ss:h-4 s:w-4 s:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transform `} />
+                </button>
+            </div>
+            <div className="flex w-full items-center justify-center">
+              <h1 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-gray-800 dark:text-cyan-400 font-[Inter]">Pensar en código | Clase {activeVideo.id}</h1>
             </div>
             {/* Boton de pasar a la siguiente clase */}
-            <div className="flex items-center justify-end">
-            {!isMobile && (
+            <div className="flex items-center justify-start">
                 <button
                     onClick={() => passNextVideo()}
-                    className="inline-flex items-center justify-center h-11 w-11 rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
-                    aria-label={showList ? 'Ocultar lista' : 'Mostrar lista'}
-                    title={showList ? 'Ocultar lista' : 'Mostrar lista'}
+                    className="inline-flex items-center justify-center xs:h-[2rem] xs:w-[2rem] ls:h-[2rem] ls:w-[2rem] ms:h-[2rem] ms:w-[2rem] ss:h-[2rem] ss:w-[2rem] s:h-[2rem] s:w-[2rem] sm:h-[2rem] sm:w-[2rem] md:h-[2rem] md:w-[2rem] lg:h-[2rem] lg:w-[2rem] xl:h-[2rem] xl:w-[2rem] rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+                    aria-label='Pasar a la siguiente clase'
+                    title='Pasar a la siguiente clase'
                 >
-                    {showList ? (
-                    <ToggleClose className={`w-5 h-5 transform rotate-90`} />
-                    ) : (
-                    <ToggleOpen className={`w-5 h-5 transform rotate-90`} />
-                    )}
+                    <ToggleClose className={`xs:w-3 xs:h-3 ls:w-4 ls:h-4 ms:w-4 ms:h-4 ss:w-4 ss:h-4 s:w-4 s:h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 transform rotate-90`} />
                 </button>
-            )}
             </div>
           </div>
       </div>
 
         {/* Contenedor principal: Grid en desktop, Flex en móvil */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12 mx-auto max-w-7xl relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10 mx-auto max-w-7xl relative">
                 
             {/* Columna del Reproductor de Video */}
             <div className={`mb-2 lg:mb-0 ${showList ? 'lg:col-span-7' : 'lg:col-span-12'}`}>
@@ -268,7 +264,8 @@ export const Course = () => {
             </div>
             {/* Descripción del video activo debajo del reproductor */}
             {activeVideo && (
-                <div className="mt-8 mb-5 px-2 py-4 bg-white dark:bg-slate-900 rounded-md border border-gray-400/50 dark:border-gray-700/50">
+                <div className="mt-8 mb-5 px-4 py-6 bg-white dark:bg-slate-900 rounded-md border border-gray-400/50 dark:border-gray-700/50">
+                    <h3 className="xs:text-sm ls:text-sm ms:text-sm ss:text-sm s:text-sm sm:text-sm md:text-lg lg:text-lg xl:text-lg font-semibold mb-2">{activeVideo.title}</h3>
                     <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400">{activeVideo.description}</p>
                     {activeVideo?.categories?.length > 0 && (
                       <div className="mt-6">
@@ -301,7 +298,7 @@ export const Course = () => {
             )}
             {/* Columna de la Lista de Clases / Carrusel en móvil */}
             {showList && (
-            <div className="lg:col-span-5 border border-gray-400/50 dark:border-gray-700/50 xs:rounded-tl-md xs:rounded-tr-md ls:rounded-tl-md ls:rounded-tr-md ms:rounded-tl-md ms:rounded-tr-md ss:rounded-tl-md ss:rounded-tr-md s:rounded-tl-md s:rounded-tr-md sm:rounded-tl-md sm:rounded-tr-md md:rounded-tl-md md:rounded-tr-md pt-8 lg:rounded-md xl:rounded-md  bg-white dark:bg-slate-900 grid flex flex-col items-start justify-center h-[calc(100vh-10rem)]">
+            <div className="lg:col-span-5 border border-gray-400/50 dark:border-gray-700/50 xs:rounded-tl-md xs:rounded-tr-md ls:rounded-tl-md ls:rounded-tr-md ms:rounded-tl-md ms:rounded-tr-md ss:rounded-tl-md ss:rounded-tr-md s:rounded-tl-md s:rounded-tr-md sm:rounded-tl-md sm:rounded-tr-md md:rounded-tl-md md:rounded-tr-md pt-8 lg:rounded-md xl:rounded-md  bg-white dark:bg-slate-900 grid flex flex-col items-start justify-center xs:h-full ls:h-[90vh] ms:h-[90vh] ss:h-[90vh] s:h-[90vh] sm:h-[90vh] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-10rem)]">
               
               <h3 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] font-semibold mb-0 px-2 lg:px-0 text-center pb-2">Clases del curso</h3>
                 {/* Lista vertical en mobile y desktop, con paginación condicional */}

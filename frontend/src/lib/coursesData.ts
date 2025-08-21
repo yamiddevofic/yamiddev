@@ -12,9 +12,9 @@ export const Courses = [
     {
         id: 2,
         title: "LÓGICA DE PROCESOS: ENTRADA, PROCESAMIENTO Y SALIDA",
-        available: false,
-        description: "Disponible próximamente.",
-        videoUrl: "",
+        available: true,
+        description: "Descubre cómo aplicar la lógica de procesos —entrada, procesamiento y salida— para organizar ideas, resolver problemas y pensar como programador en cualquier situación.",
+        videoUrl: "https://www.youtube.com/watch?v=q6pk7kH2U2w",
         posterUrl: "/images/courses/course-2.jpg",
         categories: [],
     },

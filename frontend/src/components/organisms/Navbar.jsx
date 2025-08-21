@@ -14,8 +14,8 @@ import { Button } from "@/components/ui/button"; // shadcn/ui
 
 const LINKS = [
   { title: "Inicio", id: "home", icon: HomeFilled },
-  { title: "Sobre mí", id: "about-me", icon: AboutMe },
   { title: "Proyectos", id: "projects", icon: Portfolio },
+  { title: "Sobre mí", id: "about-me", icon: AboutMe },
   { title: "Tecnologías", id: "technology", icon: Computer },
   { title: "Curso", id: "course", icon: Course },
   { title: "Blog", id: "blog", icon: Blog },

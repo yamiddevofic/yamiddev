@@ -51,10 +51,13 @@ const pageDetails = {
         </span>
       </h1>
     </Hero>
-
-    <div class="w-full flex items-center justify-center"><SectionAboutMe client:load/></div>
-    <Carousel client:load/>
-    <div id="technology" class="w-full flex items-center justify-center">
+    <div id="projects" class="w-full flex items-center justify-center">
+      <Carousel client:load/>
+    </div>
+    <div id="about-me" class="w-full flex items-center justify-center">
+      <SectionAboutMe client:load/>
+    </div>
+    <div id="technology" class="w-full flex items-center justify-center mt-20">
       <Technology client:load/>
     </div>
     <ThinkInCode client:load/>

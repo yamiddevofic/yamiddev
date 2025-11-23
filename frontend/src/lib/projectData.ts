@@ -5,7 +5,7 @@ export const Projects = [
     title: 'Portafolio web profesional',
     description: 'Portafolio es un sitio web donde puedes conocer sobre mi experiencia, habilidades, proyectos de desarrollo, y contactarme.',
     techStack: ['Astro', 'React', 'Tailwind'],
-    image: ['/images/portfolio.jpg', '/images/portfolio-2.jpg'],
+    image: ['/images/portfolio.jpg', '/images/portfolio.png'],
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/yamiddev'
   },
@@ -27,10 +27,10 @@ export const Projects = [
   },
   {
     title: 'Think In Code',
-    description: 'Think In Code es una aplicación web diseñada para ayudar a las tiendas de barrio a gestionar eficientemente la información de sus ventas, productos, suministros y proveedores.',
-    techStack: ['React', 'Tailwind', 'Python', 'Flask'],
-    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
+    description: 'Think In Code es un curso de desarrollo web diseñado para aprender las bases de la programación para principiantes',
+    techStack: ['React', 'Tailwind', 'Astro'],
+    image: ['/images/thinkincode.png', '/images/thinkincode.png'],
     time: 'En desarrollo',
-    url: 'https://github.com/yamiddevofic/Marvy_Shopmarket'
+    url: 'https://github.com/yamiddevofic/Think_In_Code'
   }
 ];

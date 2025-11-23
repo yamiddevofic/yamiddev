@@ -38,7 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
       whileTap={{ scale: 0.95 }}
       onClick={handleClick}
       className={clsx(
-        "group relative flex w-[100%] md:w-auto items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 overflow-hidden", // ⬅️ overflow-hidden
+        "group relative flex w-[100%] md:w-auto items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 overflow-hidden ", // ⬅️ overflow-hidden
         isMain
           ? "border-2 border-blue-600 bg-transparent text-blue-600"
           : "bg-blue-600 text-white",

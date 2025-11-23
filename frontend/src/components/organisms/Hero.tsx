@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       className={[
-        "flex items-center justify-center isolate overflow-hidden w-full",
+        "grid grid-cols-1 lg:grid-cols-[2fr_1fr] items-center justify-center isolate overflow-hidden w-full",
         // Fondo base
         "",
         // Padding responsivo
@@ -124,6 +124,9 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
             </div>
           </motion.div>
         )}
+      </div>
+      <div className='lg:block hidden'>
+        <img className="w-[420px] h-[420px] object-cover rounded-full absolute right-[5%] top-[1.7%]" src="images/yamid.jpeg" alt="Hero" />
       </div>
 
       {/* Separadores sutiles */}

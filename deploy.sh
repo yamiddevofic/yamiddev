@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🚀 Iniciando despliegue a Vercel..."
+echo "🚀 Iniciando despliegue..."
 echo ""
 
 # Paso 1: Sincronizar archivos del contenedor al host
@@ -60,26 +60,10 @@ if [[ -n $(git status --porcelain) ]]; then
   echo "📤 Subiendo cambios al repositorio..."
   git push
   echo "✅ Cambios subidos al repositorio"
+  
+  echo ""
+  echo "🎉 ¡Listo! Los cambios se han subido a GitHub."
+  echo "🚀 Vercel detectará automáticamente el push y desplegará tu sitio."
 else
   echo "ℹ️  No hay cambios locales para commitear"
 fi
-
-echo ""
-
-# Paso 3: Desplegar a Vercel
-echo "🚀 Desplegando a Vercel..."
-
-# Preguntar si desplegar a producción o preview
-read -p "🎯 ¿Desplegar a producción? (y/n, default: n): " DEPLOY_PROD
-
-if [[ "$DEPLOY_PROD" == "y" || "$DEPLOY_PROD" == "Y" ]]; then
-  echo "🌟 Desplegando a PRODUCCIÓN..."
-  npx vercel --prod
-else
-  echo "🔍 Desplegando a PREVIEW..."
-  npx vercel
-fi
-
-echo ""
-echo "✅ Despliegue completado."
-echo "🎉 ¡Todo listo! Frontend desplegado con éxito en Vercel."

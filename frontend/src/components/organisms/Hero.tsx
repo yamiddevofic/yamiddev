@@ -18,7 +18,7 @@ type HeroProps = {
   children: ReactNode;
   isHome?: boolean;
   id?: string;
-  height?: string;  
+  height?: string;
   padding?: string;
 };
 
@@ -53,7 +53,7 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
       ].join(" ")}
     >
       {/* Fondo decorativo (siempre detrás) */}
-      <div aria-hidden className="pointer-events-none w-full h-[100%] overflow-hidden absolute inset-0 z-0">
+      <div aria-hidden="true" className="pointer-events-none w-full h-[100%] overflow-hidden absolute inset-0 z-0">
         {/* Blob superior-izq */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -105,7 +105,7 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
               <span className="font-semibold"> modernas</span>
             </span>
           </Text>
-      </motion.div>
+        </motion.div>
 
         {isHome && (
           <motion.div
@@ -127,8 +127,8 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
       </div>
 
       {/* Separadores sutiles */}
-      <div aria-hidden className="pointer-events-none absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10" />
-      <div aria-hidden className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10" />
+      <div aria-hidden="true" className="pointer-events-none absolute left-0 right-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10" />
+      <div aria-hidden="true" className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent dark:via-white/10" />
     </motion.main>
   );
 };

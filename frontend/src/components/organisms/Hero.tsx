@@ -1,6 +1,6 @@
 /* src/organisms/Hero.tsx */
 import React, { type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Title } from "../atoms/Title";
 import { Text } from "../atoms/Text";
 import { Button } from "../molecules/Buttons";
@@ -32,6 +32,18 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
       transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
     },
   } as const;
+
+  const { scrollY } = useScroll();
+
+  // Transformaciones basadas en scroll
+  // Transformaciones basadas en scroll
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const yText = useTransform(scrollY, [0, 300], [0, -300]); // Move up significantly
+  const rotateImage = useTransform(scrollY, [0, 400], [0, 120]); // More rotation
+  const scaleImage = useTransform(scrollY, [0, 400], [1, 0.6]); // Shrink more
+  const opacityImage = useTransform(scrollY, [0, 400], [1, 0]);
+  const xImage = useTransform(scrollY, [0, 400], [0, 200]); // Move right
+  const yImage = useTransform(scrollY, [0, 400], [0, -100]); // Move up slightly
 
   return (
     <motion.main
@@ -83,7 +95,10 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
       </div>
 
       {/* Contenido (forzado por encima) */}
-      <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
+      <motion.div
+        className="relative z-10 mx-auto w-full max-w-5xl text-center"
+        style={{ opacity, y: yText }}
+      >
         <motion.div
           variants={fadeInUp}
           initial="hidden"
@@ -124,11 +139,20 @@ const Hero: React.FC<HeroProps> = ({ children, isHome = true, id = "home", heigh
             </div>
           </motion.div>
         )}
-      </div>
+      </motion.div>
       {isHome && (
-        <div className='lg:block hidden'>
-          <img className="w-[420px] h-[420px] object-cover rounded-full absolute right-[5%] top-[1.7%]" src="images/yamid.jpeg" alt="Hero" />
-        </div>
+        <motion.div
+          className='lg:block hidden absolute right-[5%] top-[1.7%]'
+          style={{
+            rotate: rotateImage,
+            scale: scaleImage,
+            opacity: opacityImage,
+            x: xImage,
+            y: yImage
+          }}
+        >
+          <img className="w-[420px] h-[420px] object-cover rounded-full" src="images/yamid.jpeg" alt="Hero" />
+        </motion.div>
       )}
 
       {/* Separadores sutiles */}

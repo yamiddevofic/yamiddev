@@ -14,17 +14,17 @@ const Carousel = () => {
     const handleResize = () => {
       if (typeof window !== 'undefined') {
         let items = 3; // Por defecto en desktop
-        
+
         if (window.innerWidth < 768) {
           items = 1; // En móvil
         } else if (window.innerWidth < 1280) {
           items = 2; // En tablet
         }
-        
+
         // No exceder el total de proyectos para autoajuste en desktop
         items = Math.min(items, Projects.length);
         setVisibleItems(items);
-        
+
         // Ajustar currentIndex si es necesario
         const maxIndex = Math.max(Projects.length - items, 0);
         setCurrentIndex((prev) => Math.min(prev, maxIndex));
@@ -40,15 +40,15 @@ const Carousel = () => {
     const track = trackRef.current;
     const item = firstItemRef.current;
     if (!track || !item) return;
-    
+
     const itemWidth = item.offsetWidth;
     const scrollDistance = itemWidth + GAP_PX;
-    
-    track.scrollBy({ 
-      left: direction * scrollDistance, 
-      behavior: "smooth" 
+
+    track.scrollBy({
+      left: direction * scrollDistance,
+      behavior: "smooth"
     });
-    
+
     // Actualizar currentIndex para los indicadores
     if (direction > 0) {
       setCurrentIndex(prev => Math.min(prev + 1, Projects.length - visibleItems));
@@ -61,15 +61,15 @@ const Carousel = () => {
     const track = trackRef.current;
     const item = firstItemRef.current;
     if (!track || !item) return;
-    
+
     const itemWidth = item.offsetWidth;
     const scrollDistance = (itemWidth + GAP_PX) * index;
-    
-    track.scrollTo({ 
-      left: scrollDistance, 
-      behavior: "smooth" 
+
+    track.scrollTo({
+      left: scrollDistance,
+      behavior: "smooth"
     });
-    
+
     setCurrentIndex(index);
   };
 
@@ -87,9 +87,14 @@ const Carousel = () => {
       className="relative isolate w-full overflow-hidden  px-5 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-14 md:py-16 lg:py-20 text-gray-900 dark:text-gray-100"
     >
       {/* Encabezado */}
-      <div className="mx-auto max-w-6xl text-center mb-5 md:mb-7">
-        <TitleSection title="Proyectos"/>
-      </div>
+      <motion.div 
+      initial="hidden"
+      whileInView="visible"
+      transition={{ delay: 0.2 }}
+      variants={fadeInUp}
+      className="mx-auto max-w-6xl text-center mb-5 md:mb-7 ">
+        <TitleSection title="Proyectos" />
+      </motion.div>
 
       {/* Carrusel */}
       <div className="relative mx-auto">
@@ -99,9 +104,8 @@ const Carousel = () => {
             onClick={() => scrollByItems(-1)}
             disabled={currentIndex === 0}
             aria-label="Proyecto anterior"
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden sm:grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${
-              currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
-            }`}
+            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
+              }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -123,14 +127,14 @@ const Carousel = () => {
         {/* Pista de slides */}
         <div
           ref={trackRef}
-          className="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain touch-pan-x scroll-smooth no-scrollbar gap-5 px-1 cursor-grab active:cursor-grabbing select-none"
+          className="flex overflow-hidden gap-5 px-1 select-none"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
           }}
         >
           {Projects.map((project, idx) => (
-              <motion.div
+            <motion.div
               initial="hidden"
               whileInView="visible"
               transition={{ delay: 0.2 }}
@@ -228,9 +232,8 @@ const Carousel = () => {
             onClick={() => scrollByItems(1)}
             disabled={currentIndex >= Projects.length - visibleItems}
             aria-label="Proyecto siguiente"
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden sm:grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${
-              currentIndex >= Projects.length - visibleItems ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
-            }`}
+            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${currentIndex >= Projects.length - visibleItems ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
+              }`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

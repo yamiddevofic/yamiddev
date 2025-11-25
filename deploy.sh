@@ -5,7 +5,7 @@ echo ""
 
 # Paso 1: Sincronizar archivos del contenedor al host
 echo "🔄 Sincronizando archivos del contenedor al sistema host..."
-CONTAINER_NAME="yamid_frontend"
+CONTAINER_NAME="frontend-1"
 
 # Verificar si el contenedor está corriendo
 if ! sudo docker ps --format '{{.Names}}' | grep -q "^${CONTAINER_NAME}$"; then

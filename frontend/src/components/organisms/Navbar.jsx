@@ -18,7 +18,6 @@ const LINKS = [
   { title: "Sobre mí", id: "about-me", icon: AboutMe },
   { title: "Tecnologías", id: "technology", icon: Computer },
   { title: "Curso", id: "course", icon: Course },
-  { title: "Blog", id: "blog", icon: Blog },
   { title: "Contacto", id: "contact", icon: Contact },
 ];
 

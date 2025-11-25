@@ -32,5 +32,5 @@ export const Projects = [
     image: ['/images/thinkincode.png', '/images/thinkincode.png'],
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/Think_In_Code'
-  }
+  },
 ];

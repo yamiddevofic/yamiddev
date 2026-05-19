@@ -135,7 +135,7 @@ const Hero: React.FC<HeroProps> = ({
               <div className="absolute inset-[-2px] rounded-full bg-gradient-to-br from-indigo-500/40 via-purple-500/30 to-cyan-500/40" />
               <img
                 className="relative w-28 h-28 xs:w-24 xs:h-24 sm:w-36 sm:h-36 object-cover rounded-full border border-white/20 dark:border-slate-900/40 shadow-xl"
-                src="images/yamid.jpeg"
+                src="dev.jpg"
                 alt="Yamid Dev"
               />
             </motion.div>
@@ -218,7 +218,7 @@ const Hero: React.FC<HeroProps> = ({
               
               <img
                 className="relative w-[340px] h-[340px] xl:w-[400px] xl:h-[400px] object-cover rounded-full border-4 border-white dark:border-slate-950 shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-                src="images/yamid.jpeg"
+                src="dev.jpg"
                 alt="Yamid Dev Desktop"
               />
             </div>

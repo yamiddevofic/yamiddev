@@ -49,6 +49,7 @@ const Hero: React.FC<HeroProps> = ({
       transition={{ duration: 0.8 }}
       className={[
         "relative w-full overflow-hidden flex items-center justify-center isolate",
+        "pt-28 xs:pt-24 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24",
         "bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950",
         height,
         padding,

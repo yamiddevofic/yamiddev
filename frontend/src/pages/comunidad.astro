@@ -7,68 +7,261 @@ import { Button } from '../components/molecules/Buttons';
 import Rocket from '../components/atoms/icons/Rocket';
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+  hidden: { opacity: 0, y: 15 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+  }
 };
 ---
 
 <MainLayout title="Comunidad Yamid Dev | Desarrollador Full Stack" isMain={false}>
-  <section class="relative">
-    <!-- underlay ------------------------------------------------------------->
-    <div
-      class="absolute inset-x-0 top-0 z-0 h-[140vh] pointer-events-none"
-      aria-hidden="true"
-    >
-      <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-[#0e1335] dark:to-[#030617]"></div>
-      <div class="absolute inset-0 opacity-20 dark:opacity-100 bg-[radial-gradient(#2563eb_1px,transparent_1px)] [background-size:32px_32px] animate-gradient-pan"></div>
+  <section class="relative bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-hidden">
+    
+    <!-- Sophisticated, modern ambient underlay -->
+    <div class="absolute inset-x-0 top-0 z-0 h-[140vh] pointer-events-none" aria-hidden="true">
+      <div class="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-white/20 to-transparent dark:from-[#080d28]/30 dark:via-[#020617]/10 dark:to-transparent"></div>
+      <div class="absolute inset-0 opacity-[0.12] dark:opacity-[0.25] bg-[radial-gradient(#3b82f6_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
     </div>
 
-    <!-- hero ----------------------------------------------------------------->
+    <!-- Main Hero Section -->
     <div class="relative z-10">
       <Hero isHome={false} client:load>
-        <motion.h1
-          variants={fadeInUp}
-          transition={{ delay: 0.2 }}
-          className="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-20"
-        >
-          <span class="text-black dark:text-white flex items-center justify-center text-[3rem] xs:text-[2.3rem] ls:text-[2.8rem] ms:text-[2.7rem] ss:text-[3rem] s:text-[3rem] sm:text-[3rem] md:text-[4rem] lg:text-[4.8rem] xl:text-[5.4rem] leading-[1] md:leading-[1]">
-            Comunidad
-          </span>
-          <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 xs:text-[3rem] ls:text-[3.4rem] ms:text-[3.8rem] ss:text-[4rem] s:text-[4rem] sm:text-[4rem] md:text-[5rem] lg:text-[5.5rem] xl:text-[7rem]">
-            Yamid Dev
-          </span>
-        </motion.h1>
-
-        <div class="flex justify-center items-center mt-3 group">
-          <!-- pásalo como elemento JSX normal -->
-          <Button
-            icon={Rocket}
-            href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
-            isMain={false}
-            isLink={true}
+        <div class="flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto px-4">
+          
+          <!-- Category Badge -->
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/80 dark:bg-blue-950/40 border border-blue-100/50 dark:border-blue-900/50 shadow-sm cursor-default"
           >
-            Únete ahora
-          </Button>
+            <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
+              Comunidad Oficial de Desarrolladores
+            </span>
+          </motion.div>
+
+          <!-- Main Title -->
+          <motion.h1
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="text-4xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white"
+          >
+            Comunidad <br class="sm:hidden" />
+            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+              Yamid Dev
+            </span>
+          </motion.h1>
+
+          <!-- Description / Subtitle -->
+          <motion.p
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-6 text-slate-600 dark:text-slate-400 font-light text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl"
+          >
+            Únete a un espacio exclusivo diseñado para programadores, creadores y apasionados de la tecnología. Conecta con otros expertos, comparte conocimientos y acelera tu crecimiento profesional.
+          </motion.p>
+
+          <!-- Community Stats Badges -->
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400"
+          >
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
+              <span class="font-bold text-slate-800 dark:text-slate-200">500+</span> Miembros Activos
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
+              <span class="font-bold text-slate-800 dark:text-slate-200">100%</span> Gratis
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
+              <span class="font-bold text-emerald-600 dark:text-emerald-400">●</span> Soporte Diario
+            </div>
+          </motion.div>
+
+          <!-- CTA Buttons -->
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            animate="visible"
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          >
+            <Button
+              icon={Rocket}
+              href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
+              isMain={false}
+              isLink={true}
+              className="w-full sm:w-auto group relative overflow-hidden bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 transition-all duration-300"
+            >
+              Únete gratis ahora
+            </Button>
+            <a
+              href="#benefits"
+              class="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md text-slate-700 dark:text-slate-300 font-medium text-[1rem] hover:bg-slate-100/50 dark:hover:bg-slate-900/50 text-center transition-all duration-300"
+            >
+              Explorar beneficios
+            </a>
+          </motion.div>
         </div>
       </Hero>
     </div>
 
-    <!-- siguiente sección ---------------------------------------------------->
-    <div class="relative z-20">
-      <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 !rounded-tr-md !rounded-tl-md bg-[#fff] dark:bg-[#020617] transition-colors duration-300">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div class="col-span-1">
-            <div class="w-full h-full bg-transparent rounded-sm shadow-lg overflow-hidden">
-              <div class="p-6">
-                <h3 class="text-lg font-semibold text-black dark:text-white">Comunidad</h3>
-                <p class="mt-2 text-gray-600 dark:text-gray-300">
-                  Encontrarás a otros desarrolladores y profesionales de la industria que comparten tus intereses y pasiones.
-                </p>
-              </div>
+    <!-- Section: Benefits & Core Features -->
+    <div id="benefits" class="relative z-20 py-20 sm:py-28 bg-white dark:bg-slate-950 transition-colors duration-300">
+      
+      {/* Subtle division border */}
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Heading */}
+        <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+          <h2 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-cyan-400">
+            ¿Por qué unirse?
+          </h2>
+          <p class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Todo lo que necesitas para tu crecimiento
+          </p>
+          <p class="mt-4 text-slate-600 dark:text-slate-400 font-light text-base sm:text-lg">
+            Descubre los pilares fundamentales que hacen de nuestra comunidad el espacio ideal para potenciar tus habilidades.
+          </p>
+        </div>
+
+        {/* Benefits Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          
+          <!-- Benefit Card 1 -->
+          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
+                Networking de Alto Nivel
+              </h3>
+              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+                Conéctate con desarrolladores, programadores y expertos de todo el mundo. Intercambia ideas, colabora en proyectos compartidos y expande tu red profesional.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit Card 2 -->
+          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
+                Recursos Exclusivos
+              </h3>
+              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+                Obtén acceso preferencial a plantillas premium, repositorios privados de GitHub, tutoriales de nivel avanzado y las mejores herramientas seleccionadas para el día a día.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit Card 3 -->
+          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-life-buoy"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
+                Soporte & Colaboración
+              </h3>
+              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+                ¿Atascado en un bug complejo? Comparte tus capturas o fragmentos de código y recibe feedback de calidad, consejos técnicos y soluciones rápidas del resto de la comunidad.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit Card 4 -->
+          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-presentation"><path d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M12 17v4"/><path d="M9 21h6"/><path d="m8 11 3-3 3 3"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
+                Talleres & Mentorías
+              </h3>
+              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+                Accede a charlas periódicas de invitados especiales, revisiones grupales de portafolios y sesiones dedicadas a mejorar tu perfil técnico y marca personal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit Card 5 -->
+          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 15 5.5 18.5"/><path d="M15 9l3.5-3.5"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
+                Proyectos Grupales
+              </h3>
+              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+                Forma equipos dinámicos dentro de la comunidad para construir proyectos web en producción y de código abierto. Gana experiencia real de trabajo y robustece tu portafolio.
+              </p>
+            </div>
+          </div>
+
+          <!-- Benefit Card 6 -->
+          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
+            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><path d="M15 2H9a2 2 0 0 0-2 2v2H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4V4a2 2 0 0 0-2-2z"/><path d="M7 6h10"/><path d="M3 11h18"/><path d="M12 11v6"/></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
+                Canal de Empleo
+              </h3>
+              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
+                Acceso a un foro interno donde se comparten diariamente oportunidades de trabajo remoto, vacantes para programadores freelance y consejos prácticos para tus entrevistas.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action Banner -->
+    <div class="relative z-20 py-20 sm:py-24 bg-slate-50 dark:bg-slate-900/20 transition-colors duration-300">
+      
+      {/* Subtle division border */}
+      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-600 p-8 sm:p-12 md:p-16 text-center text-white shadow-2xl">
+          
+          {/* Animated decorative bubble */}
+          <div class="absolute -top-12 -left-12 w-48 h-48 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+          <div class="absolute -bottom-16 -right-16 w-64 h-64 rounded-full bg-cyan-400/20 blur-3xl pointer-events-none"></div>
+          
+          <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-6">
+            <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+              Lleva tu desarrollo al siguiente nivel
+            </h3>
+            <p class="text-blue-100 font-light text-base sm:text-lg leading-relaxed">
+              No dejes pasar la oportunidad de aprender, colaborar y crecer rodeado de personas apasionadas como tú. Únete hoy mismo, la invitación está abierta.
+            </p>
+            
+            <a
+              href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white text-blue-600 font-bold hover:bg-blue-50 active:scale-95 shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              Unirse al grupo de WhatsApp
+            </a>
           </div>
         </div>
       </div>
     </div>
+
   </section>
 </MainLayout>

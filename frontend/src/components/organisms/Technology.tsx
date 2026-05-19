@@ -1,6 +1,6 @@
 // Technology.tsx
 import { 
-  SiJavascript, SiReact, SiPython, SiFlask, SiHtml5, SiCss3,
+  SiJavascript, SiReact, SiPython, SiFlask, SiHtml5, SiCss,
   SiTailwindcss, SiNodedotjs, SiGit, SiAstro, SiMysql, SiWordpress
 } from "react-icons/si";
 import { motion } from "framer-motion";
@@ -21,7 +21,7 @@ type TechGroups = Record<"frontend" | "backend" | "databases" | "tools", TechIte
 const technologies: TechGroups = {
   frontend: [
     { Icon: SiHtml5, name: "HTML5", textClass: "text-orange-500", bgClass: "bg-orange-500/10", borderClass: "border-orange-500/20", hoverTextClass: "group-hover:text-orange-500" },
-    { Icon: SiCss3, name: "CSS3", textClass: "text-blue-600", bgClass: "bg-blue-600/10", borderClass: "border-blue-600/20", hoverTextClass: "group-hover:text-blue-600" },
+    { Icon: SiCss, name: "CSS3", textClass: "text-blue-600", bgClass: "bg-blue-600/10", borderClass: "border-blue-600/20", hoverTextClass: "group-hover:text-blue-600" },
     { Icon: SiJavascript, name: "JavaScript", textClass: "text-yellow-400", bgClass: "bg-yellow-400/10", borderClass: "border-yellow-400/20", hoverTextClass: "group-hover:text-yellow-400" },
     { Icon: SiReact, name: "React", textClass: "text-sky-500", bgClass: "bg-sky-500/10", borderClass: "border-sky-500/20", hoverTextClass: "group-hover:text-sky-500" },
     { Icon: SiTailwindcss, name: "Tailwind", textClass: "text-cyan-500", bgClass: "bg-cyan-500/10", borderClass: "border-cyan-500/20", hoverTextClass: "group-hover:text-cyan-500" },

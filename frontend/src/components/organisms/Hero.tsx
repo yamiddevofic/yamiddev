@@ -120,7 +120,7 @@ const Hero: React.FC<HeroProps> = ({
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
             <span className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300 tracking-wide">
-              Disponible para nuevos proyectoooos
+              Disponible para nuevos proyectos
             </span>
           </motion.div>
 

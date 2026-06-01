@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  site: 'https://www.yamid.dev',
   output: "static",
   integrations: [
     react(),
@@ -15,6 +16,12 @@ export default defineConfig({
     icon()
   ],
   vite: {
+    server: {
+      watch: {
+        usePolling: true,
+        interval: 100,
+      },
+    },
     plugins: [
       {
         name: 'vite-plugin-svgr',

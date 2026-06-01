@@ -64,7 +64,8 @@ const canonicalUrl = canonical || Astro.url.href;
 const fallbackImage = '/dev.jpg';
 const imagePath = image || fallbackImage;
 const imageUrl = new URL(imagePath, origin).toString();
-const iconUrl = new URL(icon, origin).toString();
+const iconPath = icon;
+const iconUrl = new URL(iconPath, origin).toString();
 
 // Combina keywords personalizadas con las por defecto
 const finalKeywords = [...new Set([...defaultKeywords, ...keywords])].join(', ');
@@ -155,9 +156,9 @@ if (pageType === 'article' && articleDetails) {
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/jpeg" href={iconUrl} sizes="any" />
-    <link rel="icon" type="image/jpeg" href={iconUrl} sizes="32x32" />
-    <link rel="apple-touch-icon" href={iconUrl} />
+    <link rel="icon" type="image/jpeg" href={iconPath} sizes="any" />
+    <link rel="icon" type="image/jpeg" href={iconPath} sizes="32x32" />
+    <link rel="apple-touch-icon" href={iconPath} />
     <meta name="msapplication-TileImage" content={iconUrl} />
 
     <!-- Fuentes -->

@@ -1,5 +1,3 @@
-import { time } from "framer-motion";
-
 export const Projects = [
   {
     title: 'Portafolio web profesional',

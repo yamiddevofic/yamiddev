@@ -8,7 +8,6 @@ import { AboutMe } from "../atoms/icons/AboutMe";
 import { Contact } from "../atoms/icons/Contact";
 import { Portfolio } from "../atoms/icons/Portfolio";
 import { Computer } from "../atoms/icons/Computer";
-import { Blog } from "../atoms/icons/Blog";
 import { Course } from "../atoms/icons/Course";
 import { Button } from "@/components/ui/button"; // shadcn/ui
 

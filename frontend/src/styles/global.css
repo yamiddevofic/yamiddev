@@ -2,34 +2,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* src/styles/global.css */
-@import "tailwindcss";
-
-@theme {
-  /* ── Paleta base de tu marca ── */
-  --color-brand-50:  oklch(97% 0.014 254.604);
-  --color-brand-100: oklch(93.2% 0.032 255.585);
-  --color-brand-200: oklch(88.2% 0.059 254.128);
-  --color-brand-300: oklch(80.9% 0.105 251.813);
-  --color-brand-400: oklch(70.7% 0.165 254.624);
-  --color-brand-500: oklch(62.3% 0.214 259.815); /* ← color principal */
-  --color-brand-600: oklch(54.6% 0.245 262.881);
-  --color-brand-700: oklch(48.8% 0.243 264.376);
-  --color-brand-800: oklch(42.4% 0.199 265.638);
-  --color-brand-900: oklch(37.9% 0.146 265.522);
-  --color-brand-950: oklch(28.2% 0.091 267.935);
-
-  /* ── Tokens semánticos (referencian la paleta) ── */
-  --color-primary:         var(--color-brand-500);
-  --color-primary-hover:   var(--color-brand-600);
-  --color-primary-dark:   var(--color-brand-950);
-
-  --color-background:      oklch(98.5% 0.002 247.839);   /* fondo claro */
-  --color-surface:         oklch(13% 0.028 261.692);   /* fondo oscuro */
-  --color-surface-raised:  oklch(20.8% 0.042 265.755); /* cards */
-  --color-surface-border:  oklch(37.2% 0.044 257.287);
-
-  --color-text-base:       oklch(98.5% 0.002 247.839);
-  --color-text-muted:      oklch(70.4% 0.04 256.788);
-  --color-text-subtle:     oklch(55.4% 0.046 257.417);
+body {
+    font-family: 'Inter', sans-serif;
 }

@@ -1,0 +1,22 @@
+{
+  "cascadeColors": true,
+  "colorBackground": true,
+  "palette": [
+    {
+      "id": "uwL3rqTuFu-FJz-WrvcO9",
+      "name": "Delegar",
+      "value": "#ffdd00"
+    },
+    {
+      "id": "ixGd0uGJ9Vugs2bw3oD_l",
+      "name": "Urgente",
+      "value": "#ff0000"
+    },
+    {
+      "id": "Ufz-X51PqWJXdcBqdYySZ",
+      "name": "Importante",
+      "value": "#0008ff"
+    }
+  ],
+  "fileColors": []
+}

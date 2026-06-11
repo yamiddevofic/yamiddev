@@ -1,0 +1,114 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#cajas  ",
+      "color": {
+        "a": 1,
+        "rgb": 4533005
+      }
+    },
+    {
+      "query": "tag:#carpetas  ",
+      "color": {
+        "a": 1,
+        "rgb": 6381921
+      }
+    },
+    {
+      "query": "tag:#cartas  ",
+      "color": {
+        "a": 1,
+        "rgb": 3866772
+      }
+    },
+    {
+      "query": "tag:#anotación",
+      "color": {
+        "a": 1,
+        "rgb": 6750204
+      }
+    },
+    {
+      "query": "tag:#anotaciones  ",
+      "color": {
+        "a": 1,
+        "rgb": 8771327
+      }
+    },
+    {
+      "query": "tag:#diarios  ",
+      "color": {
+        "a": 1,
+        "rgb": 18339
+      }
+    },
+    {
+      "query": "tag:#libros  ",
+      "color": {
+        "a": 1,
+        "rgb": 14732800
+      }
+    },
+    {
+      "query": "tag:#fotocopias  ",
+      "color": {
+        "a": 1,
+        "rgb": 16777215
+      }
+    },
+    {
+      "query": "file:NM-",
+      "color": {
+        "a": 1,
+        "rgb": 16756741
+      }
+    },
+    {
+      "query": "file:H-",
+      "color": {
+        "a": 1,
+        "rgb": 16711680
+      }
+    },
+    {
+      "query": "file:Nmi-",
+      "color": {
+        "a": 1,
+        "rgb": 5661112
+      }
+    },
+    {
+      "query": "tag:#sub-macro  ",
+      "color": {
+        "a": 1,
+        "rgb": 16752357
+      }
+    },
+    {
+      "query": "tag:#folletos  ",
+      "color": {
+        "a": 1,
+        "rgb": 5386772
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.2133316209824955,
+  "close": true
+}

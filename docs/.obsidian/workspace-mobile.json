@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "5324373015726ba8",
+    "type": "split",
+    "children": [
+      {
+        "id": "1463da9c9c68a6b4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "196f18550626ad59",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Recordatorios_de_Mara.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Recordatorios_de_Mara"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4f9f62026d9cf06f",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "d3927eeb7074c4c4",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": false
+          },
+          "icon": "lucide-folder-closed",
+          "title": "Files"
+        }
+      },
+      {
+        "id": "27bcc865ca2d85f1",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "Contar historias",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "Search"
+        }
+      },
+      {
+        "id": "2eaa598bd9600bb3",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "Tags"
+        }
+      },
+      {
+        "id": "f88a43aff89bf1b1",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "Bookmarks"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "e0b0140ef1a84d28",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "7d5c4510638df4df",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "macrodroid.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "Backlinks"
+        }
+      },
+      {
+        "id": "4fe6357456b42d76",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "Outgoing links"
+        }
+      },
+      {
+        "id": "6675e5a5a24d685f",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "Outline"
+        }
+      },
+      {
+        "id": "01e7bd67a45d1461",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {},
+          "icon": "calendar-with-checkmark",
+          "title": "Calendar"
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "smart-connections:Open: Smart Chat": false,
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Smart Connections: Open random connection": true,
+      "obsidian-textgenerator-plugin:Generate Text!": false,
+      "obsidian-textgenerator-plugin:Text Generator: Templates Packages Manager": false,
+      "obsidian-full-calendar:Open Full Calendar": false,
+      "omnisearch:Omnisearch": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-git:Open Git source control": false,
+      "homepage:Open homepage": false,
+      "terminal:Open terminal": false,
+      "templater-obsidian:Templater": false,
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "obsidian42-brat:BRAT": false
+    }
+  },
+  "active": "196f18550626ad59",
+  "lastOpenFiles": [
+    "macrodroid.md",
+    "Preguntas_adicionales.md",
+    "Descubre_tus_habilidades_internas.md",
+    "Conversaciones_Pasadas.md",
+    "Obtener_Fecha_Hoy_Bash.md",
+    "Fecha_Actual_en_Bach.md",
+    "5. BITACORA/context/I am Yamid.md",
+    "5. BITACORA/context/Timeline_Master.md",
+    "5. BITACORA/context/Key_People.md",
+    "5. BITACORA/context/Personal_Glossary.md",
+    "Qu_te_interesa.md",
+    "Desarrollo_en_Mvil.md",
+    "Organizacin_Diaria_Efectiva.md",
+    "Aprendizaje_Adaptable.md",
+    "Extraer_Sabidura_Total.md",
+    "Untitled.md",
+    "Conversaciones_Interesantes_Cmo_Vamos.md",
+    "null.md",
+    "Tasks.md",
+    "Ventas_y_oratoria_efectivas.md",
+    "Colombia_Ubicacin_Clave.md",
+    "ltimo_Historial_Conversacional.md",
+    "Sociedad Digital Yamid & Brayan.md",
+    "Desarrollando_desde_mobile.md",
+    "Recuerdo_de_Ti.md",
+    "Dime_qu_recuerdas.md",
+    "Captura de pantalla de 2025-11-01 19-29-45.png",
+    "7. ZETTELKASTEN/NOTES",
+    "7. ZETTELKASTEN/HUB/4-pico",
+    "7. ZETTELKASTEN/HUB/3-nano",
+    "7. ZETTELKASTEN/HUB/2-micro/sub-micro",
+    "5. BITACORA/context",
+    "5. BITACORA/2019",
+    "5. BITACORA/2018",
+    "7. ZETTELKASTEN/HUB/H-6. Artes y Expresión.md.0.tmp",
+    "7. ZETTELKASTEN/HUB/H-1. Ciencias Formales.md.0.tmp",
+    "7. ZETTELKASTEN/HUB/H-5. Filosofía y Humanidades.md.0.tmp",
+    "Screenshot_2025-08-21-01-55-51-124_com.openai.chatgpt 1.jpg",
+    "Screenshot_2025-08-21-01-55-51-124_com.openai.chatgpt.jpg"
+  ]
+}

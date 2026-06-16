@@ -80,14 +80,14 @@ El portafolio debe **convertir la primera visita en una decisión de contacto** 
 
 ---
 
-## 📌 Notas de alineación con los entregables de “Stage 0”
+## 📌 Notas de alineación con los entregables de “[[a. stage 0/Stage 0]]”
 
-| Elemento de Stage 0 | Cómo se refleja en la definición del producto |
-|---------------------|----------------------------------------------|
-| **Problema (Issue.md)** | El objetivo y la estructura del portafolio atacan directamente la falta de evidencia rápida y confiable. |
-| **Benchmarking** | Se han incorporado buenas prácticas: scroll‑animations, minimalismo, paletas personalizables, IA‑chat opcional (p. ej. “Ask Yamid”). |
-| **Usuarios** | Cada segmento tiene una necesidad concreta que se satisface en la arquitectura de secciones (p. ej. “Código & Docs” para CTOs). |
-| **Stakeholders** | Se incluye proceso de aprobación de casos de éxito y flujo de feedback (Freddy, Krysion Fit). |
+| Elemento de Stage 0         | Cómo se refleja en la definición del producto                                                                                                                                   |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Problema (Issue.md)**     | El objetivo y la estructura del portafolio atacan directamente la falta de evidencia rápida y confiable.                                                                        |
+| **Benchmarking**            | Se han incorporado buenas prácticas: scroll‑animations, minimalismo, paletas personalizables, IA‑chat opcional (p. ej. “Ask Yamid”).                                            |
+| **Usuarios**                | Cada segmento tiene una necesidad concreta que se satisface en la arquitectura de secciones (p. ej. “Código & Docs” para CTOs).                                                 |
+| **Stakeholders**            | Se incluye proceso de aprobación de casos de éxito y flujo de feedback (Freddy, Krysion Fit).                                                                                   |
 | **Definición de terminado** | Amplía los criterios originales (publicado, 3 proyectos, CTA) con métricas de performance, accesibilidad e i18n, alineadas a los requerimientos de los usuarios y stakeholders. |
 
 ---

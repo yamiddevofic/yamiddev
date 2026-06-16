@@ -2,12 +2,23 @@
 # Entidades y atributos
 
 ##  Perfil
-| Campo      | Tipo   | Descripción                           |
-| ---------- | ------ | ------------------------------------- |
-| `name`     | string | Yamid Dev                             |
-| `title`    | string | Título profesional visible en el hero |
-| `bio`      | string | Descripción corta                     |
-| `location` | string | Chitagá, Colombia                     |
+| Campo         | Tipo   | Descripción                |
+| ------------- | ------ | -------------------------- |
+| `name`        | string | Yamid Dev                  |
+| `rol`         | string | Rol en el que se desempeña |
+| `bio`         | string | Descripción corta          |
+| `location`    | string | Chitagá, Colombia          |
+| `description` | string | Descripción más larga      |
+
+## Experiencia laboral
+
+| Campo         | Tipo     | Descripción                                      |
+| ------------- | -------- | ------------------------------------------------ |
+| `title`       | string   | Titulo de la experiencia laboral                 |
+| `description` | string   | Descripción de la experiencia laboral en parrafo |
+| `first_year`  | number   | Año en el que inició la experiencia laboral      |
+| `final_year`  | number   | Año en el que finalizó la experiencia laboral    |
+| `stack`       | string[] | Tecnologías con las que se trabajaron            |
 
 
 ## Contacto

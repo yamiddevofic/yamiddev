@@ -9,6 +9,7 @@
  - Inicio  
  - Servicios  
  - Casos de Éxito 
+ - Proyectos
  - Contacto  
  - Footer  
 - Responsividad  

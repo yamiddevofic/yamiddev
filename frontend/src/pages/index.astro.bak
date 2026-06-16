@@ -1,0 +1,13 @@
+---
+import '../styles/global.css';
+import Layout from '../Layout/Layout.astro';
+import Title from '../components/atoms/Title'
+---
+
+<Layout title="Yamid Dev | Desarrollador freelancer">
+	<div class="container mx-auto h-screen p-4 bg-yellow-200 text-base">
+		{for(i=0; i<20; i++)}<Title className='text-primary' level='h1'>
+			Hola
+		</Title>
+	</div>
+</Layout>

@@ -1,9 +1,9 @@
 # Stage 1: Definición
 ---
-- [[Issue|Problema que resuelve]]
-
-- [[Users|¿Quién lo usa?]]
-
-- La **acción más importante** que debe poder hacer el usuario es: 
-		- **Contactarme** para hablar de su proyecto
+## [[FRP|Propuesta de valor funcional ó FRP]]
 ---
+## [[Users|Usuarios y Contexto de uso]]
+---
+##  [[MoSCoW|Requisitos y priorización MoSCoW]]
+---
+## [[MVP|Alcance del MVP]]

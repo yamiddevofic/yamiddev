@@ -2,6 +2,37 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --color-background: #ffffff;
+  --color-surface: #f8fafc;
+
+  --color-foreground: #0f172a;
+  --color-muted-foreground: #475569;
+
+  --color-border: #e2e8f0;
+
+  --color-primary: #2563eb;
+  --color-secondary: #7c3aed;
+
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-error: #b91c1c;
+
+  --color-focus: #2563eb;
+
+  --font-sans: 'Alexandria', sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+}
+
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-sans);
 }

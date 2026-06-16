@@ -36,35 +36,35 @@
 
 ### Usuario 3 — Contacto técnico
 
-|Aspecto|Detalle|¿Por qué?|
-|---|---|---|
-|**Rol**|Dev senior, CTO o colaborador que evalúa tu nivel técnico para contratarte o trabajar contigo||
-|**Nivel técnico**|Alto|Lee código, entiende arquitectura y evalúa decisiones técnicas|
-|**¿Cómo le afecta el problema?**|No puede evaluar arquitectura ni decisiones sin que tú se las expliques||
-|**Nivel de afectación**|🟡 Medio|Tiene más paciencia que un cliente, pero la falta de prueba genera duda sobre tu seriedad|
-|**Nivel de importancia del problema**|🟡 Medio|No es el usuario prioritario del MVP pero abre puertas a proyectos más grandes|
-|**¿Dónde lo usa?**|Computador, con calma||
-|**¿Con qué dispositivo?**|Desktop||
-|**¿Con qué internet?**|Buena conexión||
-|**¿Con qué frecuencia?**|Una vez, durante el proceso de evaluación||
-|**¿Con qué estado mental?**|Enfocado, técnico, buscando detalles específicos||
+| Aspecto                               | Detalle                                                                                       | ¿Por qué?                                                                                 |
+| ------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **Rol**                               | Dev senior, CTO o colaborador que evalúa tu nivel técnico para contratarte o trabajar contigo |                                                                                           |
+| **Nivel técnico**                     | Alto                                                                                          | Lee código, entiende arquitectura y evalúa decisiones técnicas                            |
+| **¿Cómo le afecta el problema?**      | No puede evaluar arquitectura ni decisiones sin que tú se las expliques                       |                                                                                           |
+| **Nivel de afectación**               | 🟡 Medio                                                                                      | Tiene más paciencia que un cliente, pero la falta de prueba genera duda sobre tu seriedad |
+| **Nivel de importancia del problema** | 🟡 Medio                                                                                      | No es el usuario prioritario del MVP pero abre puertas a proyectos más grandes            |
+| **¿Dónde lo usa?**                    | Computador, con calma                                                                         |                                                                                           |
+| **¿Con qué dispositivo?**             | Desktop                                                                                       |                                                                                           |
+| **¿Con qué internet?**                | Buena conexión                                                                                |                                                                                           |
+| **¿Con qué frecuencia?**              | Una vez, durante el proceso de evaluación                                                     |                                                                                           |
+| **¿Con qué estado mental?**           | Enfocado, técnico, buscando detalles específicos                                              |                                                                                           |
 
 ---
 
 ### Usuario 4 — Curioso
 
-|Aspecto|Detalle|¿Por qué?|
-|---|---|---|
-|**Rol**|Llegó por redes o recomendación casual sin intención clara de contratar||
-|**Nivel técnico**|Variable|Puede ser cualquier perfil — no hay patrón definido|
-|**¿Cómo le afecta el problema?**|No encuentra nada concreto — se va sin dejar rastro||
-|**Nivel de afectación**|🟢 Bajo|No tiene intención de contratar, el problema no le genera una pérdida real|
-|**Nivel de importancia del problema**|🟢 Bajo|No es un canal directo de clientes — puede convertirse en uno a futuro pero no es prioritario|
-|**¿Dónde lo usa?**|Celular, en cualquier momento||
-|**¿Con qué dispositivo?**|Celular principalmente||
-|**¿Con qué internet?**|Variable||
-|**¿Con qué frecuencia?**|Una sola vez, por impulso||
-|**¿Con qué estado mental?**|Sin prisa, explorando, sin compromiso||
+| Aspecto                               | Detalle                                                                 | ¿Por qué?                                                                                     |
+| ------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Rol**                               | Llegó por redes o recomendación casual sin intención clara de contratar |                                                                                               |
+| **Nivel técnico**                     | Variable                                                                | Puede ser cualquier perfil — no hay patrón definido                                           |
+| **¿Cómo le afecta el problema?**      | No encuentra nada concreto — se va sin dejar rastro                     |                                                                                               |
+| **Nivel de afectación**               | 🟢 Bajo                                                                 | No tiene intención de contratar, el problema no le genera una pérdida real                    |
+| **Nivel de importancia del problema** | 🟢 Bajo                                                                 | No es un canal directo de clientes — puede convertirse en uno a futuro pero no es prioritario |
+| **¿Dónde lo usa?**                    | Celular, en cualquier momento                                           |                                                                                               |
+| **¿Con qué dispositivo?**             | Celular principalmente                                                  |                                                                                               |
+| **¿Con qué internet?**                | Variable                                                                |                                                                                               |
+| **¿Con qué frecuencia?**              | Una sola vez, por impulso                                               |                                                                                               |
+| **¿Con qué estado mental?**           | Sin prisa, explorando, sin compromiso                                   |                                                                                               |
 
 ---
 
@@ -85,7 +85,7 @@
 
 ---
 
-### Usuario 6 — Yamid
+### Usuario 6 — Yamid (Dev)
 
 | Aspecto                               | Detalle                                                                                   | ¿Por qué?                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |

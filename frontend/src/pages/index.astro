@@ -4,37 +4,37 @@ import Layout from '../Layout/Layout.astro';
 import Title from '../components/atoms/Title'
 import Text from '../components/atoms/Text';
 import Image from '../components/atoms/Image';
-import Profile from '../data/Profile'
-import NavigationItems from '../components/molecules/NavigationItems';
+import Profile, { profile } from '../data/Profile';
+import Footer from '../data/Footer';
+import Main from '../components/organisms/Main';
+import Sections from '../data/Sections';
 ---
 
 <Layout title="Yamid Dev | Desarrollador freelancer">
-	<div class="container mx-auto h-auto min-h-screen p-4 text-base grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start">
-		<aside class="block w-full">
+	<div class="container mx-auto h-auto min-h-screen p-4 text-base grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start mt-20">
+		<aside class="w-full block py-10 md:pt-20">
 			<div class="flex flex-col justify-center items-center md:fixed w-full text-center md:text-left mb-4 md:mb-0 md:w-[25%]">
-				<Image src="/yamid_horacio_rodriguez.png" alt="Foto de Yamid Rodriguez" className="rounded-full w-[50%]" />
+				<Image src="/yamid_horacio_rodriguez.png" alt="Foto de Yamid Rodriguez" className="rounded-full w-[55%]" />
 
 				<div class="mt-4">
-					<Title level="h1" className="text-primary text-4xl! mb-2">
-						{Profile.name}
+					<Title level="h2" className="text-primary text-[2.65rem]! md:text-5xl! mb-2">
+{profile.name}
+						</Title>
+						<Title level="h3" className='text-secondary mb-4'>
+							{profile.rol}
 					</Title>
 
 					<Text className="mb-4">
-						{Profile.bio}
+						{profile.bio}
 					</Text>
 
 					<Text className="underline">
-						📍 {Profile.location}
+						📍 {profile.location}
 					</Text>
 				</div>
 			</div>
 		</aside>
 		<!-- Columna derecha -->
-		<main class="space-y-8">
-			<section class="h-screen bg-blue-300 rounded-[20px]"></section>
-			<section class="h-screen bg-red-300 rounded-[20px]"></section>
-			<section class="h-screen bg-green-300 rounded-[20px]"></section>
-			<section class="h-screen bg-yellow-300 rounded-[20px]"></section>
-		</main>
+		<Main sections={Sections} description="" client:load />
 	</div>
 </Layout>

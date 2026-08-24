@@ -6,14 +6,13 @@
   --color-background: #ffffff;
   --color-surface: #f8fafc;
 
-  --color-foreground: #0f172a;
+  --color-foreground: #001B29;
   --color-muted-foreground: #475569;
 
   --color-border: #e2e8f0;
 
   --color-primary: #2563eb;
-  --color-secondary: #7c3aed;
-
+  --color-secondary: #012340;
   --color-success: #15803d;
   --color-warning: #b45309;
   --color-error: #b91c1c;
@@ -21,6 +20,8 @@
   --color-focus: #2563eb;
 
   --font-sans: 'Alexandria', sans-serif;
+  --font-sans-2: 'Actor', sans-serif;
+  --font-title: 'Anton SC', sans-serif;
 
   --radius-sm: 4px;
   --radius-md: 8px;
@@ -32,7 +33,13 @@
   --spacing-6: 24px;
   --spacing-8: 32px;
 }
+body{
+  font-family: var(--font-sans-2);
+}
 
-body {
-    font-family: var(--font-sans);
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 100;
+  letter-spacing: .5px;
+  font-style: italic;
 }

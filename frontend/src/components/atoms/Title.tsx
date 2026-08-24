@@ -25,7 +25,7 @@ function getColor(level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6') {
   }
 }
 
-const Title: React.FC<TextProps> = ({ children, className = '', level = 'h1' }) => {
+const Title: React.FC<TextProps> = ({ children, className = '', level = 'h1'}) => {
   const Tag = level;
   return (
     <Tag className={`font-bold ${getColor(Tag)}  ${className}`}>

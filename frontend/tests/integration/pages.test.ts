@@ -2,7 +2,7 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { startPreview, stopPreview, getHtml, BASE } from './server';
 
-const RUTAS = ['/', '/curso/', '/comunidad/', '/blog/', '/blog/bienvenida/', '/maintenance/'];
+const RUTAS = ['/', '/clientes/', '/curso/', '/comunidad/', '/blog/', '/blog/bienvenida/', '/maintenance/'];
 
 beforeAll(async () => { await startPreview(); }, 60_000);
 afterAll(async () => { await stopPreview(); });

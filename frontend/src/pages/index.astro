@@ -1,25 +1,37 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import SectionAboutMe from '../components/organisms/AboutMe';
-import Carousel from '../components/organisms/Carousel';
-import ThinkInCode from '../components/organisms/ThinkInCode';
-import Technology from '../components/organisms/Technology';
+import HeroEmpresas from '../components/organisms/HeroEmpresas.astro';
+import ProyectosTecnicos from '../components/organisms/ProyectosTecnicos.astro';
+import StackYTrayectoria from '../components/organisms/StackYTrayectoria.astro';
 import ContactForm from '../components/organisms/ContactForm';
-import WhatsApp from '../components/molecules/WhatsApp';
-import Hero from '../components/organisms/Hero';
 import '../styles/global.css';
 
-// --- Detalles de la Página para SEO ---
-// Se define un objeto para mantener el código más limpio y organizado.
+/**
+ * Home técnica: la vertiente para postularse a empresas.
+ *
+ * El orden de secciones lo fija el skill agent-portfolio-empresas y es
+ * deliberado: identificación → actividad reciente → evidencia → contexto →
+ * acción. Los proyectos van antes que el stack porque una lista de tecnologías
+ * no prueba nada; el sistema desplegado, sí.
+ *
+ * La vertiente comercial vive en /clientes y se dirige a otro lector.
+ */
 const pageDetails = {
-  // MainLayout ya anade " | Yamid Dev", asi que aqui va solo el descriptor.
-  title: "Desarrollador Full Stack",
-  description: "Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes para proyectos de alto impacto.",
-  image: "/dev.jpg", // Imagen principal para redes sociales (OG & Twitter)
-  canonical: "https://www.yamid.dev/", // Con www: es el host que declara astro.config y el que sirve
-  icon: "/dev.jpg", // Favicon
-  // Keywords específicas para esta página. Se combinarán con las keywords por defecto del layout.
-  keywords: ['portafolio', 'desarrollador full stack', 'contratar programador', 'react developer', 'python developer', 'astro developer'],
+  // El title lleva nombre + rol + stack, que es como busca un reclutador.
+  title: 'Desarrollador Full-Stack JavaScript / Python',
+  description:
+    'Yamid Horacio Rodríguez, desarrollador full-stack en Colombia. Construyo y mantengo sistemas en producción con JavaScript, React, Astro y Python. Proyectos con código público.',
+  image: '/dev.jpg',
+  canonical: 'https://www.yamid.dev/',
+  icon: '/dev.jpg',
+  keywords: [
+    'desarrollador full stack',
+    'desarrollador javascript colombia',
+    'desarrollador react remoto',
+    'desarrollador python',
+    'astro developer',
+    'yamid rodriguez',
+  ],
 };
 ---
 
@@ -31,36 +43,31 @@ const pageDetails = {
   icon={pageDetails.icon}
   keywords={pageDetails.keywords}
   isMain={true}
-  pageType="website" 
+  pageType="website"
 >
-  <WhatsApp client:load/>
+  <div class="w-full bg-white transition-colors duration-300 dark:bg-slate-950">
+    <HeroEmpresas />
+    <ProyectosTecnicos />
+    <StackYTrayectoria />
 
-  <div class="w-full h-full flex flex-col items-center justify-center 
-    bg-[#fff] dark:bg-[#020617] transition-colors duration-300
-    dark:text-white overflow-hidden"
-  >
-    <!-- 
-      El componente Hero ya tiene client:load, por lo que Framer Motion
-      funcionará correctamente dentro de él. El slot (h1) se pasará a ese 
-      entorno de cliente.
-    -->
-    <Hero isHome={true} client:load height="min-h-[100vh] xs:min-h-[95dvh] ls:min-h-[98dvh] ms:min-h-[95dvh]">
-      <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-12 md:pt-5">
-        <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[2.8rem] xs:text-[2rem] ls:text-[3.6rem] ms:text-[2.8rem] ss:text-[3.2rem] s:text-[3.2rem] sm:text-[3.2rem] md:text-[7.5rem] lg:text-[7.5rem] xl:text-[7.5rem] leading-[1] md:leading-[1] font-[Inter]">
-          Yamid Dev Oficial
-        </span>
-      </h1>
-    </Hero>
-    <div id="projects" class="w-full flex items-center justify-center">
-      <Carousel client:load/>
+    <div id="contacto">
+      <ContactForm client:visible />
     </div>
-    <div id="about-me" class="w-full flex items-center justify-center">
-      <SectionAboutMe client:load/>
-    </div>
-    <div id="technology" class="w-full flex items-center justify-center mt-20">
-      <Technology client:load/>
-    </div>
-    <ThinkInCode client:load/>
-    <ContactForm client:load />
+
+    <!-- Puente a la otra vertiente: quien llega buscando contratar un servicio
+         no debería quedarse en una página escrita para reclutadores. -->
+    <section class="w-[95%] md:w-[90%] mx-auto pb-16">
+      <div class="rounded-lg bg-slate-100 p-6 ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+        <p class="text-sm text-slate-600 dark:text-slate-300">
+          ¿Buscas a alguien que construya un sistema para tu negocio?
+          <a
+            href="/clientes"
+            class="ml-1 inline-flex min-h-[44px] items-center font-medium text-cyan-700 underline underline-offset-4 transition-colors hover:text-cyan-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-cyan-400 dark:hover:text-cyan-300 dark:focus-visible:ring-offset-slate-900"
+          >
+            Mira los servicios
+          </a>
+        </p>
+      </div>
+    </section>
   </div>
 </MainLayout>

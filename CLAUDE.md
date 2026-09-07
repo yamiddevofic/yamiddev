@@ -27,7 +27,7 @@ Eso ya provocó un diagnóstico entero equivocado. **Usa rutas absolutas** cuand
 
 ## Verificar en el navegador: mide, no mires
 
-La regla 2 de AGENTS.md exige comprobar en un navegador cualquier cambio visual. Hazlo con `mcp__Claude_Browser__*`, y ten presente que **las capturas engañan**: el panel es estrecho, los viewports emulados se escalan y una captura tomada justo después de un `resize` sale con el tamaño anterior.
+La regla 3 de AGENTS.md exige comprobar en un navegador cualquier cambio visual. Hazlo con `mcp__Claude_Browser__*`, y ten presente que **las capturas engañan**: el panel es estrecho, los viewports emulados se escalan y una captura tomada justo después de un `resize` sale con el tamaño anterior.
 
 Lo que sí es concluyente:
 

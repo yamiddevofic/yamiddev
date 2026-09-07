@@ -6,9 +6,17 @@ Todo el código, los comentarios, la documentación y los mensajes de commit van
 
 ---
 
-## Las cinco reglas
+## Las seis reglas
 
-### 1. Nunca commitees en `main`
+### 1. Busca siempre la solución más simple
+
+Antes de escribir nada, pregúntate cuál es la versión más corta que resuelve el problema de verdad. Prefiere borrar a añadir, una utilidad estándar a una personalizada, y un cambio de una línea a un refactor.
+
+Esto vale igual para diagnosticar. Si llevas cinco intentos persiguiendo una causa, **para y comprueba lo más simple primero**: que el archivo sea el que crees, que el selector apunte a lo que crees, que el servidor sirva lo que crees. Casi siempre la explicación aburrida es la correcta, y las vueltas cuestan más que la comprobación.
+
+Cuando una solución simple no baste, dilo y explica por qué antes de ir a por la complicada.
+
+### 2. Nunca commitees en `main`
 
 `main` despliega a producción. Trabaja siempre en una rama:
 
@@ -20,7 +28,7 @@ Puedes hacer push de tu rama —eso genera un preview en Vercel—, pero **el me
 
 > **El remoto que funciona es `ssh`, no `origin`.** `origin` está configurado por HTTPS y falla pidiendo credenciales. Usa `git push ssh <rama>`.
 
-### 2. No digas "terminado" hasta verificarlo en el preview
+### 3. No digas "terminado" hasta verificarlo en el preview
 
 En este orden, y sin saltarte pasos:
 
@@ -36,13 +44,13 @@ Después haz push de la rama, espera el deploy de preview de Vercel y **verifica
 
 Esto no es ceremonia. Dos fallos graves de este proyecto —el formulario devolviendo `403` a todos los visitantes, y un reset de CSS que anulaba el `padding` de todo el sitio— **pasaron el build y los tests sin una sola queja**. Solo aparecieron midiendo el sitio real.
 
-### 3. Arregla lo trivial, reporta lo demás
+### 4. Arregla lo trivial, reporta lo demás
 
 Si te cruzas con algo roto **de una línea y en un archivo que ya estás tocando** —un `rel="noopener"` que falta, un import muerto, un typo— arréglalo y menciónalo.
 
 Todo lo demás se reporta y espera decisión: refactorizar un componente, migrar un sistema, **cambiar cualquier dependencia**.
 
-### 4. La documentación se actualiza en un commit aparte
+### 5. La documentación se actualiza en un commit aparte
 
 Si tu cambio deja falso algo de `docs/` —un conteo de tests, un hallazgo que cierras, una versión— corrígelo. Pero **en un commit separado**, para que el historial de código quede limpio:
 
@@ -53,7 +61,7 @@ docs: reflejar el arreglo del carousel
 
 Los documentos vivos son `docs/ESTADO-DEL-PROYECTO.md`, `docs/TESTING.md` y `docs/INFORME-SEGURIDAD.md`.
 
-### 5. Leer producción es libre; escribir, no
+### 6. Leer producción es libre; escribir, no
 
 **Sin preguntar:** peticiones de lectura a producción, cabeceras, logs, métricas, y POST deliberadamente inválidos para probar validaciones (no tienen efecto).
 

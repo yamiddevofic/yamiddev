@@ -131,7 +131,7 @@ const ThinkInCode = () => {
       initial="hidden"
       whileInView="visible"
       transition={{ delay: 0.2 }}
-      className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[90%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] mx-auto overflow-hidden rounded-lg xs:my-[10%] ls:my-[15%] ms:my-[15%] ss:my-[15%] s:my-[15%] sm:my-[15%] md:my-[5%] lg:my-[5%] xl:my-[5%] xs:px-3 ls:px-3 ms:px-3 ss:px-3 s:px-3 sm:px-3 md:px-14 lg:px-14 xl:px-14 xs:py-12 ls:py-12 ms:py-12 ss:py-12 s:py-12 sm:py-12 md:py-12 lg:py-12 xl:py-12 text-gray-900 dark:text-gray-100"
+      className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate w-[95%] min-[550px]:w-[90%] mx-auto overflow-hidden rounded-lg my-[10%] min-[360px]:my-[15%] md:my-[5%] px-3 md:px-14 py-12 text-gray-900 dark:text-gray-100"
     >
       {/* Encabezado */}
       <div className="mx-auto max-w-6xl text-center mb-10 md:mb-12">
@@ -141,7 +141,7 @@ const ThinkInCode = () => {
       </div>
 
       {/* Carrusel de cursos */}
-      <div className="relative mx-auto max-w-6xl xs:pl-2 ls:pl-2 ms:pl-2 ss:pl-2 s:pl-2 sm:pl-2 md:pl-0 lg:pl-0 xl:pl-0">
+      <div className="relative mx-auto max-w-6xl pl-2 md:pl-0">
         {/* Botón izquierdo */}
         {CLASSES.length > visibleItems && (
           <button
@@ -178,6 +178,9 @@ const ThinkInCode = () => {
                   <img
                     src={cls.posterUrl}
                     alt={cls.title}
+                    width={1360}
+                    height={720}
+                    decoding="async"
                     className="w-full h-full object-cover"
                     loading="lazy"
                     onError={() => handleImageError(cls.id)}

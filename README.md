@@ -112,7 +112,7 @@ Publicar es hacer `git push`.
 cd frontend && npm test
 ```
 
-> **94 de 94 en verde.** Detalle en [`docs/TESTING.md`](./docs/TESTING.md).
+> **107 de 107 en verde.** Detalle en [`docs/TESTING.md`](./docs/TESTING.md).
 
 ---
 

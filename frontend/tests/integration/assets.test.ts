@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, it, expect } from 'vitest';
-import { readdir, stat } from 'node:fs/promises';
+import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 import { FRONTEND, DIST as dist } from './paths';
@@ -18,6 +18,17 @@ async function walk(dir: string): Promise<string[]> {
 }
 
 describe('artefactos de build', () => {
+  // Inter se descarga en todas las paginas desde MainLayout, pero durante un
+  // tiempo nadie la aplicaba: el sitio se renderizaba con la pila del sistema
+  // y los dos pesos descargados se gastaban en tres elementos sueltos.
+  it('la tipografia descargada se aplica de verdad', async () => {
+    const cssDir = path.join(dist, '_astro');
+    const hojas = (await readdir(cssDir)).filter((f) => f.endsWith('.css'));
+    expect(hojas.length).toBeGreaterThan(0);
+    const css = (await Promise.all(hojas.map((f) => readFile(path.join(cssDir, f), 'utf8')))).join('');
+    expect(css).toMatch(/--font-sans:\s*["']?Inter/);
+  });
+
   it('dist/ existe y contiene index.html', async () => {
     await expect(stat(path.join(dist, 'index.html'))).resolves.toBeDefined();
   });

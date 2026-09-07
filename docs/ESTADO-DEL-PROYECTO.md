@@ -23,7 +23,7 @@ El proyecto pasó por una auditoría completa, la **retirada de WordPress** y un
 | Formulario de contacto | Roto (`403`) | ✅ Verificado de extremo a extremo |
 | Sitemap | ❌ | ✅ |
 | Cabeceras de seguridad | Solo HSTS | ✅ **5 más, activas en producción** |
-| Pruebas | 0 | **94** (94 en verde) |
+| Pruebas | 0 | **107** (107 en verde) |
 | Tamaño de `dist/client` | 5,8 MB | **2,7 MB** |
 
 ### Lo que sigue abierto
@@ -179,7 +179,7 @@ De paso se retiraron `tailwindcss-animate`, `tailwind-scrollbar-hide` y el break
 
 ```
 Test Files  10 passed (10)
-     Tests  94 passed (94)
+     Tests  107 passed (107)
 ```
 
 La suite está entera en verde. Detalle en [TESTING.md](./TESTING.md).

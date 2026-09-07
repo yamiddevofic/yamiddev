@@ -12,45 +12,47 @@
 | Severidad | Al auditar | Ahora |
 |---|---|---|
 | 🔴 Crítica | 3 | **0** |
-| 🟠 Alta | 3 | **1** |
-| 🟡 Media | 4 | **1** |
-| 🔵 Baja | 3 | **1** |
+| 🟠 Alta | 3 | **0** |
+| 🟡 Media | 4 | **0** |
+| 🔵 Baja | 3 | **0** |
 
 La retirada de WordPress cerró la mayor parte de los hallazgos: sin CMS no hay base de datos, ni panel de administración, ni PHP, ni contenido de terceros que sanear. Lo que quedaba de secretos se sacó del control de versiones y las dependencias se podaron.
 
-**Queda un punto abierto que solo tú puedes cerrar** (reutilización de contraseñas) y una deuda técnica de dependencias que necesita su propia sesión.
+Los dos últimos puntos se cerraron el 7 de septiembre de 2026: las vulnerabilidades de dependencias con la subida a Astro 7, y el de credenciales tras comprobar que no se reutilizan en ningún otro servicio.
+
+**`npm audit` no reporta hoy ninguna vulnerabilidad, de ninguna severidad.**
 
 ---
 
-## Lo que queda abierto
+## Los últimos en cerrarse
 
-### 🟠 SEC-A · Vulnerabilidades altas en dependencias
+### ✅ SEC-A · Vulnerabilidades altas en dependencias
 
-```
-astro  <= 7.0.9  (instalada 5.18.2)     →  8 avisos de XSS y SSRF
-sharp  < 0.35.0  (instalada 0.34.5)     →  CVE-2026-33327/33328/35590/35591
-path-to-regexp  (vía @astrojs/vercel@9) →  GHSA-9wv6-86v2-598j
-```
+**Resuelto.** Las tres cadenas quedaron así:
 
-Las tres se resuelven subiendo a **Astro 7** con `@astrojs/vercel@11`. Se intentó y se revirtió: `@astrojs/tailwind` solo soporta Astro 3, 4 y 5, así que la subida arrastra una migración a **Tailwind v4** que toca los seis breakpoints personalizados del proyecto y requiere verificación visual completa.
+| Paquete | Antes | Ahora |
+|---|---|---|
+| `astro` | 5.18.2 | **7.3.1** — XSS en `define:vars` |
+| `sharp` | 0.34.5 | **0.35.4** — CVE de libvips |
+| `path-to-regexp` | 6.1.0 | **6.3.0** — GHSA-9wv6-86v2-598j |
 
-El sitio es estático, lo que reduce mucho la explotabilidad de los vectores reflejados. **Es deuda, no urgencia** — pero conviene planificarla.
+`path-to-regexp` necesitó un `overrides` en `package.json`: `@vercel/routing-utils` la declara con versión exacta, así que subir `@astrojs/vercel` a la 11 no bastaba. npm proponía en su lugar *bajar* el adaptador a la 8, que habría sido un retroceso.
 
-### 🟡 SEC-B · Contraseña reutilizada (requiere acción tuya)
+Subir el framework obligó a migrar a **Tailwind v4**, porque `@astrojs/tailwind` solo soporta Astro 3, 4 y 5. El detalle de esa migración está en [ESTADO-DEL-PROYECTO.md](./ESTADO-DEL-PROYECTO.md).
 
-La contraseña de la base de datos estuvo publicada en un repositorio público durante meses, junto con las credenciales SSH del servidor. El servidor ya no existe, así que **esas credenciales concretas ya no abren nada**.
+### ✅ SEC-B · Credenciales en el historial (evaluado y cerrado)
 
-**El riesgo residual es la reutilización.** Si esa contraseña —o una variante reconocible— protege hoy cualquier otro servicio, sigue comprometida: está indexada, clonada y probablemente en más de un conjunto de datos de credenciales filtradas.
+Las credenciales de `wordpress/.env` y `.env` siguen siendo recuperables del historial de Git, y el repositorio es público. **El riesgo se evaluó y está cerrado**, porque las tres condiciones que lo mantenían vivo no se cumplen:
 
-**Es el único punto de este informe que no puede cerrarse desde el código.** Paso a paso:
+| Condición | Estado |
+|---|---|
+| ¿El servidor sigue existiendo? | No. La cuenta de Hostinger está cancelada |
+| ¿La base de datos sigue en pie? | No. Se retiró WordPress por completo |
+| ¿Esas contraseñas se reutilizan en otros servicios? | No. Confirmado por Yamid el 7 de septiembre de 2026 |
 
-1. **Identifica la contraseña.** Si no la recuerdas: `git show 38876ec:wordpress/.env`.
-2. **Búscala en tu gestor de contraseñas.** La mayoría tienen un informe de «contraseñas reutilizadas» o permiten buscar por valor.
-3. **Cámbiala en cada servicio donde aparezca**, empezando por el correo: quien controla el correo recupera todo lo demás.
-4. **Revisa el acceso SSH.** Si ese par usuario/servidor sigue vivo en otra máquina, cambia su contraseña o —mejor— pásalo a autenticación por clave pública y desactiva el acceso por contraseña.
-5. **Activa 2FA** donde puedas, empezando por GitHub y el correo.
+Sin reutilización y sin servidor, esas credenciales no abren nada: son cadenas de texto sin destino.
 
-> **Rotar es la mitigación, no purgar el historial.** El repositorio tiene un *fork*, y un fork conserva sus propios objetos: GitHub no los borra al reescribir el historial del original. Lo que ya se copió, copiado está.
+Queda anotado por si el contexto cambia: **si alguna vez se levanta un servicio con alguno de esos usuarios o contraseñas, seguirían siendo públicas** y habría que elegir otras. No es una acción pendiente, es una condición a no violar.
 
 ### ✅ SEC-C · Enlaces externos sin `rel`
 
@@ -150,7 +152,7 @@ git push origin --force --tags
 
 > ⚠️ Reescribir el historial es destructivo e invalida todos los clones y forks. **Haz una copia de seguridad del repositorio antes.**
 >
-> Y ten presente su límite: **este repositorio tiene 1 fork**, cuyos objetos sobreviven a la reescritura del original. Purgar reduce el tamaño del clon y limpia la vista, pero **no retira las credenciales de circulación**. Por eso la acción que de verdad cierra el riesgo es rotarlas (SEC-B), no esto.
+> Y ten presente su límite: **este repositorio tiene 1 fork**, cuyos objetos sobreviven a la reescritura del original, así que purgar **no retira nada de circulación**. Dado que las credenciales ya no dan acceso a nada (ver SEC-B), esto es solo higiene y ahorro de tamaño — no hay ninguna urgencia detrás.
 
 ---
 

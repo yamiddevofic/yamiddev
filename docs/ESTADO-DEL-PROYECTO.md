@@ -17,7 +17,7 @@ El proyecto pasó por una auditoría completa, la **retirada de WordPress** y un
 | Archivos versionados | 3 393 | **93** |
 | Dependencias de producción | 28 | **17** |
 | Vulnerabilidades altas o críticas | 6 | **0** |
-| Secretos versionados | 5 archivos | **0** (pero ver ⚠️ abajo) |
+| Secretos versionados | 5 archivos | **0** |
 | Servicios de infraestructura | 4 (Docker) | **0** |
 | Blog | Roto (`403` de la API) | ✅ Markdown en el repo |
 | Formulario de contacto | Roto (`403`) | ✅ Verificado de extremo a extremo |
@@ -30,10 +30,11 @@ El proyecto pasó por una auditoría completa, la **retirada de WordPress** y un
 
 | # | Hallazgo | Impacto |
 |---|---|---|
-| ⚠️ 1 | **Credenciales en el historial de un repo público con 1 fork** | Requiere rotar contraseñas, no limpiar el historial |
-| 🟡 2 | Sin linter, sin formateador y sin CI | Las regresiones no se detectan antes de desplegar |
-| 🟡 3 | `tsconfig.json` con rutas absolutas erróneas | Funciona de casualidad: el alias real lo resuelve Vite |
-| 🟡 4 | Imágenes sin `astro:assets` ni dimensiones explícitas | Desplazamiento de layout (CLS) al cargar |
+| 🟡 1 | Sin linter, sin formateador y sin CI | Las regresiones no se detectan antes de desplegar |
+| 🟡 2 | `tsconfig.json` con rutas absolutas erróneas | Funciona de casualidad: el alias real lo resuelve Vite |
+| 🟡 3 | Imágenes sin `astro:assets` ni dimensiones explícitas | Desplazamiento de layout (CLS) al cargar |
+
+No queda ningún hallazgo de severidad alta ni crítica.
 
 ---
 
@@ -154,20 +155,7 @@ De paso se retiraron `tailwindcss-animate`, `tailwind-scrollbar-hide` y el break
 
 ## 4. Hallazgos abiertos
 
-### ⚠️ A-1 · Credenciales en el historial de un repositorio público
-
-`git rm` sacó `.env` y `wordpress/.env` del árbol, pero **no del historial**. Siguen siendo recuperables desde cualquier commit anterior a `0f14c20`, y el repositorio es **público y tiene 1 fork**. Lo expuesto:
-
-```
-wordpress/.env  →  DB_NAME, DB_USER, DB_PASSWORD, DB_HOST
-.env            →  USUARIO, SERVIDOR, PUERTO, RUTA_REMOTA  (acceso SSH)
-```
-
-El servidor de Hostinger ya no existe, así que esa base de datos es inalcanzable. **El riesgo real es la reutilización**: si esa contraseña o ese usuario SSH se repiten en otro servicio, siguen expuestos.
-
-**Reescribir el historial no resuelve esto.** Un fork conserva sus propios objetos y GitHub no los borra al limpiar el original, así que la única mitigación fiable es **rotar las credenciales**. El procedimiento está en [INFORME-SEGURIDAD.md](./INFORME-SEGURIDAD.md).
-
-### 🟡 A-2 · Configuración
+### 🟡 A-1 · Configuración
 
 | Problema | Detalle |
 |---|---|
@@ -178,7 +166,7 @@ El servidor de Hostinger ya no existe, así que esa base de datos es inalcanzabl
 | Archivos huérfanos | `atoms/Text.tsx`, `atoms/icons/Fire.jsx` |
 | Sin linter ni CI | No hay ESLint, Prettier ni `.github/workflows/` |
 
-### 🟡 A-3 · Rendimiento e imágenes
+### 🟡 A-2 · Rendimiento e imágenes
 
 - Ninguna imagen pasa por `astro:assets`; todas viven en `public/` sin optimización, sin WebP/AVIF y sin `srcset`.
 - 15 `<img>` sin `width`/`height`, lo que provoca desplazamiento de layout al cargar.
@@ -202,16 +190,12 @@ Conviene recordar de dónde viene: durante semanas estas pruebas estuvieron en r
 
 ## 6. Plan de acción
 
-### Ahora
+No queda nada urgente. Lo siguiente, por orden de rendimiento:
 
-1. **Rotar la contraseña de `wordpress/.env`** y el acceso SSH en cualquier servicio donde se hayan reutilizado. Es lo único de esta lista con exposición real hacia fuera, y lo único que no puede cerrarse desde el código.
-
-### Este mes
-
-2. Corregir las rutas de `tsconfig.json` y alinear `@types/react` con el React instalado.
-3. Migrar las imágenes a `astro:assets` con dimensiones explícitas.
-4. Mover el script de tema a un bloque inline en `MainLayout` para eliminar el parpadeo.
-5. Añadir `404.astro`, ESLint, Prettier y un workflow de CI que ejecute `npm test`.
+1. Corregir las rutas de `tsconfig.json` y alinear `@types/react` con el React instalado.
+2. Migrar las imágenes a `astro:assets` con dimensiones explícitas.
+3. Mover el script de tema a un bloque inline en `MainLayout` para eliminar el parpadeo.
+4. Añadir `404.astro`, ESLint, Prettier y un workflow de CI que ejecute `npm test`.
 
 ---
 

@@ -81,7 +81,7 @@ const ModernAboutMe = () => {
             <div className="mb-3 flex items-center justify-between gap-3">
               <h4 className="text-base font-semibold text-white">Experiencia y formación</h4>
               <div className="flex shrink-0 items-center gap-1">
-                <span className="mr-1 text-xs tabular-nums text-slate-500" aria-hidden="true">
+                <span className="mr-1 text-xs tabular-nums text-slate-400" aria-hidden="true">
                   {indice + 1}/{total}
                 </span>
                 {[
@@ -108,12 +108,12 @@ const ModernAboutMe = () => {
                   <span className={`rounded-full px-2 py-0.5 text-[0.7rem] font-medium ring-1 ${COLOR_TIPO[activo.tipo]}`}>
                     {activo.tipo}
                   </span>
-                  <span className="text-xs text-slate-500">{activo.periodo}</span>
+                  <span className="text-xs text-slate-400">{activo.periodo}</span>
                 </div>
 
                 <h5 className="mt-2 font-semibold text-cyan-400">{activo.titulo}</h5>
 
-                <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+                <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-400">
                   <MapPin size={12} aria-hidden="true" />
                   {activo.lugar}
                 </p>
@@ -149,7 +149,7 @@ const ModernAboutMe = () => {
                     className={`inline-flex min-h-[44px] items-center rounded-md px-2.5 text-xs font-medium tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none ${
                       activoAqui
                         ? 'bg-cyan-500 text-slate-900'
-                        : 'text-slate-500 hover:bg-slate-800 hover:text-slate-300'
+                        : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'
                     }`}
                   >
                     {anio}

@@ -53,7 +53,7 @@ const TechCard: React.FC<{ item: TechItem }> = ({ item }) => {
       className={[
 "relative group overflow-hidden rounded-2xl border ring-1 ring-black/5 dark:ring-white/10 shadow-sm hover:shadow-md transition-shadow",
         borderClass,
-"bg-white/60 dark:bg-gray-900/50",
+"bg-white/60 dark:bg-slate-900/50",
 "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500",
       ].join(" ")}
       role="figure"
@@ -67,7 +67,7 @@ const TechCard: React.FC<{ item: TechItem }> = ({ item }) => {
         <div className={`p-3 rounded-xl ${bgClass} ${borderClass} border transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
           <Icon className={`w-8 h-8 ${textClass} transition-transform duration-300 group-hover:-rotate-3`} aria-hidden="true" />
         </div>
-        <span className={`text-base font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300 ${hoverTextClass}`}>
+        <span className={`text-base font-medium text-slate-800 dark:text-slate-200 transition-colors duration-300 ${hoverTextClass}`}>
           {name}
         </span>
       </div>
@@ -77,7 +77,7 @@ const TechCard: React.FC<{ item: TechItem }> = ({ item }) => {
 
 const TechSection: React.FC<{ title: string; items: TechItem[] }> = ({ title, items }) => (
   <section aria-labelledby={title.replace(/\s+/g, "-").toLowerCase()} className="mb-14 last:mb-0">
-    <h3 id={title.replace(/\s+/g, "-").toLowerCase()} className="text-2xl font-bold mb-7 text-gray-800 dark:text-gray-200">
+    <h3 id={title.replace(/\s+/g, "-").toLowerCase()} className="text-2xl font-bold mb-7 text-slate-800 dark:text-slate-200">
       {title}
     </h3>
     <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-7 md:gap-8">
@@ -100,7 +100,7 @@ const Technology: React.FC = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
- className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white/50 dark:bg-slate-950/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 ">
+ className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white/50 dark:bg-slate-950/50 rounded-lg border border-slate-200/50 dark:border-slate-700/50 ">
       <TitleSection title="Stack Tecnológico"/>
 
       <TechSection title="Frontend" items={technologies.frontend} />

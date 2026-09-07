@@ -153,7 +153,7 @@ export const Course = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
-    className="w-[100%] mx-auto my-0 xs:px-5 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-2 lg:px-2 xl:px-2 xs:pt-5 ls:pt-5 ls:pb-0 ms:pt-5 ms:pb-0 ss:pt-5 ss:pb-0 s:pt-5 s:pb-0 sm:pt-5 sm:pb-0 md:pt-5 md:pb-5 lg:pt-5 lg:pb-5 xl:pt-5 xl:pb-5 text-gray-900 dark:text-gray-100 rounded grid"
+    className="w-[100%] mx-auto my-0 xs:px-5 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-2 lg:px-2 xl:px-2 xs:pt-5 ls:pt-5 ls:pb-0 ms:pt-5 ms:pb-0 ss:pt-5 ss:pb-0 s:pt-5 s:pb-0 sm:pt-5 sm:pb-0 md:pt-5 md:pb-5 lg:pt-5 lg:pb-5 xl:pt-5 xl:pb-5 text-slate-900 dark:text-slate-100 rounded grid"
     >
       {/* Fondo decorativo (siempre detrás) */}
       <div aria-hidden className="pointer-events-none w-full  overflow-hidden absolute inset-0 z-0 h-[125%] ">
@@ -187,11 +187,11 @@ export const Course = () => {
 
       {/* Encabezado */}
       <div className="flex items-center justify-between gap-2 mb-6 relative">
-        <div className="flex items-center justify-between xs:py-4 ls:py-4 ms:py-4 ss:py-4 s:py-4 sm:py-4 md:py-4 lg:py-4 xl:py-4 xs:px-[0.5rem] ls:px-[0.5rem] ms:px-[0.5rem] ss:px-[0.5rem] s:px-[0.5rem] sm:px-[0.5rem] md:px-[0.5rem] lg:px-[0.5rem] xl:px-[0.5rem] bg-white dark:bg-slate-900 rounded-lg w-[100%] border border-gray-400/50 dark:border-gray-700/50 max-h-[3.4rem]">
+        <div className="flex items-center justify-between xs:py-4 ls:py-4 ms:py-4 ss:py-4 s:py-4 sm:py-4 md:py-4 lg:py-4 xl:py-4 xs:px-[0.5rem] ls:px-[0.5rem] ms:px-[0.5rem] ss:px-[0.5rem] s:px-[0.5rem] sm:px-[0.5rem] md:px-[0.5rem] lg:px-[0.5rem] xl:px-[0.5rem] bg-white dark:bg-slate-900 rounded-lg w-[100%] border border-slate-400/50 dark:border-slate-700/50 max-h-[3.4rem]">
         <div className="flex items-center justify-end">
                 <button
                     onClick={() => window.history.back()}
-                    className="inline-flex items-center justify-center xs:h-[1.6rem] xs:w-[1.6rem] ls:h-[2rem] ls:w-[2rem] ms:h-[2rem] ms:w-[2rem] ss:h-[2rem] ss:w-[2rem] s:h-[2rem] s:w-[2rem] sm:h-[2rem] sm:w-[2rem] md:h-[2.4rem] md:w-[2.4rem] lg:h-[2.4rem] lg:w-[2.4rem] xl:h-[2.4rem] xl:w-[2.4rem] rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+                    className="inline-flex items-center justify-center xs:h-[1.6rem] xs:w-[1.6rem] ls:h-[2rem] ls:w-[2rem] ms:h-[2rem] ms:w-[2rem] ss:h-[2rem] ss:w-[2rem] s:h-[2rem] s:w-[2rem] sm:h-[2rem] sm:w-[2rem] md:h-[2.4rem] md:w-[2.4rem] lg:h-[2.4rem] lg:w-[2.4rem] xl:h-[2.4rem] xl:w-[2.4rem] rounded-md border border-slate-400 dark:border-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 "
                     aria-label='Pasar a la siguiente clase'
                     title='Pasar a la siguiente clase'
                 >
@@ -199,13 +199,13 @@ export const Course = () => {
                 </button>
             </div>
             <div className="flex w-full items-center justify-center">
-              <h2 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-gray-800 dark:text-cyan-400 font-[Inter]">Pensar en código | Clase {activeVideo.id}</h2>
+              <h2 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-slate-800 dark:text-cyan-400 font-[Inter]">Pensar en código | Clase {activeVideo.id}</h2>
             </div>
             {/* Boton de pasar a la siguiente clase */}
             <div className="flex items-center justify-start">
                 <button
                     onClick={() => passNextVideo()}
-                    className="inline-flex items-center justify-center xs:h-[2rem] xs:w-[2rem] ls:h-[2rem] ls:w-[2rem] ms:h-[2rem] ms:w-[2rem] ss:h-[2rem] ss:w-[2rem] s:h-[2rem] s:w-[2rem] sm:h-[2rem] sm:w-[2rem] md:h-[2rem] md:w-[2rem] lg:h-[2rem] lg:w-[2rem] xl:h-[2rem] xl:w-[2rem] rounded-md border border-gray-400 dark:border-gray-200 hover:bg-gray-50 dark:hover:bg-slate-800 "
+                    className="inline-flex items-center justify-center xs:h-[2rem] xs:w-[2rem] ls:h-[2rem] ls:w-[2rem] ms:h-[2rem] ms:w-[2rem] ss:h-[2rem] ss:w-[2rem] s:h-[2rem] s:w-[2rem] sm:h-[2rem] sm:w-[2rem] md:h-[2rem] md:w-[2rem] lg:h-[2rem] lg:w-[2rem] xl:h-[2rem] xl:w-[2rem] rounded-md border border-slate-400 dark:border-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 "
                     aria-label='Pasar a la siguiente clase'
                     title='Pasar a la siguiente clase'
                 >
@@ -266,24 +266,24 @@ export const Course = () => {
                 )
                 ) : (
                 <div className="w-full h-full flex flex-col items-center justify-center text-center p-4">
-                    <p className="text-gray-400">Selecciona una clase para comenzar.</p>
+                    <p className="text-slate-400">Selecciona una clase para comenzar.</p>
                 </div>
                 )}
             </div>
             {/* Descripción del video activo debajo del reproductor */}
             {activeVideo && (
-                <div className="mt-8 mb-5 px-4 py-6 bg-white dark:bg-slate-900 rounded-md border border-gray-400/50 dark:border-gray-700/50">
+                <div className="mt-8 mb-5 px-4 py-6 bg-white dark:bg-slate-900 rounded-md border border-slate-400/50 dark:border-slate-700/50">
                     <h3 className="xs:text-sm ls:text-sm ms:text-sm ss:text-sm s:text-sm sm:text-sm md:text-lg lg:text-lg xl:text-lg font-semibold mb-2">{activeVideo.title}</h3>
-                    <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400">{activeVideo.description}</p>
+                    <p className="mt-2 text-sm md:text-base text-slate-600 dark:text-slate-400">{activeVideo.description}</p>
                     {activeVideo?.categories?.length > 0 && (
                       <div className="mt-6">
                             <div className="flex flex-wrap gap-2">
                               {activeVideo.categories.map((cat, idx) => (
                                 <span
                                   key={`${cat}-${idx}`}
-                                  className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 dark:from-slate-800/60 dark:to-slate-800/30 dark:text-blue-300 px-3 py-1 text-xs font-medium shadow-sm"
+                                  className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-700 dark:from-slate-800/60 dark:to-slate-800/30 dark:text-blue-300 px-3 py-1 text-xs font-medium shadow-sm"
                                 >
-                                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500 dark:bg-blue-400" />
+                                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-blue-400" />
                                   {cat}
                                 </span>
                               ))}
@@ -306,7 +306,7 @@ export const Course = () => {
             )}
             {/* Columna de la Lista de Clases / Carrusel en móvil */}
             {showList && (
-            <div className="lg:col-span-5 border border-gray-400/50 dark:border-gray-700/50 xs:rounded-tl-md xs:rounded-tr-md ls:rounded-tl-md ls:rounded-tr-md ms:rounded-tl-md ms:rounded-tr-md ss:rounded-tl-md ss:rounded-tr-md s:rounded-tl-md s:rounded-tr-md sm:rounded-tl-md sm:rounded-tr-md md:rounded-tl-md md:rounded-tr-md pt-8 lg:rounded-md xl:rounded-md  bg-white dark:bg-slate-900 grid flex flex-col items-start justify-center xs:h-full ls:h-[90vh] ms:h-[90vh] ss:h-[90vh] s:h-[90vh] sm:h-[90vh] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-10rem)]">
+            <div className="lg:col-span-5 border border-slate-400/50 dark:border-slate-700/50 xs:rounded-tl-md xs:rounded-tr-md ls:rounded-tl-md ls:rounded-tr-md ms:rounded-tl-md ms:rounded-tr-md ss:rounded-tl-md ss:rounded-tr-md s:rounded-tl-md s:rounded-tr-md sm:rounded-tl-md sm:rounded-tr-md md:rounded-tl-md md:rounded-tr-md pt-8 lg:rounded-md xl:rounded-md  bg-white dark:bg-slate-900 grid flex flex-col items-start justify-center xs:h-full ls:h-[90vh] ms:h-[90vh] ss:h-[90vh] s:h-[90vh] sm:h-[90vh] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-10rem)]">
               
               <h3 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.5rem] lg:text-[1.5rem] xl:text-[1.5rem] font-semibold mb-0 px-2 lg:px-0 text-center pb-2">Clases del curso</h3>
                 {/* Lista vertical en mobile y desktop, con paginación condicional */}
@@ -317,8 +317,8 @@ export const Course = () => {
                             onClick={() => handleClassSelection(video)}
                             className={`group flex-none lg:flex w-[100%] h-full items-center px-4 py-2 transition-all duration-300 border text-left
                                 ${activeVideo?.id === video.id 
-                                    ? 'bg-blue-50 dark:bg-slate-800/80 border-blue-500/50 ring-2 ring-blue-500/30' 
-                                    : 'bg-white/50 dark:bg-slate-900/50 border-gray-400 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800'}
+                                    ? 'bg-cyan-50 dark:bg-slate-800/80 border-cyan-500/50 ring-2 ring-cyan-500/30' 
+                                    : 'bg-white/50 dark:bg-slate-900/50 border-slate-400 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800'}
                             `}
                             aria-disabled={!video.available}
                             aria-label={
@@ -329,11 +329,11 @@ export const Course = () => {
                                   : `Reproducir: ${video.title}`
                             }
                         >
-                            <div className="flex-shrink-0 mr-4 xs:mb-2 ls:mb-2 ms:mb-2 ss:mb-2 s:mb-2 sm:mb-2 md:mb-0 lg:mb-0 xl:mb-0 text-blue-500 dark:text-blue-400">
+                            <div className="flex-shrink-0 mr-4 xs:mb-2 ls:mb-2 ms:mb-2 ss:mb-2 s:mb-2 sm:mb-2 md:mb-0 lg:mb-0 xl:mb-0 text-cyan-600 dark:text-cyan-400">
                                 {video.available ? (
                                   <span
                                     aria-hidden="true"
-                                    className="inline-flex p-1 rounded group-hover:bg-blue-50 dark:group-hover:bg-slate-800"
+                                    className="inline-flex p-1 rounded group-hover:bg-cyan-50 dark:group-hover:bg-slate-800"
                                   >
                                     {activeVideo?.id === video.id && isPlaying ? (
                                       <Pause size={28} />
@@ -346,7 +346,7 @@ export const Course = () => {
                                 )}
                             </div>
                             <div className="flex-grow">
-                                <h4 className="font-semibold xs:text-[.77rem] ls:text-[.77rem] ms:text-[.77rem] ss:text-[.77rem] s:text-[.77rem] sm:text-[.77rem] md:text-[.95rem] lg:text-[.95rem] xl:text-[.95rem] text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                                <h4 className="font-semibold xs:text-[.77rem] ls:text-[.77rem] ms:text-[.77rem] ss:text-[.77rem] s:text-[.77rem] sm:text-[.77rem] md:text-[.95rem] lg:text-[.95rem] xl:text-[.95rem] text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-blue-400">
                                     {video.title}
                                 </h4>
                                 <p className={`text-xs mt-1 ${video.available ? 'text-green-500 dark:text-green-400' : 'text-amber-600 dark:text-amber-500'}`}>
@@ -361,7 +361,7 @@ export const Course = () => {
                 <div className="flex items-center justify-center mt-2 px-2 lg:px-0 gap-2">
                     <button
                     onClick={() => setPage((p) => Math.max(0, p - 1))}
-                    className="px-3 py-1.5 text-sm rounded-md border border-gray-400 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-40"
+                    className="px-3 py-1.5 text-sm rounded-md border border-slate-400 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-40"
                     disabled={page === 0}
                     >
                     Anterior
@@ -371,14 +371,14 @@ export const Course = () => {
                         <button
                         key={i}
                         onClick={() => setPage(i)}
-                        className={`h-2.5 w-2.5 rounded-full ${i === page ? 'bg-blue-500' : 'bg-gray-300 dark:bg-slate-800'}`}
+                        className={`h-2.5 w-2.5 rounded-full ${i === page ? 'bg-cyan-600' : 'bg-slate-300 dark:bg-slate-800'}`}
                         aria-label={`Ir a la página ${i + 1}`}
                         />
                     ))}
                     </div>
                     <button
                     onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
-                    className="px-3 py-1.5 text-sm rounded-md border border-gray-400 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800 disabled:opacity-40"
+                    className="px-3 py-1.5 text-sm rounded-md border border-slate-400 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 disabled:opacity-40"
                     disabled={page >= totalPages - 1}
                     >
                     Siguiente
@@ -408,7 +408,7 @@ export const Course = () => {
                     Contenido bloqueado
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Disponible próximamente</h3>
-                    <p className="text-sm text-gray-200 leading-relaxed mb-6">
+                    <p className="text-sm text-slate-200 leading-relaxed mb-6">
                     Únete a mi comunidad para saber cuándo se liberan las nuevas clases y recibir material exclusivo.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center gap-3">

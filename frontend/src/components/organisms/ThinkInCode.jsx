@@ -131,12 +131,12 @@ const ThinkInCode = () => {
       initial="hidden"
       whileInView="visible"
       transition={{ delay: 0.2 }}
-      className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate w-[95%] min-[550px]:w-[90%] mx-auto overflow-hidden rounded-lg my-[10%] min-[360px]:my-[15%] md:my-[5%] px-3 md:px-14 py-12 text-gray-900 dark:text-gray-100"
+      className="bg-white dark:bg-slate-950 border border-slate-200/50 dark:border-slate-700/50 shadow-lg rounded-lg relative isolate w-[95%] min-[550px]:w-[90%] mx-auto overflow-hidden rounded-lg my-[10%] min-[360px]:my-[15%] md:my-[5%] px-3 md:px-14 py-12 text-slate-900 dark:text-slate-100"
     >
       {/* Encabezado */}
       <div className="mx-auto max-w-6xl text-center mb-10 md:mb-12">
         <TitleSection title="Curso"/>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-[90%] mx-auto font-bold">
+        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-[90%] mx-auto font-bold">
         Pensar en código es un curso práctico y claro para aprender a pensar como programador.</p>
       </div>
 
@@ -150,7 +150,7 @@ const ThinkInCode = () => {
             aria-label="Clase anterior"
             className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden sm:grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-600 dark:text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -166,13 +166,13 @@ const ThinkInCode = () => {
             <motion.div
               key={cls.id}
               ref={idx === 0 ? firstItemRef : undefined}
-              className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white dark:bg-slate-900 border border-gray-200/50 dark:border-gray-700/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+              className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-700/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
               style={visibleItems > 1 ? { flex: `0 0 calc((100% - ${(visibleItems - 1) * GAP_PX}px) / ${visibleItems})` } : undefined}
               whileHover={{ y: -4 }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
               {/* Container de la imagen */}
-              <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+              <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
                 {/* Imagen o placeholder */}
                 {cls.available && cls.posterUrl && !imageErrors[cls.id] ? (
                   <img
@@ -187,7 +187,7 @@ const ThinkInCode = () => {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center text-gray-400 dark:text-gray-600">
+                    <div className="text-center text-slate-400 dark:text-slate-600">
                       <PlayCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
                       <p className="text-sm font-medium">{cls.available ? 'Vista previa' : 'Próximamente'}</p>
                     </div>
@@ -202,7 +202,7 @@ const ThinkInCode = () => {
                       Disponible
                     </div>
                   ) : (
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-500/90 text-white text-xs font-medium">
+                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-500/90 text-white text-xs font-medium">
                       <LockIcon />
                       Próximamente
                     </div>
@@ -231,7 +231,7 @@ const ThinkInCode = () => {
               </div>
               {/* Título pequeño debajo del elemento */}
               <div className="px-3 py-3">
-                <h4 className="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2">{cls.title}</h4>
+                <h4 className="text-sm font-medium text-slate-800 dark:text-slate-200 line-clamp-2">{cls.title}</h4>
               </div>
             </motion.div>
           ))}
@@ -245,7 +245,7 @@ const ThinkInCode = () => {
             aria-label="Clase siguiente"
             className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden sm:grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${currentIndex >= CLASSES.length - visibleItems ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-600 dark:text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -256,7 +256,7 @@ const ThinkInCode = () => {
       <div className="text-center mt-10">
         <a
           href="/curso"
-          className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          className="inline-flex items-center bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
         >
           Ir al curso completo
           <ArrowRight className="w-5 h-5 ml-2" />
@@ -284,7 +284,7 @@ const ThinkInCode = () => {
             Contenido bloqueado
             </div>
             <h3 className="text-xl font-semibold mb-2">Disponible próximamente</h3>
-            <p className="text-sm text-gray-200 leading-relaxed mb-6">
+            <p className="text-sm text-slate-200 leading-relaxed mb-6">
             Únete a mi comunidad para saber cuándo se liberan las nuevas clases y recibir material exclusivo.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-3">

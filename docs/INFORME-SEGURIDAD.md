@@ -42,11 +42,19 @@ La contraseña de la base de datos estuvo publicada en un repositorio público d
 
 **El riesgo residual es la reutilización.** Si esa contraseña —o una variante reconocible— protege hoy cualquier otro servicio, sigue comprometida: está indexada, clonada y probablemente en más de un conjunto de datos de credenciales filtradas.
 
-**Acción:** búscala en tu gestor de contraseñas y cámbiala allí donde aparezca. Es el único punto de este informe que no puedo cerrar por ti.
+**Es el único punto de este informe que no puede cerrarse desde el código.** Paso a paso:
 
-### 🔵 SEC-C · Enlaces externos sin `rel`
+1. **Identifica la contraseña.** Si no la recuerdas: `git show 38876ec:wordpress/.env`.
+2. **Búscala en tu gestor de contraseñas.** La mayoría tienen un informe de «contraseñas reutilizadas» o permiten buscar por valor.
+3. **Cámbiala en cada servicio donde aparezca**, empezando por el correo: quien controla el correo recupera todo lo demás.
+4. **Revisa el acceso SSH.** Si ese par usuario/servidor sigue vivo en otra máquina, cambia su contraseña o —mejor— pásalo a autenticación por clave pública y desactiva el acceso por contraseña.
+5. **Activa 2FA** donde puedas, empezando por GitHub y el correo.
 
-Quedan cuatro `target="_blank"` sin `rel="noopener noreferrer"` en `AboutMe.jsx` (×2), `comunidad.astro` y `Carousel.jsx`. Los navegadores modernos aplican `noopener` por defecto, pero conviene ser explícito. Los del pie ya se corrigieron.
+> **Rotar es la mitigación, no purgar el historial.** El repositorio tiene un *fork*, y un fork conserva sus propios objetos: GitHub no los borra al reescribir el historial del original. Lo que ya se copió, copiado está.
+
+### ✅ SEC-C · Enlaces externos sin `rel`
+
+**Resuelto.** Los `target="_blank"` de `AboutMe.jsx` (×2) y `comunidad.astro` ya declaran `rel="noopener noreferrer"`; el de `Carousel.jsx` y los del pie ya lo tenían. Los navegadores modernos aplican `noopener` por defecto, pero ser explícito protege también en los que no.
 
 ---
 
@@ -140,7 +148,9 @@ git push origin --force --all
 git push origin --force --tags
 ```
 
-> ⚠️ Reescribir el historial es destructivo e invalida todos los clones y forks. **Haz una copia de seguridad del repositorio antes.** Si prefieres no reescribir, la alternativa es archivar este repositorio y empezar uno limpio.
+> ⚠️ Reescribir el historial es destructivo e invalida todos los clones y forks. **Haz una copia de seguridad del repositorio antes.**
+>
+> Y ten presente su límite: **este repositorio tiene 1 fork**, cuyos objetos sobreviven a la reescritura del original. Purgar reduce el tamaño del clon y limpia la vista, pero **no retira las credenciales de circulación**. Por eso la acción que de verdad cierra el riesgo es rotarlas (SEC-B), no esto.
 
 ---
 

@@ -112,7 +112,7 @@ Publicar es hacer `git push`.
 cd frontend && npm test
 ```
 
-> La suite está **en rojo a propósito**: sus 12 fallos reproducen los defectos abiertos y funcionan como lista de verificación. Detalle en [`docs/TESTING.md`](./docs/TESTING.md).
+> **93 de 94 en verde.** El único fallo (`npm audit`) reproduce un hallazgo abierto y hace de lista de verificación: se pondrá en verde cuando se suba a Astro 7. Detalle en [`docs/TESTING.md`](./docs/TESTING.md).
 
 ---
 

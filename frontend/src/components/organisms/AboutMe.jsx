@@ -125,7 +125,8 @@ const ModernAboutMe = () => {
           <div className="flex space-x-4 mb-4 md:mb-6 ">
             <a 
               href="https://github.com/yamiddevofic" 
-              target="_blank" 
+              target="_blank"
+              rel="noopener noreferrer"
               rel="noopener noreferrer"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >
@@ -135,7 +136,8 @@ const ModernAboutMe = () => {
             </a>
             <a 
               href="https://www.linkedin.com/in/yamiddevofic" 
-              target="_blank" 
+              target="_blank"
+              rel="noopener noreferrer"
               rel="noopener noreferrer"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
             >

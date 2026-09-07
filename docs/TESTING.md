@@ -83,41 +83,47 @@ frontend/tests/
 
 ## Resultado de la última ejecución
 
-**6 de septiembre de 2026, tras la retirada de WordPress:**
+**7 de septiembre de 2026, tras corregir el formulario, el marcado y el SEO:**
 
 ```
-Test Files  5 failed | 5 passed (10)
-     Tests  12 failed | 82 passed (94)
+Test Files  9 passed | 1 failed (10)
+     Tests  93 passed | 1 failed (94)
 ```
 
-Evolución desde la auditoría inicial:
+Evolución:
 
-| | Al auditar | Ahora |
-|---|---|---|
-| Pruebas totales | 68 | 94 |
-| En verde | 49 | **82** |
-| En rojo | 19 | **12** |
+| | Al auditar | Tras retirar WordPress | Ahora |
+|---|---|---|---|
+| Pruebas totales | 68 | 94 | 94 |
+| En verde | 49 | 82 | **93** |
+| En rojo | 19 | 12 | **1** |
 
-> **La suite sigue en rojo a propósito.** Cada fallo reproduce un defecto documentado y funciona como lista de verificación de la remediación.
-
-### Los 12 fallos y su causa
+### El fallo que queda
 
 | Prueba que falla | Hallazgo |
 |---|---|
-| `Carousel › no anida un <a> dentro de otro <a>` | [A-1](./ESTADO-DEL-PROYECTO.md) — fallo de hidratación de React |
-| `/ no anida <a> dentro de <a>` | [A-1](./ESTADO-DEL-PROYECTO.md) |
-| `projectData › cada proyecto tiene un id único` | [A-6](./ESTADO-DEL-PROYECTO.md) — `key={project.id}` sobre datos sin `id` |
-| `/ tiene un único <main>` · `/comunidad/ tiene un único <main>` | [A-3](./ESTADO-DEL-PROYECTO.md) — landmark duplicado |
-| `/ tiene un único <h1>` · `/curso/ tiene un único <h1>` | [A-3](./ESTADO-DEL-PROYECTO.md) — jerarquía de encabezados |
-| `/maintenance/ tiene title, description y canonical` | [A-4](./ESTADO-DEL-PROYECTO.md) — layout antiguo sin metadatos |
-| `los canonical usan siempre el mismo host` | [A-4](./ESTADO-DEL-PROYECTO.md) — mezcla de `www` y sin `www` |
-| `el title de la home no repite el nombre del sitio` | [A-4](./ESTADO-DEL-PROYECTO.md) |
-| `ninguna imagen pública supera 1 MB` | [A-5](./ESTADO-DEL-PROYECTO.md) — `curso.png` pesa 3,3 MB |
-| `npm audit sin vulnerabilidades altas ni críticas` | [SEC-A](./INFORME-SEGURIDAD.md#-sec-a--vulnerabilidades-altas-en-dependencias) — requiere Astro 7 |
+| `npm audit sin vulnerabilidades altas ni críticas` | [A-2](./ESTADO-DEL-PROYECTO.md) — requiere subir a Astro 7 y migrar a Tailwind v4 |
 
-### Lo que se puso en verde
+No es una prueba defectuosa: es el hallazgo abierto haciéndose notar en cada ejecución, que es justo su función. Se pondrá en verde sola cuando se haga la migración.
 
-Con la retirada de WordPress y la reconstrucción del contacto pasaron a verde 7 pruebas que antes fallaban: las cinco de higiene de secretos, la del sitemap y la de metadatos del blog. Además se añadieron 26 nuevas, todas en verde: el endpoint de contacto (11), la colección de blog (6), el honeypot y el mensaje de error del formulario (2), y las rutas del blog (7).
+### Lo que se puso en verde en esta ronda
+
+Once pruebas, agrupadas por lo que las arreglaba:
+
+| Corrección | Pruebas que apagó |
+|---|---|
+| El CTA del Carousel pasa de `<a>` a `<span>` | `Carousel › no anida un <a> dentro de otro <a>`, `/ no anida <a> dentro de <a>` |
+| Cada proyecto declara un `id` | `projectData › cada proyecto tiene un id único` |
+| `Hero` y `Maintenance` dejan de emitir su propio `<main>` | `/ tiene un único <main>`, `/comunidad/ tiene un único <main>`, `/maintenance/ tiene un único <main>` |
+| El `<h1>` de `AboutMe` pasa a `<h2>`; `/curso` declara el suyo | `/ tiene un único <h1>`, `/curso/ tiene un único <h1>` |
+| Canonicals unificados en `www.yamid.dev` | `los canonical usan siempre el mismo host` |
+| `MainLayout` deja de duplicar el nombre del sitio | `el title de la home no repite el nombre del sitio` |
+| `/maintenance` migrada a `MainLayout` | `/maintenance/ tiene title, description y canonical` |
+| `curso.png` (3,3 MB) sustituida por `curso.jpg` (132 kB) | `ninguna imagen pública supera 1 MB` |
+
+### Un cambio de transporte que tocó las pruebas
+
+Las pruebas del formulario construían peticiones `application/x-www-form-urlencoded`. El endpoint pasó a JSON para esquivar el `403` de `security.checkOrigin`, así que el helper `peticion()` de `contact.test.ts` y las aserciones de `ContactForm.test.tsx` se actualizaron en consecuencia. Siguen siendo 18 pruebas y siguen cubriendo lo mismo.
 
 ---
 
@@ -125,19 +131,21 @@ Con la retirada de WordPress y la reconstrucción del contacto pasaron a verde 7
 
 | Comprobación | Resultado |
 |---|---|
-| `astro build` | ✅ 6 páginas en ~34 s, sin errores |
+| `astro build` | ✅ 6 páginas en ~30 s, sin errores |
 | `/blog` y `/blog/bienvenida` en el navegador | ✅ Renderizan con el diseño original conservado |
-| Consola del navegador en `/` | ❌ 7 errores de React por la hidratación (A-1) |
-| Consola del navegador en `/curso` | ❌ `<button>` dentro de `<button>` |
+| Consola del navegador en `/` | ✅ sin errores de hidratación (A-1 corregido) |
+| Consola del navegador en `/curso` | ✅ sin `<button>` anidado |
 | Viewport móvil (375 × 812) | ✅ sin desbordamiento horizontal |
 | `git ls-files` en busca de secretos | ✅ nada |
 | Sitemap generado en el build | ✅ `/sitemap-index.xml` |
+| Envío real por `/api/contact` en producción | ✅ `200 {"status":"success"}` |
+| Cabeceras de seguridad en producción | ✅ las 5 de `vercel.json` |
 
 ---
 
 ## Próximos pasos
 
-1. Corregir los defectos hasta que la suite quede en verde.
+1. Subir a Astro 7 y migrar a Tailwind v4: es lo único que separa a la suite del verde completo.
 2. Añadir un workflow de CI que ejecute `npm test` en cada push.
 3. Ampliar la cobertura de componentes: `Navbar` (tema, scrollspy y el nuevo enlace de página), `Course` (paginación y modal de clase bloqueada), `Technology`.
-4. Considerar Playwright para recorridos completos y regresión visual una vez estabilizada la hidratación.
+4. Considerar Playwright para recorridos completos y regresión visual.

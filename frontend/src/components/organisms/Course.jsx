@@ -101,10 +101,18 @@ export const Course = () => {
   };
 
   const handleClassSelection = (video) => {
-    if (video.available) {
-      setActiveVideo(video);
-    } else {
+    if (!video.available) {
       setShowLockedModal(true);
+      return;
+    }
+    // Pulsar la clase que ya suena alterna pausa; cualquier otra la abre y
+    // empieza a reproducirla. Antes esto vivia en un <button> anidado dentro
+    // del <button> de la fila, que es HTML invalido y rompia la hidratacion.
+    if (activeVideo?.id === video.id) {
+      setIsPlaying((p) => !p);
+    } else {
+      setActiveVideo(video);
+      setIsPlaying(true);
     }
   };
 
@@ -313,30 +321,26 @@ export const Course = () => {
                                     : 'bg-white/50 dark:bg-slate-900/50 border-gray-400 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800'}
                             `}
                             aria-disabled={!video.available}
+                            aria-label={
+                              !video.available
+                                ? `${video.title} (bloqueada)`
+                                : activeVideo?.id === video.id
+                                  ? `${isPlaying ? 'Pausar' : 'Reproducir'}: ${video.title}`
+                                  : `Reproducir: ${video.title}`
+                            }
                         >
                             <div className="flex-shrink-0 mr-4 xs:mb-2 ls:mb-2 ms:mb-2 ss:mb-2 s:mb-2 sm:mb-2 md:mb-0 lg:mb-0 xl:mb-0 text-blue-500 dark:text-blue-400">
                                 {video.available ? (
-                                  <button
-                                    type="button"
-                                    aria-label={activeVideo?.id === video.id ? (isPlaying ? 'Pausar' : 'Reproducir') : 'Reproducir'}
-                                    title={activeVideo?.id === video.id ? (isPlaying ? 'Pausar' : 'Reproducir') : 'Reproducir'}
-                                    className="p-1 rounded hover:bg-blue-50 dark:hover:bg-slate-800"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      if (activeVideo?.id === video.id) {
-                                        setIsPlaying((p) => !p);
-                                      } else {
-                                        setActiveVideo(video);
-                                        setIsPlaying(true);
-                                      }
-                                    }}
+                                  <span
+                                    aria-hidden="true"
+                                    className="inline-flex p-1 rounded group-hover:bg-blue-50 dark:group-hover:bg-slate-800"
                                   >
                                     {activeVideo?.id === video.id && isPlaying ? (
                                       <Pause size={28} />
                                     ) : (
                                       <PlayCircle size={28} />
                                     )}
-                                  </button>
+                                  </span>
                                 ) : (
                                   <Lock size={28} />
                                 )}

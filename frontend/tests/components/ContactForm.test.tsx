@@ -22,7 +22,7 @@ describe('<ContactForm />', () => {
     }
   });
 
-  it('envía los datos del formulario como form-urlencoded', async () => {
+  it('envía los datos del formulario como JSON', async () => {
     const fetchMock = vi.fn(async () => new Response(JSON.stringify({ status: 'success' }), { status: 200 }));
     vi.stubGlobal('fetch', fetchMock);
     const user = userEvent.setup();
@@ -34,7 +34,11 @@ describe('<ContactForm />', () => {
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
     expect(url).toBe(ENDPOINT);
     expect(init.method).toBe('POST');
-    expect(String(init.body)).toContain('email=ada%40example.com');
+    // JSON y no form-urlencoded a proposito: Astro rechaza con 403 los POST de
+    // formulario cuyo Origin no coincide con el host que ve el servidor, cosa
+    // que detras de Cloudflare y Vercel siempre pasaba.
+    expect((init.headers as Record<string, string>)['Content-Type']).toBe('application/json');
+    expect(JSON.parse(String(init.body))).toMatchObject({ email: 'ada@example.com' });
   });
 
   it('muestra confirmación y limpia el formulario cuando la API responde success', async () => {
@@ -82,7 +86,7 @@ describe('<ContactForm />', () => {
     await rellenar(user);
     await user.click(screen.getByRole('button', { name: /enviar mensaje/i }));
     await waitFor(() => expect(fetchMock).toHaveBeenCalledOnce());
-    expect(String((fetchMock.mock.calls[0] as any)[1].body)).toContain('website=');
+    expect(JSON.parse(String((fetchMock.mock.calls[0] as any)[1].body))).toHaveProperty('website');
   });
 
   it('muestra el mensaje de error que devuelve el servidor', async () => {

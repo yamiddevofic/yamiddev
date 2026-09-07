@@ -150,7 +150,7 @@ const Carousel = () => {
               whileHover={{ y: -8 }}
             >
               <article className="relative h-auto rounded-xl border border-white/10 dark:border-white/10 bg-transparent dark:bg-transparent shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden">
-                <a href={project.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+                <a href={project.url} target="_blank" rel="noopener noreferrer" className="group block h-full">
                   {/* Imagen */}
                   <div className="relative w-full h-48 sm:h-56 overflow-hidden">
                     <img
@@ -206,17 +206,20 @@ const Carousel = () => {
 
                       {/* CTA */}
                       <div className="pt-2">
-                        <a
-                          href={project.url ? project.url : '#'}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 py-1.5 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900 rounded-md text-sm hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+                        {/* Span, no <a>: la tarjeta entera ya es un enlace y
+                            anidar <a> dentro de <a> es HTML invalido. El
+                            navegador deshacia el anidado al parsear el HTML del
+                            servidor, el DOM dejaba de coincidir con el arbol de
+                            React y la isla completa se volvia a renderizar en
+                            cliente. */}
+                        <span
+                          className="inline-flex items-center gap-2 px-3 py-1.5 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900 rounded-md text-sm group-hover:bg-blue-50 dark:group-hover:bg-blue-950/40 transition-colors"
                         >
                           Ver proyecto
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
-                        </a>
+                        </span>
                       </div>
                     </div>
                   </div>

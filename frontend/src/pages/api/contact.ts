@@ -73,23 +73,39 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     );
   }
 
-  let datos: URLSearchParams;
+  // El cuerpo viaja como JSON a proposito, no como formulario.
+  //
+  // Astro activa por defecto security.checkOrigin, que rechaza con 403 las
+  // peticiones cuyo Content-Type sea de formulario y cuyo Origin no coincida
+  // con el host que ve el servidor. Detras de Cloudflare y Vercel esa
+  // comparacion falla, asi que el formulario devolvia 403 a todo el mundo.
+  //
+  // JSON esquiva esa comprobacion sin perder la defensa: un formulario HTML no
+  // puede enviar application/json a otro origen sin disparar un preflight CORS
+  // que este endpoint no responde, asi que el navegador bloquea el intento
+  // cross-site igual que antes.
+  let datos: Record<string, unknown>;
   try {
-    datos = new URLSearchParams(await request.text());
+    const crudo = await request.json();
+    if (typeof crudo !== 'object' || crudo === null || Array.isArray(crudo)) throw new Error('no es un objeto');
+    datos = crudo as Record<string, unknown>;
   } catch {
     return json({ status: 'error', message: 'Petición mal formada.' }, 400);
   }
 
+  /** Lee un campo y descarta cualquier cosa que no sea texto. */
+  const campo = (k: string) => (typeof datos[k] === 'string' ? (datos[k] as string) : '');
+
   // Honeypot: campo oculto que una persona nunca rellena. Respondemos 200 para
   // que el bot no aprenda que fue detectado, pero no enviamos nada.
-  if (datos.get('website')) {
+  if (campo('website')) {
     return json({ status: 'success' }, 200);
   }
 
-  const name = (datos.get('name') ?? '').trim();
-  const email = (datos.get('email') ?? '').trim();
-  const subject = (datos.get('subject') ?? '').trim();
-  const message = (datos.get('message') ?? '').trim();
+  const name = campo('name').trim();
+  const email = campo('email').trim();
+  const subject = campo('subject').trim();
+  const message = campo('message').trim();
 
   const errores: string[] = [];
   if (!name) errores.push('El nombre es obligatorio.');

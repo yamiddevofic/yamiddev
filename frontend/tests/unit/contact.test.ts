@@ -17,8 +17,8 @@ const ENV = {
 function peticion(campos: Record<string, string>) {
   return new Request('http://localhost/api/contact', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(campos).toString(),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(campos),
   });
 }
 

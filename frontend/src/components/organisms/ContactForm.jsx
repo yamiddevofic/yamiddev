@@ -36,8 +36,8 @@ const ContactForm = () => {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ ...formData, website: honeypot }).toString()
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, website: honeypot })
       });
 
       const result = await response.json();

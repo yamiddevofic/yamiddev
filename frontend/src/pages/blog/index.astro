@@ -1,0 +1,71 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale/es';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<MainLayout
+  title="Blog"
+  description="Artículos sobre desarrollo web, Astro, React y todo lo que voy aprendiendo por el camino."
+  canonical={new URL('/blog', Astro.site).toString()}
+>
+  <section class="w-full max-w-6xl px-5 sm:px-8 py-12 sm:py-16">
+    <h1 class="xs:text-[2.5rem] md:text-[3rem] font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 py-2">
+      Blog
+    </h1>
+    <p class="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+      Notas sobre desarrollo web, Astro, React y todo lo que voy aprendiendo por el camino.
+    </p>
+
+    {posts.length === 0 ? (
+      <div class="text-center py-16">
+        <h2 class="mt-4 text-xl font-semibold text-gray-700 dark:text-gray-300">
+          Todavía no hay artículos
+        </h2>
+        <p class="mt-2 text-gray-500 dark:text-gray-400">Vuelve pronto para ver nuevos contenidos.</p>
+      </div>
+    ) : (
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {posts.map((post) => (
+          <article class="group bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50 overflow-hidden h-full flex flex-col transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+            <a href={`/blog/${post.id}`} class="flex flex-col h-full">
+              {post.data.image && (
+                <div class="relative h-48 overflow-hidden">
+                  <img
+                    src={post.data.image}
+                    alt=""
+                    width="400"
+                    height="192"
+                    loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              )}
+
+              <div class="p-6 flex flex-col flex-grow">
+                <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-3 transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                  {post.data.title}
+                </h2>
+
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                  {post.data.description}
+                </p>
+
+                <div class="mt-auto pt-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-700">
+                  <time datetime={post.data.date.toISOString()}>
+                    {format(post.data.date, 'dd MMM yyyy', { locale: es })}
+                  </time>
+                  <span class="text-blue-500 font-medium">Leer más →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+</MainLayout>

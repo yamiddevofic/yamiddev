@@ -1,7 +1,8 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import vercel from '@astrojs/vercel';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import icon from "astro-icon";
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -10,10 +11,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   site: 'https://www.yamid.dev',
   output: "static",
+  // El sitio es estático salvo las rutas que declaran `prerender = false`
+  // (hoy solo /api/contact), que Vercel ejecuta como función serverless.
+  adapter: vercel(),
   integrations: [
     react(),
     tailwind(),
-    icon()
+    sitemap()
   ],
   vite: {
     server: {

@@ -18,6 +18,8 @@ const LINKS = [
   { title: "Sobre mí", id: "about-me", icon: AboutMe },
   { title: "Tecnologías", id: "technology", icon: Computer },
   { title: "Curso", id: "course", icon: Course },
+  // `path` marca un enlace a otra página en lugar de un desplazamiento a una sección.
+  { title: "Blog", id: "blog", icon: Blog, path: "/blog" },
   { title: "Contacto", id: "contact", icon: Contact },
 ];
 
@@ -90,7 +92,12 @@ const Navbar = ({ isMain = true }) => {
   }, []);
 
   // Smooth scroll + cierre menú (solo aplica en home)
-  const handleLinkClick = useCallback((e, id) => {
+  const handleLinkClick = useCallback((e, id, path) => {
+    // Enlace a otra página: navegación normal del navegador.
+    if (path) {
+      setIsOpen(false);
+      return;
+    }
     e.preventDefault();
     const section = document.getElementById(id);
     if (section) {
@@ -103,7 +110,9 @@ const Navbar = ({ isMain = true }) => {
   useEffect(() => {
     if (!isMain || typeof window === "undefined") return;
 
-    const sections = LINKS.map((l) => document.getElementById(l.id)).filter(Boolean);
+    const sections = LINKS.filter((l) => !l.path)
+      .map((l) => document.getElementById(l.id))
+      .filter(Boolean);
     if (sections.length === 0) return;
 
     const obs = new IntersectionObserver(
@@ -163,10 +172,10 @@ const Navbar = ({ isMain = true }) => {
               {LINKS.map((item) => (
                 <motion.a
                   key={item.id}
-                  href={`#${item.id}`}
+                  href={item.path ?? `#${item.id}`}
                   variants={linkVariants}
                   whileHover={reduced ? {} : "hover"}
-                  onClick={(e) => handleLinkClick(e, item.id)}
+                  onClick={(e) => handleLinkClick(e, item.id, item.path)}
                   aria-current={active === item.id ? "page" : undefined}
                   className={`text-lg font-medium transition-colors cursor-pointer ${
                     active === item.id
@@ -303,8 +312,8 @@ const Navbar = ({ isMain = true }) => {
                         transition={{ delay: reduced ? 0 : 0.02 * i }}
                       >
                         <a
-                          href={`#${item.id}`}
-                          onClick={(e) => handleLinkClick(e, item.id)}
+                          href={item.path ?? `#${item.id}`}
+                          onClick={(e) => handleLinkClick(e, item.id, item.path)}
                           className={[
                             "group rounded-xl border p-3 flex flex-col items-center justify-center text-center",
                             "bg-white/80 dark:bg-slate-950/50 border-gray-200/60 dark:border-gray-700/60",

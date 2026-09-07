@@ -13,8 +13,11 @@ const ContactForm = () => {
     subject: '',
     message: ''
   });
+  // Honeypot: un bot rellena todos los campos; una persona nunca ve este.
+  const [honeypot, setHoneypot] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -31,25 +34,27 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://yamid.dev/send_email.php', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams({ ...formData, website: honeypot }).toString()
       });
-  
+
       const result = await response.json();
-      
-      if (result.status === 'success') {
+
+      if (response.ok && result.status === 'success') {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
+        setErrorMessage(result.message ?? '');
         setSubmitStatus('error');
       }
     } catch (error) {
+      setErrorMessage('');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(null), 3000);
+      setTimeout(() => setSubmitStatus(null), 5000);
     }
   };
   
@@ -143,6 +148,19 @@ const ContactForm = () => {
                 />
               </div>
               
+              <div className="absolute left-[-9999px]" aria-hidden="true">
+                <label htmlFor="website">No rellenes este campo</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -169,7 +187,7 @@ const ContactForm = () => {
               {submitStatus === 'error' && (
                 <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-500/50 rounded-sm text-red-600 dark:text-red-400 text-center animate-fadeIn">
                   <p className="font-medium">Hubo un error al enviar el mensaje</p>
-                  <p className="text-sm mt-1">Por favor, intenta de nuevo.</p>
+                  <p className="text-sm mt-1">{errorMessage || 'Por favor, intenta de nuevo.'}</p>
                 </div>
               )}
             </form>

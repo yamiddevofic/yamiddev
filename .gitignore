@@ -1,36 +1,34 @@
-./.env
-./frontend/.env
-r.zip
-wordpress.zip
+# Variables de entorno (nunca versionar)
+**/.env
+**/.env.*
+!**/.env.example
 
-**/dist/
-_astro/
-.vscode/
-
-# generated types
-.astro/
-
-# dependencies
+# Dependencias
 node_modules/
 
-# logs
+# Salida del build
+dist/
+.vercel/
+_astro/
+
+# Tipos generados por Astro
+.astro/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# macOS-specific files
-.DS_Store
+# Copias de respaldo y archivos temporales
+*.save
+*.bak
+*.zip
+*.tar.gz
 
-# jetbrains setting folder
+# Editores
+.vscode/
 .idea/
 
-package-lock.json
-
-bun.lock
-
-# build output
-dist/
-
-# vscode
-.vscode
+# macOS
+.DS_Store

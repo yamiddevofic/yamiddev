@@ -1,56 +1,58 @@
 ---
-// Importaciones necesarias
 import MainLayout from '../../layouts/MainLayout.astro';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale/es';
-import { getPosts } from '../../lib/fetchPosts';
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
 
-// Define la función getStaticPaths
-export async function getStaticPaths() {
-  const posts = await getPosts();
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
-}
+}) satisfies GetStaticPaths;
 
-// Obtiene los props desde getStaticPaths
 const { post } = Astro.props;
-const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-const category = post._embedded?.['wp:term']?.[0]?.[0]?.name;
-const postDate = new Date(post.date);
+const { Content } = await render(post);
+const { title, description, category, image, date } = post.data;
 ---
 
-<MainLayout title={post.title.rendered}>
+<MainLayout
+  title={title}
+  description={description}
+  image={image}
+  pageType="article"
+  canonical={new URL(`/blog/${post.id}`, Astro.site).toString()}
+  articleDetails={{ author: 'Yamid Horacio Rodríguez', publishDate: date.toISOString() }}
+>
   <div class="bujo-container">
-    <div class="bujo-page">
-      <!-- Título simple y fecha al estilo BUJO minimalista -->
-      <div class="bujo-header">
-        <div class="date-entry">
-          {format(postDate, 'dd.MM.yyyy')}
-        </div>
-        <h1 class="bujo-title" set:html={post.title.rendered} />
-        
+    <article class="bujo-page">
+      <header class="bujo-header">
+        <time class="date-entry" datetime={date.toISOString()}>
+          {format(date, 'dd.MM.yyyy', { locale: es })}
+        </time>
+        <h1 class="bujo-title">{title}</h1>
+
         {category && (
-          <div class="bujo-category">
-            <span class="bullet">•</span> {category}
-          </div>
+          <p class="bujo-category">
+            <span class="bullet" aria-hidden="true">•</span> {category}
+          </p>
         )}
-      </div>
-      
-      <!-- Línea simple separadora -->
+      </header>
+
       <div class="simple-divider"></div>
-      
-      <!-- Imagen con marco simple -->
-      {featuredImage && (
+
+      {image && (
         <div class="image-container">
-          <img src={featuredImage} alt={post.title.rendered} />
+          <img src={image} alt="" width="800" height="450" loading="eager" />
         </div>
       )}
-      
-      <!-- Contenido principal -->
-      <div class="bujo-content" set:html={post.content.rendered} />
-    </div>
+
+      <div class="bujo-content">
+        <Content />
+      </div>
+    </article>
   </div>
 </MainLayout>
 

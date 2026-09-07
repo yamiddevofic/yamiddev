@@ -141,7 +141,7 @@ const Carousel = () => {
               variants={fadeInUp}
               key={project.id}
               ref={idx === 0 ? firstItemRef : undefined}
- className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white/50 dark:bg-slate-950/50 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm rounded-xl"
+ className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white/50 dark:bg-slate-950/50 border border-gray-200/50 dark:border-gray-700/50 rounded-xl"
               style={
                 visibleItems > 1
                   ? { flex: `0 0 calc((100% - ${(visibleItems - 1) * GAP_PX}px) / ${visibleItems})` }
@@ -156,11 +156,19 @@ const Carousel = () => {
                     <img
                       src={project.image[0]}
                       alt={project.title}
+                      width={project.imageSize?.width}
+                      height={project.imageSize?.height}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover dark:hidden group-hover:scale-105 transition-transform duration-500"
                     />
                     <img
                       src={project.image[1]}
                       alt={project.title}
+                      width={project.imageSize?.width}
+                      height={project.imageSize?.height}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover hidden dark:block group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

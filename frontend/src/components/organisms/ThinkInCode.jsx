@@ -131,7 +131,7 @@ const ThinkInCode = () => {
       initial="hidden"
       whileInView="visible"
       transition={{ delay: 0.2 }}
-      className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[90%] sm:w-[90%] md:w-[90%] lg:w-[90%] xl:w-[90%] mx-auto overflow-hidden rounded-lg xs:my-[10%] ls:my-[15%] ms:my-[15%] ss:my-[15%] s:my-[15%] sm:my-[15%] md:my-[5%] lg:my-[5%] xl:my-[5%] xs:px-3 ls:px-3 ms:px-3 ss:px-3 s:px-3 sm:px-3 md:px-14 lg:px-14 xl:px-14 xs:py-12 ls:py-12 ms:py-12 ss:py-12 s:py-12 sm:py-12 md:py-12 lg:py-12 xl:py-12 text-gray-900 dark:text-gray-100"
+      className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate w-[95%] min-[550px]:w-[90%] mx-auto overflow-hidden rounded-lg my-[10%] min-[360px]:my-[15%] md:my-[5%] px-3 md:px-14 py-12 text-gray-900 dark:text-gray-100"
     >
       {/* Encabezado */}
       <div className="mx-auto max-w-6xl text-center mb-10 md:mb-12">
@@ -141,7 +141,7 @@ const ThinkInCode = () => {
       </div>
 
       {/* Carrusel de cursos */}
-      <div className="relative mx-auto max-w-6xl xs:pl-2 ls:pl-2 ms:pl-2 ss:pl-2 s:pl-2 sm:pl-2 md:pl-0 lg:pl-0 xl:pl-0">
+      <div className="relative mx-auto max-w-6xl pl-2 md:pl-0">
         {/* Botón izquierdo */}
         {CLASSES.length > visibleItems && (
           <button
@@ -178,6 +178,9 @@ const ThinkInCode = () => {
                   <img
                     src={cls.posterUrl}
                     alt={cls.title}
+                    width={1360}
+                    height={720}
+                    decoding="async"
                     className="w-full h-full object-cover"
                     loading="lazy"
                     onError={() => handleImageError(cls.id)}
@@ -210,7 +213,7 @@ const ThinkInCode = () => {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button
                     onClick={() => handleClassSelection(cls)}
-                    className="flex items-center gap-2 px-4 py-5 bg-black/20 backdrop-blur-sm border border-black/30 rounded-lg text-white font-medium hover:bg-black/20 transition-colors"
+                    className="flex items-center gap-2 px-4 py-5 bg-black/20 border border-black/30 rounded-lg text-white font-medium hover:bg-black/20 transition-colors"
                   >
                     {cls.available ? (
                       <>
@@ -265,7 +268,7 @@ const ThinkInCode = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-4"
+        className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4"
         onClick={() => setShowLockedModal(false)}
         >
         <motion.div
@@ -273,7 +276,7 @@ const ThinkInCode = () => {
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.9, y: 20, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl backdrop-blur-xl"
+            className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl "
             onClick={(e) => e.stopPropagation()}
         >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm border border-white/20">

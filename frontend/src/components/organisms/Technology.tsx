@@ -51,10 +51,10 @@ const TechCard: React.FC<{ item: TechItem }> = ({ item }) => {
       whileFocus={{ y: -2, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 260, damping: 18 }}
       className={[
-        "relative group overflow-hidden rounded-2xl border ring-1 ring-black/5 dark:ring-white/10 shadow-sm hover:shadow-md transition-shadow",
+"relative group overflow-hidden rounded-2xl border ring-1 ring-black/5 dark:ring-white/10 shadow-sm hover:shadow-md transition-shadow",
         borderClass,
-        "backdrop-blur-sm bg-white/60 dark:bg-gray-900/50",
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500",
+"bg-white/60 dark:bg-gray-900/50",
+"focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500",
       ].join(" ")}
       role="figure"
       aria-label={name}
@@ -100,7 +100,7 @@ const Technology: React.FC = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
- className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white/50 dark:bg-slate-950/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm ">
+ className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white/50 dark:bg-slate-950/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 ">
       <TitleSection title="Stack Tecnológico"/>
 
       <TechSection title="Frontend" items={technologies.frontend} />

@@ -165,7 +165,7 @@ export const Course = () => {
           className="absolute -top-32 -left-2 w-[100%] rounded-full blur-3xl"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(56,189,248,0.25), rgba(56,189,248,0.08), transparent)",
+"radial-gradient(closest-side, rgba(56,189,248,0.25), rgba(56,189,248,0.08), transparent)",
           }}
         />
         {/* Blob inferior-der */}
@@ -176,7 +176,7 @@ export const Course = () => {
           className="absolute -bottom-24 -right-24 h-[34rem] w-[34rem] rounded-full blur-3xl"
           style={{
             background:
-              "radial-gradient(closest-side, rgba(59,130,246,0.28), rgba(59,130,246,0.10), transparent)",
+"radial-gradient(closest-side, rgba(59,130,246,0.28), rgba(59,130,246,0.10), transparent)",
           }}
         />
         {/* Patrón sutil */}
@@ -392,7 +392,7 @@ export const Course = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-4"
+                className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4"
                 onClick={() => setShowLockedModal(false)}
                 >
                 <motion.div
@@ -400,7 +400,7 @@ export const Course = () => {
                     animate={{ scale: 1, y: 0, opacity: 1 }}
                     exit={{ scale: 0.9, y: 20, opacity: 0 }}
                     transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                    className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl backdrop-blur-xl"
+                    className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl "
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm border border-white/20">

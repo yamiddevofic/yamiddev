@@ -49,9 +49,9 @@ const Hero: React.FC<HeroProps> = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       className={[
-        "relative w-full overflow-hidden flex items-center justify-center isolate",
-        "pt-28 xs:pt-24 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24",
-        "bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950",
+"relative w-full overflow-hidden flex items-center justify-center isolate",
+"pt-28 xs:pt-24 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24",
+"bg-gradient-to-b from-slate-50 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950",
         height,
         padding,
       ].join(" ")}
@@ -114,7 +114,7 @@ const Hero: React.FC<HeroProps> = ({
             variants={fadeInUp}
             initial="hidden"
             animate="visible"
-            className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 cursor-default"
+            className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 dark:bg-slate-900/40 border border-slate-200/50 dark:border-slate-800/50 shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 cursor-default"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -139,6 +139,8 @@ const Hero: React.FC<HeroProps> = ({
                 className="relative w-28 h-28 xs:w-24 xs:h-24 sm:w-36 sm:h-36 object-cover rounded-full border border-white/20 dark:border-slate-900/40 shadow-xl"
                 src="dev.jpg"
                 alt="Yamid Dev"
+                width={715}
+                height={731}
               />
             </motion.div>
           )}
@@ -222,6 +224,8 @@ const Hero: React.FC<HeroProps> = ({
                 className="relative w-[340px] h-[340px] xl:w-[400px] xl:h-[400px] object-cover rounded-full border-4 border-white dark:border-slate-950 shadow-2xl transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 src="dev.jpg"
                 alt="Yamid Dev Desktop"
+                width={715}
+                height={731}
               />
             </div>
           </motion.div>

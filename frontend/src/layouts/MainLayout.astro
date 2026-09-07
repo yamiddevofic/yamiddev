@@ -1,5 +1,13 @@
 ---
-import { Astro } from "astro";
+// Los estilos globales se importan aqui, en el layout que comparten todas
+// las paginas, y no en cada pagina suelta.
+//
+// Con Tailwind v3 esto no hacia falta: la integracion @astrojs/tailwind
+// inyectaba su CSS en todas las paginas por su cuenta. El plugin de Vite de
+// v4 no hace eso, asi que el CSS solo llega donde se importa. Cuando solo
+// index.astro lo importaba, la home se veia bien y las otras cinco paginas
+// se quedaban sin Tailwind: sin tipografia, sin colores y sin layout.
+import "../styles/global.css";
 import Navbar from "../components/organisms/Navbar";
 import Footer from "../components/organisms/Footer.astro";
 

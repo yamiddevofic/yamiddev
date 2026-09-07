@@ -24,6 +24,22 @@ describe('rutas estáticas generadas', () => {
     expect(html).toMatch(/<meta charset="UTF-8"/i);
   });
 
+  // Esta prueba existe por una regresion real: al migrar a Tailwind v4, el CSS
+  // dejo de inyectarse solo (lo hacia la integracion @astrojs/tailwind de v3) y
+  // solo lo cargaba la home, que era la unica pagina que importaba global.css.
+  // Las otras cinco quedaron sin tipografia, sin colores y sin layout, y ni el
+  // build ni el resto de la suite dijeron nada.
+  it.each(RUTAS)('%s carga la hoja de estilos', async (ruta) => {
+    const { html } = await getHtml(ruta);
+    const hojas = html.match(/<link[^>]+rel="stylesheet"[^>]+href="\/_astro\/[^"]+\.css"/g) ?? [];
+    expect(hojas.length).toBeGreaterThan(0);
+  });
+
+  it.each(RUTAS)('%s aplica la tipografia del sitio', async (ruta) => {
+    const { html } = await getHtml(ruta);
+    expect(html).toMatch(/fonts\.googleapis\.com/);
+  });
+
   it.each(RUTAS)('%s tiene un único <main>', async (ruta) => {
     const { html } = await getHtml(ruta);
     expect(html.match(/<main[\s>]/g) ?? []).toHaveLength(1);

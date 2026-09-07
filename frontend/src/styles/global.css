@@ -17,6 +17,12 @@
 @custom-variant s  (@media (min-width: 550px) and (max-width: 639px));
 
 @theme {
+  /* Inter es la tipografia del sitio. MainLayout ya la descarga de Google
+     Fonts, pero nadie la aplicaba: sin esta linea el sitio se renderizaba con
+     la pila del sistema y los dos pesos descargados solo se usaban en los tres
+     sitios que llevan la clase font-[Inter]. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
   /* Colores del tema, respaldados por las variables que se definen mas abajo
      en :root y .dark. */
   --color-background: hsl(var(--background));

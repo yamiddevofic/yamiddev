@@ -2,7 +2,7 @@
 
 **Última actualización:** 7 de septiembre de 2026
 **Punto de partida auditado:** commit `38876ec`
-**Estado verificado en:** commit `014d197`, contrastado contra el sitio en producción.
+**Estado verificado en:** commit `a1c2da5`, contrastado contra el sitio en producción.
 
 ---
 
@@ -16,14 +16,14 @@ El proyecto pasó por una auditoría completa, la **retirada de WordPress** y un
 |---|---|---|
 | Archivos versionados | 3 393 | **93** |
 | Dependencias de producción | 28 | **17** |
-| Vulnerabilidades críticas | 1 | **0** |
+| Vulnerabilidades altas o críticas | 6 | **0** |
 | Secretos versionados | 5 archivos | **0** (pero ver ⚠️ abajo) |
 | Servicios de infraestructura | 4 (Docker) | **0** |
 | Blog | Roto (`403` de la API) | ✅ Markdown en el repo |
 | Formulario de contacto | Roto (`403`) | ✅ Verificado de extremo a extremo |
 | Sitemap | ❌ | ✅ |
 | Cabeceras de seguridad | Solo HSTS | ✅ **5 más, activas en producción** |
-| Pruebas | 0 | **94** (93 en verde) |
+| Pruebas | 0 | **94** (94 en verde) |
 | Tamaño de `dist/client` | 5,8 MB | **2,7 MB** |
 
 ### Lo que sigue abierto
@@ -31,10 +31,9 @@ El proyecto pasó por una auditoría completa, la **retirada de WordPress** y un
 | # | Hallazgo | Impacto |
 |---|---|---|
 | ⚠️ 1 | **Credenciales en el historial de un repo público con 1 fork** | Requiere rotar contraseñas, no limpiar el historial |
-| 🟠 2 | `astro` y `sharp` con 5 avisos de severidad alta | Requiere subir a Astro 7, que arrastra migrar a Tailwind v4 |
-| 🟡 3 | Sin linter, sin formateador y sin CI | Las regresiones no se detectan antes de desplegar |
-| 🟡 4 | `tsconfig.json` con rutas absolutas erróneas | Funciona de casualidad: el alias real lo resuelve Vite |
-| 🟡 5 | Imágenes sin `astro:assets` ni dimensiones explícitas | Desplazamiento de layout (CLS) al cargar |
+| 🟡 2 | Sin linter, sin formateador y sin CI | Las regresiones no se detectan antes de desplegar |
+| 🟡 3 | `tsconfig.json` con rutas absolutas erróneas | Funciona de casualidad: el alias real lo resuelve Vite |
+| 🟡 4 | Imágenes sin `astro:assets` ni dimensiones explícitas | Desplazamiento de layout (CLS) al cargar |
 
 ---
 
@@ -43,7 +42,7 @@ El proyecto pasó por una auditoría completa, la **retirada de WordPress** y un
 ```
 yamiddev/
 ├── docs/                     # Documentación técnica y auditorías
-├── frontend/                 # Astro 5 + islas React 18
+├── frontend/                 # Astro 7 + islas React 18 + Tailwind v4
 │   ├── src/
 │   │   ├── components/       # atomic design: atoms · molecules · organisms · ui
 │   │   ├── content/blog/     # Artículos en Markdown
@@ -129,6 +128,21 @@ Se borraron `docker-compose.yml`, los dos `Dockerfile`, `deploy.sh`, `deploy.sh.
 
 Se retiraron 11 paquetes sin uso: `swiper` (que además cargaba la **única vulnerabilidad crítica**), `aos`, `gsap`, `@notionhq/client`, `marked`, `shiki`, `usehooks-ts`, `@react-spring/web`, `@svgr/webpack`, los de FontAwesome, `astro-icon` y `@iconify-json/lucide`.
 
+### Astro 7 y Tailwind v4
+
+Subir el framework cerró las cinco vulnerabilidades altas: `astro` 5.18.2 → 7.3.1 (XSS en `define:vars`), `sharp` 0.34.5 → 0.35.4 (CVE de libvips) y `path-to-regexp` 6.1.0 → 6.3.0. Esta última necesitó un `overrides` en `package.json`: `@vercel/routing-utils` la declara con versión exacta, así que no bastaba con subir `@astrojs/vercel` a la 11 — npm proponía en su lugar *bajar* el adaptador a la 8, que es un retroceso.
+
+Tailwind v4 no era opcional: `@astrojs/tailwind` solo soporta Astro 3, 4 y 5. Deja de ser una integración de Astro y pasa a ser plugin de Vite; `tailwind.config.js` y `postcss.config.js` desaparecen, y su contenido vive ahora en `global.css` como `@theme` y `@custom-variant`.
+
+**Dos cosas que la migración rompía en silencio**, y conviene tenerlas presentes si alguna vez se toca el CSS base:
+
+- El reset propio (`* { margin: 0; padding: 0 }`) quedaba **fuera de `@layer`**. En CSS, una regla sin capa gana a cualquier regla dentro de una, y v4 emite sus utilidades en `@layer utilities`: ese único selector anulaba el `padding` y el `margin` de **todo el sitio**. Se detectó midiendo en el navegador que `xs:py-[3.5rem]` daba `0px`. Ahora el reset va dentro de `@layer base`.
+- `bg-opacity-*` se retiró en v4. Los seis usos pasaron a la sintaxis de barra sobre el color (`bg-white/50`, `dark:bg-slate-950/50`).
+
+La migración se verificó comparando el CSS generado antes y después: los cinco breakpoints de rango conservan sus límites exactos y siguen generando reglas, ninguna clase presente en v3 falta en v4, y las diferencias de color por el paso de hex a `oklch` son de como mucho 2/255 por canal.
+
+De paso se retiraron `tailwindcss-animate`, `tailwind-scrollbar-hide` y el breakpoint `2xs`, que no se usaban en ninguna clase.
+
 ### Higiene y seguridad
 
 - `.gitignore` reescrito. Los patrones anteriores (`./.env`) **no coincidían con nada** — el prefijo `./` no es válido en gitignore, y por eso los archivos de entorno acabaron versionados.
@@ -153,29 +167,7 @@ El servidor de Hostinger ya no existe, así que esa base de datos es inalcanzabl
 
 **Reescribir el historial no resuelve esto.** Un fork conserva sus propios objetos y GitHub no los borra al limpiar el original, así que la única mitigación fiable es **rotar las credenciales**. El procedimiento está en [INFORME-SEGURIDAD.md](./INFORME-SEGURIDAD.md).
 
-### 🟠 A-2 · Vulnerabilidades altas pendientes
-
-```
-astro           <= 7.0.9  (instalada 5.18.2)  →  XSS en define:vars
-sharp           <  0.35.0 (instalada 0.34.5)  →  CVE-2026-33327 y otros de libvips
-path-to-regexp  (vía @astrojs/vercel@9)       →  GHSA-9wv6-86v2-598j
-esbuild         (baja, solo Windows)
-```
-
-Las cinco altas se resuelven subiendo a **Astro 7** con `@astrojs/vercel@11`. La dificultad es que `@astrojs/tailwind` solo soporta Astro 3, 4 y 5, así que la subida **obliga a migrar a Tailwind v4**, que sustituye `tailwind.config.js` por directivas `@theme` en CSS.
-
-Lo que hace falta migrar, ya inventariado:
-
-- **Cinco breakpoints personalizados con rangos `min`/`max`** (`xs`, `ls`, `ms`, `ss`, `s`), usados entre 35 y 38 veces cada uno. En v4 se declaran con `@custom-variant`. El `2xs` no se usa en ningún sitio.
-- **`darkMode: "class"`**, que en v4 se expresa como `@custom-variant dark`.
-- **Las variables de color** `hsl(var(--x))`, que pasan al bloque `@theme`.
-- **Tres plugins que se pueden eliminar sin más**: `tailwind-scrollbar-hide` y `tailwindcss-animate` no se usan en ninguna clase, y `@tailwindcss/typography` **nunca estuvo activo** — el `require("tailwindcss-animate", "@tailwindcss/typography")` pasa el segundo nombre como argumento ignorado, no como plugin.
-
-Un detalle a resolver durante la migración: `tailwind.config.js` declara **`keyframes` y `animation` dos veces** en el mismo objeto. La segunda definición gana, así que las animaciones `grow` y `shrink` **hoy no existen**, pese a que `animate-grow` se usa una vez en el código.
-
-El sitio es estático, lo que reduce mucho la explotabilidad de los vectores reflejados, así que puede esperar — pero no indefinidamente.
-
-### 🟡 A-3 · Configuración
+### 🟡 A-2 · Configuración
 
 | Problema | Detalle |
 |---|---|
@@ -186,7 +178,7 @@ El sitio es estático, lo que reduce mucho la explotabilidad de los vectores ref
 | Archivos huérfanos | `atoms/Text.tsx`, `atoms/icons/Fire.jsx` |
 | Sin linter ni CI | No hay ESLint, Prettier ni `.github/workflows/` |
 
-### 🟡 A-4 · Rendimiento e imágenes
+### 🟡 A-3 · Rendimiento e imágenes
 
 - Ninguna imagen pasa por `astro:assets`; todas viven en `public/` sin optimización, sin WebP/AVIF y sin `srcset`.
 - 15 `<img>` sin `width`/`height`, lo que provoca desplazamiento de layout al cargar.
@@ -198,13 +190,13 @@ El sitio es estático, lo que reduce mucho la explotabilidad de los vectores ref
 ## 5. Estado de las pruebas
 
 ```
-Test Files  9 passed | 1 failed (10)
-     Tests  93 passed | 1 failed (94)
+Test Files  10 passed (10)
+     Tests  94 passed (94)
 ```
 
-El único fallo es `npm audit no reporta vulnerabilidades altas ni críticas`, que es el hallazgo A-2 y depende de la migración a Astro 7. Detalle en [TESTING.md](./TESTING.md).
+La suite está entera en verde. Detalle en [TESTING.md](./TESTING.md).
 
-Conviene subrayar qué significa que esa prueba siga en rojo: **no es una prueba defectuosa, es el hallazgo abierto haciéndose notar en cada ejecución.** Es su función.
+Conviene recordar de dónde viene: durante semanas estas pruebas estuvieron en rojo **a propósito**, porque cada fallo reproducía un defecto real y servía de lista de verificación. Que hoy pasen todas no significa que la suite se haya relajado, sino que los defectos que describían están corregidos.
 
 ---
 
@@ -212,18 +204,14 @@ Conviene subrayar qué significa que esa prueba siga en rojo: **no es una prueba
 
 ### Ahora
 
-1. **Rotar la contraseña de `wordpress/.env`** y el acceso SSH en cualquier servicio donde se hayan reutilizado. Es lo único de esta lista con exposición real hacia fuera.
-
-### Esta semana
-
-2. **Migrar a Astro 7 + `@astrojs/vercel@11` + Tailwind v4.** Cierra las 5 vulnerabilidades altas y el último test en rojo. El inventario de lo que hay que tocar está en A-2.
-3. Corregir las rutas de `tsconfig.json` y alinear `@types/react` con el React instalado.
+1. **Rotar la contraseña de `wordpress/.env`** y el acceso SSH en cualquier servicio donde se hayan reutilizado. Es lo único de esta lista con exposición real hacia fuera, y lo único que no puede cerrarse desde el código.
 
 ### Este mes
 
-4. Migrar las imágenes a `astro:assets` con dimensiones explícitas.
-5. Mover el script de tema a un bloque inline en `MainLayout` para eliminar el parpadeo.
-6. Añadir `404.astro`, ESLint, Prettier y un workflow de CI que ejecute `npm test`.
+2. Corregir las rutas de `tsconfig.json` y alinear `@types/react` con el React instalado.
+3. Migrar las imágenes a `astro:assets` con dimensiones explícitas.
+4. Mover el script de tema a un bloque inline en `MainLayout` para eliminar el parpadeo.
+5. Añadir `404.astro`, ESLint, Prettier y un workflow de CI que ejecute `npm test`.
 
 ---
 

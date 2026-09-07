@@ -83,11 +83,11 @@ frontend/tests/
 
 ## Resultado de la última ejecución
 
-**7 de septiembre de 2026, tras corregir el formulario, el marcado y el SEO:**
+**7 de septiembre de 2026, tras subir a Astro 7 y migrar a Tailwind v4:**
 
 ```
-Test Files  9 passed | 1 failed (10)
-     Tests  93 passed | 1 failed (94)
+Test Files  10 passed (10)
+     Tests  94 passed (94)
 ```
 
 Evolución:
@@ -95,16 +95,16 @@ Evolución:
 | | Al auditar | Tras retirar WordPress | Ahora |
 |---|---|---|---|
 | Pruebas totales | 68 | 94 | 94 |
-| En verde | 49 | 82 | **93** |
-| En rojo | 19 | 12 | **1** |
+| En verde | 49 | 82 | **94** |
+| En rojo | 19 | 12 | **0** |
 
-### El fallo que queda
+### La suite está entera en verde
 
-| Prueba que falla | Hallazgo |
-|---|---|
-| `npm audit sin vulnerabilidades altas ni críticas` | [A-2](./ESTADO-DEL-PROYECTO.md) — requiere subir a Astro 7 y migrar a Tailwind v4 |
+El último fallo (`npm audit sin vulnerabilidades altas ni críticas`) se cerró subiendo a Astro 7 y migrando a Tailwind v4.
 
-No es una prueba defectuosa: es el hallazgo abierto haciéndose notar en cada ejecución, que es justo su función. Se pondrá en verde sola cuando se haga la migración.
+Vale la pena recordar de dónde viene esta suite: durante semanas estuvo en rojo **a propósito**, porque cada fallo reproducía un defecto real y servía de lista de verificación. Que hoy pase entera no es que se haya relajado, sino que los defectos que describía están corregidos.
+
+Y siguió cumpliendo su función hasta el final: fue `npm audit` en rojo, ejecución tras ejecución, lo que mantuvo visible una deuda que era cómodo posponer.
 
 ### Lo que se puso en verde en esta ronda
 
@@ -145,7 +145,6 @@ Las pruebas del formulario construían peticiones `application/x-www-form-urlenc
 
 ## Próximos pasos
 
-1. Subir a Astro 7 y migrar a Tailwind v4: es lo único que separa a la suite del verde completo.
-2. Añadir un workflow de CI que ejecute `npm test` en cada push.
+1. Añadir un workflow de CI que ejecute `npm test` en cada push, para que el verde no dependa de acordarse de mirarlo.
 3. Ampliar la cobertura de componentes: `Navbar` (tema, scrollspy y el nuevo enlace de página), `Course` (paginación y modal de clase bloqueada), `Technology`.
 4. Considerar Playwright para recorridos completos y regresión visual.

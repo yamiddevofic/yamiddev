@@ -28,7 +28,7 @@ Diseño responsivo, modo claro/oscuro persistente, metadatos Open Graph y Twitte
 
 ## 🛠 Stack
 
-**Frontend** · [Astro 5](https://astro.build/) con islas de [React 18](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/) y [Lucide](https://lucide.dev/)
+**Frontend** · [Astro 7](https://astro.build/) con islas de [React 18](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/) y [Lucide](https://lucide.dev/)
 **Contenido** · [Content Collections](https://docs.astro.build/en/guides/content-collections/) — los artículos son Markdown validado por esquema
 **Correo** · [Resend](https://resend.com/) desde una función serverless
 **Pruebas** · [Vitest](https://vitest.dev) + [Testing Library](https://testing-library.com) + happy-dom
@@ -112,7 +112,7 @@ Publicar es hacer `git push`.
 cd frontend && npm test
 ```
 
-> **93 de 94 en verde.** El único fallo (`npm audit`) reproduce un hallazgo abierto y hace de lista de verificación: se pondrá en verde cuando se suba a Astro 7. Detalle en [`docs/TESTING.md`](./docs/TESTING.md).
+> **94 de 94 en verde.** Detalle en [`docs/TESTING.md`](./docs/TESTING.md).
 
 ---
 
@@ -139,7 +139,6 @@ yamiddev/
 │   │   └── integration/
 │   ├── astro.config.mjs
 │   ├── content.config.ts     # Esquema de la colección de blog
-│   ├── tailwind.config.js
 │   ├── vitest.config.ts
 │   └── .env.example
 ├── vercel.json               # Cabeceras de seguridad

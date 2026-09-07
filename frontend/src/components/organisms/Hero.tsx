@@ -40,10 +40,11 @@ const Hero: React.FC<HeroProps> = ({
     },
   };
 
+  // div y no main: MainLayout ya envuelve la pagina en un <main>, y dos
+  // landmarks rompen la navegacion por regiones de los lectores de pantalla.
   return (
-    <motion.main
+    <motion.div
       id={id}
-      role="main"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -229,7 +230,7 @@ const Hero: React.FC<HeroProps> = ({
 
       {/* Modern, Subtle Section Border Lines */}
       <div aria-hidden="true" className="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200/50 to-transparent dark:via-slate-800/50" />
-    </motion.main>
+    </motion.div>
   );
 };
 

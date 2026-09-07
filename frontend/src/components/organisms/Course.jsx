@@ -199,7 +199,7 @@ export const Course = () => {
                 </button>
             </div>
             <div className="flex w-full items-center justify-center">
-              <h1 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-gray-800 dark:text-cyan-400 font-[Inter]">Pensar en código | Clase {activeVideo.id}</h1>
+              <h2 className="xs:text-[1rem] ls:text-[1rem] ms:text-[1rem] ss:text-[1rem] s:text-[1rem] sm:text-[1rem] md:text-[1.4rem] lg:text-[1.4rem] xl:text-[1.4rem] font-semibold text-gray-800 dark:text-cyan-400 font-[Inter]">Pensar en código | Clase {activeVideo.id}</h2>
             </div>
             {/* Boton de pasar a la siguiente clase */}
             <div className="flex items-center justify-start">

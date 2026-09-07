@@ -115,9 +115,9 @@ const ModernAboutMe = () => {
             />
           </div>
           
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-2 ">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-2 ">
             Yamid Horacio Rodríguez
-          </h1>
+          </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-4 text-center ">
             Tecnólogo en Análisis y Desarrollo de Software
           </p>

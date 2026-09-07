@@ -6,8 +6,8 @@ import { Course } from '../components/organisms/Course';
 const pageDetails = {
   title: "Curso | Pensar en Código",
   description: "Aprende a descomponer problemas complejos en pasos lógicos y a estructurar tu pensamiento como un programador profesional. Este curso es la base para dominar cualquier lenguaje.",
-  image: "/curso.png", // Imagen para Open Graph y Twitter Cards
-  canonical: "https://yamid.dev/curso",
+  image: "/curso.jpg", // Open Graph y Twitter Cards: 1200x630, 132 kB (el PNG pesaba 3,3 MB y las redes descartan las previsualizaciones de mas de ~1 MB)
+  canonical: "https://www.yamid.dev/curso/",
   keywords: ['pensar en código', 'lógica de programación', 'algoritmos', 'curso de programación'],
 };
 
@@ -33,6 +33,11 @@ const courseInfo = {
     header={false}
 >
     <div class="bg-[#fff] dark:bg-[#020617] overflow-hidden w-full h-auto flex items-center justify-center">
+        {/* El h1 vive aqui y no dentro de <Course>: ese componente es
+            client:only, asi que no existe en el HTML del servidor y la pagina
+            se quedaba sin encabezado de primer nivel. sr-only lo mantiene
+            fuera de la vista sin ocultarlo a buscadores ni lectores. */}
+        <h1 class="sr-only">Pensar en Código: curso de programación desde cero</h1>
         <Course client:only="react"/>
     </div>
 </MainLayout>

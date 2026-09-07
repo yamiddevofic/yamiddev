@@ -1,11 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
 import MaintenanceComponent from '../components/organisms/Maintenance.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Antes usaba Layout.astro, que traia el <title>Astro Basics</title> de la
+// plantilla inicial, lang="en" y ningun metadato. Con MainLayout hereda el
+// idioma, el canonical y las etiquetas sociales del resto del sitio.
+const pageDetails = {
+  title: "En mantenimiento",
+  description: "Estamos realizando tareas de mantenimiento en yamid.dev. Volvemos en breve.",
+  canonical: "https://www.yamid.dev/maintenance/",
+};
 ---
 
-<Layout>
-	  <MaintenanceComponent />
-</Layout>
+<MainLayout
+  title={pageDetails.title}
+  description={pageDetails.description}
+  canonical={pageDetails.canonical}
+  header={false}
+  noindex={true}
+>
+  <MaintenanceComponent />
+</MainLayout>

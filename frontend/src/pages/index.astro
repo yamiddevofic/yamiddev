@@ -12,10 +12,11 @@ import '../styles/global.css';
 // --- Detalles de la Página para SEO ---
 // Se define un objeto para mantener el código más limpio y organizado.
 const pageDetails = {
-  title: "Yamid Dev | Desarrollador Full Stack",
+  // MainLayout ya anade " | Yamid Dev", asi que aqui va solo el descriptor.
+  title: "Desarrollador Full Stack",
   description: "Desarrollador Web Full Stack especializado en JavaScript, React, Python y más. Creando soluciones web innovadoras y eficientes para proyectos de alto impacto.",
   image: "/dev.jpg", // Imagen principal para redes sociales (OG & Twitter)
-  canonical: "https://yamid.dev/", // URL canónica de la página principal
+  canonical: "https://www.yamid.dev/", // Con www: es el host que declara astro.config y el que sirve
   icon: "/dev.jpg", // Favicon
   // Keywords específicas para esta página. Se combinarán con las keywords por defecto del layout.
   keywords: ['portafolio', 'desarrollador full stack', 'contratar programador', 'react developer', 'python developer', 'astro developer'],

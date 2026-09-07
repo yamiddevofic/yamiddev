@@ -1,50 +1,7 @@
 import React, { useState } from 'react';
-import { Code, Server, MessageCircle, Book, Users, ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
 import { TitleSection } from '../atoms/TitleSection';
-
-/**
- * Trayectoria unificada: la experiencia laboral y la formacion comparten forma,
- * asi que viven en una sola lista y el panel las recorre con las flechas. El
- * campo `tipo` solo sirve para etiquetar la tarjeta.
- */
-const TRAYECTORIA = [
-  {
-    tipo: 'Experiencia',
-    company: 'Ega Kat Logística',
-    title: 'Aprendiz en Prácticas',
-    period: 'May 2024 - Nov 2024',
-    location: 'Remoto',
-    highlights: [
-      { icon: Code, text: 'Estudio y análisis de servidores, CMS WordPress' },
-      { icon: Server, text: 'Soporte técnico de primer nivel' },
-      { icon: MessageCircle, text: 'Capacitación y atención a clientes' },
-    ],
-  },
-  {
-    tipo: 'Formación',
-    company: 'Platzi',
-    title: 'Estudiante',
-    period: 'Ago 2024 - Actualmente',
-    location: 'Remoto',
-    highlights: [
-      { icon: Code, text: 'Estudiando la Escuela de programación de JavaScript' },
-      { icon: Users, text: 'Participación activa en la comunidad de Platzi' },
-      { icon: Book, text: 'Reforzando capacidad de autoaprendizaje y formación continua' },
-    ],
-  },
-  {
-    tipo: 'Formación',
-    company: 'SENA',
-    title: 'Tecnólogo en análisis y desarrollo de software',
-    period: 'Jul 2022 - Nov 2024',
-    location: 'Presencial',
-    highlights: [
-      { icon: Code, text: 'Tecnologías: Python, HTML, CSS, JavaScript, SQL, Node.js' },
-      { icon: Book, text: 'Desarrollo de MVP para tiendas de barrio' },
-      { icon: Users, text: 'Desarrollo de habilidades interpersonales y trabajo en equipo' },
-    ],
-  },
-];
+import { TRAYECTORIA } from '../../lib/trayectoriaData';
 
 const REDES = [
   {
@@ -59,30 +16,39 @@ const REDES = [
   },
 ];
 
+/** Cada tipo de hito lleva su color, para distinguirlos de un vistazo. */
+const COLOR_TIPO = {
+  'Formación': 'bg-sky-500/15 text-sky-300 ring-sky-500/30',
+  'Experiencia': 'bg-emerald-500/15 text-emerald-300 ring-emerald-500/30',
+  'Proyecto': 'bg-violet-500/15 text-violet-300 ring-violet-500/30',
+  'Comunidad': 'bg-amber-500/15 text-amber-300 ring-amber-500/30',
+};
+
 const ModernAboutMe = () => {
   const [indice, setIndice] = useState(0);
   const activo = TRAYECTORIA[indice];
-  const mover = (paso) =>
-    setIndice((i) => (i + paso + TRAYECTORIA.length) % TRAYECTORIA.length);
+  const total = TRAYECTORIA.length;
+  const mover = (paso) => setIndice((i) => (i + paso + total) % total);
+
+  // Los años se repiten entre hitos; para el salto rapido solo interesa el
+  // primero de cada uno, que hace de entrada a esa etapa.
+  const saltos = TRAYECTORIA.reduce((acc, h, i) => {
+    if (!acc.some((s) => s.anio === h.anio)) acc.push({ anio: h.anio, i });
+    return acc;
+  }, []);
 
   // Sin animacion de entrada sobre la seccion entera, a proposito. El patron
   // initial={opacity:0} + whileInView deja el contenido invisible si el
   // observador no llega a dispararse, y eso ya pasa en esta misma pagina: con
   // la seccion delante, #course se queda en 0.05 de opacidad y #contact en 0.
-  // El contenido no puede depender de que una animacion arranque; las
-  // microinteracciones viven en los controles.
+  // El contenido no puede depender de que una animacion arranque.
   return (
-    <section
-      id="about-me-section"
-      className="w-[95%] md:w-[90%] mx-auto py-14 sm:py-12"
-    >
+    <section id="about-me-section" className="w-[95%] md:w-[90%] mx-auto py-14 sm:py-12">
       <TitleSection title="Sobre mí" />
 
-      {/* Dos columnas a partir de lg; debajo se apilan foto y panel.
-          El overflow-hidden recorta la foto contra las esquinas redondeadas. */}
+      {/* Dos columnas a partir de lg; debajo se apilan foto y panel. */}
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200/60 dark:ring-slate-800">
-        {/* Columna de la foto: alto fijo en movil, completo junto al panel en escritorio */}
-        <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[600px] bg-slate-200 dark:bg-slate-800">
+        <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[640px] bg-slate-200 dark:bg-slate-800">
           <img
             src="./dev.jpg"
             alt="Yamid Horacio Rodríguez"
@@ -92,11 +58,9 @@ const ModernAboutMe = () => {
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover object-top"
           />
-          {/* Degradado inferior para que el texto de abajo no compita con la foto */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent lg:hidden" />
         </div>
 
-        {/* Panel oscuro */}
         <div className="flex flex-col justify-center gap-6 bg-slate-900 p-[clamp(1.5rem,4vw,3rem)] text-slate-200">
           <div>
             <h3 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight text-white">
@@ -108,25 +72,27 @@ const ModernAboutMe = () => {
           </div>
 
           <p className="max-w-prose text-sm leading-relaxed text-slate-400">
-            Tecnólogo en Análisis y Desarrollo de Software por el SENA. Trabajo con JavaScript,
-            React, Astro y Python, y sigo formándome en la Escuela de JavaScript de Platzi. Mi
-            experiencia reúne soporte técnico, administración de CMS y desarrollo de aplicaciones
-            web.
+            Desarrollador, educador y líder comunitario en Chitagá. Lo que empezó como una búsqueda
+            de camino profesional se convirtió en una trayectoria alrededor del software, la
+            formación y la creación de oportunidades desde el territorio.
           </p>
 
           <div>
-            <div className="mb-3 flex items-center justify-between gap-4">
+            <div className="mb-3 flex items-center justify-between gap-3">
               <h4 className="text-base font-semibold text-white">Experiencia y formación</h4>
-              <div className="flex shrink-0 gap-1">
+              <div className="flex shrink-0 items-center gap-1">
+                <span className="mr-1 text-xs tabular-nums text-slate-500" aria-hidden="true">
+                  {indice + 1}/{total}
+                </span>
                 {[
-                  { icono: ChevronLeft, paso: -1, etiqueta: 'Anterior' },
-                  { icono: ChevronRight, paso: 1, etiqueta: 'Siguiente' },
-                ].map(({ icono: Icono, paso, etiqueta }) => (
+                  { Icono: ChevronLeft, paso: -1, etiqueta: 'Etapa anterior' },
+                  { Icono: ChevronRight, paso: 1, etiqueta: 'Etapa siguiente' },
+                ].map(({ Icono, paso, etiqueta }) => (
                   <button
                     key={etiqueta}
                     type="button"
                     onClick={() => mover(paso)}
-                    aria-label={`${etiqueta}: ${etiqueta === 'Anterior' ? 'anterior' : 'siguiente'} entrada de la trayectoria`}
+                    aria-label={etiqueta}
                     className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none"
                   >
                     <Icono size={18} aria-hidden="true" />
@@ -135,51 +101,61 @@ const ModernAboutMe = () => {
               </div>
             </div>
 
-            {/* aria-live: al pulsar las flechas cambia el contenido sin recargar,
-                y quien use lector de pantalla necesita enterarse. */}
+            {/* aria-live: el contenido cambia sin recargar y hay que anunciarlo. */}
             <div aria-live="polite">
-              <article className="rounded-lg bg-slate-800/70 p-5 ring-1 ring-slate-700/60">
-                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                  <h5 className="font-semibold text-cyan-400">
-                    {activo.company} · {activo.title}
-                  </h5>
-                  <span className="text-xs text-slate-500">{activo.period}</span>
+              <article className="min-h-[16rem] rounded-lg bg-slate-800/70 p-5 ring-1 ring-slate-700/60">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={`rounded-full px-2 py-0.5 text-[0.7rem] font-medium ring-1 ${COLOR_TIPO[activo.tipo]}`}>
+                    {activo.tipo}
+                  </span>
+                  <span className="text-xs text-slate-500">{activo.periodo}</span>
                 </div>
+
+                <h5 className="mt-2 font-semibold text-cyan-400">{activo.titulo}</h5>
 
                 <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
                   <MapPin size={12} aria-hidden="true" />
-                  {activo.location} · {activo.tipo}
+                  {activo.lugar}
                 </p>
 
-                <ul className="mt-4 space-y-2">
-                  {activo.highlights.map(({ icon: Icono, text }) => (
-                    <li key={text} className="flex items-start gap-2.5 text-sm text-slate-300">
-                      <Icono size={15} className="mt-0.5 shrink-0 text-cyan-500" aria-hidden="true" />
-                      <span>{text}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">{activo.descripcion}</p>
+
+                {activo.tecnologias && (
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {activo.tecnologias.map((t) => (
+                      <li
+                        key={t}
+                        className="rounded bg-slate-900/70 px-2 py-0.5 text-[0.7rem] text-slate-400 ring-1 ring-slate-700/60"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </article>
             </div>
 
-            {/* Posición dentro de la lista: sin esto no se ve que hay más entradas */}
-            <div className="mt-3 flex justify-center gap-1.5">
-              {TRAYECTORIA.map((item, i) => (
-                <button
-                  key={item.company}
-                  type="button"
-                  onClick={() => setIndice(i)}
-                  aria-label={`Ver ${item.company}`}
-                  aria-current={i === indice ? 'true' : undefined}
-                  className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
-                >
-                  <span
-                    className={`block h-1.5 rounded-full transition-all duration-200 motion-reduce:transition-none ${
-                      i === indice ? 'w-6 bg-cyan-500' : 'w-1.5 bg-slate-600'
+            {/* Salto por año: con doce hitos, una fila de puntos no dice nada. */}
+            <div className="mt-3 flex flex-wrap gap-1">
+              {saltos.map(({ anio, i }) => {
+                const activoAqui = activo.anio === anio;
+                return (
+                  <button
+                    key={anio}
+                    type="button"
+                    onClick={() => setIndice(i)}
+                    aria-label={`Ir a ${anio}`}
+                    aria-current={activoAqui ? 'true' : undefined}
+                    className={`inline-flex min-h-[44px] items-center rounded-md px-2.5 text-xs font-medium tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none ${
+                      activoAqui
+                        ? 'bg-cyan-500 text-slate-900'
+                        : 'text-slate-500 hover:bg-slate-800 hover:text-slate-300'
                     }`}
-                  />
-                </button>
-              ))}
+                  >
+                    {anio}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -193,14 +169,7 @@ const ModernAboutMe = () => {
                 aria-label={`${nombre} de Yamid Horacio Rodríguez`}
                 className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d={path} />
                 </svg>
               </a>

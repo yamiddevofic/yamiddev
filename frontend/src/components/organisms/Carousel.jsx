@@ -141,7 +141,7 @@ const Carousel = () => {
               variants={fadeInUp}
               key={project.id}
               ref={idx === 0 ? firstItemRef : undefined}
- className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white/50 dark:bg-slate-950/50 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm rounded-xl"
+ className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white/50 dark:bg-slate-950/50 border border-gray-200/50 dark:border-gray-700/50 rounded-xl"
               style={
                 visibleItems > 1
                   ? { flex: `0 0 calc((100% - ${(visibleItems - 1) * GAP_PX}px) / ${visibleItems})` }

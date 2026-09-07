@@ -213,7 +213,7 @@ const ThinkInCode = () => {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button
                     onClick={() => handleClassSelection(cls)}
-                    className="flex items-center gap-2 px-4 py-5 bg-black/20 backdrop-blur-sm border border-black/30 rounded-lg text-white font-medium hover:bg-black/20 transition-colors"
+                    className="flex items-center gap-2 px-4 py-5 bg-black/20 border border-black/30 rounded-lg text-white font-medium hover:bg-black/20 transition-colors"
                   >
                     {cls.available ? (
                       <>
@@ -268,7 +268,7 @@ const ThinkInCode = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 grid place-items-center bg-black/60 backdrop-blur-sm p-4"
+        className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4"
         onClick={() => setShowLockedModal(false)}
         >
         <motion.div
@@ -276,7 +276,7 @@ const ThinkInCode = () => {
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.9, y: 20, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl backdrop-blur-xl"
+            className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl "
             onClick={(e) => e.stopPropagation()}
         >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm border border-white/20">

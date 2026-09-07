@@ -84,7 +84,7 @@ const Carousel = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="relative isolate w-full overflow-hidden  px-5 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-14 md:py-16 lg:py-20 text-gray-900 dark:text-gray-100"
+      className="relative isolate w-full overflow-hidden  px-5 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-14 md:py-16 lg:py-20 text-slate-900 dark:text-slate-100"
     >
       {/* Encabezado */}
       <motion.div 
@@ -109,7 +109,7 @@ const Carousel = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-blue-600 dark:text-blue-400"
+              className="h-6 w-6 text-cyan-600 dark:text-cyan-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -141,7 +141,7 @@ const Carousel = () => {
               variants={fadeInUp}
               key={project.id}
               ref={idx === 0 ? firstItemRef : undefined}
- className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white/50 dark:bg-slate-950/50 border border-gray-200/50 dark:border-gray-700/50 rounded-xl"
+ className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white/50 dark:bg-slate-950/50 border border-slate-200/50 dark:border-slate-700/50 rounded-xl"
               style={
                 visibleItems > 1
                   ? { flex: `0 0 calc((100% - ${(visibleItems - 1) * GAP_PX}px) / ${visibleItems})` }
@@ -177,10 +177,10 @@ const Carousel = () => {
                   {/* Contenido */}
                   <div className="p-4 flex flex-col h-full">
                     <div className="flex-1">
-                      <h3 className="text-lg sm:text-xl font-semibold mb-1.5 text-gray-900 dark:text-gray-100 line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h3 className="text-lg sm:text-xl font-semibold mb-1.5 text-slate-900 dark:text-slate-100 line-clamp-1 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-3 text-sm line-clamp-2">
+                      <p className="text-slate-600 dark:text-slate-300 mb-3 text-sm line-clamp-2">
                         {project.description}
                       </p>
                     </div>
@@ -188,7 +188,7 @@ const Carousel = () => {
                     {/* Metadata */}
                     <div className="mt-auto space-y-2.5">
                       {/* Tiempo */}
-                      <div className="flex items-center text-gray-500 dark:text-gray-400 text-xs">
+                      <div className="flex items-center text-slate-500 dark:text-slate-400 text-xs">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1.5 opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -200,13 +200,13 @@ const Carousel = () => {
                         {project.techStack.slice(0, 4).map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-2 py-0.5 text-[11px] rounded-full whitespace-nowrap"
+                            className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-2 py-0.5 text-[11px] rounded-full whitespace-nowrap"
                           >
                             {tech}
                           </span>
                         ))}
                         {project.techStack.length > 4 && (
-                          <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 px-2 py-0.5 text-[11px] rounded-full">
+                          <span className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 px-2 py-0.5 text-[11px] rounded-full">
                             +{project.techStack.length - 4}
                           </span>
                         )}
@@ -221,7 +221,7 @@ const Carousel = () => {
                             React y la isla completa se volvia a renderizar en
                             cliente. */}
                         <span
-                          className="inline-flex items-center gap-2 px-3 py-1.5 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-900 rounded-md text-sm group-hover:bg-blue-50 dark:group-hover:bg-blue-950/40 transition-colors"
+                          className="inline-flex items-center gap-2 px-3 py-1.5 text-cyan-600 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-900 rounded-md text-sm group-hover:bg-cyan-50 dark:group-hover:bg-cyan-950/40 transition-colors"
                         >
                           Ver proyecto
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -248,7 +248,7 @@ const Carousel = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-blue-600 dark:text-blue-400"
+              className="h-6 w-6 text-cyan-600 dark:text-cyan-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

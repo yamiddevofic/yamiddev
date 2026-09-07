@@ -65,7 +65,7 @@ const ContactForm = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
-    id="contact" className="w-full py-8 px-4 bg-gray-50 dark:bg-slate-950 relative rounded-tl-lg rounded-tr-lg border border-gray-200/50 dark:border-gray-700/50 flex items-center justify-center">
+    id="contact" className="w-full py-8 px-4 bg-slate-50 dark:bg-slate-950 relative rounded-tl-lg rounded-tr-lg border border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center">
       <div className="w-full">
         
         <TitleSection title="Contacto"/>
@@ -78,14 +78,14 @@ const ContactForm = () => {
           whileInView="visible"
           transition={{ delay: 0.2 }}
           variants={fadeInUp}
- className="w-full md:w-[60%] my-4 bg-white/50 dark:bg-gray-900/50 rounded-sm shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 transform transition duration-300 hover:scale-[1.02]">
-            <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
+ className="w-full md:w-[60%] my-4 bg-white/50 dark:bg-slate-900/50 rounded-sm shadow-lg p-6 md:p-8 border border-slate-200/50 dark:border-slate-700/50 transform transition duration-300 hover:scale-[1.02]">
+            <h3 className="text-2xl font-bold mb-6 text-slate-800 dark:text-white bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
               Envíame un mensaje
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-1">
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                   Nombre
                 </label>
                 <input
@@ -95,13 +95,13 @@ const ContactForm = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                   placeholder="Tu nombre"
                 />
               </div>
               
               <div className="space-y-1">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                   Email
                 </label>
                 <input
@@ -111,13 +111,13 @@ const ContactForm = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                   placeholder="tu@email.com"
                 />
               </div>
               
               <div className="space-y-1">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                   Asunto
                 </label>
                 <input
@@ -127,13 +127,13 @@ const ContactForm = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500"
                   placeholder="Asunto del mensaje"
                 />
               </div>
               
               <div className="space-y-1">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
                   Mensaje
                 </label>
                 <textarea
@@ -143,7 +143,7 @@ const ContactForm = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 resize-none"
+                  className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-sm transition-all duration-200 focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 resize-none"
                   placeholder="Tu mensaje aquí..."
                 />
               </div>
@@ -164,7 +164,7 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 px-6 rounded-sm font-semibold bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white transition-all duration-300 transform hover:scale-[1.02] focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center justify-center disabled:opacity-70"
+                className="w-full py-3 px-6 rounded-sm font-semibold bg-gradient-to-r from-cyan-600 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white transition-all duration-300 transform hover:scale-[1.02] focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 flex items-center justify-center disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <span className="flex items-center">

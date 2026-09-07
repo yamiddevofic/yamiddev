@@ -40,8 +40,8 @@ export const Button: React.FC<ButtonProps> = ({
       className={clsx(
         "group relative flex w-[100%] md:w-auto items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 overflow-hidden ", // ⬅️ overflow-hidden
         isMain
-          ? "border-2 border-blue-600 bg-transparent text-blue-600"
-          : "bg-blue-600 text-white",
+          ? "border-2 border-blue-600 bg-transparent text-cyan-600"
+          : "bg-cyan-700 text-white",
         className
       )}
       {...rest}
@@ -51,7 +51,7 @@ export const Button: React.FC<ButtonProps> = ({
         <span
           aria-hidden="true"
           className="
-            absolute inset-0 bg-blue-600
+            absolute inset-0 bg-cyan-700
             origin-left
             scale-x-0
             transition-transform duration-300 ease-out

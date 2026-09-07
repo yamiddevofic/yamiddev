@@ -145,7 +145,7 @@ const Navbar = ({ isMain = true }) => {
         variants={navVariants}
         initial={reduced ? {} : "hidden"}
         animate={reduced ? {} : "visible"}
-        className="fixed top-0 z-50 w-full border border-gray-200/50 dark:border-gray-700/50 bg-white/70 dark:bg-slate-950/60 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 shadow-lg transition-colors duration-300"
+        className="fixed top-0 z-50 w-full border border-slate-200/50 dark:border-slate-700/50 bg-white/70 dark:bg-slate-950/60 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 shadow-lg transition-colors duration-300"
       >
         <a
           href="#home"
@@ -180,7 +180,7 @@ const Navbar = ({ isMain = true }) => {
                   className={`text-lg font-medium transition-colors cursor-pointer ${
                     active === item.id
                       ? SECTION_ACTIVE[item.id] || "text-cyan-600 dark:text-cyan-400"
-                      : "text-gray-900 dark:text-gray-300"
+                      : "text-slate-900 dark:text-slate-300"
                   } ${
                     SECTION_HOVER[item.id] ||
                     "hover:text-cyan-600 dark:hover:text-cyan-400"
@@ -195,7 +195,7 @@ const Navbar = ({ isMain = true }) => {
             <Button
               variant="ghost"
               onClick={toggleTheme}
-              className="hidden md:flex items-center justify-center min-h-[44px] min-w-[44px] bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] focus-visible:ring-2 focus-visible:ring-cyan-500"
+              className="hidden md:flex items-center justify-center min-h-[44px] min-w-[44px] bg-slate-200 dark:bg-slate-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] focus-visible:ring-2 focus-visible:ring-cyan-500"
               title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
               aria-label="Cambiar tema"
             >
@@ -224,7 +224,7 @@ const Navbar = ({ isMain = true }) => {
                   href="/"
                   title="Ir al inicio"
                   aria-label="Ir al inicio"
-                  className="inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] rounded-md border px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] rounded-md border px-3 py-2 text-sm font-medium text-slate-900 dark:text-slate-200 border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 >
                   {HomeFilled({ size: 18 })}
                   <span>Inicio</span>
@@ -232,7 +232,7 @@ const Navbar = ({ isMain = true }) => {
                 <Button
                   variant="ghost"
                   onClick={toggleTheme}
-                  className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] focus-visible:ring-2 focus-visible:ring-cyan-500"
+                  className="bg-slate-200 dark:bg-slate-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] focus-visible:ring-2 focus-visible:ring-cyan-500"
                   title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
                   aria-label="Cambiar tema"
                 >
@@ -267,20 +267,20 @@ const Navbar = ({ isMain = true }) => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed z-50 inset-x-0 top-16 mx-auto w-[92%] max-w-sm rounded-2xl border border-gray-200/60 dark:border-gray-700/60 bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl shadow-2xl"
+              className="fixed z-50 inset-x-0 top-16 mx-auto w-[92%] max-w-sm rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl shadow-2xl"
               onClick={(e) => e.stopPropagation()}
               ref={drawerRef}
             >
               {/* Header del panel */}
               <div className="flex items-center justify-between px-4 pt-4 pb-2">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
                   Navegación
                 </span>
                 <div className="flex items-center gap-2">
                   <Button
                     variant="ghost"
                     onClick={toggleTheme}
-                    className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow p-2 w-9 h-9 focus-visible:ring-2 focus-visible:ring-cyan-500"
+                    className="bg-slate-200 dark:bg-slate-700 text-black dark:text-white rounded-full shadow p-2 w-9 h-9 focus-visible:ring-2 focus-visible:ring-cyan-500"
                     title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
                     aria-label="Cambiar tema"
                   >
@@ -316,7 +316,7 @@ const Navbar = ({ isMain = true }) => {
                           onClick={(e) => handleLinkClick(e, item.id, item.path)}
                           className={[
                             "group rounded-xl border p-3 flex flex-col items-center justify-center text-center",
-                            "bg-white/80 dark:bg-slate-950/50 border-gray-200/60 dark:border-gray-700/60",
+                            "bg-white/80 dark:bg-slate-950/50 border-slate-200/60 dark:border-slate-700/60",
                             "hover:border-cyan-400/70 hover:bg-cyan-50/60 dark:hover:bg-cyan-400/10",
                             "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ",
                             isActive ? "border-cyan-400/70" : "",
@@ -338,7 +338,7 @@ const Navbar = ({ isMain = true }) => {
                               isActive
                                 ? SECTION_ACTIVE[item.id] ||
                                   "text-cyan-600 dark:text-cyan-400"
-                                : "text-gray-900 dark:text-gray-200",
+                                : "text-slate-900 dark:text-slate-200",
                             ].join(" ")}
                           >
                             {item.title}

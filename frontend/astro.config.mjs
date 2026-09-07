@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -16,7 +16,6 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     react(),
-    tailwind(),
     sitemap()
   ],
   vite: {
@@ -27,6 +26,10 @@ export default defineConfig({
       },
     },
     plugins: [
+      // Tailwind v4 ya no es una integracion de Astro: se carga como plugin de
+      // Vite. @astrojs/tailwind solo soporta Astro 3, 4 y 5, asi que subir a
+      // Astro 7 obligaba a este cambio.
+      tailwindcss(),
       {
         name: 'vite-plugin-svgr',
         enforce: 'pre',

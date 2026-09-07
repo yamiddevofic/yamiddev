@@ -1,33 +1,113 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4: una sola importacion sustituye a @tailwind base/components/
+   utilities, y la configuracion vive aqui en lugar de tailwind.config.js. */
+@import "tailwindcss";
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* El tema oscuro se activa por clase, no por preferencia del sistema. En v3
+   esto era darkMode: "class". */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Breakpoints propios, con rango cerrado: cada uno aplica SOLO dentro de su
+   franja, no de ahi hacia arriba. Se usan unas 180 veces entre todos, asi que
+   los rangos deben conservarse exactamente como estaban en v3.
+   El 2xs de la configuracion anterior se retira: no se usaba en ningun sitio. */
+@custom-variant xs (@media (min-width: 320px) and (max-width: 359px));
+@custom-variant ls (@media (min-width: 360px) and (max-width: 399px));
+@custom-variant ms (@media (min-width: 400px) and (max-width: 424px));
+@custom-variant ss (@media (min-width: 425px) and (max-width: 549px));
+@custom-variant s  (@media (min-width: 550px) and (max-width: 639px));
+
+@theme {
+  /* Colores del tema, respaldados por las variables que se definen mas abajo
+     en :root y .dark. */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --radius-lg: 50px;
+  --radius-md: 30px;
+  --radius-sm: 10px;
+
+  --backdrop-blur-xs: 2px;
+
+  /* En v3 estas animaciones estaban declaradas dos veces en el mismo objeto:
+     el segundo bloque de keyframes/animation sobrescribia al primero, asi que
+     grow y shrink no existian pese a que animate-grow se usa en Course.jsx.
+     Aqui conviven todas. */
+  --animate-grow: grow 0.3s ease-in-out forwards;
+  --animate-shrink: shrink 0.3s ease-in-out forwards;
+  --animate-fadeInUp: fadeInUp 0.5s ease forwards;
+  --animate-fadeOutDown: fadeOutDown 0.5s ease forwards;
 }
 
-html {
-    min-height: 100%;
-    height: 100%;
-    width: 100%;
+@keyframes grow {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
 }
 
-body {
-    min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: relative;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
+@keyframes shrink {
+  0% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
-#root {
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
+/* Este reset va dentro de @layer base a proposito, y es importante.
+   
+   Tailwind v4 emite sus utilidades dentro de @layer utilities. En CSS, una
+   regla que NO esta en ninguna capa gana a cualquier regla que si lo este,
+   sin importar la especificidad. Con este bloque fuera de capas, el `*` de
+   abajo anulaba el padding y el margin de TODAS las utilidades del sitio:
+   py-4, mt-8, xs:py-[3.5rem]... todas.
+   
+   En v3 no pasaba porque @tailwind utilities no usaba capas nativas y el
+   `*` (especificidad 0-0-0) perdia limpiamente contra cualquier clase. */
+@layer base {
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        min-height: 100%;
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        min-height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+
+    #root {
+        min-height: 100vh;
+        width: 100%;
+        position: relative;
+    }
 }
 
 .container {

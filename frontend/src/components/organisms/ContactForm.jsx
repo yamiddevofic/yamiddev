@@ -78,7 +78,7 @@ const ContactForm = () => {
           whileInView="visible"
           transition={{ delay: 0.2 }}
           variants={fadeInUp}
-          className="w-full md:w-[60%] my-4 bg-white dark:bg-gray-900 rounded-sm shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  transform transition duration-300 hover:scale-[1.02]">
+ className="w-full md:w-[60%] my-4 bg-white/50 dark:bg-gray-900/50 rounded-sm shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm transform transition duration-300 hover:scale-[1.02]">
             <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
               Envíame un mensaje
             </h3>

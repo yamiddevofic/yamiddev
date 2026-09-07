@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { TitleSection } from '../atoms/TitleSection';
 
 const ExperienceCard = ({ company, title, period, location, highlights, logo }) => (
-  <motion.div className="bg-white dark:bg-[#2A3233] rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
+ <motion.div className="bg-white/50 dark:bg-[#2A3233]/50 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm ">
     <div className="flex flex-col md-flex-row justify-between items-start mb-3 ">
       <div className="flex flex-col md:flex-row items-left md:items-center gap-3 w-full justify-between">
         <div className='flex items-center justify-start'>
@@ -102,7 +102,7 @@ const ModernAboutMe = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
-    className="xs:py-[3.5rem] ls:py-[3.5rem] ms:py-[3.5rem] ss:py-[3.5rem] s:py-[3.5rem] sm:py-[3rem] md:py-[3rem] lg:py-[3rem] xl:py-[3rem] xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[95%] sm:w-[95%] md:w-[90%] lg:w-[90%] xl:w-[90%] px-[5%] bg-white dark:bg-slate-950 relative rounded-tl-lg rounded-tr-lg rounded-br-lg rounded-bl-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50" id='about-me'>
+ className="xs:py-[3.5rem] ls:py-[3.5rem] ms:py-[3.5rem] ss:py-[3.5rem] s:py-[3.5rem] sm:py-[3rem] md:py-[3rem] lg:py-[3rem] xl:py-[3rem] xs:w-[95%] ls:w-[95%] ms:w-[95%] ss:w-[95%] s:w-[95%] sm:w-[95%] md:w-[90%] lg:w-[90%] xl:w-[90%] px-[5%] bg-white/50 dark:bg-slate-950/50 relative rounded-tl-lg rounded-tr-lg rounded-br-lg rounded-bl-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm" id='about-me'>
       <TitleSection title="Sobre mí"/>
       <div className="max-w-8xl mx-auto grid grid-cols-1 md:grid-cols-[300px_1fr] gap-8 md:gap-12 pt-12 md:pt-5">
         {/* Perfil */}
@@ -148,7 +148,7 @@ const ModernAboutMe = () => {
           </div>
 
           {/* Información Personal */}
-          <div className="w-full bg-white dark:bg-[#2A3233] rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50  mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 ">
+ <div className="w-full bg-white/50 dark:bg-[#2A3233]/50 rounded-xl shadow-lg p-6 md:p-8 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm mb-4 md:mb-6 shadow-md hover:shadow-lg border border-gray-100 dark:border-gray-700 ">
             <div className="flex items-center mb-3">
               <User2 className="w-5 h-5 mr-2 text-blue-500" />
               <h2 className="text-lg font-semibold text-gray-800 dark:text-white">Sobre Mí</h2>

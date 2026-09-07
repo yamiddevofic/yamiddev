@@ -100,7 +100,7 @@ const Technology: React.FC = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
-    className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white dark:bg-slate-950 rounded-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm bg-opacity-50 dark:bg-opacity-50 ">
+ className="relative mx-auto w-[95%] md:w-[90%] px-6 sm:px-8 md:px-12 lg:px-16 py-14 bg-white/50 dark:bg-slate-950/50 rounded-lg border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm ">
       <TitleSection title="Stack Tecnológico"/>
 
       <TechSection title="Frontend" items={technologies.frontend} />

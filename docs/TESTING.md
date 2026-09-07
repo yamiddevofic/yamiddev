@@ -87,15 +87,15 @@ frontend/tests/
 
 ```
 Test Files  10 passed (10)
-     Tests  94 passed (94)
+     Tests  107 passed (107)
 ```
 
 Evolución:
 
 | | Al auditar | Tras retirar WordPress | Ahora |
 |---|---|---|---|
-| Pruebas totales | 68 | 94 | 94 |
-| En verde | 49 | 82 | **94** |
+| Pruebas totales | 68 | 94 | 107 |
+| En verde | 49 | 82 | **107** |
 | En rojo | 19 | 12 | **0** |
 
 ### La suite está entera en verde
@@ -124,6 +124,22 @@ Once pruebas, agrupadas por lo que las arreglaba:
 ### Un cambio de transporte que tocó las pruebas
 
 Las pruebas del formulario construían peticiones `application/x-www-form-urlencoded`. El endpoint pasó a JSON para esquivar el `403` de `security.checkOrigin`, así que el helper `peticion()` de `contact.test.ts` y las aserciones de `ContactForm.test.tsx` se actualizaron en consecuencia. Siguen siendo 18 pruebas y siguen cubriendo lo mismo.
+
+### La regresion que destapo el conteo
+
+Las trece pruebas nuevas salieron de un fallo real posterior a la migracion a
+Tailwind v4: **solo la home cargaba el CSS**. `global.css` se importaba en
+`index.astro` y no en `MainLayout`, y como el plugin de Vite de v4 no inyecta
+los estilos por su cuenta —cosa que `@astrojs/tailwind` si hacia en v3— el
+blog, `/curso`, `/comunidad` y `/maintenance` quedaron sin tipografia, sin
+colores y sin layout.
+
+Nada lo detecto: el build pasaba, las 94 pruebas seguian verdes y las cuatro
+paginas respondian `200`. La verificacion de la migracion habia medido la home
+en el navegador y las demas solo por codigo de respuesta.
+
+De ahi que ahora se compruebe, ruta por ruta, que cada pagina carga su hoja de
+estilos y pide su tipografia, y que el CSS generado la declare de verdad.
 
 ---
 

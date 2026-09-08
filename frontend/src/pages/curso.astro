@@ -31,7 +31,11 @@ const courseInfo = {
     courseDetails={courseInfo}
     isMain={false}
 >
-    <div class="bg-[#fff] dark:bg-[#020617] overflow-hidden w-full h-auto flex items-center justify-center">
+    <!-- min-h reserva el hueco que ocupara <Course> al montar. Es client:only,
+         asi que el HTML del servidor llega practicamente vacio (594 caracteres
+         frente a los 100 000 de otras paginas) y sin esta altura el pie se
+         pintaba pegado a la cabecera y saltaba hacia abajo al hidratar. -->
+    <div class="flex min-h-[calc(100vh-4.5rem)] w-full items-center justify-center overflow-hidden bg-white dark:bg-slate-950">
         {/* El h1 vive aqui y no dentro de <Course>: ese componente es
             client:only, asi que no existe en el HTML del servidor y la pagina
             se quedaba sin encabezado de primer nivel. sr-only lo mantiene

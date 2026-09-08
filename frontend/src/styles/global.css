@@ -94,8 +94,11 @@
     }
 
     html {
+        /* Solo min-height. Con height: 100% el html quedaba clavado al alto de
+           la ventana mientras el body crecia con el contenido: en /curso el
+           html media 768px y el body 1039px, y esos 271px de diferencia
+           quedaban fuera del html, dejando ver el lienzo por debajo. */
         min-height: 100%;
-        height: 100%;
         width: 100%;
     }
 

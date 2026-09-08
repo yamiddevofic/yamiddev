@@ -18,11 +18,11 @@
 export const AHORA = {
   fecha: 'Septiembre 2026',
   lineas: [
-    'Construyendo Marvy Shopmarket, un sistema de gestión para tiendas de barrio en operación desde 2023.',
-    'Estudiando Ingeniería de Sistemas en la UNAD.',
-    'Impulsando Chitagá Tech, comunidad tecnológica del municipio.',
+    'Cursando primer semestre de Ingeniería de Sistemas en la UNAD.',
+    'Desarrollando y manteniendo este sitio: Astro 7, React 18 y Tailwind v4 sobre Vercel.',
+    'Coordinando Chitagá Tech, comunidad tecnológica del municipio, y la vicepresidencia de la JAC de Villa Carmen.',
   ],
-  disponibilidad: 'Abierto a roles full-stack remotos.',
+  disponibilidad: 'Disponible para roles full-stack en modalidad remota.',
 };
 
 export type Proyecto = {
@@ -44,9 +44,9 @@ export const PROYECTOS: Proyecto[] = [
   {
     nombre: 'Marvy Shopmarket',
     resumen:
-      'Gestión de productos, inventario y ventas para tiendas de barrio en Chitagá.',
-    rol: 'Diseño, desarrollo y despliegue',
-    estado: 'En desarrollo desde 2023',
+      'Sistema de gestión de productos, inventario y ventas concebido para tiendas de barrio en Chitagá. No se encuentra desplegado.',
+    rol: 'Diseño y desarrollo',
+    estado: 'Iniciado en 2023 · sin actividad reciente',
     stack: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
     demo: null,
     repo: 'https://github.com/yamiddevofic/Marvy_Shopmarket',

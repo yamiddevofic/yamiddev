@@ -30,9 +30,16 @@ const courseInfo = {
     pageType="course"
     courseDetails={courseInfo}
     isMain={false}
-    header={false}
 >
-    <div class="bg-[#fff] dark:bg-[#020617] overflow-hidden w-full h-auto flex items-center justify-center">
+    <!-- min-h reserva el hueco que ocupara <Course> al montar. Es client:only,
+         asi que el HTML del servidor llega practicamente vacio (594 caracteres
+         frente a los 100 000 de otras paginas) y sin esta altura el pie se
+         pintaba pegado a la cabecera y saltaba hacia abajo al hidratar. -->
+    <!-- flex-grow y no min-h-[calc(100vh-…)]: pedir el alto de la ventana menos
+         la cabecera ignora el pie, y con poco contenido sobraban 174px de
+         scroll. Creciendo dentro del main se queda con el espacio que hay,
+         que es justo lo que deja al pie abajo sin desbordar. -->
+    <div class="flex w-full flex-grow items-center justify-center overflow-hidden bg-white dark:bg-slate-950">
         {/* El h1 vive aqui y no dentro de <Course>: ese componente es
             client:only, asi que no existe en el HTML del servidor y la pagina
             se quedaba sin encabezado de primer nivel. sr-only lo mantiene

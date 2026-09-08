@@ -1,0 +1,99 @@
+---
+import { STACK, EXPERIENCIA, FORMACION, COMUNIDAD } from '../../lib/empresasData';
+
+/**
+ * Stack, experiencia, formación y comunidad.
+ *
+ * Van juntos porque comparten función: dar contexto rápido a quien escanea. El
+ * skill pide densidad media aquí — el reclutador está escaneando, no leyendo —
+ * y prohíbe expresamente las barras de porcentaje: el nivel se demuestra con el
+ * proyecto, no se declara.
+ *
+ * El stack se agrupa por uso real y no por familiaridad, que es lo que hace la
+ * diferencia entre una lista honesta y una lista de veinticinco tecnologías.
+ */
+---
+
+<section id="trayectoria" class="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+  <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
+    <div>
+      <h2 class="text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-slate-900 dark:text-white">
+        Stack
+      </h2>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">Agrupado por uso real.</p>
+
+      <div class="mt-6 space-y-5">
+        {STACK.map((g) => (
+          <div>
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white">{g.grupo}</h3>
+              <span class="text-xs text-slate-500 dark:text-slate-400">— {g.nota}</span>
+            </div>
+            <ul class="mt-2 flex flex-wrap gap-1.5">
+              {g.items.map((t) => (
+                <li class="rounded bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="space-y-10">
+      <div>
+        <h2 class="text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-slate-900 dark:text-white">
+          Experiencia
+        </h2>
+        <ul class="mt-6 space-y-5">
+          {EXPERIENCIA.map((e) => (
+            <li class="border-l-2 border-cyan-600 pl-4 dark:border-cyan-400">
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                <h3 class="font-semibold text-slate-900 dark:text-white">{e.puesto}</h3>
+                <span class="font-mono text-xs text-slate-500 dark:text-slate-400">{e.periodo}</span>
+              </div>
+              <p class="text-sm text-cyan-700 dark:text-cyan-400">
+                {e.organizacion} · {e.modalidad}
+              </p>
+              <p class="mt-1.5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                {e.resultado}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Formación</h2>
+        <ul class="mt-4 space-y-2.5">
+          {FORMACION.map((f) => (
+            <li class="flex flex-wrap items-baseline justify-between gap-x-3 text-sm">
+              <span class="text-slate-700 dark:text-slate-200">
+                {f.titulo} <span class="text-slate-500 dark:text-slate-400">· {f.institucion}</span>
+              </span>
+              <span class="font-mono text-xs text-slate-500 dark:text-slate-400">{f.periodo}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Comunidad</h2>
+        <ul class="mt-4 space-y-3">
+          {COMUNIDAD.map((c) => (
+            <li class="text-sm">
+              <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+                <span class="font-medium text-slate-800 dark:text-slate-100">
+                  {c.rol} · {c.organizacion}
+                </span>
+                <span class="font-mono text-xs text-slate-500 dark:text-slate-400">{c.periodo}</span>
+              </div>
+              <p class="mt-0.5 leading-relaxed text-slate-600 dark:text-slate-400">{c.nota}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

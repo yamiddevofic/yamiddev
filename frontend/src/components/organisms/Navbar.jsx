@@ -12,37 +12,37 @@ import { Blog } from "../atoms/icons/Blog";
 import { Course } from "../atoms/icons/Course";
 import { Button } from "@/components/ui/button"; // shadcn/ui
 
-const LINKS = [
-  { title: "Inicio", id: "home", icon: HomeFilled },
-  { title: "Proyectos", id: "projects", icon: Portfolio },
-  { title: "Sobre mí", id: "about-me", icon: AboutMe },
-  { title: "Tecnologías", id: "technology", icon: Computer },
-  { title: "Curso", id: "course", icon: Course },
-  // `path` marca un enlace a otra página en lugar de un desplazamiento a una sección.
+/**
+ * Navegacion del sitio.
+ *
+ * `path` marca un enlace a otra pagina; sin el, es un desplazamiento a una
+ * seccion de la pagina actual.
+ *
+ * Las secciones solo se listan en la home, porque son sus anclas y desde otra
+ * pagina no existirian. Las paginas se listan siempre: antes la navegacion
+ * entera se ocultaba fuera de la home y no habia forma de volver.
+ */
+const SECCIONES_HOME = [
+  { title: "Inicio", id: "inicio", icon: HomeFilled },
+  { title: "Proyectos", id: "proyectos", icon: Portfolio },
+  { title: "Trayectoria", id: "trayectoria", icon: AboutMe },
+  { title: "Contacto", id: "contacto", icon: Contact },
+];
+
+const PAGINAS = [
+  { title: "Servicios", id: "servicios", icon: Computer, path: "/clientes" },
+  { title: "Curso", id: "curso", icon: Course, path: "/curso" },
   { title: "Blog", id: "blog", icon: Blog, path: "/blog" },
-  { title: "Contacto", id: "contact", icon: Contact },
+  { title: "Comunidad", id: "comunidad", icon: AboutMe, path: "/comunidad" },
 ];
 
 // Colores por sección (activo y hover)
-const SECTION_ACTIVE = {
-  home: "text-cyan-600 dark:text-cyan-400",
-  "about-me": "text-cyan-600 dark:text-cyan-400",
-  projects: "text-cyan-600 dark:text-cyan-400",
-  course: "text-cyan-600 dark:text-cyan-400",
-  blog: "text-cyan-600 dark:text-cyan-400",
-  technology: "text-cyan-600 dark:text-cyan-400",
-  contact: "text-cyan-600 dark:text-cyan-400",
-};
+/** Mismo acento para toda la navegacion: antes eran dos mapas que repetian el
+ *  mismo valor por seccion, con los ids de la home anterior. */
+const ENLACE_ACTIVO = 'text-cyan-700 dark:text-cyan-400';
+const ENLACE_BASE =
+  'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white';
 
-const SECTION_HOVER = {
-  home: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  "about-me": "hover:text-cyan-600 dark:hover:text-cyan-400",
-  projects: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  course: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  blog: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  technology: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  contact: "hover:text-cyan-600 dark:hover:text-cyan-400",
-};
 
 const navVariants = {
   hidden: { y: -100, opacity: 0 },
@@ -65,6 +65,11 @@ const panelVariants = {
 };
 
 const Navbar = ({ isMain = true }) => {
+  // Fuera de la home las anclas no existen, asi que se sustituyen por un
+  // enlace de vuelta. Antes se ocultaba la navegacion entera y no habia salida.
+  const LINKS = isMain
+    ? [...SECCIONES_HOME, ...PAGINAS]
+    : [{ title: "Inicio", id: "inicio", icon: HomeFilled, path: "/" }, ...PAGINAS];
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [active, setActive] = useState("home");
@@ -145,7 +150,7 @@ const Navbar = ({ isMain = true }) => {
         variants={navVariants}
         initial={reduced ? {} : "hidden"}
         animate={reduced ? {} : "visible"}
-        className="fixed top-0 z-50 w-full border border-gray-200/50 dark:border-gray-700/50 bg-white/70 dark:bg-slate-950/60 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 shadow-lg transition-colors duration-300"
+        className="fixed top-0 z-50 w-full border-b border-slate-200/70 bg-white/80 backdrop-blur-md transition-colors duration-300 supports-[backdrop-filter]:bg-white/60 motion-reduce:transition-none dark:border-slate-800/70 dark:bg-slate-950/80 dark:supports-[backdrop-filter]:bg-slate-950/60"
       >
         <a
           href="#home"
@@ -167,7 +172,7 @@ const Navbar = ({ isMain = true }) => {
             {/* Nav desktop (solo en home) */}
             <nav
               aria-label="Principal"
-              className={`gap-6 ${isMain ? "hidden md:hidden lg:flex xl:flex" : "hidden"}`}
+              className="gap-6 hidden lg:flex xl:flex"
             >
               {LINKS.map((item) => (
                 <motion.a
@@ -177,14 +182,9 @@ const Navbar = ({ isMain = true }) => {
                   whileHover={reduced ? {} : "hover"}
                   onClick={(e) => handleLinkClick(e, item.id, item.path)}
                   aria-current={active === item.id ? "page" : undefined}
-                  className={`text-lg font-medium transition-colors cursor-pointer ${
-                    active === item.id
-                      ? SECTION_ACTIVE[item.id] || "text-cyan-600 dark:text-cyan-400"
-                      : "text-gray-900 dark:text-gray-300"
-                  } ${
-                    SECTION_HOVER[item.id] ||
-                    "hover:text-cyan-600 dark:hover:text-cyan-400"
-                  }`}
+                  className={`inline-flex min-h-[44px] items-center rounded-md px-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 motion-reduce:transition-none dark:focus-visible:ring-cyan-400 ${
+                      active === item.id ? ENLACE_ACTIVO : ENLACE_BASE
+                    }`}
                 >
                   {item.title}
                 </motion.a>
@@ -205,48 +205,25 @@ const Navbar = ({ isMain = true }) => {
             {/* Controles móviles:
                 - En home: botón de menú (abre panel moderno)
                 - En otras pantallas: SOLO botón Inicio + tema */}
-            {isMain ? (
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setIsOpen((prev) => !prev)}
-                className="md:hidden min-h-[44px] min-w-[44px]"
-                aria-label={`${isOpen ? "Cerrar" : "Abrir"} menú`}
-                aria-expanded={isOpen}
-                aria-controls="mobile-panel"
-                title={`${isOpen ? "Cerrar" : "Abrir"} menú`}
-              >
-                {isOpen ? <X /> : <Menu />}
-              </Button>
-            ) : (
-              <div className="md:hidden flex items-center gap-2">
-                <a
-                  href="/"
-                  title="Ir al inicio"
-                  aria-label="Ir al inicio"
-                  className="inline-flex items-center justify-center gap-2 min-h-[44px] min-w-[44px] rounded-md border px-3 py-2 text-sm font-medium text-gray-900 dark:text-gray-200 border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                >
-                  {HomeFilled({ size: 18 })}
-                  <span>Inicio</span>
-                </a>
-                <Button
-                  variant="ghost"
-                  onClick={toggleTheme}
-                  className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] focus-visible:ring-2 focus-visible:ring-cyan-500"
-                  title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
-                  aria-label="Cambiar tema"
-                >
-                  {theme === "light" ? <Moon className="text-xl" /> : <Sun className="text-xl" />}
-                </Button>
-              </div>
-            )}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={() => setIsOpen((prev) => !prev)}
+              className="md:hidden min-h-[44px] min-w-[44px]"
+              aria-label={`${isOpen ? "Cerrar" : "Abrir"} menú`}
+              aria-expanded={isOpen}
+              aria-controls="mobile-panel"
+              title={`${isOpen ? "Cerrar" : "Abrir"} menú`}
+            >
+              {isOpen ? <X /> : <Menu />}
+            </Button>
           </div>
         </div>
       </motion.header>
 
       {/* Overlay + Panel móvil (solo en home) */}
       <AnimatePresence>
-        {isMain && isOpen && (
+        {isOpen && (
           <>
             {/* Overlay */}
             <motion.div
@@ -335,10 +312,7 @@ const Navbar = ({ isMain = true }) => {
                           <span
                             className={[
                               "text-[13px] font-medium leading-tight",
-                              isActive
-                                ? SECTION_ACTIVE[item.id] ||
-                                  "text-cyan-600 dark:text-cyan-400"
-                                : "text-gray-900 dark:text-gray-200",
+                              isActive ? ENLACE_ACTIVO : ENLACE_BASE,
                             ].join(" ")}
                           >
                             {item.title}

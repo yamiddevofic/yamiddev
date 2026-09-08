@@ -1,0 +1,93 @@
+---
+import { Projects } from '../../lib/projectData';
+
+/**
+ * Trabajos, en la vertiente comercial.
+ *
+ * Reemplaza al carrusel anterior por una rejilla estatica con las mismas
+ * tarjetas que usa la vertiente tecnica. Tres razones, en orden de peso:
+ *
+ * 1. Es el mismo sitio y tenia dos lenguajes visuales distintos.
+ * 2. La rejilla no necesita JavaScript. El carrusel enviaba una isla de React
+ *    con framer-motion para mostrar cuatro tarjetas que caben en pantalla.
+ * 3. El carrusel estaba roto en movil: la pista llevaba overflow-hidden en vez
+ *    de overflow-x-auto, asi que sin los botones —ocultos por debajo de sm—
+ *    no habia forma de llegar a los proyectos que no fueran el primero.
+ *
+ * La tarjeta no es un enlace entero: dentro hay un unico <a> al final. Anidar
+ * un <a> dentro de otro es HTML invalido y el parser lo deshacia, con lo que
+ * el DOM dejaba de coincidir con el arbol de React y la isla se rehidrataba.
+ */
+---
+
+<section id="proyectos" class="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+  <div class="max-w-3xl">
+    <h2 class="text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-slate-900 dark:text-white">
+      Trabajos
+    </h2>
+    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      Lo que he construido hasta ahora. Cada uno enlaza a su código, para que veas cómo está hecho.
+    </p>
+  </div>
+
+  <ul class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4">
+    {Projects.map((p) => (
+      <li class="flex flex-col overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 transition-shadow hover:shadow-md motion-reduce:transition-none dark:bg-slate-900 dark:ring-slate-800">
+        <!-- Par de capturas: la clara y la oscura, para que la imagen no
+             desentone con el tema activo. -->
+        <div class="aspect-[16/9] w-full bg-slate-100 dark:bg-slate-800">
+          <img
+            src={p.image[0]}
+            alt={`Captura de ${p.title}`}
+            width={p.imageSize?.width}
+            height={p.imageSize?.height}
+            loading="lazy"
+            decoding="async"
+            class="h-full w-full object-cover object-top dark:hidden"
+          />
+          <img
+            src={p.image[1]}
+            alt={`Captura de ${p.title}`}
+            width={p.imageSize?.width}
+            height={p.imageSize?.height}
+            loading="lazy"
+            decoding="async"
+            class="hidden h-full w-full object-cover object-top dark:block"
+          />
+        </div>
+
+        <div class="flex flex-1 flex-col p-6">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold text-slate-900 dark:text-white">{p.title}</h3>
+            <span class="shrink-0 font-mono text-[0.7rem] text-slate-500 dark:text-slate-400">
+              {p.time}
+            </span>
+          </div>
+
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+            {p.description}
+          </p>
+
+          <ul class="mt-4 flex flex-wrap gap-1.5">
+            {p.techStack.map((t) => (
+              <li class="rounded bg-slate-100 px-2 py-0.5 font-mono text-[0.7rem] text-slate-600 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700">
+                {t}
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-auto pt-5">
+            <a
+              href={p.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-[44px] items-center rounded-md px-4 text-xs font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-900"
+            >
+              Ver código
+            </a>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

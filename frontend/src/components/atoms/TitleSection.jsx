@@ -1,12 +1,27 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
-export const TitleSection = ({ title }) => {
-    
-    return (
-        <motion.h2
-            className="xs:text-[2.5rem] ls:text-[2.5rem] ms:text-[2.5rem] ss:text-[2.5rem] s:text-[2.5rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[3rem] xl:text-[3rem] font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-500 dark:to-emerald-500 py-2">
-            {title}
-        </motion.h2>
-    );
-};
+/**
+ * Titular de seccion.
+ *
+ * Antes era un <h2> centrado con degradado de azul a esmeralda y tamano fijo
+ * de 3rem. Chocaba de frente con la vertiente tecnica, que usa titulares
+ * alineados a la izquierda, en solido y con clamp; y el texto en degradado
+ * baja el contraste justo donde mas hace falta.
+ *
+ * Ahora reproduce el mismo titular que escriben a mano las secciones .astro de
+ * la home, para que las dos vertientes se lean como un solo sitio. `lede`
+ * dibuja la linea de apoyo que ya llevaban esas secciones.
+ *
+ * Sin framer-motion: no habia animacion declarada, solo el coste de importarla.
+ */
+export const TitleSection = ({ title, lede, id }) => (
+  <div className="max-w-3xl">
+    <h2
+      id={id}
+      className="text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-slate-900 dark:text-white"
+    >
+      {title}
+    </h2>
+    {lede && <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{lede}</p>}
+  </div>
+);

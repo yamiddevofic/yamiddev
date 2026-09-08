@@ -1,0 +1,87 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import HeroClientes from '../components/organisms/HeroClientes.astro';
+import ProyectosClientes from '../components/organisms/ProyectosClientes.astro';
+import StackClientes from '../components/organisms/StackClientes.astro';
+import SectionAboutMe from '../components/organisms/AboutMe';
+import ThinkInCode from '../components/organisms/ThinkInCode';
+import ContactForm from '../components/organisms/ContactForm';
+import WhatsApp from '../components/molecules/WhatsApp';
+import '../styles/global.css';
+
+/**
+ * Vertiente comercial: la pagina para quien quiere contratar algo.
+ *
+ * Comparte el lenguaje visual con la home tecnica —mismo ancho de seccion,
+ * mismos titulares, mismas tarjetas, mismo acento cian— porque son el mismo
+ * sitio y el visitante cruza entre las dos por el encabezado. Lo que cambia es
+ * el copy: aqui se habla de resultados de negocio, no de arquitectura.
+ *
+ * El orden lo fija el skill agent-portfolio-clientes: encaje -> prueba ->
+ * accion. Sobre mi va antes del cierre porque humaniza justo cuando el lector
+ * ya vio la evidencia y esta decidiendo si escribe.
+ *
+ * WhatsApp se renderiza sin directiva de cliente a proposito: es un enlace sin
+ * estado y no hay razon para hidratar una isla por el.
+ */
+const pageDetails = {
+  // MainLayout ya anade " | Yamid Dev", asi que aqui va solo el descriptor.
+  title: 'Software a la medida para negocios',
+  description:
+    'Sistemas de gestión para negocios de Norte de Santander que ya no caben en el Excel. Inventario, ventas y pedidos, hechos a la medida.',
+  image: '/dev.jpg',
+  canonical: 'https://www.yamid.dev/clientes/', // Con www: es el host que declara astro.config y el que sirve
+  icon: '/dev.jpg',
+  keywords: [
+    'software para tiendas',
+    'sistema de inventario',
+    'desarrollo a la medida Chitagá',
+    'programador Norte de Santander',
+    'software para negocios Colombia',
+  ],
+};
+---
+
+<MainLayout
+  title={pageDetails.title}
+  description={pageDetails.description}
+  image={pageDetails.image}
+  canonical={pageDetails.canonical}
+  icon={pageDetails.icon}
+  keywords={pageDetails.keywords}
+  isMain={false}
+  pageType="website"
+>
+  <div class="w-full bg-white transition-colors duration-300 dark:bg-slate-950">
+    <WhatsApp />
+
+    <HeroClientes />
+    <ProyectosClientes />
+
+    <div id="about-me">
+      <SectionAboutMe client:visible />
+    </div>
+
+    <StackClientes />
+    <ThinkInCode client:visible />
+
+    <div id="contacto">
+      <ContactForm client:visible variante="clientes" />
+    </div>
+
+    <!-- Puente a la otra vertiente, simetrico al que lleva de la home aqui. -->
+    <section class="w-[95%] md:w-[90%] mx-auto pb-16">
+      <div class="rounded-lg bg-slate-100 p-6 ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+        <p class="text-sm text-slate-600 dark:text-slate-300">
+          ¿Buscas mi perfil profesional y el detalle técnico de los proyectos?
+          <a
+            href="/"
+            class="ml-1 inline-flex min-h-[44px] items-center font-medium text-cyan-700 underline underline-offset-4 transition-colors hover:text-cyan-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-cyan-400 dark:hover:text-cyan-300 dark:focus-visible:ring-offset-slate-900"
+          >
+            Ver el perfil técnico
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+</MainLayout>

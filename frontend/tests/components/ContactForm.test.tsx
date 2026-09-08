@@ -7,7 +7,7 @@ const ENDPOINT = '/api/contact';
 
 async function rellenar(user: ReturnType<typeof userEvent.setup>) {
   await user.type(screen.getByLabelText(/nombre/i), 'Ada');
-  await user.type(screen.getByLabelText(/email/i), 'ada@example.com');
+  await user.type(screen.getByLabelText(/correo/i), 'ada@example.com');
   await user.type(screen.getByLabelText(/asunto/i), 'Hola');
   await user.type(screen.getByLabelText(/mensaje/i), 'Mensaje de prueba');
 }
@@ -17,7 +17,7 @@ afterEach(() => vi.restoreAllMocks());
 describe('<ContactForm />', () => {
   it('todos los campos son obligatorios y están etiquetados', () => {
     render(<ContactForm />);
-    for (const label of [/nombre/i, /email/i, /asunto/i, /mensaje/i]) {
+    for (const label of [/nombre/i, /correo/i, /asunto/i, /mensaje/i]) {
       expect(screen.getByLabelText(label)).toBeRequired();
     }
   });
@@ -48,7 +48,7 @@ describe('<ContactForm />', () => {
     await rellenar(user);
     await user.click(screen.getByRole('button', { name: /enviar mensaje/i }));
 
-    expect(await screen.findByText(/mensaje enviado con éxito/i)).toBeInTheDocument();
+    expect(await screen.findByText(/mensaje enviado/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/nombre/i)).toHaveValue('');
   });
 
@@ -59,7 +59,7 @@ describe('<ContactForm />', () => {
     await rellenar(user);
     await user.click(screen.getByRole('button', { name: /enviar mensaje/i }));
 
-    expect(await screen.findByText(/hubo un error al enviar el mensaje/i)).toBeInTheDocument();
+    expect(await screen.findByText(/no se pudo enviar el mensaje/i)).toBeInTheDocument();
   });
 
   it('muestra el estado de error ante un fallo de red y conserva lo escrito', async () => {
@@ -69,7 +69,7 @@ describe('<ContactForm />', () => {
     await rellenar(user);
     await user.click(screen.getByRole('button', { name: /enviar mensaje/i }));
 
-    expect(await screen.findByText(/hubo un error al enviar el mensaje/i)).toBeInTheDocument();
+    expect(await screen.findByText(/no se pudo enviar el mensaje/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/nombre/i)).toHaveValue('Ada');
   });
 

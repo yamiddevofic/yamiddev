@@ -1,0 +1,86 @@
+---
+import { PROYECTOS } from '../../lib/empresasData';
+
+/**
+ * Evidencia técnica.
+ *
+ * La regla de las tres evidencias del skill dice que cada proyecto necesita
+ * demo viva + repo + write-up, y que si falta una no va en la home. Aquí se
+ * cumple sin fingir: solo se pinta el enlace de la evidencia que existe de
+ * verdad. Un enlace de demo roto es peor que no listarlo, porque sugiere
+ * abandono; e inventar un write-up que no está escrito sería peor todavía.
+ *
+ * Cuando un proyecto reúna las tres, se marca `enHome: true` en empresasData
+ * y sube al principio de la lista.
+ */
+const ordenados = [...PROYECTOS].sort((a, b) => Number(b.enHome) - Number(a.enHome));
+---
+
+<section id="proyectos" class="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+  <div class="max-w-3xl">
+    <h2 class="text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-slate-900 dark:text-white">
+      Proyectos
+    </h2>
+    <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+      Sistemas que he construido y mantengo. Cada uno enlaza a su código.
+    </p>
+  </div>
+
+  <ul class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-4">
+    {ordenados.map((p) => (
+      <li class="flex flex-col rounded-lg bg-white p-6 ring-1 ring-slate-200 transition-shadow hover:shadow-md motion-reduce:transition-none dark:bg-slate-900 dark:ring-slate-800">
+        <div class="flex items-start justify-between gap-3">
+          <h3 class="font-semibold text-slate-900 dark:text-white">{p.nombre}</h3>
+          <span class="shrink-0 font-mono text-[0.7rem] text-slate-500 dark:text-slate-400">
+            {p.estado}
+          </span>
+        </div>
+
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{p.resumen}</p>
+
+        <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">
+          <span class="font-medium text-slate-700 dark:text-slate-300">Rol:</span> {p.rol}
+        </p>
+
+        <ul class="mt-4 flex flex-wrap gap-1.5">
+          {p.stack.map((t) => (
+            <li class="rounded bg-slate-100 px-2 py-0.5 font-mono text-[0.7rem] text-slate-600 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:ring-slate-700">
+              {t}
+            </li>
+          ))}
+        </ul>
+
+        <div class="mt-auto flex flex-wrap gap-2 pt-5">
+          {p.demo && (
+            <a
+              href={p.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-[44px] items-center rounded-md bg-cyan-700 px-4 text-xs font-medium text-white transition-colors hover:bg-cyan-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-offset-slate-900"
+            >
+              Ver en vivo
+            </a>
+          )}
+          {p.repo && (
+            <a
+              href={p.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex min-h-[44px] items-center rounded-md px-4 text-xs font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-900"
+            >
+              Código
+            </a>
+          )}
+          {p.writeup && (
+            <a
+              href={p.writeup}
+              class="inline-flex min-h-[44px] items-center rounded-md px-4 text-xs font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-900"
+            >
+              Cómo está hecho
+            </a>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

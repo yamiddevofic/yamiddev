@@ -206,7 +206,7 @@ if (pageType === 'article' && articleDetails) {
     <!-- La cabecera es fixed y no ocupa espacio en el flujo, asi que el main
          reserva su altura. Sin esto, el primer contenido de cada pagina queda
          tapado: en /curso desaparecia el titulo y la navegacion de clases. -->
-    <main class:list={["w-full flex-grow overflow-x-hidden", header && "pt-[4.5rem]"]}>
+    <main class:list={["flex w-full flex-grow flex-col overflow-x-hidden", header && "pt-[4.5rem]"]}>
         <slot />
     </main>
     <Footer />

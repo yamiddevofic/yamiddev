@@ -1,25 +1,44 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
+import HeroClientes from '../components/organisms/HeroClientes.astro';
+import ProyectosClientes from '../components/organisms/ProyectosClientes.astro';
+import StackClientes from '../components/organisms/StackClientes.astro';
 import SectionAboutMe from '../components/organisms/AboutMe';
-import Carousel from '../components/organisms/Carousel';
 import ThinkInCode from '../components/organisms/ThinkInCode';
-import Technology from '../components/organisms/Technology';
 import ContactForm from '../components/organisms/ContactForm';
 import WhatsApp from '../components/molecules/WhatsApp';
-import Hero from '../components/organisms/Hero';
 import '../styles/global.css';
 
-// --- Detalles de la Página para SEO ---
-// Se define un objeto para mantener el código más limpio y organizado.
+/**
+ * Vertiente comercial: la pagina para quien quiere contratar algo.
+ *
+ * Comparte el lenguaje visual con la home tecnica —mismo ancho de seccion,
+ * mismos titulares, mismas tarjetas, mismo acento cian— porque son el mismo
+ * sitio y el visitante cruza entre las dos por el encabezado. Lo que cambia es
+ * el copy: aqui se habla de resultados de negocio, no de arquitectura.
+ *
+ * El orden lo fija el skill agent-portfolio-clientes: encaje -> prueba ->
+ * accion. Sobre mi va antes del cierre porque humaniza justo cuando el lector
+ * ya vio la evidencia y esta decidiendo si escribe.
+ *
+ * WhatsApp se renderiza sin directiva de cliente a proposito: es un enlace sin
+ * estado y no hay razon para hidratar una isla por el.
+ */
 const pageDetails = {
   // MainLayout ya anade " | Yamid Dev", asi que aqui va solo el descriptor.
-  title: "Software a la medida para negocios",
-  description: "Sistemas de gestión para negocios de Norte de Santander que ya no caben en el Excel. Inventario, ventas y pedidos, hechos a la medida.",
-  image: "/dev.jpg", // Imagen principal para redes sociales (OG & Twitter)
-  canonical: "https://www.yamid.dev/clientes/", // Con www: es el host que declara astro.config y el que sirve
-  icon: "/dev.jpg", // Favicon
-  // Keywords específicas para esta página. Se combinarán con las keywords por defecto del layout.
-  keywords: ['software para tiendas', 'sistema de inventario', 'desarrollo a la medida Chitagá', 'programador Norte de Santander', 'astro developer'],
+  title: 'Software a la medida para negocios',
+  description:
+    'Sistemas de gestión para negocios de Norte de Santander que ya no caben en el Excel. Inventario, ventas y pedidos, hechos a la medida.',
+  image: '/dev.jpg',
+  canonical: 'https://www.yamid.dev/clientes/', // Con www: es el host que declara astro.config y el que sirve
+  icon: '/dev.jpg',
+  keywords: [
+    'software para tiendas',
+    'sistema de inventario',
+    'desarrollo a la medida Chitagá',
+    'programador Norte de Santander',
+    'software para negocios Colombia',
+  ],
 };
 ---
 
@@ -31,36 +50,38 @@ const pageDetails = {
   icon={pageDetails.icon}
   keywords={pageDetails.keywords}
   isMain={false}
-  pageType="website" 
+  pageType="website"
 >
-  <WhatsApp client:load/>
+  <div class="w-full bg-white transition-colors duration-300 dark:bg-slate-950">
+    <WhatsApp />
 
-  <div class="w-full h-full flex flex-col items-center justify-center 
-    bg-[#fff] dark:bg-[#020617] transition-colors duration-300
-    dark:text-white overflow-hidden"
-  >
-    <!-- 
-      El componente Hero ya tiene client:load, por lo que Framer Motion
-      funcionará correctamente dentro de él. El slot (h1) se pasará a ese 
-      entorno de cliente.
-    -->
-    <Hero isHome={true} client:load height="min-h-[calc(100vh-4.5rem)] xs:min-h-[calc(95dvh-4.5rem)] ls:min-h-[calc(98dvh-4.5rem)] ms:min-h-[calc(95dvh-4.5rem)]">
-      <h1 class="text-[clamp(2.5rem,6vw,4.5rem)] font-bold tracking-tight pt-12 md:pt-5">
-        <span class="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-500 dark:to-cyan-400 flex items-center justify-center text-[2.8rem] xs:text-[2rem] ls:text-[3.6rem] ms:text-[2.8rem] ss:text-[3.2rem] s:text-[3.2rem] sm:text-[3.2rem] md:text-[7.5rem] lg:text-[7.5rem] xl:text-[7.5rem] leading-[1] md:leading-[1] font-[Inter]">
-          Software que ordena tu negocio
-        </span>
-      </h1>
-    </Hero>
-    <div id="projects" class="w-full flex items-center justify-center">
-      <Carousel client:load/>
+    <HeroClientes />
+    <ProyectosClientes />
+
+    <div id="about-me">
+      <SectionAboutMe client:visible />
     </div>
-    <div id="about-me" class="w-full flex items-center justify-center">
-      <SectionAboutMe client:load/>
+
+    <StackClientes />
+    <ThinkInCode client:visible />
+
+    <div id="contacto">
+      <ContactForm client:visible variante="clientes" />
     </div>
-    <div id="technology" class="w-full flex items-center justify-center mt-20">
-      <Technology client:load/>
-    </div>
-    <ThinkInCode client:load/>
-    <ContactForm client:load />
+
+    <!-- Puente a la otra vertiente, simetrico al que lleva de la home aqui. -->
+    <section class="w-[95%] md:w-[90%] mx-auto pb-16">
+      <div class="rounded-lg bg-slate-100 p-6 ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+        <p class="text-sm text-slate-600 dark:text-slate-300">
+          ¿Buscas mi perfil profesional y el detalle técnico de los proyectos?
+          <a
+            href="/"
+            class="ml-1 inline-flex min-h-[44px] items-center font-medium text-cyan-700 underline underline-offset-4 transition-colors hover:text-cyan-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-cyan-400 dark:hover:text-cyan-300 dark:focus-visible:ring-offset-slate-900"
+          >
+            Ver el perfil técnico
+          </a>
+        </p>
+      </div>
+    </section>
   </div>
 </MainLayout>

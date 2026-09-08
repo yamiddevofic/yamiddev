@@ -3,7 +3,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Button } from "../molecules/Buttons"; // Usa tu botón del proyecto
 import Group from "../atoms/icons/Group";
 import { ArrowRight, PlayCircle, Lock } from 'lucide-react';
 import { Courses } from "../../lib/coursesData";
@@ -109,48 +108,24 @@ const ThinkInCode = () => {
     }
   };
 
-  const goToSlide = (index) => {
-    const track = trackRef.current;
-    const item = firstItemRef.current;
-    if (!track || !item) return;
-    const itemWidth = item.offsetWidth;
-    const scrollDistance = (itemWidth + GAP_PX) * index;
-    track.scrollTo({ left: scrollDistance, behavior: 'smooth' });
-    setCurrentIndex(index);
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
   return (
-    <motion.section
-      id="course"
-      variants={fadeInUp}
-      initial="hidden"
-      whileInView="visible"
-      transition={{ delay: 0.2 }}
-      className="bg-white dark:bg-slate-950 border border-gray-200/50 dark:border-gray-700/50 shadow-lg rounded-lg relative isolate w-[95%] min-[550px]:w-[90%] mx-auto overflow-hidden rounded-lg my-[10%] min-[360px]:my-[15%] md:my-[5%] px-3 md:px-14 py-12 text-gray-900 dark:text-gray-100"
-    >
-      {/* Encabezado */}
-      <div className="mx-auto max-w-6xl text-center mb-10 md:mb-12">
-        <TitleSection title="Curso"/>
-        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-[90%] mx-auto font-bold">
-        Pensar en código es un curso práctico y claro para aprender a pensar como programador.</p>
-      </div>
+    <section id="course" className="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+      <TitleSection
+        title="Curso"
+        lede="Pensar en código: un curso práctico para aprender a pensar como programador."
+      />
 
-      {/* Carrusel de cursos */}
-      <div className="relative mx-auto max-w-6xl pl-2 md:pl-0">
+      {/* Carrusel de clases */}
+      <div className="relative mt-8">
         {/* Botón izquierdo */}
         {CLASSES.length > visibleItems && (
           <button
             onClick={() => scrollByItems(-1)}
             disabled={currentIndex === 0}
             aria-label="Clase anterior"
-            className={`absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden sm:grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${currentIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'}`}
+            className={`absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-md bg-white text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 motion-reduce:transition-none sm:grid dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 ${currentIndex === 0 ? 'cursor-not-allowed opacity-40' : ''}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -163,16 +138,14 @@ const ThinkInCode = () => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {CLASSES.map((cls, idx) => (
-            <motion.div
+            <div
               key={cls.id}
               ref={idx === 0 ? firstItemRef : undefined}
-              className="group relative flex-none w-[92%] xs:w-[90%] sm:w-[85%] snap-start bg-white dark:bg-slate-900 border border-gray-200/50 dark:border-gray-700/50 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+              className="group relative w-[92%] xs:w-[90%] sm:w-[85%] flex-none snap-start overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 transition-shadow hover:shadow-md motion-reduce:transition-none dark:bg-slate-900 dark:ring-slate-800"
               style={visibleItems > 1 ? { flex: `0 0 calc((100% - ${(visibleItems - 1) * GAP_PX}px) / ${visibleItems})` } : undefined}
-              whileHover={{ y: -4 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
               {/* Container de la imagen */}
-              <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+              <div className="relative aspect-[16/9] w-full bg-slate-100 dark:bg-slate-800">
                 {/* Imagen o placeholder */}
                 {cls.available && cls.posterUrl && !imageErrors[cls.id] ? (
                   <img
@@ -187,8 +160,8 @@ const ThinkInCode = () => {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <div className="text-center text-gray-400 dark:text-gray-600">
-                      <PlayCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
+                    <div className="text-center text-slate-400 dark:text-slate-500">
+                      <PlayCircle className="mx-auto mb-2 h-10 w-10" aria-hidden="true" />
                       <p className="text-sm font-medium">{cls.available ? 'Vista previa' : 'Próximamente'}</p>
                     </div>
                   </div>
@@ -197,12 +170,12 @@ const ThinkInCode = () => {
                 {/* Badge de estado */}
                 <div className="absolute top-3 right-3">
                   {cls.available ? (
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/90 text-white text-xs font-medium">
-                      <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
+                    <div className="flex items-center gap-1.5 rounded bg-white px-2 py-1 font-mono text-[0.7rem] text-emerald-700 ring-1 ring-slate-200 dark:bg-slate-900 dark:text-emerald-400 dark:ring-slate-700">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
                       Disponible
                     </div>
                   ) : (
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-500/90 text-white text-xs font-medium">
+                    <div className="flex items-center gap-1.5 rounded bg-white px-2 py-1 font-mono text-[0.7rem] text-slate-600 ring-1 ring-slate-200 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700">
                       <LockIcon />
                       Próximamente
                     </div>
@@ -213,7 +186,7 @@ const ThinkInCode = () => {
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button
                     onClick={() => handleClassSelection(cls)}
-                    className="flex items-center gap-2 px-4 py-5 bg-black/20 border border-black/30 rounded-lg text-white font-medium hover:bg-black/20 transition-colors"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-slate-900/80 px-4 text-sm font-medium text-white transition-colors hover:bg-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 motion-reduce:transition-none"
                   >
                     {cls.available ? (
                       <>
@@ -230,10 +203,10 @@ const ThinkInCode = () => {
                 </div>
               </div>
               {/* Título pequeño debajo del elemento */}
-              <div className="px-3 py-3">
-                <h4 className="text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2">{cls.title}</h4>
+              <div className="p-4">
+                <h3 className="line-clamp-2 text-sm font-semibold text-slate-900 dark:text-white">{cls.title}</h3>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -243,9 +216,9 @@ const ThinkInCode = () => {
             onClick={() => scrollByItems(1)}
             disabled={currentIndex >= CLASSES.length - visibleItems}
             aria-label="Clase siguiente"
-            className={`absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden sm:grid place-items-center h-12 w-12 rounded-full border border-white/20 bg-white/80 backdrop-blur hover:bg-white/90 dark:border-white/10 dark:bg-white/10 dark:hover:bg-white/20 transition-all shadow-lg ${currentIndex >= CLASSES.length - visibleItems ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'}`}
+            className={`absolute right-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-md bg-white text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 motion-reduce:transition-none sm:grid dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 ${currentIndex >= CLASSES.length - visibleItems ? 'cursor-not-allowed opacity-40' : ''}`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -253,13 +226,13 @@ const ThinkInCode = () => {
       </div>
 
       {/* CTA: Ir al curso */}
-      <div className="text-center mt-10">
+      <div className="mt-8">
         <a
           href="/curso"
-          className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-md bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:ring-offset-slate-950"
         >
           Ir al curso completo
-          <ArrowRight className="w-5 h-5 ml-2" />
+          <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>
       {/* Modal: Contenido bloqueado */}
@@ -276,27 +249,27 @@ const ThinkInCode = () => {
             animate={{ scale: 1, y: 0, opacity: 1 }}
             exit={{ scale: 0.9, y: 20, opacity: 0 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/90 to-slate-800/90 p-6 text-white shadow-2xl "
+            className="relative w-full max-w-md rounded-lg bg-slate-900 p-6 text-white shadow-2xl ring-1 ring-slate-700"
             onClick={(e) => e.stopPropagation()}
         >
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-sm border border-white/20">
+            <div className="mb-4 inline-flex items-center gap-2 rounded bg-slate-800 px-2.5 py-1 font-mono text-xs text-slate-300 ring-1 ring-slate-700">
             <LockIcon />
             Contenido bloqueado
             </div>
-            <h3 className="text-xl font-semibold mb-2">Disponible próximamente</h3>
-            <p className="text-sm text-gray-200 leading-relaxed mb-6">
+            <h3 className="mb-2 text-xl font-semibold">Disponible próximamente</h3>
+            <p className="mb-6 text-sm leading-relaxed text-slate-300">
             Únete a mi comunidad para saber cuándo se liberan las nuevas clases y recibir material exclusivo.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-3">
             <button onClick={() => 
               window.location.href = "/comunidad"
-              } className="w-full sm:w-auto rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors duration-200 flex items-center justify-center gap-2">
+              } className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-medium text-slate-900 transition-colors hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none sm:w-auto">
                 <Group className="w-2 h-2 mr-2" />
                 Unirme a la comunidad
             </button>
             <button
                 onClick={() => setShowLockedModal(false)}
-                className="w-full sm:w-auto rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors duration-200"
+                className="inline-flex min-h-[44px] w-full items-center justify-center rounded-md px-4 text-sm font-medium text-slate-200 ring-1 ring-slate-700 transition-colors hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none sm:w-auto"
             >
                 Cerrar
             </button>
@@ -304,19 +277,7 @@ const ThinkInCode = () => {
         </motion.div>
         </motion.div>
     )}
-      {/* Estilos para ocultar scrollbar */}
-      <style jsx>{`
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
-    </motion.section>
+    </section>
   );
 };
 

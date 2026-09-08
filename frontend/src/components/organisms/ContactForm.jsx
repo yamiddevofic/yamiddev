@@ -26,7 +26,23 @@ const ENLACES = [
   { nombre: 'LinkedIn', href: 'https://www.linkedin.com/in/yamiddevofic', Icono: Linkedin },
 ];
 
-const ContactForm = () => {
+/** Icono en linea: es el unico de esta vista que no esta en atoms/icons. */
+const WhatsAppIcono = () => (
+  <svg className="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.896 9.83 9.83 0 0 1 2.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.549 4.14 1.595 5.945L0 24l6.305-1.654a11.9 11.9 0 0 0 5.683 1.448h.005c6.585 0 11.946-5.359 11.949-11.945a11.9 11.9 0 0 0-3.421-8.4" />
+  </svg>
+);
+
+const WHATSAPP =
+  'https://wa.me/573124673850?text=Hola%20Yamid,%20estoy%20interesado%20en%20tu%20trabajo';
+
+/**
+ * `variante` decide a quien le habla el bloque, no como se ve: el marcado y
+ * las clases son los mismos en las dos vertientes a proposito. A un reclutador
+ * le sirve el CV; a un duenno de negocio le sirve WhatsApp, y el CV le sobra.
+ */
+const ContactForm = ({ variante = 'empresas' }) => {
+  const esClientes = variante === 'clientes';
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -80,7 +96,9 @@ const ContactForm = () => {
           Contacto
         </h2>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-          Para oportunidades laborales o consultas técnicas. Respondo en menos de 24 horas.
+          {esClientes
+            ? 'Cuéntame qué necesita tu negocio, sin tecnicismos. Respondo en menos de 24 horas.'
+            : 'Para oportunidades laborales o consultas técnicas. Respondo en menos de 24 horas.'}
         </p>
       </div>
 
@@ -119,7 +137,9 @@ const ContactForm = () => {
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="subject" className={ETIQUETA}>Asunto</label>
+            <label htmlFor="subject" className={ETIQUETA}>
+              {esClientes ? 'Tu negocio o proyecto' : 'Asunto'}
+            </label>
             <input
               type="text"
               id="subject"
@@ -132,7 +152,9 @@ const ContactForm = () => {
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="message" className={ETIQUETA}>Mensaje</label>
+            <label htmlFor="message" className={ETIQUETA}>
+              {esClientes ? '¿Qué necesitas resolver?' : 'Mensaje'}
+            </label>
             <textarea
               id="message"
               name="message"
@@ -208,6 +230,19 @@ const ContactForm = () => {
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">También aquí</h3>
             <ul className="mt-3 space-y-1">
+              {esClientes && (
+                <li>
+                  <a
+                    href={WHATSAPP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-[44px] items-center gap-2.5 rounded-md px-2 text-sm text-slate-700 transition-colors hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 motion-reduce:transition-none dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white dark:focus-visible:ring-cyan-400"
+                  >
+                    <WhatsAppIcono />
+                    WhatsApp
+                  </a>
+                </li>
+              )}
               {ENLACES.map(({ nombre, href, Icono }) => (
                 <li key={nombre}>
                   <a
@@ -224,11 +259,12 @@ const ContactForm = () => {
             </ul>
           </div>
 
+          {!esClientes && (
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Currículum</h3>
             <a
               href="/docs/Yamid_Rodriguez-HV.pdf"
-              downloadPrueba Sistemas
+              download
               className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-md px-4 text-sm font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-cyan-400 dark:focus-visible:ring-offset-slate-950"
             >
               Descargar PDF
@@ -239,6 +275,7 @@ const ContactForm = () => {
               Actualizado 09/2026
             </p>
           </div>
+          )}
         </aside>
       </div>
     </section>

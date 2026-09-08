@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { startPreview, stopPreview, getHtml, BASE } from './server';
+import { Projects } from '@/lib/projectData';
 
 const RUTAS = ['/', '/clientes/', '/curso/', '/comunidad/', '/blog/', '/blog/bienvenida/', '/maintenance/'];
 
@@ -93,5 +94,61 @@ describe('metadatos SEO', () => {
   it('el sitio publica un sitemap', async () => {
     const res = await fetch(`${BASE}/sitemap-index.xml`);
     expect(res.status).toBe(200);
+  });
+});
+// Sustituye a tests/components/Carousel.test.tsx: la vertiente comercial ya no
+// pinta los proyectos con una isla de React, sino con una rejilla estatica, asi
+// que lo que hay que comprobar es el HTML servido y no el arbol de React.
+describe('vertiente comercial (/clientes/)', () => {
+  it('pinta una tarjeta por proyecto', async () => {
+    const { html } = await getHtml('/clientes/');
+    for (const p of Projects) {
+      expect(html).toContain(`>${p.title}<`);
+      expect(html).toContain(p.url);
+    }
+  });
+
+  it('todos los enlaces externos llevan rel="noopener noreferrer"', async () => {
+    const { html } = await getHtml('/clientes/');
+    const externos = html.match(/<a\b[^>]*target="_blank"[^>]*>/g) ?? [];
+    expect(externos.length).toBeGreaterThan(0);
+    for (const a of externos) {
+      expect(a).toContain('noopener');
+      expect(a).toContain('noreferrer');
+    }
+  });
+
+  it('todas las imagenes llevan texto alternativo', async () => {
+    const { html } = await getHtml('/clientes/');
+    const imgs = html.match(/<img\b[^>]*>/g) ?? [];
+    expect(imgs.length).toBeGreaterThan(0);
+    for (const img of imgs) expect(img).toMatch(/\salt="[^"]+"/);
+  });
+
+  // Criterios del skill agent-portfolio-clientes: un unico CTA primario y
+  // ningun mailto: expuesto, que los rastreadores cosechan.
+  it('declara exactamente un CTA primario', async () => {
+    const { html } = await getHtml('/clientes/');
+    expect(html.match(/data-cta="primary"/g) ?? []).toHaveLength(1);
+  });
+
+  it('no expone ningun mailto:', async () => {
+    const { html } = await getHtml('/clientes/');
+    expect(html).not.toContain('mailto:');
+  });
+
+  // Las dos vertientes son el mismo sitio: comparten el ancho de seccion y el
+  // titular. Si alguien reintroduce el titular en degradado o una seccion con
+  // otro ancho, esto lo detecta antes que el ojo.
+  it('usa el mismo ancho de seccion y titular que la home tecnica', async () => {
+    const { html } = await getHtml('/clientes/');
+    expect(html).toContain('w-[95%] md:w-[90%] mx-auto');
+    expect(html).toContain('text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight');
+    expect(html).not.toMatch(/bg-clip-text[^"]*text-transparent/);
+  });
+
+  it('ofrece WhatsApp como canal secundario', async () => {
+    const { html } = await getHtml('/clientes/');
+    expect(html).toContain('wa.me/573124673850');
   });
 });

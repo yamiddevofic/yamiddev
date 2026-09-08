@@ -1,0 +1,78 @@
+---
+/**
+ * Hero de la vertiente comercial.
+ *
+ * Mismo vocabulario visual que HeroEmpresas —seccion al 95/90 %, titular con
+ * clamp, linea mono de acento y un bloque destacado sobre fondo slate— porque
+ * las dos vertientes son el mismo sitio y el visitante cruza de una a otra.
+ * Lo que cambia es el lector: aqui no hay reclutador, hay alguien con un
+ * problema de negocio, asi que el copy habla de resultados y no de stack.
+ *
+ * Va en .astro y sin framer-motion a proposito. El hero anterior enviaba a
+ * cliente parallax, glows animados en bucle y una textura de grano en base64
+ * para un bloque que solo es texto; nada de eso ayudaba a leer el titular.
+ *
+ * data-cta="primary" marca el unico CTA primario de la pagina, que es lo que
+ * comprueba el criterio de aceptacion del skill de clientes.
+ */
+
+/** Los tres dolores van en lenguaje del cliente: ni una palabra tecnica. */
+const DOLORES = [
+  'Llevas el inventario en un cuaderno o en una hoja de calculo que ya nadie entiende.',
+  'Para saber cuanto vendiste hoy tienes que preguntar, contar o cerrar la tienda.',
+  'Los pedidos llegan por WhatsApp y se pierden entre las conversaciones.',
+];
+---
+
+<section id="inicio" class="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+  <div class="max-w-3xl">
+    <h1
+      class="text-[clamp(2rem,5.5vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-slate-900 dark:text-white"
+    >
+      Software que ordena tu negocio
+    </h1>
+
+    <p class="mt-3 font-mono text-[clamp(0.9rem,2.2vw,1.05rem)] text-cyan-700 dark:text-cyan-400">
+      Sistemas a la medida · Chitagá y Norte de Santander · También a distancia
+    </p>
+
+    <p class="mt-5 max-w-2xl text-[clamp(0.95rem,2vw,1.1rem)] leading-relaxed text-slate-600 dark:text-slate-300">
+      Construyo herramientas para negocios que ya no caben en el Excel. Inventario, ventas y
+      pedidos en un solo sitio, hechos a la medida de cómo trabajas hoy y no al revés. Tú me
+      cuentas el problema; yo me encargo de que la herramienta lo resuelva y siga funcionando.
+    </p>
+
+    <!-- Mismo bloque destacado que el "Ahora" de la vertiente tecnica, con otra
+         funcion: que el visitante se reconozca antes de seguir leyendo. -->
+    <div class="mt-8 rounded-lg bg-slate-100 p-5 ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
+      <h2 class="text-sm font-semibold text-slate-900 dark:text-white">¿Te suena alguna?</h2>
+      <ul class="mt-3 space-y-1.5">
+        {DOLORES.map((dolor) => (
+          <li class="flex gap-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+            <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-600 dark:bg-cyan-400" aria-hidden="true"></span>
+            {dolor}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-3 text-sm font-medium text-slate-900 dark:text-white">
+        Si te pasa alguna, esto se puede resolver.
+      </p>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="#contacto"
+        data-cta="primary"
+        class="inline-flex min-h-[44px] items-center rounded-md bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:ring-offset-slate-950"
+      >
+        Cuéntame tu proyecto
+      </a>
+      <a
+        href="#proyectos"
+        class="inline-flex min-h-[44px] items-center rounded-md px-5 text-sm font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950"
+      >
+        Ver trabajos
+      </a>
+    </div>
+  </div>
+</section>

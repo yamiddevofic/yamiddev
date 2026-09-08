@@ -19,6 +19,16 @@ export default defineConfig({
     sitemap()
   ],
   vite: {
+    // react-dom/client es CommonJS en React 18 y necesita que Vite lo
+    // pre-empaquete a ESM. Como react y react-dom no estan declarados en
+    // package.json (llegan como dependencias transitivas de @astrojs/react),
+    // el descubrimiento automatico no los alcanzaba: en dev se servia el CJS
+    // crudo y el import de createRoot fallaba, dejando las islas sin hidratar.
+    // El sitio se veia pero nada respondia. El build de produccion no se veia
+    // afectado porque resuelve por otra via.
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-dom/client'],
+    },
     server: {
       watch: {
         usePolling: true,

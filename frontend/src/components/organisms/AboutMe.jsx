@@ -50,7 +50,7 @@ const ModernAboutMe = () => {
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200/60 dark:ring-slate-800">
         <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[640px] bg-slate-200 dark:bg-slate-800">
           <img
-            src="./dev.jpg"
+            src="/dev.jpg"
             alt="Yamid Horacio Rodríguez"
             width={715}
             height={731}

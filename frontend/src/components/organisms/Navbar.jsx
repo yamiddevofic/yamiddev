@@ -37,25 +37,12 @@ const PAGINAS = [
 ];
 
 // Colores por sección (activo y hover)
-const SECTION_ACTIVE = {
-  home: "text-cyan-600 dark:text-cyan-400",
-  "about-me": "text-cyan-600 dark:text-cyan-400",
-  projects: "text-cyan-600 dark:text-cyan-400",
-  course: "text-cyan-600 dark:text-cyan-400",
-  blog: "text-cyan-600 dark:text-cyan-400",
-  technology: "text-cyan-600 dark:text-cyan-400",
-  contact: "text-cyan-600 dark:text-cyan-400",
-};
+/** Mismo acento para toda la navegacion: antes eran dos mapas que repetian el
+ *  mismo valor por seccion, con los ids de la home anterior. */
+const ENLACE_ACTIVO = 'text-cyan-700 dark:text-cyan-400';
+const ENLACE_BASE =
+  'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white';
 
-const SECTION_HOVER = {
-  home: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  "about-me": "hover:text-cyan-600 dark:hover:text-cyan-400",
-  projects: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  course: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  blog: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  technology: "hover:text-cyan-600 dark:hover:text-cyan-400",
-  contact: "hover:text-cyan-600 dark:hover:text-cyan-400",
-};
 
 const navVariants = {
   hidden: { y: -100, opacity: 0 },
@@ -163,7 +150,7 @@ const Navbar = ({ isMain = true }) => {
         variants={navVariants}
         initial={reduced ? {} : "hidden"}
         animate={reduced ? {} : "visible"}
-        className="fixed top-0 z-50 w-full border border-gray-200/50 dark:border-gray-700/50 bg-white/70 dark:bg-slate-950/60 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 shadow-lg transition-colors duration-300"
+        className="fixed top-0 z-50 w-full border-b border-slate-200/70 bg-white/80 backdrop-blur-md transition-colors duration-300 supports-[backdrop-filter]:bg-white/60 motion-reduce:transition-none dark:border-slate-800/70 dark:bg-slate-950/80 dark:supports-[backdrop-filter]:bg-slate-950/60"
       >
         <a
           href="#home"
@@ -195,14 +182,9 @@ const Navbar = ({ isMain = true }) => {
                   whileHover={reduced ? {} : "hover"}
                   onClick={(e) => handleLinkClick(e, item.id, item.path)}
                   aria-current={active === item.id ? "page" : undefined}
-                  className={`text-lg font-medium transition-colors cursor-pointer ${
-                    active === item.id
-                      ? SECTION_ACTIVE[item.id] || "text-cyan-600 dark:text-cyan-400"
-                      : "text-gray-900 dark:text-gray-300"
-                  } ${
-                    SECTION_HOVER[item.id] ||
-                    "hover:text-cyan-600 dark:hover:text-cyan-400"
-                  }`}
+                  className={`inline-flex min-h-[44px] items-center rounded-md px-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 motion-reduce:transition-none dark:focus-visible:ring-cyan-400 ${
+                      active === item.id ? ENLACE_ACTIVO : ENLACE_BASE
+                    }`}
                 >
                   {item.title}
                 </motion.a>
@@ -330,10 +312,7 @@ const Navbar = ({ isMain = true }) => {
                           <span
                             className={[
                               "text-[13px] font-medium leading-tight",
-                              isActive
-                                ? SECTION_ACTIVE[item.id] ||
-                                  "text-cyan-600 dark:text-cyan-400"
-                                : "text-gray-900 dark:text-gray-200",
+                              isActive ? ENLACE_ACTIVO : ENLACE_BASE,
                             ].join(" ")}
                           >
                             {item.title}

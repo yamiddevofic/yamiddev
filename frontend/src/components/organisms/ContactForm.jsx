@@ -227,7 +227,7 @@ const ContactForm = () => {
           <div>
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Currículum</h3>
             <a
-              href="/docs/yamid-rodriguez-cv-2026-09.pdf"
+              href="/docs/Yamid_Rodriguez-HV.pdf"
               download
               className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-md px-4 text-sm font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-cyan-400 dark:focus-visible:ring-offset-slate-950"
             >

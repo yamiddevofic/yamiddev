@@ -154,7 +154,10 @@ if (pageType === 'article' && articleDetails) {
 ---
 
 <!doctype html>
-<html lang={lang} class="dark">
+<!-- El fondo va tambien en <html>, no solo en <body>. El html no tenia color
+     propio, asi que cualquier zona que quedara fuera del body dejaba ver el
+     lienzo del navegador: el espacio oscuro que aparecia bajo el pie. -->
+<html lang={lang} class="dark bg-white dark:bg-slate-950">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -200,7 +203,7 @@ if (pageType === 'article' && articleDetails) {
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 </head>
 <body
-    class="flex min-h-[100vh] flex-col bg-white text-slate-800 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-200 motion-reduce:transition-none"
+    class="flex min-h-[100vh] flex-col transition-colors duration-300 motion-reduce:transition-none"
 >
     {header && <Navbar client:load isMain={isMain}/>}
     <!-- La cabecera es fixed y no ocupa espacio en el flujo, asi que el main

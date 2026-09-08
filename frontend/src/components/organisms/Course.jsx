@@ -153,7 +153,7 @@ export const Course = () => {
     whileInView="visible"
     transition={{ delay: 0.2 }}
     variants={fadeInUp}
-    className="w-[100%] mx-auto my-0 xs:px-5 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-2 lg:px-2 xl:px-2 xs:pt-5 ls:pt-5 ls:pb-0 ms:pt-5 ms:pb-0 ss:pt-5 ss:pb-0 s:pt-5 s:pb-0 sm:pt-5 sm:pb-0 md:pt-5 md:pb-5 lg:pt-5 lg:pb-5 xl:pt-5 xl:pb-5 text-gray-900 dark:text-gray-100 rounded grid"
+    className="w-[100%] mx-auto my-0 flex-grow xs:px-5 ls:px-2 ms:px-2 ss:px-2 s:px-2 sm:px-2 md:px-2 lg:px-2 xl:px-2 xs:pt-5 ls:pt-5 ls:pb-0 ms:pt-5 ms:pb-0 ss:pt-5 ss:pb-0 s:pt-5 s:pb-0 sm:pt-5 sm:pb-0 md:pt-5 md:pb-5 lg:pt-5 lg:pb-5 xl:pt-5 xl:pb-5 text-gray-900 dark:text-gray-100 rounded grid"
     >
       {/* Fondo decorativo (siempre detrás) */}
       <div aria-hidden className="pointer-events-none w-full  overflow-hidden absolute inset-0 z-0 h-[125%] ">

@@ -1,16 +1,7 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { HomeFilled } from "../atoms/icons/HomeFilled";
-import { AboutMe } from "../atoms/icons/AboutMe";
-import { Contact } from "../atoms/icons/Contact";
-import { Portfolio } from "../atoms/icons/Portfolio";
-import { Computer } from "../atoms/icons/Computer";
-import { Blog } from "../atoms/icons/Blog";
-import { Course } from "../atoms/icons/Course";
-import { Button } from "@/components/ui/button"; // shadcn/ui
 
 /**
  * Navegacion del sitio.
@@ -21,28 +12,30 @@ import { Button } from "@/components/ui/button"; // shadcn/ui
  * Las secciones solo se listan en la home, porque son sus anclas y desde otra
  * pagina no existirian. Las paginas se listan siempre: antes la navegacion
  * entera se ocultaba fuera de la home y no habia forma de volver.
+ *
+ * El menu movil es una hoja tipografica a ancho completo bajo la cabecera:
+ * sin rejilla de tarjetas ni iconos, la hamburguesa se transforma en equis
+ * en el propio boton y el indice numerado va en mono, como el resto de
+ * metaetiquetas del sitio.
  */
 const SECCIONES_HOME = [
-  { title: "Inicio", id: "inicio", icon: HomeFilled },
-  { title: "Proyectos", id: "proyectos", icon: Portfolio },
-  { title: "Trayectoria", id: "trayectoria", icon: AboutMe },
-  { title: "Contacto", id: "contacto", icon: Contact },
+  { title: "Inicio", id: "inicio" },
+  { title: "Proyectos", id: "proyectos" },
+  { title: "Trayectoria", id: "trayectoria" },
+  { title: "Contacto", id: "contacto" },
 ];
 
 const PAGINAS = [
-  { title: "Servicios", id: "servicios", icon: Computer, path: "/clientes" },
-  { title: "Curso", id: "curso", icon: Course, path: "/curso" },
-  { title: "Blog", id: "blog", icon: Blog, path: "/blog" },
-  { title: "Comunidad", id: "comunidad", icon: AboutMe, path: "/comunidad" },
+  { title: "Servicios", id: "servicios", path: "/clientes" },
+  { title: "Curso", id: "curso", path: "/curso" },
+  { title: "Blog", id: "blog", path: "/blog" },
+  { title: "Comunidad", id: "comunidad", path: "/comunidad" },
 ];
 
-// Colores por sección (activo y hover)
-/** Mismo acento para toda la navegacion: antes eran dos mapas que repetian el
- *  mismo valor por seccion, con los ids de la home anterior. */
+/** Mismo acento para toda la navegacion, en ambas vertientes. */
 const ENLACE_ACTIVO = 'text-cyan-700 dark:text-cyan-400';
 const ENLACE_BASE =
   'text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white';
-
 
 const navVariants = {
   hidden: { y: -100, opacity: 0 },
@@ -54,30 +47,28 @@ const linkVariants = {
 };
 
 const panelVariants = {
-  hidden: { opacity: 0, scale: 0.96, y: 10 },
+  hidden: { opacity: 0, y: -12 },
   visible: {
     opacity: 1,
-    scale: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 260, damping: 22 },
+    transition: { duration: 0.22, ease: [0.16, 1, 0.3, 1] },
   },
-  exit: { opacity: 0, scale: 0.98, y: 6, transition: { duration: 0.15 } },
+  exit: { opacity: 0, y: -8, transition: { duration: 0.15, ease: "easeIn" } },
 };
 
 const Navbar = ({ isMain = true }) => {
   // Fuera de la home las anclas no existen, asi que se sustituyen por un
-  // enlace de vuelta. Antes se ocultaba la navegacion entera y no habia salida.
+  // enlace de vuelta.
   const LINKS = isMain
     ? [...SECCIONES_HOME, ...PAGINAS]
-    : [{ title: "Inicio", id: "inicio", icon: HomeFilled, path: "/" }, ...PAGINAS];
+    : [{ title: "Inicio", id: "inicio", path: "/" }, ...PAGINAS];
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState("home");
   const reduced = useReducedMotion();
-  const drawerRef = useRef(null);
 
-  // Smooth scroll + cierre menú (solo aplica en home)
+  // Smooth scroll + cierre menu (solo aplica en home)
   const handleLinkClick = useCallback((e, id, path) => {
-    // Enlace a otra página: navegación normal del navegador.
+    // Enlace a otra pagina: navegacion normal del navegador.
     if (path) {
       setIsOpen(false);
       return;
@@ -113,7 +104,7 @@ const Navbar = ({ isMain = true }) => {
     return () => obs.disconnect();
   }, [isMain]);
 
-  // Bloqueo de scroll cuando el panel está abierto + Escape para cerrar
+  // Bloqueo de scroll cuando el panel esta abierto + Escape para cerrar
   useEffect(() => {
     if (typeof document === "undefined") return;
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -148,7 +139,7 @@ const Navbar = ({ isMain = true }) => {
           </motion.a>
 
           <div className="flex items-center gap-4">
-            {/* Nav desktop (solo en home) */}
+            {/* Nav desktop */}
             <nav
               aria-label="Principal"
               className="gap-6 hidden lg:flex xl:flex"
@@ -170,118 +161,102 @@ const Navbar = ({ isMain = true }) => {
               ))}
             </nav>
 
-            {/* Controles móviles:
-                - En home: botón de menú (abre panel moderno)
-                - En otras pantallas: SOLO botón Inicio */}
-            <Button
-              variant="outline"
-              size="icon"
+            {/* Hamburguesa animada (hasta lg: la desktop nav entra en lg) */}
+            <motion.button
+              type="button"
               onClick={() => setIsOpen((prev) => !prev)}
-              className="md:hidden min-h-[44px] min-w-[44px]"
-              aria-label={`${isOpen ? "Cerrar" : "Abrir"} menú`}
+              whileHover={reduced ? {} : { scale: 1.05 }}
+              whileTap={reduced ? {} : { scale: 0.95 }}
+              className="relative z-50 flex h-11 w-11 items-center justify-center rounded-full text-slate-700 transition-colors hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 motion-reduce:transition-none dark:text-slate-200 dark:hover:bg-white/10 dark:focus-visible:ring-cyan-400 lg:hidden"
+              aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={isOpen}
               aria-controls="mobile-panel"
-              title={`${isOpen ? "Cerrar" : "Abrir"} menú`}
+              title={isOpen ? "Cerrar menú" : "Abrir menú"}
             >
-              {isOpen ? <X /> : <Menu />}
-            </Button>
+              <span className="relative block h-5 w-6" aria-hidden="true">
+                <motion.span
+                  className="absolute left-0 top-0 block h-0.5 w-6 rounded-full bg-current"
+                  animate={isOpen ? { y: 9, rotate: 45 } : { y: 0, rotate: 0 }}
+                  transition={{ duration: reduced ? 0 : 0.25, ease: "easeOut" }}
+                />
+                <motion.span
+                  className="absolute left-0 top-[9px] block h-0.5 w-6 rounded-full bg-current"
+                  animate={{ opacity: isOpen ? 0 : 1 }}
+                  transition={{ duration: reduced ? 0 : 0.15 }}
+                />
+                <motion.span
+                  className="absolute left-0 top-[18px] block h-0.5 w-6 rounded-full bg-current"
+                  animate={isOpen ? { y: -9, rotate: -45 } : { y: 0, rotate: 0 }}
+                  transition={{ duration: reduced ? 0 : 0.25, ease: "easeOut" }}
+                />
+              </span>
+            </motion.button>
           </div>
         </div>
       </motion.header>
 
-      {/* Overlay + Panel móvil (solo en home) */}
+      {/* Overlay + hoja del menu movil */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Overlay */}
             <motion.div
               initial={reduced ? {} : { opacity: 0 }}
               animate={reduced ? {} : { opacity: 1 }}
               exit={reduced ? {} : { opacity: 0 }}
-              className="fixed inset-0 z-40 mt-12 bg-black/50 backdrop-blur-sm"
+              className="fixed inset-0 z-40 bg-slate-950/70 backdrop-blur-sm"
               onClick={() => setIsOpen(false)}
               aria-hidden="true"
             />
-            {/* Panel centrado, compacto y elegante */}
             <motion.div
               id="mobile-panel"
               role="dialog"
               aria-modal="true"
-              aria-label="Menú móvil"
+              aria-label="Menú de navegación"
               variants={reduced ? {} : panelVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="fixed z-50 inset-x-0 top-16 mx-auto w-[92%] max-w-sm rounded-2xl border border-gray-200/60 dark:border-gray-700/60 bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-              ref={drawerRef}
+              className="fixed inset-x-0 top-0 z-40 border-b border-white/10 bg-slate-950/95 pb-5 pt-[4.75rem] backdrop-blur-xl supports-[backdrop-filter]:bg-slate-950/85"
             >
-              {/* Header del panel */}
-              <div className="flex items-center justify-between px-4 pt-4 pb-2">
-                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
-                  Navegación
-                </span>
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => setIsOpen(false)}
-                    className="w-9 h-9"
-                    aria-label="Cerrar menú"
-                    title="Cerrar"
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* Grid de acciones (compacto, bonito, responsive) */}
-              <div className="px-4 pb-4">
-                <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 ">
+              <nav aria-label="Menú móvil">
+                <ul className="divide-y divide-white/10 px-4">
                   {LINKS.map((item, i) => {
                     const isActive = active === item.id;
                     return (
                       <motion.li
                         key={item.id}
-                        initial={reduced ? {} : { opacity: 0, y: 8 }}
+                        initial={reduced ? {} : { opacity: 0, y: 6 }}
                         animate={reduced ? {} : { opacity: 1, y: 0 }}
-                        transition={{ delay: reduced ? 0 : 0.02 * i }}
+                        transition={{
+                          delay: reduced ? 0 : 0.03 * i,
+                          duration: 0.2,
+                        }}
                       >
                         <a
                           href={item.path ?? `#${item.id}`}
                           onClick={(e) => handleLinkClick(e, item.id, item.path)}
-                          className={[
-                            "group rounded-xl border p-3 flex flex-col items-center justify-center text-center",
-                            "bg-white/80 dark:bg-slate-950/50 border-gray-200/60 dark:border-gray-700/60",
-                            "hover:border-cyan-400/70 hover:bg-cyan-50/60 dark:hover:bg-cyan-400/10",
-                            "transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 ",
-                            isActive ? "border-cyan-400/70" : "",
-                          ].join(" ")}
                           aria-current={isActive ? "page" : undefined}
+                          className={[
+                            "flex min-h-[48px] items-center justify-between gap-4 px-2 text-[0.95rem] font-medium transition-colors",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transition-none",
+                            isActive
+                              ? "text-cyan-700 dark:text-cyan-400"
+                              : "text-slate-700 hover:text-slate-950 dark:text-slate-200 dark:hover:text-white",
+                          ].join(" ")}
                         >
+                          <span>{item.title}</span>
                           <span
-                            className={[
-                              "mb-2 grid place-items-center",
-                              "size-10",
-
-                            ].join(" ")}
+                            aria-hidden="true"
+                            className="font-mono text-[0.7rem] text-slate-400 dark:text-slate-600"
                           >
-                            {item.icon({ size: 20 })}
-                          </span>
-                          <span
-                            className={[
-                              "text-[13px] font-medium leading-tight",
-                              isActive ? ENLACE_ACTIVO : ENLACE_BASE,
-                            ].join(" ")}
-                          >
-                            {item.title}
+                            {String(i + 1).padStart(2, "0")}
                           </span>
                         </a>
                       </motion.li>
                     );
                   })}
                 </ul>
-              </div>
+              </nav>
             </motion.div>
           </>
         )}

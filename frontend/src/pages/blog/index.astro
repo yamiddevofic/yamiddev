@@ -15,10 +15,10 @@ const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || 
 >
   <section class="mx-auto w-[90%] max-w-6xl pb-20 sm:pb-24">
     <div class="relative left-1/2 isolate flex min-h-[21rem] w-screen -translate-x-1/2 items-center overflow-hidden py-16 sm:min-h-[25rem] sm:py-24">
-      <img src="/blog.jpg" alt="Cuaderno y notas de estudio" class="absolute inset-0 -z-20 h-full w-full object-cover object-center" width="1200" height="630" />
-      <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-950/95 via-slate-950/70 to-cyan-950/75" aria-hidden="true"></div>
-      <div class="absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" aria-hidden="true"></div>
-      <div class="relative mx-auto w-[90%] max-w-6xl text-white">
+      <img src="/blog.jpg" alt="Cuaderno y notas de estudio" class="absolute inset-0 z-0 h-full w-full object-cover object-center" width="1200" height="630" />
+      <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-950/95 via-slate-950/70 to-cyan-950/75" aria-hidden="true"></div>
+      <div class="absolute -right-24 -top-24 z-0 h-72 w-72 rounded-full bg-cyan-400/20 blur-3xl" aria-hidden="true"></div>
+      <div class="relative z-10 mx-auto w-[90%] max-w-6xl text-white">
         <p class="mb-4 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-cyan-300 sm:mb-5 sm:text-xs sm:tracking-[0.18em]">
           <span class="h-px w-8 bg-cyan-300" aria-hidden="true"></span>
           Notas y decisiones

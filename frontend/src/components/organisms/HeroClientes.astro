@@ -22,6 +22,9 @@ const DOLORES = [
   'Para saber cuanto vendiste hoy tienes que preguntar, contar o cerrar la tienda.',
   'Los pedidos llegan por WhatsApp y se pierden entre las conversaciones.',
 ];
+
+const TITULO = 'Digitaliza tu negocio sin complicaciones';
+const LETRAS = Array.from(TITULO);
 ---
 
 <section id="inicio" class="relative isolate w-full overflow-hidden py-20 sm:py-20 lg:py-28">
@@ -36,8 +39,15 @@ const DOLORES = [
 
     <h1
       class="max-w-3xl text-[clamp(2.7rem,10.5vw,4.75rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-white drop-shadow-sm sm:text-[clamp(2.4rem,6vw,4.75rem)]"
+      aria-label={TITULO}
     >
-      Digitaliza tu negocio sin complicaciones
+      <span aria-hidden="true">
+        {LETRAS.map((letra, i) =>
+          letra === ' ' ? ' ' : (
+            <span class="hero-letter" style={`--i:${i}`}>{letra}</span>
+          )
+        )}
+      </span>
     </h1>
 
     <p class="mt-8 max-w-xl text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-slate-200">

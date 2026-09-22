@@ -9,8 +9,11 @@ import { AHORA } from '../../lib/empresasData';
  * esas frases no aportan información y el lector las descuenta.
  *
  * Va en .astro y no en React porque no tiene estado ni eventos: no hay razón
- * para enviar JavaScript por un bloque de texto.
+ * para enviar JavaScript por un bloque de texto. La animación de tecleo
+ * tampoco lo necesita: cada letra es un span con retardo en el build.
  */
+const TITULO = 'Yamid Horacio Rodríguez';
+const LETRAS = Array.from(TITULO);
 ---
 
 <section
@@ -28,8 +31,15 @@ import { AHORA } from '../../lib/empresasData';
 
       <h1
         class="max-w-2xl text-[clamp(2.8rem,11vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-white drop-shadow-sm sm:text-[clamp(2.5rem,7vw,5.5rem)]"
+        aria-label={TITULO}
       >
-        Yamid Horacio Rodríguez
+        <span aria-hidden="true">
+          {LETRAS.map((letra, i) =>
+            letra === ' ' ? ' ' : (
+              <span class="hero-letter" style={`--i:${i}`}>{letra}</span>
+            )
+          )}
+        </span>
       </h1>
 
       <p class="mt-8 max-w-xl text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-slate-200">

@@ -16,6 +16,7 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const { title, description, category, image, date } = post.data;
+const LETRAS = Array.from(title);
 ---
 
 <MainLayout
@@ -32,7 +33,15 @@ const { title, description, category, image, date } = post.data;
         <time class="date-entry" datetime={date.toISOString()}>
           {format(date, 'dd.MM.yyyy', { locale: es })}
         </time>
-        <h1 class="bujo-title">{title}</h1>
+        <h1 class="bujo-title" aria-label={title}>
+          <span aria-hidden="true">
+            {LETRAS.map((letra, i) =>
+              letra === ' ' ? ' ' : (
+                <span class="hero-letter" style={`--i:${i}`}>{letra}</span>
+              )
+            )}
+          </span>
+        </h1>
 
         {category && (
           <p class="bujo-category">

@@ -1,129 +1,88 @@
 ---
-// imports
 import MainLayout from '../layouts/MainLayout.astro';
-import Hero from '../components/organisms/Hero';
-import { motion } from 'framer-motion';
-import { Button } from '../components/molecules/Buttons';
-import Rocket from '../components/atoms/icons/Rocket';
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-  }
-};
 
 const TITULO = 'Comunidad Yamid Dev';
 const LETRAS = Array.from(TITULO);
 ---
 
 <MainLayout title="Comunidad Yamid Dev | Desarrollador Full Stack" isMain={false}>
-  <section class="relative bg-slate-50 dark:bg-slate-950 transition-colors duration-300 overflow-hidden">
-    
-    <!-- Sophisticated, modern ambient underlay -->
-    <div class="absolute inset-x-0 top-0 z-0 h-[140vh] pointer-events-none" aria-hidden="true">
-      <img src="/blog.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-35" width="1200" height="630" />
-      <div class="absolute inset-0 bg-white/65 dark:bg-slate-950/75"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-white/20 to-transparent dark:from-[#080d28]/30 dark:via-[#020617]/10 dark:to-transparent"></div>
-      <div class="absolute inset-0 opacity-[0.12] dark:opacity-[0.25] bg-[radial-gradient(#3b82f6_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
-    </div>
+<section id="home" class="relative isolate w-full overflow-hidden pt-20 pb-44 sm:pt-20 sm:pb-44 lg:pt-28 lg:pb-40">
+  <img src="/blog.jpg" alt="" aria-hidden="true" class="absolute inset-0 z-0 h-full w-full object-cover" width="1200" height="630" />
+  <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-950/95 via-slate-950/92 to-cyan-950/95" aria-hidden="true"></div>
 
-    <!-- Main Hero Section -->
-    <div class="relative z-10">
-      <Hero isHome={false} client:load>
-        <div class="flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto px-4">
-          
-          <!-- Category Badge -->
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/80 dark:bg-blue-950/40 border border-blue-100/50 dark:border-blue-900/50 shadow-sm cursor-default"
-          >
-            <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-              Comunidad Oficial de Desarrolladores
+    <div class="relative z-10 mx-auto grid w-[90%] max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">
+      <div class="max-w-3xl text-center lg:text-left">
+        <p class="mb-6 flex items-center justify-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-cyan-200 sm:text-xs sm:tracking-[0.18em] lg:justify-start">
+          <span class="hidden h-px w-8 bg-cyan-300 lg:block" aria-hidden="true"></span>
+          Comunidad de desarrolladores
+        </p>
+
+        <img
+          src="/yamiddev.jpeg"
+          alt="Retrato de Yamid Dev"
+          width="715"
+          height="731"
+          class="mx-auto mb-6 h-24 w-24 rounded-full border border-white/20 object-cover shadow-lg sm:h-28 sm:w-28 lg:hidden"
+        />
+
+        <h1
+          class="max-w-2xl text-[clamp(2.8rem,11vw,5.5rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-white drop-shadow-sm sm:text-[clamp(2.5rem,7vw,5.5rem)]"
+          aria-label={TITULO}
+        >
+          <span aria-hidden="true">
+            {LETRAS.slice(0, 9).map((letra, i) => (
+              <span class="hero-letter" style={`--i:${i}`}>{letra}</span>
+            ))}
+            {' '}
+            <br class="sm:hidden" />
+            <span class="bg-gradient-to-r from-cyan-300 via-blue-400 to-indigo-400 bg-clip-text text-transparent">
+              {LETRAS.slice(10).map((letra, i) =>
+                letra === ' ' ? ' ' : (
+                  <span class="hero-letter" style={`--i:${i + 10}`}>{letra}</span>
+                )
+              )}
             </span>
-          </motion.div>
+          </span>
+        </h1>
 
-          <!-- Main Title -->
-          <motion.h1
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="text-4xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white"
-            aria-label={TITULO}
-          >
-            <span aria-hidden="true">
-              {LETRAS.slice(0, 9).map((letra, i) => (
-                <span class="hero-letter" style={`--i:${i}`}>{letra}</span>
-              ))}
-              {' '}
-              <br class="sm:hidden" />
-              <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                {LETRAS.slice(10).map((letra, i) =>
-                  letra === ' ' ? ' ' : (
-                    <span class="hero-letter" style={`--i:${i + 10}`}>{letra}</span>
-                  )
-                )}
-              </span>
-            </span>
-          </motion.h1>
+        <p class="mt-7 max-w-xl text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-slate-200">
+          Aprende, comparte y crea proyectos junto a otros desarrolladores.
+        </p>
 
-          <!-- Description / Subtitle -->
-          <motion.p
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-6 text-slate-600 dark:text-slate-400 font-light text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl"
-          >
-            Únete a un espacio exclusivo diseñado para programadores, creadores y apasionados de la tecnología. Conecta con otros expertos, comparte conocimientos y acelera tu crecimiento profesional.
-          </motion.p>
+        <p class="mt-5 text-sm text-slate-400">
+          <span class="font-semibold text-white">+50</span> miembros
+          <span class="mx-2 text-slate-600" aria-hidden="true">/</span>
+          Gratis
+          <span class="mx-2 text-slate-600" aria-hidden="true">/</span>
+          Soporte diario
+        </p>
 
-          <!-- Community Stats Badges -->
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400"
+        <div class="mt-8 mb-8 flex flex-wrap justify-center gap-3 lg:justify-start">
+          <a
+            href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
+            class="inline-flex min-h-[48px] items-center justify-center rounded-full bg-emerald-500 px-7 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transition-none"
           >
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
-              <span class="font-bold text-slate-800 dark:text-slate-200">500+</span> Miembros Activos
-            </div>
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
-              <span class="font-bold text-slate-800 dark:text-slate-200">100%</span> Gratis
-            </div>
-            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/60 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/50">
-              <span class="font-bold text-emerald-600 dark:text-emerald-400">●</span> Soporte Diario
-            </div>
-          </motion.div>
-
-          <!-- CTA Buttons -->
-          <motion.div
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+            Únete gratis ahora
+          </a>
+          <a
+            href="#benefits"
+            class="inline-flex min-h-[44px] items-center justify-center px-4 text-sm font-medium text-slate-300 underline decoration-white/30 underline-offset-8 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transition-none"
           >
-            <Button
-              icon={Rocket}
-              href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
-              isMain={false}
-              isLink={true}
-              className="w-full sm:w-auto group relative overflow-hidden bg-emerald-600 hover:bg-emerald-500 dark:bg-emerald-600 dark:hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20 transition-all duration-300"
-            >
-              Únete gratis ahora
-            </Button>
-            <a
-              href="#benefits"
-              class="w-full sm:w-auto px-8 py-4 rounded-full border border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md text-slate-700 dark:text-slate-300 font-medium text-[1rem] hover:bg-slate-100/50 dark:hover:bg-slate-900/50 text-center transition-all duration-300"
-            >
-              Explorar beneficios
-            </a>
-          </motion.div>
+            Explorar beneficios
+          </a>
         </div>
-      </Hero>
+      </div>
+
+      <aside class="relative mx-auto hidden w-full max-w-[22rem] items-center justify-center lg:flex" aria-label="Retrato de Yamid Dev">
+        <div class="absolute inset-2 rounded-full bg-cyan-500/10 blur-3xl" aria-hidden="true"></div>
+        <img
+          src="/yamiddev.jpeg"
+          alt="Retrato de Yamid Dev"
+          width="715"
+          height="731"
+          class="relative aspect-square w-full rounded-full border border-white/20 object-cover shadow-2xl"
+        />
+      </aside>
     </div>
 
     <!-- Section: Benefits & Core Features -->

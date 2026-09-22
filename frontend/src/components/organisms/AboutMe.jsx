@@ -50,10 +50,10 @@ const ModernAboutMe = () => {
       <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(16rem,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-16">
         <div className="relative aspect-square w-full max-w-xl bg-slate-200 dark:bg-slate-800">
           <img
-            src="/dev.jpg"
+            src="/yamiddev.jpeg"
             alt="Yamid Horacio Rodríguez"
-            width={715}
-            height={731}
+            width={640}
+            height={640}
             loading="lazy"
             decoding="async"
             className="absolute inset-0 h-full w-full object-cover object-top"

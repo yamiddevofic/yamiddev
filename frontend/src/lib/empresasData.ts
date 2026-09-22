@@ -62,7 +62,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Contenido, plataforma y despliegue',
     estado: 'Publicado',
     stack: ['Astro', 'React', 'Tailwind'],
-    image: ['/images/thinkincode.png', '/images/thinkincode.png'],
+    image: ['/images/thinkincode-actual.png', '/images/thinkincode-actual.png'],
     demo: 'https://www.yamid.dev/curso/',
     repo: 'https://github.com/yamiddevofic/Think_In_Code',
     writeup: null,

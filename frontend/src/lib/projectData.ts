@@ -34,7 +34,7 @@ export const Projects = [
     title: 'Think In Code',
     description: 'Think In Code es un curso de desarrollo web diseñado para aprender las bases de la programación para principiantes',
     techStack: ['React', 'Tailwind', 'Astro'],
-    image: ['/images/thinkincode.png', '/images/thinkincode.png'],
+    image: ['/images/thinkincode-actual.png', '/images/thinkincode-actual.png'],
     imageSize: { width: 1366, height: 768 },
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/Think_In_Code'

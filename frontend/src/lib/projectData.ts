@@ -5,7 +5,7 @@ export const Projects = [
     description: 'Portafolio es un sitio web donde puedes conocer sobre mi experiencia, habilidades, proyectos de desarrollo, y contactarme.',
     techStack: ['Astro', 'React', 'Tailwind'],
     image: ['/images/portfolio.jpg', '/images/portfolio.png'],
-    imageSize: { width: 1365, height: 592 },
+    imageSize: { width: 1366, height: 768 },
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/yamiddev'
   },

@@ -109,7 +109,7 @@ const ThinkInCode = () => {
   };
 
   return (
-    <section id="course" className="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+    <section id="course" className="mx-auto w-[90%] max-w-6xl py-20 sm:py-24">
       <TitleSection
         title="Curso"
         lede="Pensar en código: un curso práctico para aprender a pensar como programador."
@@ -141,7 +141,7 @@ const ThinkInCode = () => {
             <div
               key={cls.id}
               ref={idx === 0 ? firstItemRef : undefined}
-              className="group relative w-[92%] xs:w-[90%] sm:w-[85%] flex-none snap-start overflow-hidden rounded-lg bg-white ring-1 ring-slate-200 transition-shadow hover:shadow-md motion-reduce:transition-none dark:bg-slate-900 dark:ring-slate-800"
+              className="group relative w-[92%] xs:w-[90%] sm:w-[85%] flex-none snap-start overflow-hidden border-t border-slate-200 pt-5 dark:border-slate-800"
               style={visibleItems > 1 ? { flex: `0 0 calc((100% - ${(visibleItems - 1) * GAP_PX}px) / ${visibleItems})` } : undefined}
             >
               {/* Container de la imagen */}
@@ -203,8 +203,8 @@ const ThinkInCode = () => {
                 </div>
               </div>
               {/* Título pequeño debajo del elemento */}
-              <div className="p-4">
-                <h3 className="line-clamp-2 text-sm font-semibold text-slate-900 dark:text-white">{cls.title}</h3>
+              <div className="pt-4">
+                <h3 className="line-clamp-2 text-sm font-semibold tracking-tight text-slate-950 dark:text-white">{cls.title}</h3>
               </div>
             </div>
           ))}

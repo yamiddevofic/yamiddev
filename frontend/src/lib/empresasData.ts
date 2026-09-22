@@ -32,6 +32,7 @@ export type Proyecto = {
   rol: string;
   estado: string;
   stack: string[];
+  image?: [string, string];
   /** Las tres evidencias. `null` significa que aún no existe, no que se omita. */
   demo: string | null;
   repo: string | null;
@@ -48,6 +49,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Diseño y desarrollo',
     estado: 'Iniciado en 2023 · sin actividad reciente',
     stack: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
+    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
     demo: null,
     repo: 'https://github.com/yamiddevofic/Marvy_Shopmarket',
     writeup: null,
@@ -60,6 +62,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Contenido, plataforma y despliegue',
     estado: 'Publicado',
     stack: ['Astro', 'React', 'Tailwind'],
+    image: ['/images/thinkincode.png', '/images/thinkincode.png'],
     demo: 'https://www.yamid.dev/curso/',
     repo: 'https://github.com/yamiddevofic/Think_In_Code',
     writeup: null,
@@ -72,6 +75,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Diseño, desarrollo y operación',
     estado: 'En producción',
     stack: ['Astro 7', 'React 18', 'Tailwind v4', 'Vercel', 'Cloudflare'],
+    image: ['/images/portfolio.jpg', '/images/portfolio.png'],
     demo: 'https://www.yamid.dev',
     repo: 'https://github.com/yamiddevofic/yamiddev',
     writeup: null,
@@ -83,6 +87,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Desarrollo',
     estado: 'En desarrollo',
     stack: ['Flutter', 'Dart', 'Hive'],
+    image: ['/images/finoapp.jpg', '/images/finoapp-2.jpg'],
     demo: null,
     repo: 'https://github.com/yamiddevofic/fino_app',
     writeup: null,

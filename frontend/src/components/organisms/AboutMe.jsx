@@ -43,12 +43,12 @@ const ModernAboutMe = () => {
   // la seccion delante, #course se queda en 0.05 de opacidad y #contact en 0.
   // El contenido no puede depender de que una animacion arranque.
   return (
-    <section id="about-me-section" className="w-[95%] md:w-[90%] mx-auto py-14 sm:py-12">
+    <section id="about-me-section" className="mx-auto w-[90%] max-w-6xl py-20 sm:py-24">
       <TitleSection title="Sobre mí" />
 
       {/* Dos columnas a partir de lg; debajo se apilan foto y panel. */}
-      <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 overflow-hidden rounded-2xl shadow-xl ring-1 ring-slate-200/60 dark:ring-slate-800">
-        <div className="relative min-h-[320px] sm:min-h-[420px] lg:min-h-[640px] bg-slate-200 dark:bg-slate-800">
+      <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(16rem,0.8fr)_minmax(0,1.2fr)] lg:items-start lg:gap-16">
+        <div className="relative aspect-square w-full max-w-xl bg-slate-200 dark:bg-slate-800">
           <img
             src="/dev.jpg"
             alt="Yamid Horacio Rodríguez"
@@ -61,17 +61,17 @@ const ModernAboutMe = () => {
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/40 to-transparent lg:hidden" />
         </div>
 
-        <div className="flex flex-col justify-center gap-6 bg-slate-900 p-[clamp(1.5rem,4vw,3rem)] text-slate-200">
+        <div className="flex flex-col justify-center gap-7 border-t border-slate-200 pt-8 text-slate-600 dark:border-slate-800 dark:text-slate-300 lg:border-t-0 lg:border-l lg:py-2 lg:pl-10">
           <div>
-            <h3 className="text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight text-white">
+            <h3 className="text-[clamp(1.75rem,4vw,2.75rem)] font-semibold leading-tight tracking-[-0.04em] text-slate-950 dark:text-white">
               Yamid Horacio Rodríguez
             </h3>
-            <p className="mt-2 text-sm font-medium tracking-wide text-cyan-400">
-              — Tecnólogo en Análisis y Desarrollo de Software
+            <p className="mt-3 text-sm font-medium text-cyan-700 dark:text-cyan-400">
+              Tecnólogo en Análisis y Desarrollo de Software
             </p>
           </div>
 
-          <p className="max-w-prose text-sm leading-relaxed text-slate-400">
+          <p className="max-w-prose text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Desarrollador, educador y líder comunitario en Chitagá. Lo que empezó como una búsqueda
             de camino profesional se convirtió en una trayectoria alrededor del software, la
             formación y la creación de oportunidades desde el territorio.
@@ -79,7 +79,7 @@ const ModernAboutMe = () => {
 
           <div>
             <div className="mb-3 flex items-center justify-between gap-3">
-              <h4 className="text-base font-semibold text-white">Experiencia y formación</h4>
+              <h4 className="text-base font-semibold text-slate-950 dark:text-white">Experiencia y formación</h4>
               <div className="flex shrink-0 items-center gap-1">
                 <span className="mr-1 text-xs tabular-nums text-slate-500" aria-hidden="true">
                   {indice + 1}/{total}
@@ -93,7 +93,7 @@ const ModernAboutMe = () => {
                     type="button"
                     onClick={() => mover(paso)}
                     aria-label={etiqueta}
-                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-slate-500 transition-colors hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 dark:hover:text-white motion-reduce:transition-none"
                   >
                     <Icono size={18} aria-hidden="true" />
                   </button>
@@ -103,7 +103,7 @@ const ModernAboutMe = () => {
 
             {/* aria-live: el contenido cambia sin recargar y hay que anunciarlo. */}
             <div aria-live="polite">
-              <article className="min-h-[16rem] rounded-lg bg-slate-800/70 p-5 ring-1 ring-slate-700/60">
+              <article className="min-h-[16rem] border-y border-slate-200 py-5 dark:border-slate-800">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className={`rounded-full px-2 py-0.5 text-[0.7rem] font-medium ring-1 ${COLOR_TIPO[activo.tipo]}`}>
                     {activo.tipo}
@@ -111,21 +111,21 @@ const ModernAboutMe = () => {
                   <span className="text-xs text-slate-500">{activo.periodo}</span>
                 </div>
 
-                <h5 className="mt-2 font-semibold text-cyan-400">{activo.titulo}</h5>
+                  <h5 className="mt-2 font-semibold text-cyan-700 dark:text-cyan-400">{activo.titulo}</h5>
 
-                <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
+                  <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
                   <MapPin size={12} aria-hidden="true" />
                   {activo.lugar}
                 </p>
 
-                <p className="mt-3 text-sm leading-relaxed text-slate-300">{activo.descripcion}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{activo.descripcion}</p>
 
                 {activo.tecnologias && (
                   <ul className="mt-4 flex flex-wrap gap-1.5">
                     {activo.tecnologias.map((t) => (
                       <li
                         key={t}
-                        className="rounded bg-slate-900/70 px-2 py-0.5 text-[0.7rem] text-slate-400 ring-1 ring-slate-700/60"
+                        className="font-mono text-[0.7rem] text-slate-500 dark:text-slate-400"
                       >
                         {t}
                       </li>
@@ -149,7 +149,7 @@ const ModernAboutMe = () => {
                     className={`inline-flex min-h-[44px] items-center rounded-md px-2.5 text-xs font-medium tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none ${
                       activoAqui
                         ? 'bg-cyan-500 text-slate-900'
-                        : 'text-slate-500 hover:bg-slate-800 hover:text-slate-300'
+                        : 'text-slate-500 hover:text-slate-950 dark:hover:text-slate-300'
                     }`}
                   >
                     {anio}
@@ -167,7 +167,7 @@ const ModernAboutMe = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${nombre} de Yamid Horacio Rodríguez`}
-                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 motion-reduce:transition-none"
+                className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-slate-500 transition-colors hover:text-slate-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 dark:hover:text-white motion-reduce:transition-none"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d={path} />

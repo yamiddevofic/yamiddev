@@ -1,5 +1,19 @@
 ---
 import { STACK } from '../../lib/empresasData';
+import {
+  SiAstro,
+  SiDocker,
+  SiFlask,
+  SiFlutter,
+  SiGit,
+  SiJavascript,
+  SiMysql,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+} from 'react-icons/si';
 
 /**
  * Herramientas, version comercial.
@@ -15,9 +29,9 @@ import { STACK } from '../../lib/empresasData';
  */
 ---
 
-<section id="herramientas" class="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
+<section id="herramientas" class="mx-auto w-[90%] max-w-6xl py-20 sm:py-24">
   <div class="max-w-3xl">
-    <h2 class="text-[clamp(1.5rem,3.5vw,2rem)] font-bold tracking-tight text-slate-900 dark:text-white">
+    <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.04em] text-slate-950 dark:text-white">
       Con qué lo construyo
     </h2>
     <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
@@ -25,16 +39,30 @@ import { STACK } from '../../lib/empresasData';
     </p>
   </div>
 
-  <div class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-6">
+  <div class="mt-10 grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-x-8 gap-y-10">
     {STACK.map((g) => (
       <div>
         <div class="flex flex-wrap items-baseline gap-x-2">
           <h3 class="text-sm font-semibold text-slate-900 dark:text-white">{g.grupo}</h3>
           <span class="text-xs text-slate-500 dark:text-slate-400">— {g.nota}</span>
         </div>
-        <ul class="mt-2 flex flex-wrap gap-1.5">
+        <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-3">
           {g.items.map((t) => (
-            <li class="rounded bg-slate-100 px-2 py-1 font-mono text-xs text-slate-700 ring-1 ring-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:ring-slate-700">
+            <li class="inline-flex items-center font-mono text-xs text-slate-600 dark:text-slate-300">
+              <span class="mr-1.5 inline-flex text-sm" aria-hidden="true">
+                {t === 'JavaScript' && <SiJavascript className="text-yellow-500" />}
+                {t === 'React' && <SiReact className="text-[#61DAFB]" />}
+                {t === 'Astro' && <SiAstro className="text-orange-500" />}
+                {t === 'Tailwind' && <SiTailwindcss className="text-sky-400" />}
+                {t === 'Vercel' && <SiVercel className="text-slate-950 dark:text-white" />}
+                {t === 'Git' && <SiGit className="text-orange-600" />}
+                {t === 'Python' && <SiPython className="text-blue-500" />}
+                {t === 'Flask' && <SiFlask className="text-slate-950 dark:text-white" />}
+                {t === 'MySQL' && <SiMysql className="text-blue-600" />}
+                {t === 'Docker' && <SiDocker className="text-blue-500" />}
+                {t === 'Flutter' && <SiFlutter className="text-sky-500" />}
+                {t === 'TypeScript' && <SiTypescript className="text-blue-600" />}
+              </span>
               {t}
             </li>
           ))}

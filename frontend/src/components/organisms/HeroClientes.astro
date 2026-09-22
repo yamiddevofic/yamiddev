@@ -24,55 +24,57 @@ const DOLORES = [
 ];
 ---
 
-<section id="inicio" class="w-[95%] md:w-[90%] mx-auto py-14 sm:py-16">
-  <div class="max-w-3xl">
+<section id="inicio" class="relative isolate w-full overflow-hidden py-20 sm:py-20 lg:py-28">
+  <img src="/blog.jpg" alt="" aria-hidden="true" class="absolute inset-0 -z-20 h-full w-full object-cover" width="1200" height="630" />
+  <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-950/85 via-slate-950/65 to-cyan-950/75" aria-hidden="true"></div>
+  <div class="mx-auto grid w-[90%] max-w-6xl items-end gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">
+    <div class="max-w-3xl text-center lg:text-left">
+      <p class="mb-7 flex items-center justify-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-cyan-200 sm:text-xs sm:tracking-[0.18em] lg:justify-start">
+        <span class="hidden h-px w-8 bg-cyan-300 lg:block" aria-hidden="true"></span>
+        Soluciones digitales para negocios · Colombia y Latinoamérica
+      </p>
+
     <h1
-      class="text-[clamp(2rem,5.5vw,3.5rem)] font-bold leading-[1.1] tracking-tight text-slate-900 dark:text-white"
+      class="max-w-3xl text-[clamp(2.7rem,10.5vw,4.75rem)] font-semibold leading-[0.94] tracking-[-0.06em] text-white drop-shadow-sm sm:text-[clamp(2.4rem,6vw,4.75rem)]"
     >
-      Software que ordena tu negocio
+      Digitaliza tu negocio sin complicaciones
     </h1>
 
-    <p class="mt-3 font-mono text-[clamp(0.9rem,2.2vw,1.05rem)] text-cyan-700 dark:text-cyan-400">
-      Sistemas a la medida · Chitagá y Norte de Santander · También a distancia
+    <p class="mt-8 max-w-xl text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-slate-200">
+      Desarrollo soluciones digitales para organizar operaciones, ventas y clientes. Trabajo con
+      negocios de Colombia, Latinoamérica y, de forma cercana, con empresas de Chitagá y la región.
     </p>
 
-    <p class="mt-5 max-w-2xl text-[clamp(0.95rem,2vw,1.1rem)] leading-relaxed text-slate-600 dark:text-slate-300">
-      Construyo herramientas para negocios que ya no caben en el Excel. Inventario, ventas y
-      pedidos en un solo sitio, hechos a la medida de cómo trabajas hoy y no al revés. Tú me
-      cuentas el problema; yo me encargo de que la herramienta lo resuelva y siga funcionando.
-    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-3 lg:justify-start">
+      <a
+        href="#contacto"
+        data-cta="primary"
+        class="inline-flex min-h-[44px] items-center rounded-full bg-slate-950 px-6 text-sm font-medium text-white transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 dark:focus-visible:ring-offset-slate-950"
+      >
+        Hablemos de tu proyecto
+      </a>
+      <a
+        href="#proyectos"
+        class="inline-flex min-h-[44px] items-center rounded-full px-6 text-sm font-medium text-white ring-1 ring-white/60 transition-colors hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 motion-reduce:transition-none"
+      >
+        Ver proyectos
+      </a>
+    </div>
+    </div>
 
-    <!-- Mismo bloque destacado que el "Ahora" de la vertiente tecnica, con otra
-         funcion: que el visitante se reconozca antes de seguir leyendo. -->
-    <div class="mt-8 rounded-lg bg-slate-100 p-5 ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-800">
-      <h2 class="text-sm font-semibold text-slate-900 dark:text-white">¿Te suena alguna?</h2>
-      <ul class="mt-3 space-y-1.5">
+    <aside class="border-t border-white/25 pt-7 text-center dark:border-white/25 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0 lg:text-left">
+      <h2 class="text-sm font-semibold text-white">¿Te suena alguna?</h2>
+      <ul class="mt-4 space-y-3">
         {DOLORES.map((dolor) => (
-          <li class="flex gap-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-600 dark:bg-cyan-400" aria-hidden="true"></span>
+          <li class="flex gap-3 text-sm leading-relaxed text-slate-200">
+            <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-600 dark:bg-cyan-400" aria-hidden="true"></span>
             {dolor}
           </li>
         ))}
       </ul>
-      <p class="mt-3 text-sm font-medium text-slate-900 dark:text-white">
+      <p class="mt-5 text-sm font-medium text-white">
         Si te pasa alguna, esto se puede resolver.
       </p>
-    </div>
-
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a
-        href="#contacto"
-        data-cta="primary"
-        class="inline-flex min-h-[44px] items-center rounded-md bg-slate-900 px-5 text-sm font-medium text-white transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 dark:focus-visible:ring-offset-slate-950"
-      >
-        Cuéntame tu proyecto
-      </a>
-      <a
-        href="#proyectos"
-        class="inline-flex min-h-[44px] items-center rounded-md px-5 text-sm font-medium text-slate-700 ring-1 ring-slate-300 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:focus-visible:ring-offset-slate-950"
-      >
-        Ver trabajos
-      </a>
-    </div>
+    </aside>
   </div>
 </section>

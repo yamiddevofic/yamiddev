@@ -148,8 +148,8 @@ const Navbar = ({ isMain = true }) => {
       {/* Header con glassmorphism sutil y borde existente */}
       <motion.header
         variants={navVariants}
-        initial={reduced ? {} : "hidden"}
-        animate={reduced ? {} : "visible"}
+        initial={false}
+        animate={reduced ? undefined : "visible"}
         className="fixed top-0 z-50 w-full border-b border-slate-200/70 bg-white/80 backdrop-blur-md transition-colors duration-300 supports-[backdrop-filter]:bg-white/60 motion-reduce:transition-none dark:border-slate-800/70 dark:bg-slate-950/80 dark:supports-[backdrop-filter]:bg-slate-950/60"
       >
         <a

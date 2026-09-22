@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { HomeFilled } from "../atoms/icons/HomeFilled";
 import { AboutMe } from "../atoms/icons/AboutMe";
 import { Contact } from "../atoms/icons/Contact";
@@ -71,30 +71,9 @@ const Navbar = ({ isMain = true }) => {
     ? [...SECCIONES_HOME, ...PAGINAS]
     : [{ title: "Inicio", id: "inicio", icon: HomeFilled, path: "/" }, ...PAGINAS];
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState("dark");
   const [active, setActive] = useState("home");
   const reduced = useReducedMotion();
   const drawerRef = useRef(null);
-
-  // Init theme from localStorage (sin dependencias extras)
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const saved = localStorage.getItem("theme") || "dark";
-    setTheme(saved);
-    document.documentElement.classList.toggle("dark", saved === "dark");
-  }, []);
-
-  // Persist theme toggling
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", theme);
-    }
-  }, [theme]);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((t) => (t === "light" ? "dark" : "light"));
-  }, []);
 
   // Smooth scroll + cierre menú (solo aplica en home)
   const handleLinkClick = useCallback((e, id, path) => {
@@ -191,20 +170,9 @@ const Navbar = ({ isMain = true }) => {
               ))}
             </nav>
 
-            {/* Botón tema (desktop) */}
-            <Button
-              variant="ghost"
-              onClick={toggleTheme}
-              className="hidden md:flex items-center justify-center min-h-[44px] min-w-[44px] bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow-lg p-3 transition-all hover:scale-110 text-xl w-[35px] h-[35px] focus-visible:ring-2 focus-visible:ring-cyan-500"
-              title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
-              aria-label="Cambiar tema"
-            >
-              {theme === "light" ? <Moon className="text-xl" /> : <Sun className="text-xl" />}
-            </Button>
-
             {/* Controles móviles:
                 - En home: botón de menú (abre panel moderno)
-                - En otras pantallas: SOLO botón Inicio + tema */}
+                - En otras pantallas: SOLO botón Inicio */}
             <Button
               variant="outline"
               size="icon"
@@ -254,15 +222,6 @@ const Navbar = ({ isMain = true }) => {
                   Navegación
                 </span>
                 <div className="flex items-center gap-2">
-                  <Button
-                    variant="ghost"
-                    onClick={toggleTheme}
-                    className="bg-gray-200 dark:bg-gray-700 text-black dark:text-white rounded-full shadow p-2 w-9 h-9 focus-visible:ring-2 focus-visible:ring-cyan-500"
-                    title={`Cambiar a tema ${theme === "light" ? "oscuro" : "claro"}`}
-                    aria-label="Cambiar tema"
-                  >
-                    {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-                  </Button>
                   <Button
                     variant="outline"
                     size="icon"

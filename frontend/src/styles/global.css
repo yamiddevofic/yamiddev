@@ -76,6 +76,27 @@
   100% { transform: scale(1); }
 }
 
+/* Tecleo letra por letra de los titulos de hero: cada span lleva --i (su
+   posicion en el titulo) y la animacion arranca con un retardo proporcional.
+   Sin clip-path: eso recortaba tildes y descendentes con leading-[0.94]. */
+.hero-letter {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-letter {
+    opacity: 0;
+    animation: hero-letter-in 100ms ease-out forwards;
+    animation-delay: calc(var(--i) * 75ms);
+  }
+}
+
+@keyframes hero-letter-in {
+  to {
+    opacity: 1;
+  }
+}
+
 /* Este reset va dentro de @layer base a proposito, y es importante.
    
    Tailwind v4 emite sus utilidades dentro de @layer utilities. En CSS, una

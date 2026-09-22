@@ -8,12 +8,15 @@ import Rocket from '../components/atoms/icons/Rocket';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 15 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
   }
 };
+
+const TITULO = 'Comunidad Yamid Dev';
+const LETRAS = Array.from(TITULO);
 ---
 
 <MainLayout title="Comunidad Yamid Dev | Desarrollador Full Stack" isMain={false}>
@@ -50,10 +53,21 @@ const fadeInUp = {
             initial="hidden"
             animate="visible"
             className="text-4xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 dark:text-white"
+            aria-label={TITULO}
           >
-            Comunidad <br class="sm:hidden" />
-            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-              Yamid Dev
+            <span aria-hidden="true">
+              {LETRAS.slice(0, 9).map((letra, i) => (
+                <span class="hero-letter" style={`--i:${i}`}>{letra}</span>
+              ))}
+              {' '}
+              <br class="sm:hidden" />
+              <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                {LETRAS.slice(10).map((letra, i) =>
+                  letra === ' ' ? ' ' : (
+                    <span class="hero-letter" style={`--i:${i + 10}`}>{letra}</span>
+                  )
+                )}
+              </span>
             </span>
           </motion.h1>
 

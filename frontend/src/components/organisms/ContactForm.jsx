@@ -16,10 +16,18 @@ import { Linkedin } from '../atoms/icons/Linkedin';
  */
 
 /** Clases compartidas por los campos, para que no se desincronicen entre sí. */
-const CAMPO =
+const CAMPO_BASE =
   'w-full min-h-[44px] rounded-md bg-white px-3.5 py-2.5 text-sm text-slate-900 ring-1 ring-slate-300 transition-colors placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600 motion-reduce:transition-none dark:bg-slate-950 dark:text-slate-100 dark:ring-slate-700 dark:placeholder:text-slate-500 dark:focus-visible:ring-cyan-400';
 
+const CAMPO_ERROR =
+  'ring-2 ring-red-500 focus-visible:ring-red-500 dark:ring-red-500 dark:focus-visible:ring-red-500';
+
+const campoClass = (hasError) =>
+  `${CAMPO_BASE} ${hasError ? CAMPO_ERROR : ''}`;
+
 const ETIQUETA = 'block text-sm font-medium text-slate-700 dark:text-slate-300';
+
+const ERROR_MSJ = 'mt-1 text-sm text-red-600 dark:text-red-400';
 
 const ENLACES = [
   { nombre: 'GitHub', href: 'https://github.com/yamiddevofic', Icono: Github },
@@ -54,15 +62,58 @@ const ContactForm = ({ variante = 'empresas' }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [fieldErrors, setFieldErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (fieldErrors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  const validateField = (name, value) => {
+    switch (name) {
+      case 'name':
+        if (!value.trim()) return 'El nombre es obligatorio.';
+        if (value.trim().length < 2) return 'El nombre debe tener al menos 2 caracteres.';
+        return '';
+      case 'email':
+        if (!value.trim()) return 'El correo es obligatorio.';
+        if (!EMAIL_RE.test(value.trim())) return 'El correo no es válido.';
+        return '';
+      case 'subject':
+        if (!value.trim()) return 'El asunto es obligatorio.';
+        if (value.trim().length < 3) return 'El asunto debe tener al menos 3 caracteres.';
+        return '';
+      case 'message':
+        if (!value.trim()) return 'El mensaje es obligatorio.';
+        if (value.trim().length < 10) return 'El mensaje debe tener al menos 10 caracteres.';
+        return '';
+      default:
+        return '';
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
+
+    // Validación client-side: recorrer cada campo y guardarlo en fieldErrors.
+    const newErrors = {};
+    for (const field of ['name', 'email', 'subject', 'message']) {
+      const error = validateField(field, formData[field]);
+      if (error) newErrors[field] = error;
+    }
+    setFieldErrors(newErrors);
+
+    if (Object.keys(newErrors).some((k) => newErrors[k])) {
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -76,12 +127,33 @@ const ContactForm = ({ variante = 'empresas' }) => {
       if (response.ok && result.status === 'success') {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
+        setFieldErrors({});
       } else {
-        setErrorMessage(result.message ?? '');
+        // El servidor devuelve un mensaje único; lo intentamos asignar al campo
+        // correspondiente. Si no coincide, lo mostramos como error general.
+        const serverMsg = result.message ?? '';
+        const assigned = {};
+        let matched = false;
+        if (/nombre/i.test(serverMsg)) { assigned.name = serverMsg; matched = true; }
+        if (/correo/i.test(serverMsg)) { assigned.email = serverMsg; matched = true; }
+        if (/asunto/i.test(serverMsg)) { assigned.subject = serverMsg; matched = true; }
+        if (/mensaje/i.test(serverMsg)) { assigned.message = serverMsg; matched = true; }
+        if (/longitud|caracteres|límite/i.test(serverMsg)) {
+          for (const field of ['name', 'email', 'subject', 'message']) {
+            if (serverMsg.includes(`"${field}"`)) {
+              assigned[field] = serverMsg;
+              matched = true;
+            }
+          }
+        }
+        setFieldErrors(assigned);
+        if (!matched) {
+          setErrorMessage(serverMsg || 'No se pudo enviar el mensaje. Inténtalo de nuevo.');
+        }
         setSubmitStatus('error');
       }
     } catch (error) {
-      setErrorMessage('');
+      setErrorMessage('No se pudo enviar el mensaje. Inténtalo de nuevo.');
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -108,32 +180,46 @@ const ContactForm = ({ variante = 'empresas' }) => {
               apretar, y el formulario se lee de una pasada. */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div className="space-y-1.5">
-              <label htmlFor="name" className={ETIQUETA}>Nombre</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                autoComplete="name"
-                className={CAMPO}
-              />
-            </div>
+            <label htmlFor="name" className={ETIQUETA}>Nombre</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              autoComplete="name"
+              className={campoClass(!!fieldErrors.name)}
+              aria-invalid={!!fieldErrors.name}
+              aria-describedby={fieldErrors.name ? 'name-error' : undefined}
+            />
+            {fieldErrors.name && (
+              <p id="name-error" className={ERROR_MSJ} role="alert">
+                {fieldErrors.name}
+              </p>
+            )}
+          </div>
 
-            <div className="space-y-1.5">
-              <label htmlFor="email" className={ETIQUETA}>Correo</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                autoComplete="email"
-                className={CAMPO}
-              />
-            </div>
+          <div className="space-y-1.5">
+            <label htmlFor="email" className={ETIQUETA}>Correo</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              autoComplete="email"
+              className={campoClass(!!fieldErrors.email)}
+              aria-invalid={!!fieldErrors.email}
+              aria-describedby={fieldErrors.email ? 'email-error' : undefined}
+            />
+            {fieldErrors.email && (
+              <p id="email-error" className={ERROR_MSJ} role="alert">
+                {fieldErrors.email}
+              </p>
+            )}
+          </div>
           </div>
 
           <div className="space-y-1.5">
@@ -147,8 +233,15 @@ const ContactForm = ({ variante = 'empresas' }) => {
               value={formData.subject}
               onChange={handleChange}
               required
-              className={CAMPO}
+              className={campoClass(!!fieldErrors.subject)}
+              aria-invalid={!!fieldErrors.subject}
+              aria-describedby={fieldErrors.subject ? 'subject-error' : undefined}
             />
+            {fieldErrors.subject && (
+              <p id="subject-error" className={ERROR_MSJ} role="alert">
+                {fieldErrors.subject}
+              </p>
+            )}
           </div>
 
           <div className="space-y-1.5">
@@ -162,8 +255,15 @@ const ContactForm = ({ variante = 'empresas' }) => {
               value={formData.message}
               onChange={handleChange}
               required
-              className={`${CAMPO} resize-y`}
+              className={`${campoClass(!!fieldErrors.message)} resize-y`}
+              aria-invalid={!!fieldErrors.message}
+              aria-describedby={fieldErrors.message ? 'message-error' : undefined}
             />
+            {fieldErrors.message && (
+              <p id="message-error" className={ERROR_MSJ} role="alert">
+                {fieldErrors.message}
+              </p>
+            )}
           </div>
 
           {/* Honeypot: fuera de la vista y fuera del recorrido del tabulador. */}

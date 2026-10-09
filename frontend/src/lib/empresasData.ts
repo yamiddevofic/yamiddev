@@ -61,10 +61,10 @@ export const PROYECTOS: Proyecto[] = [
     nombre: 'Marao',
     resumen:
       'Tienda en línea de lentes de contacto cosméticos y pestañas. Catálogo filtrable, carrito y cierre del pedido por WhatsApp, sin pasarela de pago.',
-    // El encargo lo consiguio un estudiante del SENA, que establecio el negocio
-    // con el cliente y diseno la tienda conmigo; el desarrollo lo hice yo. No
-    // es "en apoyo a otro desarrollador": el no lo es.
-    rol: 'Diseño compartido y desarrollo · encargo de un negocio',
+    // El diseno lo hicieron el estudiante del SENA que trajo el encargo y el
+    // propio negocio. Aqui solo se hizo el desarrollo y el despliegue, y asi
+    // se dice: apuntarse el diseno seria quitarselo a quien lo hizo.
+    rol: 'Desarrollo y despliegue · diseño del cliente',
     estado: 'En producción',
     stack: ['JavaScript', 'HTML', 'CSS', 'Supabase', 'Cloudflare'],
     image: ['/images/marao.png', '/images/marao.png'],

@@ -43,6 +43,32 @@ export type Proyecto = {
 
 export const PROYECTOS: Proyecto[] = [
   {
+    nombre: 'PlantaQR',
+    resumen:
+      'Catálogo de los árboles del parque de Chitagá. Cada individuo lleva un código QR que abre su ficha: familia, origen, usos y estado de conservación.',
+    rol: 'Desarrollo y despliegue',
+    estado: 'En producción',
+    stack: ['React', 'Vite', 'Express', 'MongoDB', 'Mongoose', 'MapLibre', 'Swagger', 'Vercel'],
+    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
+    demo: 'https://plantas-qr.vercel.app',
+    repo: 'https://github.com/yamiddevofic/plantas-qr',
+    writeup: null,
+    enHome: false,
+  },
+  {
+    nombre: 'Marao',
+    resumen:
+      'Tienda en línea de lentes de contacto cosméticos y pestañas. Catálogo filtrable, carrito y cierre del pedido por WhatsApp, sin pasarela de pago.',
+    rol: 'Desarrollo y despliegue',
+    estado: 'En producción',
+    stack: ['JavaScript', 'HTML', 'CSS', 'Supabase', 'Cloudflare'],
+    image: ['/images/marao.png', '/images/marao.png'],
+    demo: 'https://marao.co',
+    repo: 'https://github.com/yamiddevofic/tienda-marao',
+    writeup: null,
+    enHome: false,
+  },
+  {
     nombre: 'Marvy Shopmarket',
     resumen:
       'Sistema de gestión de productos, inventario y ventas concebido para tiendas de barrio en Chitagá. No se encuentra desplegado.',

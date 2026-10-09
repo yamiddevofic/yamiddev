@@ -18,6 +18,8 @@ import { Projects } from '../../lib/projectData';
  * un <a> dentro de otro es HTML invalido y el parser lo deshacia, con lo que
  * el DOM dejaba de coincidir con el arbol de React y la isla se rehidrataba.
  */
+const ENLACE =
+  'inline-flex min-h-[44px] items-center text-xs font-medium text-cyan-700 underline decoration-cyan-300 underline-offset-4 transition-colors hover:text-cyan-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-cyan-400 dark:decoration-cyan-700 dark:hover:text-cyan-300 dark:focus-visible:ring-offset-slate-950';
 ---
 
 <section id="trabajos" class="mx-auto w-[90%] max-w-6xl py-20 sm:py-24">
@@ -76,12 +78,26 @@ import { Projects } from '../../lib/projectData';
             ))}
           </ul>
 
-          <div class="mt-auto pt-7">
+          <!-- La demo va primero cuando existe: a quien viene a contratar le
+               convence mas el sitio funcionando que el repositorio. Solo se
+               pinta si el proyecto la tiene; un enlace muerto es peor que
+               ninguno, porque sugiere abandono. -->
+          <div class="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-7">
+            {p.demo && (
+              <a
+                href={p.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={ENLACE}
+              >
+                Ver en vivo
+              </a>
+            )}
             <a
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex min-h-[44px] items-center text-xs font-medium text-cyan-700 underline decoration-cyan-300 underline-offset-4 transition-colors hover:text-cyan-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-cyan-400 dark:decoration-cyan-700 dark:hover:text-cyan-300 dark:focus-visible:ring-offset-slate-950"
+              class={ENLACE}
             >
               Ver código
             </a>

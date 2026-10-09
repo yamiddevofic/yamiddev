@@ -46,9 +46,11 @@ export const PROYECTOS: Proyecto[] = [
     nombre: 'PlantaQR',
     resumen:
       'Catálogo de los árboles del parque de Chitagá. Cada individuo lleva un código QR que abre su ficha: familia, origen, usos y estado de conservación.',
-    rol: 'Desarrollo y despliegue',
+    rol: 'Diseño, desarrollo y despliegue · idea del cliente',
     estado: 'En producción',
     stack: ['React', 'Vite', 'Express', 'MongoDB', 'Mongoose', 'MapLibre', 'Swagger', 'Vercel'],
+    // La idea no es mia: la puso el estudiante que encargo el proyecto. Se dice
+    // para no atribuirse lo que no se hizo; lo demas si salio de aqui.
     image: ['/images/plantaqr.png', '/images/plantaqr.png'],
     demo: 'https://plantas-qr.vercel.app',
     repo: 'https://github.com/yamiddevofic/plantas-qr',
@@ -59,7 +61,10 @@ export const PROYECTOS: Proyecto[] = [
     nombre: 'Marao',
     resumen:
       'Tienda en línea de lentes de contacto cosméticos y pestañas. Catálogo filtrable, carrito y cierre del pedido por WhatsApp, sin pasarela de pago.',
-    rol: 'Desarrollo y despliegue',
+    // El encargo lo consiguio un estudiante del SENA, que establecio el negocio
+    // con el cliente y diseno la tienda conmigo; el desarrollo lo hice yo. No
+    // es "en apoyo a otro desarrollador": el no lo es.
+    rol: 'Diseño compartido y desarrollo · encargo de un negocio',
     estado: 'En producción',
     stack: ['JavaScript', 'HTML', 'CSS', 'Supabase', 'Cloudflare'],
     image: ['/images/marao.png', '/images/marao.png'],

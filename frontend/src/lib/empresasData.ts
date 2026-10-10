@@ -16,13 +16,65 @@
  * mes. Si deja de actualizarse, es preferible retirarlo que dejarlo viejo.
  */
 export const AHORA = {
-  fecha: 'Septiembre 2026',
+  fecha: 'Octubre 2026',
   lineas: [
     'Cursando primer semestre de Ingeniería de Sistemas en la UNAD.',
     'Desarrollando y manteniendo este sitio: Astro 7, React 18 y Tailwind v4 sobre Vercel.',
+    'Desarrollando con agentes de código, con las reglas de trabajo escritas y versionadas en el propio repositorio.',
+    // Va en "Ahora" y no en la seccion de abajo a proposito: todavia no esta
+    // hecho. La seccion solo admite lo que ya se puede abrir y revisar; aqui,
+    // que lleva fecha a la vista, cabe decir hacia donde se va.
+    'Preparando la primera integración de un modelo dentro de un producto, no solo en el flujo de trabajo.',
     'Coordinando Chitagá Tech, comunidad tecnológica del municipio, y la vicepresidencia de la JAC de Villa Carmen.',
   ],
   disponibilidad: 'Disponible para roles full-stack en modalidad remota.',
+};
+
+/**
+ * Como trabajo con agentes de codigo.
+ *
+ * Decir "uso IA" no distingue a nadie: a estas alturas lo dice todo el mundo y
+ * no se puede comprobar. Por eso cada punto de aqui apunta a algo que esta
+ * publico en el repositorio y que quien lea puede abrir y juzgar, que es lo
+ * que pide el skill de la vertiente tecnica.
+ *
+ * Lo que no esta hecho no entra en esta lista. La integracion de un modelo
+ * dentro de un producto vive en AHORA, que lleva fecha, y se mueve aqui el dia
+ * que exista algo que ensenar.
+ */
+export const TRABAJO_CON_IA = {
+  intro:
+    'Uso agentes de código a diario, con reglas escritas en vez de a ojo. Todo lo de abajo está en el repositorio de este sitio y se puede revisar.',
+  practicas: [
+    {
+      titulo: 'Las reglas del repositorio están escritas',
+      detalle:
+        'AGENTS.md fija cómo se trabaja aquí: nunca commitear en main, verificar en el preview de Vercel antes de dar algo por terminado y separar los commits de documentación. El agente las sigue igual que yo.',
+      enlace: 'https://github.com/yamiddevofic/yamiddev/blob/main/AGENTS.md',
+      textoEnlace: 'Ver AGENTS.md',
+    },
+    {
+      titulo: 'Escribo skills, no solo prompts',
+      detalle:
+        'Tres skills propias fijan el criterio de maquetación y el de cada vertiente del portafolio: qué se puede afirmar, qué evidencia exige cada proyecto y cómo se comprueba. Están versionadas para Claude Code y para OpenCode, así que no dependen de un proveedor.',
+      enlace: 'https://github.com/yamiddevofic/yamiddev/tree/main/.claude/skills',
+      textoEnlace: 'Ver las skills',
+    },
+    {
+      titulo: 'Queda trazado quién escribió qué',
+      detalle:
+        'Los commits hechos con ayuda de un agente llevan su co-autoría en el mensaje. Se ve en el historial, sin tener que creerme.',
+      enlace: 'https://github.com/yamiddevofic/yamiddev/commits/main/',
+      textoEnlace: 'Ver el historial',
+    },
+    {
+      titulo: 'El agente no decide si algo funciona',
+      detalle:
+        'Lo decide la suite de 117 pruebas y la medición en el navegador sobre el build. Un cambio visual no se da por bueno porque se vea bien en una captura: se comprueban las propiedades calculadas.',
+      enlace: 'https://github.com/yamiddevofic/yamiddev/tree/main/frontend/tests',
+      textoEnlace: 'Ver las pruebas',
+    },
+  ],
 };
 
 export type Proyecto = {

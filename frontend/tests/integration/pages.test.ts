@@ -152,3 +152,41 @@ describe('vertiente comercial (/clientes/)', () => {
     expect(html).toContain('wa.me/573124673850');
   });
 });
+
+// La seccion de IA de la home vende un metodo de trabajo, y un metodo de
+// trabajo solo vale si se puede comprobar. Estas pruebas fijan las dos reglas
+// que la sostienen: cada punto enlaza a algo publico, y lo que aun no esta
+// hecho no se cuenta como hecho.
+describe('seccion de desarrollo con IA (/)', () => {
+  const seccion = (html: string) => html.match(/<section id="ia"[\s\S]*?<\/section>/)?.[0] ?? '';
+
+  it('existe y lleva cuatro practicas', async () => {
+    const { html } = await getHtml('/');
+    const s = seccion(html);
+    expect(s).not.toBe('');
+    expect(s.match(/<li\b/g) ?? []).toHaveLength(4);
+  });
+
+  it('cada practica enlaza a algo publico del repositorio, con rel seguro', async () => {
+    const { html } = await getHtml('/');
+    const enlaces = seccion(html).match(/<a\b[^>]*>/g) ?? [];
+    expect(enlaces).toHaveLength(4);
+    for (const a of enlaces) {
+      expect(a).toContain('https://github.com/yamiddevofic/yamiddev/');
+      expect(a).toContain('noopener');
+      expect(a).toContain('noreferrer');
+    }
+  });
+
+  it('no afirma una integracion de IA en un producto que todavia no existe', async () => {
+    const { html } = await getHtml('/');
+    // En la seccion solo cabe lo hecho: la integracion futura vive en "Ahora".
+    expect(seccion(html)).not.toMatch(/integr(o|é|ado|ada|ando)/i);
+  });
+
+  it('anuncia esa integracion como algo en preparacion, y fechado', async () => {
+    const { html } = await getHtml('/');
+    expect(html).toMatch(/Preparando la primera integraci(ó|&#xF3;|o)n de un modelo/);
+    expect(html).toMatch(/Octubre 2026/);
+  });
+});

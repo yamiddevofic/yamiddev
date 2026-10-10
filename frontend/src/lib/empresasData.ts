@@ -43,6 +43,37 @@ export type Proyecto = {
 
 export const PROYECTOS: Proyecto[] = [
   {
+    nombre: 'PlantaQR',
+    resumen:
+      'Catálogo de los árboles del parque de Chitagá. Cada individuo lleva un código QR que abre su ficha: familia, origen, usos y estado de conservación.',
+    rol: 'Diseño, desarrollo y despliegue · idea del cliente',
+    estado: 'En producción',
+    stack: ['React', 'Vite', 'Express', 'MongoDB', 'Mongoose', 'MapLibre', 'Swagger', 'Vercel'],
+    // La idea no es mia: la puso el estudiante que encargo el proyecto. Se dice
+    // para no atribuirse lo que no se hizo; lo demas si salio de aqui.
+    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
+    demo: 'https://plantas-qr.vercel.app',
+    repo: 'https://github.com/yamiddevofic/plantas-qr',
+    writeup: null,
+    enHome: false,
+  },
+  {
+    nombre: 'Marao',
+    resumen:
+      'Tienda en línea de lentes de contacto cosméticos y pestañas. Catálogo filtrable, carrito y cierre del pedido por WhatsApp, sin pasarela de pago.',
+    // El diseno lo hicieron el estudiante del SENA que trajo el encargo y el
+    // propio negocio. Aqui solo se hizo el desarrollo y el despliegue, y asi
+    // se dice: apuntarse el diseno seria quitarselo a quien lo hizo.
+    rol: 'Desarrollo y despliegue · diseño del cliente',
+    estado: 'En producción',
+    stack: ['JavaScript', 'HTML', 'CSS', 'Supabase', 'Cloudflare'],
+    image: ['/images/marao.png', '/images/marao.png'],
+    demo: 'https://marao.co',
+    repo: 'https://github.com/yamiddevofic/tienda-marao',
+    writeup: null,
+    enHome: false,
+  },
+  {
     nombre: 'Marvy Shopmarket',
     resumen:
       'Sistema de gestión de productos, inventario y ventas concebido para tiendas de barrio en Chitagá. No se encuentra desplegado.',

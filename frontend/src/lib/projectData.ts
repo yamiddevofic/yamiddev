@@ -1,5 +1,27 @@
 export const Projects = [
   {
+    id: 'plantaqr',
+    title: 'PlantaQR',
+    description: 'Cada árbol del parque de Chitagá lleva un código QR. Al escanearlo se abre su ficha: familia, origen, usos y estado de conservación.',
+    techStack: ['React', 'Vite', 'Express', 'MongoDB'],
+    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
+    imageSize: { width: 1366, height: 768 },
+    time: 'Publicado',
+    demo: 'https://plantas-qr.vercel.app',
+    url: 'https://github.com/yamiddevofic/plantas-qr'
+  },
+  {
+    id: 'marao',
+    title: 'Marao',
+    description: 'Tienda en línea de lentes de contacto cosméticos y pestañas pelo a pelo, con catálogo filtrable, carrito y cierre del pedido por WhatsApp.',
+    techStack: ['JavaScript', 'Supabase', 'Cloudflare'],
+    image: ['/images/marao.png', '/images/marao.png'],
+    imageSize: { width: 1366, height: 768 },
+    time: 'Publicado',
+    demo: 'https://marao.co',
+    url: 'https://github.com/yamiddevofic/tienda-marao'
+  },
+  {
     id: 'portafolio-web-profesional',
     title: 'Portafolio web profesional',
     description: 'Portafolio es un sitio web donde puedes conocer sobre mi experiencia, habilidades, proyectos de desarrollo, y contactarme.',

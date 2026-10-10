@@ -32,3 +32,17 @@ pnpm-debug.log*
 
 # macOS
 .DS_Store
+
+# Credenciales de VPN: no entran al repositorio bajo ningun concepto.
+*.ovpn
+
+# Documentos personales sueltos en public/.
+#
+# Todo lo que vive en public/ se publica tal cual en yamid.dev/<nombre>, sin
+# necesidad de enlazarlo desde ninguna pagina. Un "git add -A" descuidado
+# bastaria para dejar publicos los trabajos de la universidad que se dejan ahi
+# de paso. Los assets que si son del sitio viven en public/images/ y los
+# documentos que si se ofrecen, como la hoja de vida, en public/docs/: ninguno
+# de los dos lo toca esta regla, que solo cubre la raiz de public/.
+/frontend/public/*.docx
+/frontend/public/*.pdf

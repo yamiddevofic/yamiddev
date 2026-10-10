@@ -1,30 +1,30 @@
 ---
-title: "El blog vuelve, ahora sin base de datos"
-description: "Por qué migré los artículos de WordPress a archivos Markdown dentro del propio repositorio, y qué gano con ello."
+title: "Migración del blog de WordPress a Markdown"
+description: "Motivos y funcionamiento de la migración de los artículos de WordPress a archivos Markdown dentro del repositorio."
 date: 2026-09-06
 category: "Desarrollo"
 draft: false
 ---
 
-Durante un tiempo este blog se alimentó de una instalación de WordPress en modo *headless*: Astro pedía los artículos a su API REST durante el build y generaba una página por cada uno.
+Durante un tiempo, este blog obtenía sus artículos de una instalación de WordPress en modo *headless*: durante la compilación, Astro los solicitaba a la API REST de WordPress y generaba una página por cada uno.
 
-Funcionaba, pero traía consigo un servidor que mantener, una base de datos que respaldar, un núcleo que actualizar y una superficie de ataque que vigilar. Todo eso para publicar texto.
+El esquema funcionaba, pero exigía mantener un servidor, respaldar una base de datos, actualizar el núcleo de WordPress y vigilar su superficie de ataque, todo ello para publicar contenido de texto.
 
-## Lo que hace ahora
+## Funcionamiento actual
 
-Cada artículo es un archivo Markdown en `src/content/blog/`. Astro lo valida contra un esquema, lo convierte en HTML durante el build y genera la página estática. No hay base de datos, no hay API, no hay nada que se caiga a las tres de la mañana.
+Cada artículo es un archivo Markdown en `src/content/blog/`. Astro lo valida contra un esquema, lo convierte en HTML durante la compilación y genera una página estática. No intervienen base de datos ni API, de modo que no hay servicios que puedan fallar en tiempo de ejecución.
 
-Publicar es escribir un archivo y hacer `git push`.
+Publicar un artículo consiste en añadir un archivo al repositorio y ejecutar `git push`.
 
-## Cómo escribir uno nuevo
+## Formato de un artículo
 
-Crea un archivo `.md` en `src/content/blog/`. El nombre del archivo será la URL: `mi-articulo.md` se publica en `/blog/mi-articulo`.
+El nombre del archivo determina la URL: `mi-articulo.md` se publica en `/blog/mi-articulo`.
 
-Arriba va el *frontmatter*, que Astro valida al construir:
+El encabezado (*frontmatter*) se valida durante la compilación:
 
 - `title` y `description` son obligatorios.
-- `date` en formato `YYYY-MM-DD`.
+- `date` sigue el formato `YYYY-MM-DD`.
 - `category` e `image` son opcionales.
-- `draft: true` lo mantiene fuera del sitio publicado.
+- `draft: true` excluye el artículo del sitio publicado.
 
-Si algo falta o tiene el tipo equivocado, el build falla con un mensaje claro en lugar de publicar una página rota.
+Si falta un campo obligatorio o su tipo es incorrecto, la compilación se detiene con un mensaje de error en lugar de publicar una página defectuosa.

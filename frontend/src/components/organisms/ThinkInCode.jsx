@@ -112,7 +112,7 @@ const ThinkInCode = () => {
     <section id="course" className="mx-auto w-[90%] max-w-6xl py-20 sm:py-24">
       <TitleSection
         title="Curso"
-        lede="Pensar en código: un curso práctico para aprender a pensar como programador."
+        lede={`Pensar en código: fundamentos de programación y pensamiento computacional. ${CLASSES.filter((c) => c.available).length} de ${CLASSES.length} clases publicadas.`}
       />
 
       {/* Carrusel de clases */}
@@ -258,7 +258,7 @@ const ThinkInCode = () => {
             </div>
             <h3 className="mb-2 text-xl font-semibold">Disponible próximamente</h3>
             <p className="mb-6 text-sm leading-relaxed text-slate-300">
-            Únete a mi comunidad para saber cuándo se liberan las nuevas clases y recibir material exclusivo.
+            Las nuevas clases se anuncian en el grupo de la comunidad.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-3">
             <button onClick={() => 

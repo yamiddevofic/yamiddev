@@ -97,8 +97,8 @@ const ContactForm = ({ variante = 'empresas' }) => {
         </h2>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
           {esClientes
-            ? 'Cuéntame qué necesita tu negocio, sin tecnicismos. Respondo en menos de 24 horas.'
-            : 'Para oportunidades laborales o consultas técnicas. Respondo en menos de 24 horas.'}
+            ? 'Describa qué necesita su negocio; no hace falta usar términos técnicos. Respondo en un plazo de 24 horas.'
+            : 'Para oportunidades laborales o consultas técnicas. Respondo en un plazo de 24 horas.'}
         </p>
       </div>
 
@@ -138,7 +138,7 @@ const ContactForm = ({ variante = 'empresas' }) => {
 
           <div className="space-y-1.5">
             <label htmlFor="subject" className={ETIQUETA}>
-              {esClientes ? 'Tu negocio o proyecto' : 'Asunto'}
+              {esClientes ? 'Negocio o proyecto' : 'Asunto'}
             </label>
             <input
               type="text"
@@ -153,7 +153,7 @@ const ContactForm = ({ variante = 'empresas' }) => {
 
           <div className="space-y-1.5">
             <label htmlFor="message" className={ETIQUETA}>
-              {esClientes ? '¿Qué necesitas resolver?' : 'Mensaje'}
+              {esClientes ? '¿Qué necesita resolver?' : 'Mensaje'}
             </label>
             <textarea
               id="message"
@@ -213,12 +213,12 @@ const ContactForm = ({ variante = 'empresas' }) => {
           <div role="status" aria-live="polite">
             {submitStatus === 'success' && (
               <p className="rounded-md bg-emerald-50 px-4 py-3 text-sm text-emerald-800 ring-1 ring-emerald-600/30 dark:bg-emerald-950/40 dark:text-emerald-300 dark:ring-emerald-500/30">
-                Mensaje enviado. Respondo en menos de 24 horas.
+                Mensaje enviado. Respondo en un plazo de 24 horas.
               </p>
             )}
             {submitStatus === 'error' && (
               <p className="rounded-md bg-red-50 px-4 py-3 text-sm text-red-800 ring-1 ring-red-600/30 dark:bg-red-950/40 dark:text-red-300 dark:ring-red-500/30">
-                {errorMessage || 'No se pudo enviar el mensaje. Inténtalo de nuevo.'}
+                {errorMessage || 'No se pudo enviar el mensaje. Vuelva a intentarlo.'}
               </p>
             )}
           </div>
@@ -228,7 +228,7 @@ const ContactForm = ({ variante = 'empresas' }) => {
             correo en crudo — un mailto: se lo llevan los rastreadores. */}
         <aside className="space-y-6 lg:border-l lg:border-slate-200 lg:pl-8 dark:lg:border-slate-800">
           <div>
-            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">También aquí</h3>
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Otros canales</h3>
             <ul className="mt-3 space-y-1">
               {esClientes && (
                 <li>
@@ -272,7 +272,7 @@ const ContactForm = ({ variante = 'empresas' }) => {
             {/* La fecha va en el nombre del archivo y a la vista: un CV sin
                 fecha se lee como viejo. */}
             <p className="mt-2 font-mono text-xs text-slate-500 dark:text-slate-400">
-              Actualizado 09/2026
+              Actualizado 07/2026
             </p>
           </div>
           )}

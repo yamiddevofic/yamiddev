@@ -1,23 +1,37 @@
+import { Courses } from './coursesData';
+
+/**
+ * Proyectos de la vertiente comercial (/clientes).
+ *
+ * Los estados tienen que coincidir con los de empresasData: un mismo proyecto
+ * no puede figurar "En desarrollo" en una pagina y "En produccion" en la otra,
+ * que es lo que pasaba con este portafolio.
+ */
+const CLASES_PUBLICADAS = Courses.filter((c) => c.available).length;
+
 export const Projects = [
   {
     id: 'portafolio-web-profesional',
-    title: 'Portafolio web profesional',
-    description: 'Portafolio es un sitio web donde puedes conocer sobre mi experiencia, habilidades, proyectos de desarrollo, y contactarme.',
+    title: 'yamid.dev',
+    description: 'Este sitio: presentación profesional, formulario de contacto, blog y la plataforma del curso Think in Code.',
     techStack: ['Astro', 'React', 'Tailwind'],
     image: ['/images/portfolio.jpg', '/images/portfolio.png'],
     imageSize: { width: 1366, height: 768 },
-    time: 'En desarrollo',
+    time: 'En producción',
+    demo: 'https://www.yamid.dev',
     url: 'https://github.com/yamiddevofic/yamiddev'
   },
   {
     id: 'think-in-code',
-    title: 'Think In Code',
-    description: 'Think In Code es un curso de desarrollo web diseñado para aprender las bases de la programación para principiantes',
+    title: 'Think in Code',
+    description: 'Curso en línea, en video, de fundamentos de programación y pensamiento computacional para quienes empiezan desde cero.',
     techStack: ['React', 'Tailwind', 'Astro'],
     image: ['/images/thinkincode-actual.png', '/images/thinkincode-actual.png'],
     imageSize: { width: 1366, height: 768 },
-    time: 'En desarrollo',
-    url: 'https://github.com/yamiddevofic/Think_In_Code'
+    time: `${CLASES_PUBLICADAS} de ${Courses.length} clases publicadas`,
+    demo: 'https://www.yamid.dev/curso/',
+    // El repositorio Think_In_Code ya no existe: el curso vive en este.
+    url: 'https://github.com/yamiddevofic/yamiddev/blob/main/frontend/src/components/organisms/Course.jsx'
   },
   {
     id: 'plantaqr',
@@ -26,7 +40,7 @@ export const Projects = [
     techStack: ['React', 'Vite', 'Express', 'MongoDB'],
     image: ['/images/plantaqr.png', '/images/plantaqr.png'],
     imageSize: { width: 1366, height: 768 },
-    time: 'Publicado',
+    time: 'En producción',
     demo: 'https://plantas-qr.vercel.app',
     url: 'https://github.com/yamiddevofic/plantas-qr'
   },
@@ -37,14 +51,14 @@ export const Projects = [
     techStack: ['JavaScript', 'Supabase', 'Cloudflare', 'ePayco'],
     image: ['/images/marao.png', '/images/marao.png'],
     imageSize: { width: 1366, height: 768 },
-    time: 'Publicado',
+    time: 'En producción',
     demo: 'https://marao.co',
     url: 'https://github.com/yamiddevofic/tienda-marao'
   },
   {
     id: 'marvyshopmarket',
-    title: 'Marvyshopmarket',
-    description: 'Marvy Shopmarket es una aplicación web diseñada para ayudar a las tiendas de barrio a gestionar eficientemente la información de sus ventas, productos, suministros y proveedores.',
+    title: 'Marvy Shopmarket',
+    description: 'Sistema de gestión de productos, inventario, ventas y proveedores para tiendas de barrio. Aún no está disponible al público.',
     techStack: ['React', 'Tailwind', 'Python', 'Flask'],
     image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
     imageSize: { width: 1366, height: 612 },
@@ -54,7 +68,7 @@ export const Projects = [
   {
     id: 'fino-app',
     title: 'Fino App',
-    description: 'Fino App es una aplicación móvil que permite a los usuarios gestionar sus finanzas personales de manera sencilla y eficiente.',
+    description: 'Aplicación móvil para registrar ingresos, gastos y deudas personales.',
     techStack: ['Flutter', 'Dart', 'Hive'],
     image: ['/images/finoapp.jpg', '/images/finoapp-2.jpg'],
     imageSize: { width: 1365, height: 591 },

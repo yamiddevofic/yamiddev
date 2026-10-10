@@ -68,7 +68,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
   if (superaLimite(clientAddress)) {
     return json(
-      { status: 'error', message: 'Has enviado demasiados mensajes. Inténtalo de nuevo en unos minutos.' },
+      { status: 'error', message: 'Se han enviado demasiados mensajes. Vuelva a intentarlo en unos minutos.' },
       429
     );
   }

@@ -9,6 +9,14 @@
  * sin write-up no debe aparecer en la home: se queda con enHome en false hasta
  * que exista la prueba, en lugar de listarse con un enlace roto o inventado.
  */
+import { Courses } from './coursesData';
+
+/**
+ * Cuantas clases del curso estan publicadas. Se calcula en lugar de escribirse
+ * porque "Publicado", que es lo que decia antes, daba a entender un curso
+ * completo cuando solo habia dos clases de doce.
+ */
+const CLASES_PUBLICADAS = Courses.filter((c) => c.available).length;
 
 /**
  * Bloque "Ahora". El skill es explícito: un "Ahora" desactualizado prueba que
@@ -20,12 +28,12 @@ export const AHORA = {
   lineas: [
     'Cursando primer semestre de Ingeniería de Sistemas en la UNAD.',
     'Desarrollando y manteniendo este sitio: Astro 7, React 18 y Tailwind v4 sobre Vercel.',
-    'Desarrollando con agentes de código, con las reglas de trabajo escritas y versionadas en el propio repositorio.',
+    'Desarrollando con agentes de código bajo reglas de trabajo escritas y versionadas en el repositorio.',
     // Va en "Ahora" y no en la seccion de abajo a proposito: todavia no esta
     // hecho. La seccion solo admite lo que ya se puede abrir y revisar; aqui,
     // que lleva fecha a la vista, cabe decir hacia donde se va.
-    'Preparando la primera integración de un modelo dentro de un producto, no solo en el flujo de trabajo.',
-    'Coordinando Chitagá Tech, comunidad tecnológica del municipio, y la vicepresidencia de la JAC de Villa Carmen.',
+    'Preparando la primera integración de un modelo de lenguaje dentro de un producto.',
+    'Fundador de Chitagá Tech, comunidad tecnológica del municipio, y vicepresidente de la Junta de Acción Comunal de Villa Carmen.',
   ],
   disponibilidad: 'Disponible para roles full-stack en modalidad remota.',
 };
@@ -44,33 +52,33 @@ export const AHORA = {
  */
 export const TRABAJO_CON_IA = {
   intro:
-    'Uso agentes de código a diario, con reglas escritas en vez de a ojo. Todo lo de abajo está en el repositorio de este sitio y se puede revisar.',
+    'Trabajo con agentes de código bajo reglas explícitas. Cada práctica descrita aquí puede verificarse en el repositorio de este sitio.',
   practicas: [
     {
-      titulo: 'Las reglas del repositorio están escritas',
+      titulo: 'Reglas de trabajo documentadas',
       detalle:
-        'AGENTS.md fija cómo se trabaja aquí: nunca commitear en main, verificar en el preview de Vercel antes de dar algo por terminado y separar los commits de documentación. El agente las sigue igual que yo.',
+        'AGENTS.md establece las normas del repositorio: ningún cambio se confirma directamente en main, toda modificación se verifica en el entorno de previsualización antes de darse por concluida y la documentación se registra en commits separados. Aplican por igual al trabajo manual y al asistido.',
       enlace: 'https://github.com/yamiddevofic/yamiddev/blob/main/AGENTS.md',
       textoEnlace: 'Ver AGENTS.md',
     },
     {
-      titulo: 'Escribo skills, no solo prompts',
+      titulo: 'Skills propias y portables',
       detalle:
-        'Tres skills propias fijan el criterio de maquetación y el de cada vertiente del portafolio: qué se puede afirmar, qué evidencia exige cada proyecto y cómo se comprueba. Están versionadas para Claude Code y para OpenCode, así que no dependen de un proveedor.',
+        'Tres skills definen los criterios de maquetación y de contenido del portafolio: qué puede afirmarse, qué evidencia requiere cada proyecto y cómo se comprueba. Están versionadas para Claude Code y para OpenCode, de modo que no dependen de un único proveedor.',
       enlace: 'https://github.com/yamiddevofic/yamiddev/tree/main/.claude/skills',
       textoEnlace: 'Ver las skills',
     },
     {
-      titulo: 'Queda trazado quién escribió qué',
+      titulo: 'Trazabilidad de la autoría',
       detalle:
-        'Los commits hechos con ayuda de un agente llevan su co-autoría en el mensaje. Se ve en el historial, sin tener que creerme.',
+        'Los commits elaborados con asistencia de un agente declaran su coautoría en el mensaje. El historial del repositorio lo registra de forma pública.',
       enlace: 'https://github.com/yamiddevofic/yamiddev/commits/main/',
       textoEnlace: 'Ver el historial',
     },
     {
-      titulo: 'El agente no decide si algo funciona',
+      titulo: 'Verificación independiente del agente',
       detalle:
-        'Lo decide la suite de 117 pruebas y la medición en el navegador sobre el build. Un cambio visual no se da por bueno porque se vea bien en una captura: se comprueban las propiedades calculadas.',
+        'La validez de un cambio la determinan la suite de pruebas automatizadas y la medición en el navegador sobre la compilación final. Los cambios visuales se aceptan por sus propiedades calculadas, no por su apariencia en una captura.',
       enlace: 'https://github.com/yamiddevofic/yamiddev/tree/main/frontend/tests',
       textoEnlace: 'Ver las pruebas',
     },
@@ -97,7 +105,7 @@ export const PROYECTOS: Proyecto[] = [
   {
     nombre: 'yamid.dev',
     resumen:
-      'Este sitio: estático con una función serverless para el formulario de contacto.',
+      'Este portafolio. Sitio estático con una función serverless para el formulario de contacto.',
     rol: 'Diseño, desarrollo y operación',
     estado: 'En producción',
     stack: ['Astro 7', 'React 18', 'Tailwind v4', 'Vercel', 'Cloudflare'],
@@ -112,11 +120,13 @@ export const PROYECTOS: Proyecto[] = [
     resumen:
       'Curso en línea de fundamentos de programación y pensamiento computacional.',
     rol: 'Contenido, plataforma y despliegue',
-    estado: 'Publicado',
+    estado: `${CLASES_PUBLICADAS} de ${Courses.length} clases publicadas`,
     stack: ['Astro', 'React', 'Tailwind'],
     image: ['/images/thinkincode-actual.png', '/images/thinkincode-actual.png'],
     demo: 'https://www.yamid.dev/curso/',
-    repo: 'https://github.com/yamiddevofic/Think_In_Code',
+    // El repositorio Think_In_Code ya no existe (responde 404). La plataforma
+    // del curso vive en este mismo repositorio.
+    repo: 'https://github.com/yamiddevofic/yamiddev/blob/main/frontend/src/components/organisms/Course.jsx',
     writeup: null,
     enHome: false,
   },
@@ -154,9 +164,9 @@ export const PROYECTOS: Proyecto[] = [
   {
     nombre: 'Marvy Shopmarket',
     resumen:
-      'Sistema de gestión de productos, inventario y ventas concebido para tiendas de barrio en Chitagá. No se encuentra desplegado.',
+      'Sistema de gestión de productos, inventario y ventas para tiendas de barrio en Chitagá. Iniciado en 2023 como proyecto de formación.',
     rol: 'Diseño y desarrollo',
-    estado: 'Iniciado en 2023 · sin actividad reciente',
+    estado: 'En desarrollo · sin despliegue público',
     stack: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
     image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
     demo: null,
@@ -185,17 +195,17 @@ export const PROYECTOS: Proyecto[] = [
 export const STACK = [
   {
     grupo: 'En producción',
-    nota: 'Desplegado y mantenido por mí',
+    nota: 'Desplegado y mantenido en producción',
     items: ['JavaScript', 'React', 'Astro', 'Tailwind', 'Node.js', 'Vercel', 'Git'],
   },
   {
     grupo: 'En proyectos propios',
-    nota: 'Usado a fondo, sin operación pública todavía',
+    nota: 'Empleado en proyectos sin despliegue público',
     items: ['Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Flutter'],
   },
   {
     grupo: 'Explorando',
-    nota: 'En estudio este semestre',
+    nota: 'En estudio',
     items: ['TypeScript', 'Vitest'],
   },
 ];

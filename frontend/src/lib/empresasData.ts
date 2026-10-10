@@ -43,46 +43,15 @@ export type Proyecto = {
 
 export const PROYECTOS: Proyecto[] = [
   {
-    nombre: 'PlantaQR',
+    nombre: 'yamid.dev',
     resumen:
-      'Catálogo de los árboles del parque de Chitagá. Cada individuo lleva un código QR que abre su ficha: familia, origen, usos y estado de conservación.',
-    rol: 'Diseño, desarrollo y despliegue · idea del cliente',
+      'Este sitio: estático con una función serverless para el formulario de contacto.',
+    rol: 'Diseño, desarrollo y operación',
     estado: 'En producción',
-    stack: ['React', 'Vite', 'Express', 'MongoDB', 'Mongoose', 'MapLibre', 'Swagger', 'Vercel'],
-    // La idea no es mia: la puso el estudiante que encargo el proyecto. Se dice
-    // para no atribuirse lo que no se hizo; lo demas si salio de aqui.
-    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
-    demo: 'https://plantas-qr.vercel.app',
-    repo: 'https://github.com/yamiddevofic/plantas-qr',
-    writeup: null,
-    enHome: false,
-  },
-  {
-    nombre: 'Marao',
-    resumen:
-      'Tienda en línea de lentes de contacto cosméticos y pestañas. Catálogo filtrable, carrito y cierre del pedido por WhatsApp, sin pasarela de pago.',
-    // El diseno lo hicieron el estudiante del SENA que trajo el encargo y el
-    // propio negocio. Aqui solo se hizo el desarrollo y el despliegue, y asi
-    // se dice: apuntarse el diseno seria quitarselo a quien lo hizo.
-    rol: 'Desarrollo y despliegue · diseño del cliente',
-    estado: 'En producción',
-    stack: ['JavaScript', 'HTML', 'CSS', 'Supabase', 'Cloudflare'],
-    image: ['/images/marao.png', '/images/marao.png'],
-    demo: 'https://marao.co',
-    repo: 'https://github.com/yamiddevofic/tienda-marao',
-    writeup: null,
-    enHome: false,
-  },
-  {
-    nombre: 'Marvy Shopmarket',
-    resumen:
-      'Sistema de gestión de productos, inventario y ventas concebido para tiendas de barrio en Chitagá. No se encuentra desplegado.',
-    rol: 'Diseño y desarrollo',
-    estado: 'Iniciado en 2023 · sin actividad reciente',
-    stack: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
-    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
-    demo: null,
-    repo: 'https://github.com/yamiddevofic/Marvy_Shopmarket',
+    stack: ['Astro 7', 'React 18', 'Tailwind v4', 'Vercel', 'Cloudflare'],
+    image: ['/images/portfolio.jpg', '/images/portfolio.png'],
+    demo: 'https://www.yamid.dev',
+    repo: 'https://github.com/yamiddevofic/yamiddev',
     writeup: null,
     enHome: false,
   },
@@ -100,15 +69,46 @@ export const PROYECTOS: Proyecto[] = [
     enHome: false,
   },
   {
-    nombre: 'yamid.dev',
+    nombre: 'PlantaQR',
     resumen:
-      'Este sitio: estático con una función serverless para el formulario de contacto.',
-    rol: 'Diseño, desarrollo y operación',
+      'Catálogo de los árboles del parque de Chitagá. Cada individuo lleva un código QR que abre su ficha: familia, origen, usos y estado de conservación.',
+    rol: 'Diseño, desarrollo y despliegue · idea del cliente',
     estado: 'En producción',
-    stack: ['Astro 7', 'React 18', 'Tailwind v4', 'Vercel', 'Cloudflare'],
-    image: ['/images/portfolio.jpg', '/images/portfolio.png'],
-    demo: 'https://www.yamid.dev',
-    repo: 'https://github.com/yamiddevofic/yamiddev',
+    stack: ['React', 'Vite', 'Express', 'MongoDB', 'Mongoose', 'MapLibre', 'Swagger', 'Vercel'],
+    // La idea no es mia: la puso el estudiante que encargo el proyecto. Se dice
+    // para no atribuirse lo que no se hizo; lo demas si salio de aqui.
+    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
+    demo: 'https://plantas-qr.vercel.app',
+    repo: 'https://github.com/yamiddevofic/plantas-qr',
+    writeup: null,
+    enHome: false,
+  },
+  {
+    nombre: 'Marao',
+    resumen:
+      'Tienda en línea de lentes de contacto, pestañas y accesorios: 120 referencias con filtros combinables, carrito, pago en línea y panel de administración.',
+    // El diseno lo hicieron el estudiante del SENA que trajo el encargo y el
+    // propio negocio. Aqui solo se hizo el desarrollo y el despliegue, y asi
+    // se dice: apuntarse el diseno seria quitarselo a quien lo hizo.
+    rol: 'Desarrollo y despliegue · diseño del cliente',
+    estado: 'En producción',
+    stack: ['JavaScript', 'HTML', 'CSS', 'Supabase', 'Cloudflare Workers', 'ePayco'],
+    image: ['/images/marao.png', '/images/marao.png'],
+    demo: 'https://marao.co',
+    repo: 'https://github.com/yamiddevofic/tienda-marao',
+    writeup: null,
+    enHome: false,
+  },
+  {
+    nombre: 'Marvy Shopmarket',
+    resumen:
+      'Sistema de gestión de productos, inventario y ventas concebido para tiendas de barrio en Chitagá. No se encuentra desplegado.',
+    rol: 'Diseño y desarrollo',
+    estado: 'Iniciado en 2023 · sin actividad reciente',
+    stack: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
+    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
+    demo: null,
+    repo: 'https://github.com/yamiddevofic/Marvy_Shopmarket',
     writeup: null,
     enHome: false,
   },

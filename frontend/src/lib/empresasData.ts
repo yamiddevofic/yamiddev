@@ -168,7 +168,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Diseño y desarrollo',
     estado: 'En desarrollo · sin despliegue público',
     stack: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
-    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
+    image: ['/images/marvyshopmarket.webp', '/images/marvyshopmarket.webp'],
     demo: null,
     repo: 'https://github.com/yamiddevofic/Marvy_Shopmarket',
     writeup: null,

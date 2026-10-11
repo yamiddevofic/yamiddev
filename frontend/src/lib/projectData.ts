@@ -60,8 +60,8 @@ export const Projects = [
     title: 'Marvy Shopmarket',
     description: 'Sistema de gestión de productos, inventario, ventas y proveedores para tiendas de barrio. Aún no está disponible al público.',
     techStack: ['React', 'Tailwind', 'Python', 'Flask'],
-    image: ['/images/marvyshopmarket.png', '/images/marvyshopmarket-2.png'],
-    imageSize: { width: 1366, height: 612 },
+    image: ['/images/marvyshopmarket.webp', '/images/marvyshopmarket.webp'],
+    imageSize: { width: 2000, height: 1250 },
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/Marvy_Shopmarket'
   },

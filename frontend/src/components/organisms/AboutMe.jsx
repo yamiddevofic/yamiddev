@@ -72,9 +72,9 @@ const ModernAboutMe = () => {
           </div>
 
           <p className="max-w-prose text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            Desarrollador, educador y líder comunitario en Chitagá. Lo que empezó como una búsqueda
-            de camino profesional se convirtió en una trayectoria alrededor del software, la
-            formación y la creación de oportunidades desde el territorio.
+            Desarrollador de software en Chitagá, Norte de Santander. Tecnólogo del SENA y estudiante
+            de Ingeniería de Sistemas en la UNAD. Además del desarrollo, publico un curso de
+            fundamentos de programación y fundé Chitagá Tech, una comunidad tecnológica local.
           </p>
 
           <div>

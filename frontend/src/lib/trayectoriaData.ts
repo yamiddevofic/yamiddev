@@ -59,7 +59,7 @@ export const TRAYECTORIA: Hito[] = [
     tipo: 'Proyecto',
     lugar: 'Chitagá',
     descripcion:
-      'Empezó como proyecto de formación y sigue en desarrollo. Es una solución para la gestión de tiendas de barrio en Chitagá: productos, inventario, ventas y administración. Muestra que un ejercicio de aprendizaje puede crecer hasta convertirse en un producto real.',
+      'Empezó como proyecto de formación y sigue en desarrollo. Es una solución para la gestión de tiendas de barrio en Chitagá: productos, inventario, ventas y administración. Aún no tiene despliegue público.',
     tecnologias: ['React', 'Vite', 'Tailwind', 'Python', 'Flask', 'SQLAlchemy', 'MySQL', 'Docker', 'Nginx', 'Gunicorn'],
   },
   {
@@ -106,7 +106,7 @@ export const TRAYECTORIA: Hito[] = [
     tipo: 'Comunidad',
     lugar: 'Villa Carmen, Chitagá',
     descripcion:
-      'Participación directa en procesos comunitarios, de organización y gestión local. Refuerza liderazgo, comunicación y trabajo colectivo, y me permite conocer de cerca las necesidades de la comunidad: el desarrollo no depende solo de la tecnología, también del compromiso con el territorio.',
+      'Participación directa en procesos comunitarios, de organización y gestión local. Refuerza liderazgo, comunicación y trabajo colectivo, y me permite conocer de cerca las necesidades de la comunidad.',
   },
   {
     anio: '2026',
@@ -128,11 +128,11 @@ export const TRAYECTORIA: Hito[] = [
   },
   {
     anio: 'Hoy',
-    periodo: 'Septiembre de 2026',
+    periodo: 'Octubre de 2026',
     titulo: 'Etapa actual',
     tipo: 'Proyecto',
     lugar: 'Chitagá',
     descripcion:
-      'Marvy Shopmarket sigue en marcha, Yamid Dev crece con Yamid Dev Formación y contenidos educativos, Chitagá Tech avanza como comunidad y continúo en la JAC. El propósito: usar la tecnología no solo para construir sistemas, sino para conectar personas y demostrar que el futuro también se construye desde el territorio.',
+      'Marvy Shopmarket sigue en marcha, Yamid Dev crece con Yamid Dev Formación y contenidos educativos, Chitagá Tech avanza como comunidad y continúo en la JAC. El objetivo es seguir desarrollando software y ampliar, desde Chitagá, el acceso local a la formación tecnológica.',
   },
 ];

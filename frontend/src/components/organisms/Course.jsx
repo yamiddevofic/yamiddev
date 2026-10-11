@@ -292,7 +292,7 @@ export const Course = () => {
                 title={showList ? 'Ocultar lista' : 'Mostrar lista'}
             >
                 {showList ? <ToggleClose className="w-5 h-5" />  : <ToggleOpen className="w-5 h-5" /> }
-                {showList ? 'Ocultar' : 'Ver todos los cursos'}
+                {showList ? 'Ocultar' : 'Ver todas las clases'}
             </button>
             )}
             {/* Columna de la Lista de Clases / Carrusel en móvil */}
@@ -400,7 +400,7 @@ export const Course = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Disponible próximamente</h3>
                     <p className="text-sm text-gray-200 leading-relaxed mb-6">
-                    Únete a mi comunidad para saber cuándo se liberan las nuevas clases y recibir material exclusivo.
+                    Las nuevas clases se anuncian en el grupo de la comunidad.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center gap-3">
                     <button onClick={() => window.location.href = "/comunidad"} className="w-full sm:w-auto rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition-colors duration-200 flex items-center justify-center gap-2">

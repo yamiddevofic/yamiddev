@@ -139,7 +139,7 @@ export const PROYECTOS: Proyecto[] = [
     stack: ['React', 'Vite', 'Express', 'MongoDB', 'Mongoose', 'MapLibre', 'Swagger', 'Vercel'],
     // La idea no es mia: la puso el estudiante que encargo el proyecto. Se dice
     // para no atribuirse lo que no se hizo; lo demas si salio de aqui.
-    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
+    image: ['/images/plantaqr.jpg', '/images/plantaqr.jpg'],
     demo: 'https://plantas-qr.vercel.app',
     repo: 'https://github.com/yamiddevofic/plantas-qr',
     writeup: null,

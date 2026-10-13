@@ -1,4 +1,5 @@
 ---
+import FondoHero from '../../components/atoms/FondoHero.astro';
 /**
  * Hero de la vertiente comercial.
  *
@@ -18,8 +19,8 @@
 
 /** Los tres dolores van en lenguaje del cliente: ni una palabra tecnica. */
 const DOLORES = [
-  'Llevas el inventario en un cuaderno o en una hoja de calculo que ya nadie entiende.',
-  'Para saber cuanto vendiste hoy tienes que preguntar, contar o cerrar la tienda.',
+  'El inventario se lleva en un cuaderno o en una hoja de cálculo difícil de mantener al día.',
+  'Conocer las ventas del día exige preguntar, contar o cerrar la caja.',
   'Los pedidos llegan por WhatsApp y se pierden entre las conversaciones.',
 ];
 
@@ -28,13 +29,13 @@ const LETRAS = Array.from(TITULO);
 ---
 
 <section id="inicio" class="relative isolate w-full overflow-hidden py-20 sm:py-20 lg:py-28">
-  <img src="/blog.jpg" alt="Cuaderno de trabajo sobre un fondo oscuro" class="absolute inset-0 z-0 h-full w-full object-cover" width="1200" height="630" />
+  <FondoHero />
   <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-950/85 via-slate-950/65 to-cyan-950/75" aria-hidden="true"></div>
   <div class="relative z-10 mx-auto grid w-[90%] max-w-6xl items-end gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">
-    <div class="max-w-3xl text-center lg:text-left">
-      <p class="mb-7 flex items-center justify-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-cyan-200 sm:text-xs sm:tracking-[0.18em] lg:justify-start">
+    <div class="max-w-3xl">
+      <p class="mb-7 flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-cyan-200 sm:text-xs sm:tracking-[0.18em]">
         <span class="hidden h-px w-8 bg-cyan-300 lg:block" aria-hidden="true"></span>
-        Soluciones digitales para negocios · Colombia y Latinoamérica
+        Software a la medida para negocios · Colombia
       </p>
 
     <h1
@@ -51,17 +52,17 @@ const LETRAS = Array.from(TITULO);
     </h1>
 
     <p class="mt-8 max-w-xl text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-slate-200">
-      Desarrollo soluciones digitales para organizar operaciones, ventas y clientes. Trabajo con
-      negocios de Colombia, Latinoamérica y, de forma cercana, con empresas de Chitagá y la región.
+      Desarrollo herramientas a la medida para gestionar inventario, ventas y pedidos. Ofrezco
+      atención presencial en Chitagá y la región, y remota para el resto de Colombia y Latinoamérica.
     </p>
 
-    <div class="mt-10 flex flex-wrap justify-center gap-3 lg:justify-start">
+    <div class="mt-10 flex flex-wrap gap-3">
       <a
         href="#contacto"
         data-cta="primary"
         class="inline-flex min-h-[44px] items-center rounded-full bg-slate-950 px-6 text-sm font-medium text-white transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 dark:focus-visible:ring-offset-slate-950"
       >
-        Hablemos de tu proyecto
+        Hablemos de su proyecto
       </a>
       <a
         href="#proyectos"
@@ -72,8 +73,8 @@ const LETRAS = Array.from(TITULO);
     </div>
     </div>
 
-    <aside class="border-t border-white/25 pt-7 text-center dark:border-white/25 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0 lg:text-left">
-      <h2 class="text-sm font-semibold text-white">¿Te suena alguna?</h2>
+    <aside class="border-t border-white/25 pt-7 dark:border-white/25 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+      <h2 class="text-sm font-semibold text-white">Situaciones frecuentes en un negocio</h2>
       <ul class="mt-4 space-y-3">
         {DOLORES.map((dolor) => (
           <li class="flex gap-3 text-sm leading-relaxed text-slate-200">
@@ -83,7 +84,7 @@ const LETRAS = Array.from(TITULO);
         ))}
       </ul>
       <p class="mt-5 text-sm font-medium text-white">
-        Si te pasa alguna, esto se puede resolver.
+        Una herramienta diseñada para su operación puede resolverlas.
       </p>
     </aside>
   </div>

@@ -1,0 +1,49 @@
+---
+import { TRABAJO_CON_IA } from '../../lib/empresasData';
+
+/**
+ * Cómo trabajo con agentes de código.
+ *
+ * Misma estructura que Proyectos: titular a la izquierda, línea de apoyo a la
+ * derecha y una rejilla de filas con borde superior. Es el mismo sitio y la
+ * misma voz; esta sección solo cambia de contenido.
+ *
+ * Cada fila termina en un enlace a algo público del repositorio. Es la regla
+ * del skill de la vertiente técnica —"todo lo que afirmes debe tener a un clic
+ * la prueba que lo sostiene"— y es lo que separa esta sección de decir "uso
+ * IA", que hoy no distingue a nadie porque lo dice todo el mundo.
+ *
+ * Aquí no cabe nada que no esté hecho. Lo que se prepara va en el bloque
+ * "Ahora" del hero, que lleva fecha a la vista.
+ */
+---
+
+<section id="ia" class="mx-auto w-[90%] max-w-6xl py-20 sm:py-24">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+    <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.04em] text-slate-950 dark:text-white">
+      Desarrollo con IA
+    </h2>
+    <p class="max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+      {TRABAJO_CON_IA.intro}
+    </p>
+  </div>
+
+  <ul class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-x-8 gap-y-10">
+    {TRABAJO_CON_IA.practicas.map((p) => (
+      <li class="reveal flex flex-col border-t border-slate-200 pt-5 dark:border-slate-800">
+        <h3 class="font-semibold tracking-tight text-slate-950 dark:text-white">{p.titulo}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{p.detalle}</p>
+        <div class="mt-auto pt-4">
+          <a
+            href={p.enlace}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-[44px] items-center text-xs font-medium text-cyan-700 underline decoration-cyan-300 underline-offset-4 transition-colors hover:text-cyan-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:text-cyan-400 dark:decoration-cyan-700 dark:hover:text-cyan-300 dark:focus-visible:ring-offset-slate-950"
+          >
+            {p.textoEnlace}
+          </a>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

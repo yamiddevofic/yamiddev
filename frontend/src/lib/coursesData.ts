@@ -4,7 +4,7 @@ export const Courses = [
         title: "INTRODUCCIÓN: ¿QUÉ ES LA PROGRAMACIÓN? PENSAMIENTO COMPUTACIONAL",
         available: true,
         description:
-            "Aprende a pensar como programador y a resolver problemas paso a paso con el poder del pensamiento computacional, incluso antes de escribir código.",
+            "Qué es programar y qué es el pensamiento computacional: cómo descomponer un problema en pasos lógicos antes de escribir código.",
         videoUrl: "https://www.youtube.com/watch?v=RDLEo5mlTOI",
         posterUrl: "/images/courses/course-1.jpg",
         categories: ["Introducción", "Pensamiento Computacional", "Programación"],
@@ -13,7 +13,7 @@ export const Courses = [
         id: 2,
         title: "LÓGICA DE PROCESOS: ENTRADA, PROCESAMIENTO Y SALIDA",
         available: true,
-        description: "Descubre cómo aplicar la lógica de procesos —entrada, procesamiento y salida— para organizar ideas, resolver problemas y pensar como programador en cualquier situación.",
+        description: "El modelo de entrada, procesamiento y salida como método para estructurar un problema y su solución.",
         videoUrl: "https://www.youtube.com/watch?v=q6pk7kH2U2w",
         posterUrl: "/images/courses/course-2.jpg",
         categories: [],

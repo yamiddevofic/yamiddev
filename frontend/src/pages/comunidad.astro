@@ -1,13 +1,18 @@
 ---
+import FondoHero from '../components/atoms/FondoHero.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 
 const TITULO = 'Comunidad Yamid Dev';
 const LETRAS = Array.from(TITULO);
 ---
 
-<MainLayout title="Comunidad Yamid Dev | Desarrollador Full Stack" isMain={false}>
+<MainLayout
+  title="Comunidad Yamid Dev"
+  description="Grupo de WhatsApp gratuito y abierto para aprender programación, resolver dudas y compartir proyectos."
+  isMain={false}
+>
 <section id="home" class="relative isolate w-full overflow-hidden pt-20 pb-44 sm:pt-20 sm:pb-44 lg:pt-28 lg:pb-40">
-  <img src="/blog.jpg" alt="" aria-hidden="true" class="absolute inset-0 z-0 h-full w-full object-cover" width="1200" height="630" />
+  <FondoHero />
   <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-950/95 via-slate-950/92 to-cyan-950/95" aria-hidden="true"></div>
 
     <div class="relative z-10 mx-auto grid w-[90%] max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">
@@ -46,15 +51,13 @@ const LETRAS = Array.from(TITULO);
         </h1>
 
         <p class="mt-7 max-w-xl text-[clamp(1.05rem,2vw,1.25rem)] leading-relaxed text-slate-200">
-          Aprende, comparte y crea proyectos junto a otros desarrolladores.
+          Grupo de WhatsApp abierto para aprender programación, resolver dudas y compartir proyectos.
         </p>
 
         <p class="mt-5 text-sm text-slate-400">
-          <span class="font-semibold text-white">+50</span> miembros
+          Gratuito
           <span class="mx-2 text-slate-600" aria-hidden="true">/</span>
-          Gratis
-          <span class="mx-2 text-slate-600" aria-hidden="true">/</span>
-          Soporte diario
+          Abierto a cualquier persona
         </p>
 
         <div class="mt-8 mb-8 flex flex-wrap justify-center gap-3 lg:justify-start">
@@ -62,13 +65,13 @@ const LETRAS = Array.from(TITULO);
             href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
             class="inline-flex min-h-[48px] items-center justify-center rounded-full bg-emerald-500 px-7 text-sm font-semibold text-slate-950 transition-colors hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transition-none"
           >
-            Únete gratis ahora
+            Unirse al grupo de WhatsApp
           </a>
           <a
-            href="#benefits"
+            href="#que-es"
             class="inline-flex min-h-[44px] items-center justify-center px-4 text-sm font-medium text-slate-300 underline decoration-white/30 underline-offset-8 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 motion-reduce:transition-none"
           >
-            Explorar beneficios
+            Qué es el grupo
           </a>
         </div>
       </div>
@@ -85,121 +88,41 @@ const LETRAS = Array.from(TITULO);
       </aside>
     </div>
 
-    <!-- Section: Benefits & Core Features -->
-    <div id="benefits" class="relative z-20 py-20 sm:py-28 bg-white dark:bg-slate-950 transition-colors duration-300">
-      
-      {/* Subtle division border */}
-      <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Heading */}
-        <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <h2 class="text-xs sm:text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-cyan-400">
-            ¿Por qué unirse?
+    <!-- Que es el grupo. Antes habia aqui seis tarjetas de beneficios
+         (networking internacional, repositorios privados, charlas con
+         invitados, canal de empleo diario...) que no existen. Solo queda lo
+         que el grupo es hoy. -->
+    <div id="que-es" class="relative z-20 bg-white py-20 transition-colors duration-300 sm:py-24 dark:bg-slate-950">
+      <div class="mx-auto w-[90%] max-w-6xl">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+          <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.04em] text-slate-950 dark:text-white">
+            Qué es el grupo
           </h2>
-          <p class="mt-3 text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
-            Todo lo que necesitas para tu crecimiento
-          </p>
-          <p class="mt-4 text-slate-600 dark:text-slate-400 font-light text-base sm:text-lg">
-            Descubre los pilares fundamentales que hacen de nuestra comunidad el espacio ideal para potenciar tus habilidades.
+          <p class="max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+            Un espacio de conversación para quienes aprenden a programar.
           </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          
-          <!-- Benefit Card 1 -->
-          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
-                Networking de Alto Nivel
-              </h3>
-              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
-                Conéctate con desarrolladores, programadores y expertos de todo el mundo. Intercambia ideas, colabora en proyectos compartidos y expande tu red profesional.
-              </p>
-            </div>
-          </div>
-
-          <!-- Benefit Card 2 -->
-          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
-                Recursos Exclusivos
-              </h3>
-              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
-                Obtén acceso preferencial a plantillas premium, repositorios privados de GitHub, tutoriales de nivel avanzado y las mejores herramientas seleccionadas para el día a día.
-              </p>
-            </div>
-          </div>
-
-          <!-- Benefit Card 3 -->
-          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-life-buoy"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
-                Soporte & Colaboración
-              </h3>
-              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
-                ¿Atascado en un bug complejo? Comparte tus capturas o fragmentos de código y recibe feedback de calidad, consejos técnicos y soluciones rápidas del resto de la comunidad.
-              </p>
-            </div>
-          </div>
-
-          <!-- Benefit Card 4 -->
-          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-presentation"><path d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M12 17v4"/><path d="M9 21h6"/><path d="m8 11 3-3 3 3"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
-                Talleres & Mentorías
-              </h3>
-              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
-                Accede a charlas periódicas de invitados especiales, revisiones grupales de portafolios y sesiones dedicadas a mejorar tu perfil técnico y marca personal.
-              </p>
-            </div>
-          </div>
-
-          <!-- Benefit Card 5 -->
-          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 15 5.5 18.5"/><path d="M15 9l3.5-3.5"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
-                Proyectos Grupales
-              </h3>
-              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
-                Forma equipos dinámicos dentro de la comunidad para construir proyectos web en producción y de código abierto. Gana experiencia real de trabajo y robustece tu portafolio.
-              </p>
-            </div>
-          </div>
-
-          <!-- Benefit Card 6 -->
-          <div class="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 hover:border-blue-500/50 dark:hover:border-blue-500/40 hover:bg-white dark:hover:bg-slate-900/70 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1.5 transition-all duration-300">
-            <div class="p-3 w-fit rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 group-hover:scale-110 transition-transform duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><path d="M15 2H9a2 2 0 0 0-2 2v2H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-4V4a2 2 0 0 0-2-2z"/><path d="M7 6h10"/><path d="M3 11h18"/><path d="M12 11v6"/></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors duration-200">
-                Canal de Empleo
-              </h3>
-              <p class="mt-3 text-slate-600 dark:text-slate-400 font-light text-sm sm:text-base leading-relaxed">
-                Acceso a un foro interno donde se comparten diariamente oportunidades de trabajo remoto, vacantes para programadores freelance y consejos prácticos para tus entrevistas.
-              </p>
-            </div>
-          </div>
-
-        </div>
+        <ul class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-x-8 gap-y-10">
+          <li class="border-t border-slate-200 pt-5 dark:border-slate-800">
+            <h3 class="font-semibold tracking-tight text-slate-950 dark:text-white">Gratuito y abierto</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              No tiene costo ni exige experiencia previa. El acceso es mediante un enlace de invitación.
+            </p>
+          </li>
+          <li class="border-t border-slate-200 pt-5 dark:border-slate-800">
+            <h3 class="font-semibold tracking-tight text-slate-950 dark:text-white">Dudas y proyectos</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              Está pensado para plantear dudas de programación y compartir los proyectos en curso.
+            </p>
+          </li>
+          <li class="border-t border-slate-200 pt-5 dark:border-slate-800">
+            <h3 class="font-semibold tracking-tight text-slate-950 dark:text-white">Avisos del curso</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              Las nuevas clases de Pensar en código se anuncian en el grupo.
+            </p>
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -218,16 +141,15 @@ const LETRAS = Array.from(TITULO);
           
           <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-6">
             <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Lleva tu desarrollo al siguiente nivel
+              Unirse a la comunidad
             </h3>
             <p class="text-blue-100 font-light text-base sm:text-lg leading-relaxed">
-              No dejes pasar la oportunidad de aprender, colaborar y crecer rodeado de personas apasionadas como tú. Únete hoy mismo, la invitación está abierta.
+              El acceso es gratuito mediante el enlace de invitación al grupo de WhatsApp.
             </p>
             
             <a
               href="https://chat.whatsapp.com/I5Pt34eGBVOIx1rfVuvpVg"
               target="_blank"
-              rel="noopener noreferrer"
               rel="noopener noreferrer"
               class="mt-4 flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-white text-blue-600 font-bold hover:bg-blue-50 active:scale-95 shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto"
             >

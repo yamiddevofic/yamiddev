@@ -22,13 +22,13 @@ const ordenados = [...PROYECTOS].sort((a, b) => Number(b.enHome) - Number(a.enHo
       Proyectos
     </h2>
     <p class="max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-      Sistemas construidos, desplegados y documentados.
+      Proyectos con código público. Cada uno indica su estado real.
     </p>
   </div>
 
   <ul class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(min(100%,20rem),1fr))] gap-x-8 gap-y-12">
     {ordenados.map((p) => (
-      <li class="group flex flex-col border-t border-slate-200 pt-5 dark:border-slate-800">
+      <li class="reveal group flex flex-col border-t border-slate-200 pt-5 dark:border-slate-800">
         {p.image && (
           <div class="mb-5 aspect-[16/9] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
             <img

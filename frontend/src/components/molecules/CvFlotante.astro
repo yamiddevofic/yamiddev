@@ -7,13 +7,12 @@
 ---
 
 <a
-  id="cv-flotante"
   href="/docs/Yamid_Rodriguez-HV.pdf"
   target="_blank"
   rel="noopener"
   aria-label="Ver CV en PDF"
   title="Ver CV"
-  class="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-cyan-700 text-white shadow-lg transition-[background-color,transform] duration-300 hover:bg-cyan-800 data-[oculto]:translate-y-24 focus-visible:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-offset-slate-950"
+  class="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-cyan-700 text-white shadow-lg transition-colors hover:bg-cyan-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 motion-reduce:transition-none dark:focus-visible:ring-offset-slate-950"
 >
   <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
@@ -21,20 +20,3 @@
     <path d="M9 13h6M9 17h6" />
   </svg>
 </a>
-
-<script>
-  // Se esconde al bajar (mientras se lee, tapaba texto en movil) y vuelve al
-  // subir. Lenis mueve el scroll nativo, asi que el evento scroll basta.
-  const boton = document.getElementById('cv-flotante');
-  let ultimo = scrollY;
-  addEventListener(
-    'scroll',
-    () => {
-      const y = scrollY;
-      if (Math.abs(y - ultimo) < 8) return;
-      boton?.toggleAttribute('data-oculto', y > ultimo && y > 200);
-      ultimo = y;
-    },
-    { passive: true },
-  );
-</script>

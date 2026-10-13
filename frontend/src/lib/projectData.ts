@@ -38,7 +38,7 @@ export const Projects = [
     title: 'PlantaQR',
     description: 'Cada árbol del parque de Chitagá lleva un código QR. Al escanearlo se abre su ficha: familia, origen, usos y estado de conservación.',
     techStack: ['React', 'Vite', 'Express', 'MongoDB'],
-    image: ['/images/plantaqr.png', '/images/plantaqr.png'],
+    image: ['/images/plantaqr.jpg', '/images/plantaqr.jpg'],
     imageSize: { width: 1366, height: 768 },
     time: 'En producción',
     demo: 'https://plantas-qr.vercel.app',

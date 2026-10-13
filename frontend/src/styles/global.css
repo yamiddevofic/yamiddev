@@ -117,6 +117,18 @@
   }
 }
 
+/* Reglas que Lenis exige: el scroll nativo suave chocaria con el suyo. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 /* Las tarjetas entran desde 24px abajo con fundido al aparecer en pantalla
    (el inView de nesdesign.co). La cascada sale sola: cada una entra cuando
    le toca por posicion. Sin soporte o con movimiento reducido, se ven fijas. */

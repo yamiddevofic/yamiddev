@@ -22,11 +22,18 @@ const VERTEX = /* glsl */ `
 `;
 
 const FRAGMENT = /* glsl */ `
-  precision mediump float;
+  // Sin "precision" propia a proposito: three antepone highp si la GPU lo
+  // soporta. Con mediump (16 bits en movil) el ruido salia en bloques.
   uniform vec2 u_res;
   uniform float u_time;
 
-  float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+  // Hash sin sin(): fract(sin(x) * 43758.5) pierde la parte decimal con poca
+  // precision y pinta cuadros en vez de ruido.
+  float hash(vec2 p) {
+    vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
+  }
   float noise(vec2 p) {
     vec2 i = floor(p), f = fract(p);
     f = f * f * (3.0 - 2.0 * f);
@@ -50,6 +57,8 @@ const FRAGMENT = /* glsl */ `
     vec3 glow = vec3(0.30, 0.78, 0.88);      // cyan claro
     vec3 col = mix(base, teal, smoothstep(0.25, 0.75, n));
     col = mix(col, glow, smoothstep(0.62, 0.95, n) * 0.5);
+    // Dithering de 1/255: el degradado oscuro en 8 bits muestra escalones.
+    col += (hash(gl_FragCoord.xy) - 0.5) / 255.0;
     gl_FragColor = vec4(col, 1.0);
   }
 `;

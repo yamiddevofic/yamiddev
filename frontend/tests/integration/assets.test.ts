@@ -33,12 +33,15 @@ describe('artefactos de build', () => {
     await expect(stat(path.join(dist, 'index.html'))).resolves.toBeDefined();
   });
 
-  it('ningún bundle JS individual supera los 200 kB', async () => {
+  // heroGradient incluye three (~500 kB) y solo se descarga bajo demanda, si hay
+  // movimiento permitido y WebGL: por eso tiene un tope propio, mayor.
+  it('ningún bundle JS individual supera los 200 kB (heroGradient, 600 kB)', async () => {
     const js = (await walk(path.join(dist, '_astro'))).filter((f) => f.endsWith('.js'));
     const pesados: string[] = [];
     for (const f of js) {
       const { size } = await stat(f);
-      if (size > 200 * 1024) pesados.push(`${path.basename(f)} (${Math.round(size / 1024)} kB)`);
+      const limite = path.basename(f).startsWith('heroGradient.') ? 600 : 200;
+      if (size > limite * 1024) pesados.push(`${path.basename(f)} (${Math.round(size / 1024)} kB)`);
     }
     expect(pesados).toEqual([]);
   });

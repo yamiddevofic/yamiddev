@@ -1,4 +1,5 @@
 ---
+import FondoHero from '../components/atoms/FondoHero.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 
 const TITULO = 'Comunidad Yamid Dev';
@@ -11,7 +12,7 @@ const LETRAS = Array.from(TITULO);
   isMain={false}
 >
 <section id="home" class="relative isolate w-full overflow-hidden pt-20 pb-44 sm:pt-20 sm:pb-44 lg:pt-28 lg:pb-40">
-  <img src="/blog.jpg" alt="" aria-hidden="true" class="absolute inset-0 z-0 h-full w-full object-cover" width="1200" height="630" />
+  <FondoHero />
   <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-950/95 via-slate-950/92 to-cyan-950/95" aria-hidden="true"></div>
 
     <div class="relative z-10 mx-auto grid w-[90%] max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,22rem)] lg:gap-20">

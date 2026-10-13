@@ -97,6 +97,26 @@
   }
 }
 
+/* Al bajar, el texto del hero sube y se atenua (patron del hero de
+   nesdesign.co), con animation-timeline nativo: cero JavaScript. Sin soporte
+   o con movimiento reducido, el texto no se mueve. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-copy {
+      animation: hero-copy-out linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes hero-copy-out {
+  to {
+    transform: translateY(-80px);
+    opacity: 0.35;
+  }
+}
+
 /* Este reset va dentro de @layer base a proposito, y es importante.
    
    Tailwind v4 emite sus utilidades dentro de @layer utilities. En CSS, una

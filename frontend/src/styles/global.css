@@ -97,6 +97,64 @@
   }
 }
 
+/* Al bajar, el texto del hero sube y se atenua (patron del hero de
+   nesdesign.co), con animation-timeline nativo: cero JavaScript. Sin soporte
+   o con movimiento reducido, el texto no se mueve. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-copy {
+      animation: hero-copy-out linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes hero-copy-out {
+  to {
+    transform: translateY(-80px);
+    opacity: 0.35;
+  }
+}
+
+/* Reglas que Lenis exige: el scroll nativo suave chocaria con el suyo. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Las tarjetas entran desde 24px abajo con fundido al aparecer en pantalla
+   (el inView de nesdesign.co). La cascada sale sola: cada una entra cuando
+   le toca por posicion. Sin soporte o con movimiento reducido, se ven fijas. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      /* Longhands a proposito: con el shorthand el minificador fusiona
+         animation-timeline dentro de `animation`, y Chromium rechaza esa
+         forma (la animacion no se aplica nunca). */
+      animation-name: reveal-in;
+      animation-timing-function: ease-out;
+      animation-duration: auto;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
 /* Este reset va dentro de @layer base a proposito, y es importante.
    
    Tailwind v4 emite sus utilidades dentro de @layer utilities. En CSS, una

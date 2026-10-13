@@ -117,6 +117,26 @@
   }
 }
 
+/* Las tarjetas entran desde 24px abajo con fundido al aparecer en pantalla
+   (el inView de nesdesign.co). La cascada sale sola: cada una entra cuando
+   le toca por posicion. Sin soporte o con movimiento reducido, se ven fijas. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in ease-out both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
 /* Este reset va dentro de @layer base a proposito, y es importante.
    
    Tailwind v4 emite sus utilidades dentro de @layer utilities. En CSS, una

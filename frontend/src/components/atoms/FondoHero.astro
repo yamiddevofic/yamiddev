@@ -1,0 +1,26 @@
+---
+/**
+ * Fondo de los hero: degradado WebGL (three) sobre un degradado CSS estatico.
+ *
+ * El CSS es el fondo real con movimiento reducido o sin WebGL; el canvas se
+ * monta encima solo cuando se puede. three se importa bajo demanda.
+ */
+---
+
+<div
+  data-hero-gradient
+  class="absolute inset-0 z-0 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-900"
+  aria-hidden="true"
+>
+</div>
+
+<script>
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const hosts = document.querySelectorAll<HTMLElement>('[data-hero-gradient]');
+    if (hosts.length) {
+      import('../../lib/heroGradient').then(({ mountHeroGradient }) => {
+        hosts.forEach((host) => mountHeroGradient(host));
+      });
+    }
+  }
+</script>

@@ -4,6 +4,7 @@ import HeroEmpresas from '../components/organisms/HeroEmpresas.astro';
 import ProyectosTecnicos from '../components/organisms/ProyectosTecnicos.astro';
 import TrabajoConIA from '../components/organisms/TrabajoConIA.astro';
 import StackYTrayectoria from '../components/organisms/StackYTrayectoria.astro';
+import CvFlotante from '../components/molecules/CvFlotante.astro';
 import ContactForm from '../components/organisms/ContactForm.jsx';
 import '../styles/global.css';
 
@@ -47,6 +48,8 @@ const pageDetails = {
   pageType="website"
 >
   <div class="w-full bg-white transition-colors duration-300 dark:bg-slate-950">
+    <CvFlotante />
+
     <HeroEmpresas />
     <ProyectosTecnicos />
     <TrabajoConIA />

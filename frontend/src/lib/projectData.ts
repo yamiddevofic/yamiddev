@@ -70,8 +70,8 @@ export const Projects = [
     title: 'Fino App',
     description: 'Aplicación móvil para registrar ingresos, gastos y deudas personales.',
     techStack: ['Flutter', 'Dart', 'Hive'],
-    image: ['/images/finoapp.jpg', '/images/finoapp-2.jpg'],
-    imageSize: { width: 1365, height: 591 },
+    image: ['/images/finoapp.jpg', '/images/finoapp.jpg'],
+    imageSize: { width: 1366, height: 768 },
     time: 'En desarrollo',
     url: 'https://github.com/yamiddevofic/fino_app'
   },

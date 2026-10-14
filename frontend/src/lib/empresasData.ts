@@ -180,7 +180,7 @@ export const PROYECTOS: Proyecto[] = [
     rol: 'Desarrollo',
     estado: 'En desarrollo',
     stack: ['Flutter', 'Dart', 'Hive'],
-    image: ['/images/finoapp.jpg', '/images/finoapp-2.jpg'],
+    image: ['/images/finoapp.jpg', '/images/finoapp.jpg'],
     demo: null,
     repo: 'https://github.com/yamiddevofic/fino_app',
     writeup: null,
